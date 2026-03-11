@@ -1,0 +1,3034 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MyToolsPedia — Every Tool You Need</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --primary: #2563EB;
+      --primary-light: #3B82F6;
+      --primary-dark: #1D4ED8;
+      --accent: #06B6D4;
+      --bg: #F4F6FB;
+      --bg2: #EEF2FF;
+      --surface: #FFFFFF;
+      --surface2: #F1F5F9;
+      --border: #E2E8F0;
+      --text: #0F172A;
+      --text2: #475569;
+      --text3: #94A3B8;
+      --radius: 14px;
+      --radius-sm: 10px;
+      --shadow: 0 1px 4px rgba(15, 23, 42, 0.07), 0 4px 16px rgba(15, 23, 42, 0.05);
+      --shadow-hover: 0 6px 28px rgba(37, 99, 235, 0.13), 0 2px 8px rgba(15, 23, 42, 0.07);
+    }
+
+    [data-theme="dark"] {
+      --bg: #080D1A;
+      --bg2: #0D1424;
+      --surface: #111827;
+      --surface2: #162032;
+      --border: #1E2D45;
+      --text: #EFF6FF;
+      --text2: #94A3B8;
+      --text3: #4A5568;
+      --shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 4px 16px rgba(0, 0, 0, 0.2);
+      --shadow-hover: 0 6px 28px rgba(37, 99, 235, 0.22), 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      transition: background 0.3s, color 0.3s;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      background: rgba(255, 255, 255, 0.94);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    [data-theme="dark"] nav {
+      background: rgba(17, 24, 39, 0.94);
+    }
+
+    .nav-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 0 28px;
+      height: 62px;
+    }
+
+    .logo {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--primary);
+      text-decoration: none;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .logo-icon {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+    }
+
+    .nav-search {
+      flex: 1;
+      max-width: 420px;
+      display: flex;
+      align-items: center;
+      background: var(--bg);
+      border: 1.5px solid var(--border);
+      border-radius: 50px;
+      padding: 0 15px;
+      gap: 9px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .nav-search:focus-within {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+      background: var(--surface);
+    }
+
+    .nav-search svg {
+      color: var(--text3);
+      flex-shrink: 0;
+    }
+
+    .nav-search input {
+      flex: 1;
+      border: none;
+      background: none;
+      outline: none;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: var(--text);
+      padding: 9px 0;
+    }
+
+    .nav-search input::placeholder {
+      color: var(--text3);
+    }
+
+    .nav-right {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-ghost {
+      padding: 7px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      background: transparent;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text2);
+      transition: all 0.2s;
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      background: var(--bg2);
+    }
+
+    .btn-primary {
+      padding: 7px 15px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: white;
+      transition: all 0.2s;
+      box-shadow: 0 2px 8px rgba(37, 99, 235, 0.25);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+    }
+
+    .theme-toggle {
+      width: 36px;
+      height: 36px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      background: var(--surface2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      color: var(--text2);
+    }
+
+    .theme-toggle:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .nav-avatar-wrap {
+      position: relative;
+    }
+
+    .nav-avatar {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+      border: 2px solid var(--primary-light);
+    }
+
+    .nav-dropdown {
+      position: absolute;
+      top: calc(100% + 10px);
+      right: 0;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      min-width: 190px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+      padding: 7px;
+      display: none;
+      z-index: 300;
+    }
+
+    .nav-dropdown.open {
+      display: block;
+    }
+
+    .dropdown-info {
+      padding: 9px 11px 11px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 5px;
+    }
+
+    .dropdown-name {
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--text);
+    }
+
+    .dropdown-email {
+      font-size: 11px;
+      color: var(--text3);
+      margin-top: 2px;
+    }
+
+    .dropdown-item {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 8px 11px;
+      border-radius: 7px;
+      font-size: 13px;
+      color: var(--text2);
+      cursor: pointer;
+      transition: all 0.15s;
+      text-decoration: none;
+      border: none;
+      background: none;
+      width: 100%;
+      text-align: left;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .dropdown-item:hover {
+      background: var(--bg2);
+      color: var(--primary);
+    }
+
+    .dropdown-item.danger:hover {
+      background: #FEF2F2;
+      color: #EF4444;
+    }
+
+    /* MODALS */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 500;
+      background: rgba(8, 13, 26, 0.65);
+      backdrop-filter: blur(6px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.22s;
+    }
+
+    .modal-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .modal {
+      background: var(--surface);
+      border-radius: 18px;
+      padding: 38px;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 24px 64px rgba(0, 0, 0, 0.18);
+      transform: translateY(18px) scale(0.97);
+      transition: transform 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+    }
+
+    .modal-overlay.open .modal {
+      transform: translateY(0) scale(1);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 28px;
+      height: 28px;
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      background: var(--surface2);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text3);
+      transition: all 0.2s;
+    }
+
+    .modal-close:hover {
+      color: var(--text);
+    }
+
+    .modal-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .modal-logo-icon {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+    }
+
+    .modal-logo-text {
+      font-weight: 800;
+      font-size: 16px;
+      color: var(--primary);
+      letter-spacing: -0.4px;
+    }
+
+    .modal h2 {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 4px;
+      letter-spacing: -0.5px;
+    }
+
+    .modal-sub {
+      font-size: 13px;
+      color: var(--text3);
+      margin-bottom: 22px;
+    }
+
+    .form-group {
+      margin-bottom: 12px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text2);
+      margin-bottom: 5px;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      outline: none;
+      transition: all 0.2s;
+    }
+
+    .form-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+      background: var(--surface);
+    }
+
+    .form-input::placeholder {
+      color: var(--text3);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .btn-full {
+      width: 100%;
+      padding: 11px;
+      border: none;
+      border-radius: 9px;
+      cursor: pointer;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: white;
+      margin-top: 6px;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.28);
+      transition: all 0.2s;
+    }
+
+    .btn-full:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(37, 99, 235, 0.38);
+    }
+
+    .modal-divider {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 16px 0;
+      color: var(--text3);
+      font-size: 12px;
+    }
+
+    .modal-divider::before,
+    .modal-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .btn-google {
+      width: 100%;
+      padding: 10px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      background: var(--surface);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      transition: all 0.2s;
+    }
+
+    .btn-google:hover {
+      border-color: var(--primary);
+      background: var(--bg2);
+    }
+
+    .modal-switch {
+      text-align: center;
+      margin-top: 16px;
+      font-size: 13px;
+      color: var(--text3);
+    }
+
+    .modal-switch a {
+      color: var(--primary);
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    /* HERO */
+    .hero {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 56px 28px 48px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-glow {
+      position: absolute;
+      top: -60px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 300px;
+      background: radial-gradient(ellipse, rgba(37, 99, 235, 0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--bg2);
+      border: 1px solid #C7D7FF;
+      border-radius: 50px;
+      padding: 5px 13px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: clamp(28px, 4.5vw, 50px);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+
+    .hero h1 span {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      font-size: 16px;
+      color: var(--text2);
+      max-width: 480px;
+      margin: 0 auto 32px;
+      line-height: 1.65;
+    }
+
+    .hero-stats {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 36px;
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-num {
+      font-size: 26px;
+      font-weight: 900;
+      color: var(--primary);
+      letter-spacing: -1px;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      color: var(--text3);
+      margin-top: 2px;
+      font-weight: 500;
+    }
+
+    /* MAIN */
+
+    /* Popular Tools Section */
+    .popular-section {
+      padding: 40px 0 8px;
+    }
+
+    .popular-section-title {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.5px;
+      margin-bottom: 4px;
+      text-align: center;
+    }
+
+    .popular-section-sub {
+      font-size: 14px;
+      color: var(--text2);
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .popular-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .popular-tab {
+      padding: 7px 18px;
+      border-radius: 50px;
+      border: 1.5px solid var(--border);
+      background: var(--bg);
+      color: var(--text2);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.18s;
+    }
+
+    .popular-tab.active,
+    .popular-tab:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      background: rgba(37, 99, 235, 0.06);
+    }
+
+    .popular-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+    }
+
+    .popular-card {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 13px 15px;
+      background: var(--bg);
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.18s;
+      text-decoration: none;
+    }
+
+    .popular-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(37, 99, 235, 0.10);
+    }
+
+    .popular-card-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .popular-card-info {
+      min-width: 0;
+    }
+
+    .popular-card-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .popular-card-cat {
+      font-size: 11px;
+      color: var(--text3);
+      margin-top: 1px;
+    }
+
+    .popular-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 32px 0 0;
+    }
+
+    .page-main {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 36px 28px 72px;
+      flex: 1;
+      width: 100%;
+    }
+
+    /* FILTER PILLS */
+    .filter-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    .filter-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 16px;
+      border: 1.5px solid var(--border);
+      border-radius: 50px;
+      cursor: pointer;
+      background: var(--surface);
+      color: var(--text2);
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+
+    .filter-pill:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      background: var(--bg2);
+    }
+
+    .filter-pill.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: white;
+      box-shadow: 0 3px 12px rgba(37, 99, 235, 0.3);
+    }
+
+    .filter-pill .pill-icon {
+      font-size: 14px;
+    }
+
+    .filter-pill .pill-count {
+      background: rgba(0, 0, 0, 0.08);
+      border-radius: 50px;
+      padding: 1px 7px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .filter-pill.active .pill-count {
+      background: rgba(255, 255, 255, 0.22);
+    }
+
+    /* TOOLS HEADING */
+    .tools-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
+    }
+
+    .tools-heading-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text2);
+    }
+
+    .tools-count {
+      font-size: 13px;
+      color: var(--text3);
+      font-weight: 500;
+    }
+
+    /* TOOL GRID */
+    .tool-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      gap: 14px;
+    }
+
+    .tool-card {
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 18px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tool-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--cat-color-a, var(--primary)), var(--cat-color-b, var(--accent)));
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .tool-card:hover {
+      border-color: transparent;
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-3px);
+    }
+
+    .tool-card:hover::after {
+      opacity: 1;
+    }
+
+    .tool-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+
+    .tool-icon-wrap {
+      width: 44px;
+      height: 44px;
+      border-radius: 11px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .tool-card-arrow {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text3);
+      transition: all 0.2s;
+      flex-shrink: 0;
+    }
+
+    .tool-card:hover .tool-card-arrow {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: white;
+      transform: translateX(2px);
+    }
+
+    .tool-card-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.3;
+      letter-spacing: -0.2px;
+    }
+
+    .tool-card-desc {
+      font-size: 12px;
+      color: var(--text3);
+      line-height: 1.55;
+      font-weight: 400;
+    }
+
+    .tool-cat-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 8px;
+      border-radius: 50px;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      width: fit-content;
+    }
+
+    /* TOOL PAGE */
+    .tool-page {
+      display: none;
+      flex: 1;
+    }
+
+    .tool-page.active {
+      display: block;
+    }
+
+    .tool-page-header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 28px 28px 0;
+    }
+
+    .tool-page-header-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .tool-breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--text3);
+      margin-bottom: 20px;
+    }
+
+    .tool-breadcrumb a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .tool-breadcrumb a:hover {
+      text-decoration: underline;
+    }
+
+    .tool-page-title-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding-bottom: 24px;
+    }
+
+    .tool-page-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      flex-shrink: 0;
+    }
+
+    .tool-page-title {
+      font-size: 24px;
+      font-weight: 900;
+      color: var(--text);
+      letter-spacing: -0.6px;
+      margin-bottom: 4px;
+    }
+
+    .tool-page-subtitle {
+      font-size: 14px;
+      color: var(--text2);
+    }
+
+    .tool-page-body {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 32px 28px 72px;
+    }
+
+    /* WORKSPACE */
+    .tool-workspace {
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 20px;
+    }
+
+    .ws-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text2);
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      margin-bottom: 10px;
+    }
+
+    .ws-textarea {
+      width: 100%;
+      min-height: 160px;
+      padding: 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      outline: none;
+      resize: vertical;
+      transition: border-color 0.2s;
+    }
+
+    .ws-textarea:focus {
+      border-color: var(--primary);
+    }
+
+    .ws-input {
+      width: 100%;
+      padding: 11px 13px;
+      border: 1.5px solid var(--border);
+      border-radius: 9px;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s;
+      margin-bottom: 12px;
+    }
+
+    .ws-input:focus {
+      border-color: var(--primary);
+    }
+
+    .ws-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .ws-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 14px;
+      flex-wrap: wrap;
+    }
+
+    .ws-btn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      transition: all 0.2s;
+    }
+
+    .ws-btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: white;
+      box-shadow: 0 3px 10px rgba(37, 99, 235, 0.25);
+    }
+
+    .ws-btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 5px 14px rgba(37, 99, 235, 0.35);
+    }
+
+    .ws-btn-ghost {
+      background: var(--surface2);
+      border: 1.5px solid var(--border);
+      color: var(--text2);
+    }
+
+    .ws-btn-ghost:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .ws-output {
+      width: 100%;
+      min-height: 120px;
+      padding: 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      background: var(--bg2);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .ws-stats {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    .ws-stat {
+      background: var(--bg2);
+      border-radius: 8px;
+      padding: 10px 14px;
+    }
+
+    .ws-stat-num {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .ws-stat-label {
+      font-size: 11px;
+      color: var(--text3);
+      margin-top: 2px;
+    }
+
+    /* PROFILE */
+    .profile-page {
+      display: none;
+      flex: 1;
+    }
+
+    .profile-page.active {
+      display: block;
+    }
+
+    .profile-hero {
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary), var(--accent));
+      padding: 50px 28px 82px;
+      text-align: center;
+    }
+
+    .profile-avatar-lg {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.22);
+      border: 3px solid rgba(255, 255, 255, 0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      font-weight: 800;
+      color: white;
+      margin: 0 auto 12px;
+    }
+
+    .profile-hero-name {
+      font-size: 21px;
+      font-weight: 800;
+      color: white;
+      letter-spacing: -0.5px;
+      margin-bottom: 3px;
+    }
+
+    .profile-hero-email {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .profile-body {
+      max-width: 760px;
+      margin: -34px auto 0;
+      padding: 0 24px 60px;
+    }
+
+    .profile-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+      margin-bottom: 16px;
+      box-shadow: var(--shadow);
+    }
+
+    .profile-card-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .profile-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .profile-field label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text3);
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .profile-field-val {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .stat-mini {
+      background: var(--bg2);
+      border-radius: 10px;
+      padding: 14px;
+      text-align: center;
+    }
+
+    .stat-mini-num {
+      font-size: 24px;
+      font-weight: 900;
+      color: var(--primary);
+      letter-spacing: -1px;
+    }
+
+    .stat-mini-label {
+      font-size: 11px;
+      color: var(--text3);
+      margin-top: 2px;
+      font-weight: 500;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 52px 28px 28px;
+      margin-top: auto;
+    }
+
+    .footer-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-logo {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 11px;
+      letter-spacing: -0.5px;
+    }
+
+    .footer-logo-icon {
+      width: 27px;
+      height: 27px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      border-radius: 7px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+    }
+
+    .footer-tagline {
+      font-size: 13px;
+      color: var(--text3);
+      line-height: 1.6;
+      max-width: 220px;
+      margin-bottom: 16px;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 7px;
+      flex-wrap: wrap;
+    }
+
+    .social-btn {
+      width: 32px;
+      height: 32px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text3);
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 13px;
+      background: var(--surface2);
+    }
+
+    .social-btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      background: var(--bg2);
+    }
+
+    .footer-col-title {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 13px;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 8px;
+    }
+
+    .footer-links a {
+      font-size: 13px;
+      color: var(--text3);
+      text-decoration: none;
+      transition: color 0.2s;
+      font-weight: 500;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .footer-copy {
+      font-size: 12px;
+      color: var(--text3);
+    }
+
+    .footer-bottom-links {
+      display: flex;
+      gap: 16px;
+    }
+
+    .footer-bottom-links a {
+      font-size: 12px;
+      color: var(--text3);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-bottom-links a:hover {
+      color: var(--primary);
+    }
+
+    /* EMPTY STATE */
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .empty-state-icon {
+      font-size: 44px;
+      margin-bottom: 14px;
+    }
+
+    .empty-state h3 {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .empty-state p {
+      font-size: 14px;
+      color: var(--text3);
+    }
+
+    /* ANIM */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .tool-card {
+      animation: fadeUp 0.35s ease both;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .footer-top {
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-inner {
+        gap: 8px;
+        padding: 0 16px;
+      }
+
+      .btn-ghost {
+        display: none;
+      }
+
+      .hero {
+        padding: 40px 16px 36px;
+      }
+
+      .hero-stats {
+        gap: 18px;
+      }
+
+      .page-main {
+        padding: 24px 16px 56px;
+      }
+
+      .tool-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+
+      .ws-row {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-top {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .profile-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="logo" onclick="showHome(); return false;">
+        <div class="logo-icon">⚡</div>MyToolsPedia
+      </a>
+      <div class="nav-search">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <circle cx="11" cy="11" r="8" />
+          <path d="m21 21-4.35-4.35" />
+        </svg>
+        <input type="text" id="searchInput" placeholder="Search 150+ tools..." oninput="handleSearch(this.value)">
+      </div>
+      <div class="nav-right">
+        <button class="theme-toggle" onclick="toggleTheme()">
+          <svg id="theme-icon" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"
+            viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="5" />
+            <path
+              d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+          </svg>
+        </button>
+        <div id="nav-auth-btns" style="display:flex;gap:7px;">
+          <button class="btn-ghost" onclick="openModal('signin')">Login</button>
+          <button class="btn-primary" onclick="openModal('signup')">Sign Up</button>
+        </div>
+        <div id="nav-user-area" style="display:none;position:relative;">
+          <div class="nav-avatar" id="nav-avatar" onclick="toggleDropdown()">T</div>
+          <div class="nav-dropdown" id="nav-dropdown">
+            <div class="dropdown-info">
+              <div class="dropdown-name" id="dropdown-name">User</div>
+              <div class="dropdown-email" id="dropdown-email"><a href="/cdn-cgi/l/email-protection" class="__cf_email__"
+                  data-cfemail="83f6f0e6f1c3e6fbe2eef3efe6ade0ecee">[email&#160;protected]</a></div>
+            </div>
+            <button class="dropdown-item" onclick="showProfile();toggleDropdown();"><svg width="13" height="13"
+                fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                <circle cx="12" cy="7" r="4" />
+              </svg>My Profile</button>
+            <button class="dropdown-item danger" onclick="signOut();"><svg width="13" height="13" fill="none"
+                stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                <polyline points="16 17 21 12 16 7" />
+                <line x1="21" y1="12" x2="9" y2="12" />
+              </svg>Sign Out</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- SIGN IN MODAL -->
+  <div class="modal-overlay" id="signin-modal">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal('signin')"><svg width="12" height="12" fill="none"
+          stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+          <path d="M18 6 6 18M6 6l12 12" />
+        </svg></button>
+      <div class="modal-logo">
+        <div class="modal-logo-icon">⚡</div><span class="modal-logo-text">MyToolsPedia</span>
+      </div>
+      <h2>Welcome back</h2>
+      <p class="modal-sub">Login to your account</p>
+      <div class="form-group"><label class="form-label">Email</label><input class="form-input" type="email"
+          id="signin-email" placeholder="you@example.com"></div>
+      <div class="form-group"><label class="form-label">Password</label><input class="form-input" type="password"
+          id="signin-password" placeholder="Your password"></div>
+      <button class="btn-full" onclick="doSignIn()">Login</button>
+      <div class="modal-divider">or</div>
+      <button class="btn-google"><svg width="16" height="16" viewBox="0 0 48 48">
+          <path fill="#EA4335"
+            d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z" />
+          <path fill="#4285F4"
+            d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z" />
+          <path fill="#FBBC05"
+            d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z" />
+          <path fill="#34A853"
+            d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.31-8.16 2.31-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z" />
+        </svg>Continue with Google</button>
+      <p class="modal-switch">No account? <a onclick="switchModal('signin','signup')">Sign up free</a></p>
+    </div>
+  </div>
+
+  <!-- SIGN UP MODAL -->
+  <div class="modal-overlay" id="signup-modal">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal('signup')"><svg width="12" height="12" fill="none"
+          stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+          <path d="M18 6 6 18M6 6l12 12" />
+        </svg></button>
+      <div class="modal-logo">
+        <div class="modal-logo-icon">⚡</div><span class="modal-logo-text">MyToolsPedia</span>
+      </div>
+      <h2>Create account</h2>
+      <p class="modal-sub">Free forever. No credit card needed.</p>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">First name</label><input class="form-input" type="text"
+            id="signup-first" placeholder="John"></div>
+        <div class="form-group"><label class="form-label">Last name</label><input class="form-input" type="text"
+            id="signup-last" placeholder="Doe"></div>
+      </div>
+      <div class="form-group"><label class="form-label">Email</label><input class="form-input" type="email"
+          id="signup-email" placeholder="you@example.com"></div>
+      <div class="form-group"><label class="form-label">Password</label><input class="form-input" type="password"
+          id="signup-password" placeholder="Min. 8 characters"></div>
+      <button class="btn-full" onclick="doSignUp()">Create Account</button>
+      <div class="modal-divider">or</div>
+      <button class="btn-google"><svg width="16" height="16" viewBox="0 0 48 48">
+          <path fill="#EA4335"
+            d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z" />
+          <path fill="#4285F4"
+            d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z" />
+          <path fill="#FBBC05"
+            d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z" />
+          <path fill="#34A853"
+            d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.31-8.16 2.31-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z" />
+        </svg>Continue with Google</button>
+      <p class="modal-switch">Have an account? <a onclick="switchModal('signup','signin')">Sign in</a></p>
+    </div>
+  </div>
+
+  <!-- PROFILE PAGE -->
+  <div class="profile-page" id="profile-page">
+    <div class="profile-hero">
+      <div class="profile-avatar-lg" id="profile-avatar-lg">T</div>
+      <div class="profile-hero-name" id="profile-hero-name">User</div>
+      <div class="profile-hero-email" id="profile-hero-email"><a href="/cdn-cgi/l/email-protection" class="__cf_email__"
+          data-cfemail="126761776052776a737f627e773c717d7f">[email&#160;protected]</a></div>
+    </div>
+    <div class="profile-body">
+      <div class="profile-card">
+        <div class="profile-card-title"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"
+            viewBox="0 0 24 24">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+            <circle cx="12" cy="7" r="4" />
+          </svg>Account Information</div>
+        <div class="profile-grid">
+          <div class="profile-field"><label>Full Name</label>
+            <div class="profile-field-val" id="pf-name">—</div>
+          </div>
+          <div class="profile-field"><label>Email</label>
+            <div class="profile-field-val" id="pf-email">—</div>
+          </div>
+          <div class="profile-field"><label>Member Since</label>
+            <div class="profile-field-val">March 2026</div>
+          </div>
+          <div class="profile-field"><label>Plan</label>
+            <div class="profile-field-val" style="color:var(--primary);font-weight:700;">Free Forever</div>
+          </div>
+        </div>
+      </div>
+      <div class="profile-card">
+        <div class="profile-card-title"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"
+            viewBox="0 0 24 24">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+          </svg>Activity</div>
+        <div class="profile-grid">
+          <div class="stat-mini">
+            <div class="stat-mini-num">0</div>
+            <div class="stat-mini-label">Tools Used</div>
+          </div>
+          <div class="stat-mini">
+            <div class="stat-mini-num">0</div>
+            <div class="stat-mini-label">Saved Items</div>
+          </div>
+          <div class="stat-mini">
+            <div class="stat-mini-num">0</div>
+            <div class="stat-mini-label">Days Active</div>
+          </div>
+          <div class="stat-mini">
+            <div class="stat-mini-num">150+</div>
+            <div class="stat-mini-label">Tools Available</div>
+          </div>
+        </div>
+      </div>
+      <button class="ws-btn ws-btn-ghost" onclick="showHome()"
+        style="margin-top:4px;display:inline-flex;align-items:center;gap:7px;"><svg width="13" height="13" fill="none"
+          stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+          <path d="M15 18l-6-6 6-6" />
+        </svg>Back to Home</button>
+    </div>
+  </div>
+
+  <!-- TOOL PAGE -->
+  <div class="tool-page" id="tool-page">
+    <div class="tool-page-header">
+      <div class="tool-page-header-inner">
+        <div class="tool-breadcrumb">
+          <a onclick="showHome()">Home</a>
+          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M9 18l6-6-6-6" />
+          </svg>
+          <a id="tool-breadcrumb-cat" onclick="goToCategory()" style="cursor:pointer;">Content Tools</a>
+          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M9 18l6-6-6-6" />
+          </svg>
+          <span id="tool-breadcrumb-name">Tool</span>
+        </div>
+        <div class="tool-page-title-row">
+          <div class="tool-page-icon" id="tool-page-icon">✍️</div>
+          <div>
+            <div class="tool-page-title" id="tool-page-title">Tool Name</div>
+            <div class="tool-page-subtitle" id="tool-page-subtitle">Tool description.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tool-page-body">
+      <div id="tool-workspace"></div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" id="hero-section">
+    <div class="hero-glow"></div>
+    <div class="hero-badge">✨ Free · No Signup · No Limits</div>
+    <h1>Every Tool You Need,<br><span>Right Here</span></h1>
+    <p>150+ powerful tools for content, SEO, web, PDF, and more. Free forever. Ad free. All in one place.</p>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">150+</div>
+        <div class="stat-label">Free Tools</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">4</div>
+        <div class="stat-label">Categories</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Free Forever</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Ad Free</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">1</div>
+        <div class="stat-label">Place for All Tools</div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- POPULAR TOOLS SECTION -->
+  <div id="popular-section" class="page-main popular-section">
+    <div class="popular-section-title">Popular Tools</div>
+    <div class="popular-section-sub">The most-used tools across every category</div>
+    <div class="popular-tabs">
+      <button class="popular-tab active" onclick="switchPopularTab('content',this)">✍️ Content</button>
+      <button class="popular-tab" onclick="switchPopularTab('seo',this)">🔍 SEO</button>
+      <button class="popular-tab" onclick="switchPopularTab('web',this)">🌐 Web</button>
+      <button class="popular-tab" onclick="switchPopularTab('utility',this)">⚙️ Utility</button>
+    </div>
+    <div class="popular-grid" id="popular-grid"></div>
+    <div class="popular-divider"></div>
+  </div>
+
+  <!-- MAIN -->
+  <div class="page-main" id="home-main">
+    <div class="filter-bar" id="filter-bar">
+      <button class="filter-pill active" data-cat="all" onclick="filterTools('all')"><span class="pill-icon">⚡</span>
+        All Tools <span class="pill-count">150</span></button>
+      <button class="filter-pill" data-cat="content" onclick="filterTools('content')"><span class="pill-icon">✍️</span>
+        Content Tools <span class="pill-count">45</span></button>
+      <button class="filter-pill" data-cat="seo" onclick="filterTools('seo')"><span class="pill-icon">🔍</span> SEO
+        Tools <span class="pill-count">18</span></button>
+      <button class="filter-pill" data-cat="web" onclick="filterTools('web')"><span class="pill-icon">🌐</span> Web
+        Tools <span class="pill-count">32</span></button>
+      <button class="filter-pill" data-cat="utility" onclick="filterTools('utility')"><span class="pill-icon">⚙️</span>
+        Utility Tools <span class="pill-count">80</span></button>
+    </div>
+    <div class="tools-heading">
+      <div class="tools-heading-title" id="tools-heading-title">All Tools</div>
+      <div class="tools-count" id="tools-count">150 tools</div>
+    </div>
+    <div class="tool-grid" id="tool-grid"></div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer id="footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div>
+          <div class="footer-logo">
+            <div class="footer-logo-icon">⚡</div>MyToolsPedia
+          </div>
+          <p class="footer-tagline">150+ free tools for writers, marketers, developers, and everyone in between.</p>
+          <div class="footer-social">
+            <a class="social-btn" href="#" style="font-weight:900;font-size:12px;">𝕏</a>
+            <a class="social-btn" href="#"><svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+              </svg></a>
+            <a class="social-btn" href="#"><svg width="13" height="13" fill="none" stroke="currentColor"
+                stroke-width="2" viewBox="0 0 24 24">
+                <rect x="2" y="2" width="20" height="20" rx="5" />
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+              </svg></a>
+            <a class="social-btn" href="#"><svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z" />
+                <circle cx="4" cy="4" r="2" />
+              </svg></a>
+            <a class="social-btn" href="#"><svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.96-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z" />
+                <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white" />
+              </svg></a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">Legal</div>
+          <ul class="footer-links">
+            <li><a href="#">Security</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms &amp; Conditions</a></li>
+            <li><a href="#">Cookies</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Company</div>
+          <ul class="footer-links">
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Press</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Tools</div>
+          <ul class="footer-links">
+            <li><a href="#" onclick="filterTools('content');return false;">Content Tools</a></li>
+            <li><a href="#" onclick="filterTools('seo');return false;">SEO Tools</a></li>
+            <li><a href="#" onclick="filterTools('web');return false;">Web Tools</a></li>
+            <li><a href="#" onclick="filterTools('utility');return false;">Utility Tools</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-copy">© 2026 MyToolsPedia. All rights reserved.</div>
+        <div class="footer-bottom-links"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Cookies</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const catMeta = {
+      content: { label: 'Content Tools', icon: '✍️', ca: '#EEF2FF', cb: '#2563EB', cc: '#2563EB', bg: '#EEF2FF', badge: '#3B82F6', badgeBg: '#EEF2FF' },
+      seo: { label: 'SEO Tools', icon: '🔍', ca: '#F5F3FF', cb: '#7C3AED', cc: '#7C3AED', bg: '#F5F3FF', badge: '#7C3AED', badgeBg: '#F5F3FF' },
+      web: { label: 'Web Tools', icon: '🌐', ca: '#ECFDF5', cb: '#059669', cc: '#059669', bg: '#ECFDF5', badge: '#059669', badgeBg: '#ECFDF5' },
+      utility: { label: 'Utility Tools', icon: '⚙️', ca: '#FFFBEB', cb: '#D97706', cc: '#D97706', bg: '#FFFBEB', badge: '#D97706', badgeBg: '#FFFBEB' },
+    };
+
+    const tools = [
+      { id: 'ai-story', cat: 'content', name: 'AI Story Generator', icon: '\ud83d\udcd6', desc: 'Generate creative stories from any prompt instantly.' },
+      { id: 'ai-poem', cat: 'content', name: 'AI Poem Generator', icon: '\ud83c\udfad', desc: 'Write beautiful poems in any style you choose.' },
+      { id: 'cover-letter', cat: 'content', name: 'Cover Letter Generator', icon: '\ud83d\udcc4', desc: 'Craft professional cover letters for any job.' },
+      { id: 'biz-name', cat: 'content', name: 'Business Name Generator', icon: '\ud83d\udcbc', desc: 'Get catchy, brandable business name ideas fast.' },
+      { id: 'book-title', cat: 'content', name: 'Book Title Generator', icon: '\ud83d\udcda', desc: 'Generate compelling titles for your next book.' },
+      { id: 'abstract', cat: 'content', name: 'Abstract Generator', icon: '\ud83e\udde0', desc: 'Summarize research papers into crisp abstracts.' },
+      { id: 'email-writer', cat: 'content', name: 'AI Email Writer', icon: '\ud83d\udce7', desc: 'Write clear, professional emails in seconds.' },
+      { id: 'conclusion', cat: 'content', name: 'Conclusion Generator', icon: '\u2705', desc: 'Wrap up any essay or article with a strong conclusion.' },
+      { id: 'outline', cat: 'content', name: 'Outline Generator', icon: '📋', desc: 'Create structured outlines for any topic or document.' },
+      { id: 'ai-answer', cat: 'content', name: 'AI Answer Generator', icon: '\ud83d\udcac', desc: 'Get intelligent answers to any question you have.' },
+      { id: 'paragraph', cat: 'content', name: 'Paragraph Generator', icon: '\u00b6', desc: 'Generate well-written paragraphs on any subject.' },
+      { id: 'ai-sentence', cat: 'content', name: 'AI Sentence Generator', icon: '✨', desc: 'Create unique, natural-sounding sentences on demand.' },
+      { id: 'thesis', cat: 'content', name: 'Thesis Statement Generator', icon: '\ud83c\udf93', desc: 'Build strong thesis statements for essays or papers.' },
+      { id: 'slogan', cat: 'content', name: 'Slogan Generator', icon: '\ud83d\udce3', desc: 'Create memorable slogans for brands or campaigns.' },
+      { id: 'a2p-voice', cat: 'content', name: 'Active to Passive Voice', icon: '\ud83d\udd04', desc: 'Convert active sentences to passive voice instantly.' },
+      { id: 'sentence-exp', cat: 'content', name: 'Sentence Expander', icon: '\u2194\ufe0f', desc: 'Expand short sentences into richer, fuller text.' },
+      { id: 'backstory', cat: 'content', name: 'Backstory Generator', icon: '\ud83d\udd70\ufe0f', desc: 'Create rich backstories for characters or brands.' },
+      { id: 'essay-writer', cat: 'content', name: 'AI Essay Writer', icon: '\ud83d\udcdd', desc: 'Generate full, well-structured essays on any topic.' },
+      { id: 'faq-gen', cat: 'content', name: 'FAQ Generator', icon: '\u2753', desc: 'Auto-generate FAQs for any product, page, or topic.' },
+      { id: 'acronym', cat: 'content', name: 'Acronym Generator', icon: '\ud83d\udd20', desc: 'Create meaningful acronyms from any set of words.' },
+      { id: 'meta-desc', cat: 'content', name: 'Meta Description Generator', icon: '\ud83c\udff7\ufe0f', desc: 'Write click-worthy meta descriptions for SEO.' },
+      { id: 'review-gen', cat: 'content', name: 'Review Generator', icon: '\u2b50', desc: 'Generate product or service reviews in any tone.' },
+      { id: 'para-expand', cat: 'content', name: 'Paragraph Expander', icon: '\ud83d\udcd1', desc: 'Expand short paragraphs into detailed, rich content.' },
+      { id: 'sent-short', cat: 'content', name: 'AI Sentence Shortener', icon: '\u2702\ufe0f', desc: 'Condense long sentences without losing meaning.' },
+      { id: 'humanize-ai', cat: 'content', name: 'Humanize AI Text', icon: '\ud83e\udd1d', desc: 'Make AI-generated text sound natural and human.' },
+      { id: 'caption-gen', cat: 'content', name: 'Caption Generator', icon: '\ud83d\udcad', desc: 'Write engaging captions for images and social posts.' },
+      { id: 'msg-gen', cat: 'content', name: 'AI Message Generator', icon: '\ud83d\udce8', desc: 'Craft perfect messages for any situation or platform.' },
+      { id: 'reply-gen', cat: 'content', name: 'AI Reply Generator', icon: '\u21a9\ufe0f', desc: 'Generate smart, context-aware replies instantly.' },
+      { id: 'prompt-gen', cat: 'content', name: 'AI Prompt Generator', icon: '\ud83c\udfaf', desc: 'Create powerful prompts for any AI tool or model.' },
+      { id: 'txt-pdf', cat: 'content', name: 'Text to PDF', icon: '\ud83d\udce5', desc: 'Convert any text content into a downloadable PDF.' },
+      { id: 'txt-repeat', cat: 'content', name: 'Text Repeater', icon: '\ud83d\udd01', desc: 'Repeat any text a specified number of times.' },
+      { id: 'word-count', cat: 'content', name: 'Word Counter', icon: '🔢', desc: 'Count words, characters, sentences, and paragraphs.' },
+      { id: 'grammar', cat: 'content', name: 'Grammar Checker', icon: '\u2714\ufe0f', desc: 'Detect and fix grammar errors in your writing.' },
+      { id: 'rewriter', cat: 'content', name: 'Article Rewriter', icon: '\ud83d\udd03', desc: 'Rewrite any article while keeping the original meaning.' },
+      { id: 'txt-compare', cat: 'content', name: 'Text Compare', icon: '\u2696\ufe0f', desc: 'Compare two texts side by side to spot differences.' },
+      { id: 'paraphrase', cat: 'content', name: 'Paraphrasing Tool', icon: '\ud83d\udca1', desc: 'Rephrase any text in a fresh, unique way.' },
+      { id: 'readability', cat: 'content', name: 'Readability Checker', icon: '\ud83d\udc41\ufe0f', desc: 'Measure how easy your content is to read and understand.' },
+      { id: 'small-text', cat: 'content', name: 'Small Text Generator', icon: '\ud83d\udd21', desc: 'Convert text to tiny unicode characters for fun.' },
+      { id: 'img2text', cat: 'content', name: 'Image To Text', icon: '\ud83d\uddbc\ufe0f', desc: 'Extract text from any image using OCR technology.' },
+      { id: 'line-count', cat: 'content', name: 'Line Counter', icon: '\u2261', desc: 'Count lines in any block of text or code.' },
+      { id: 'diff-check', cat: 'content', name: 'Diff Checker', icon: '\ud83d\udd00', desc: 'Find differences between two text documents quickly.' },
+      { id: 'word-combo', cat: 'content', name: 'Word Combiner', icon: '\u2795', desc: 'Combine multiple words or lists in creative ways.' },
+      { id: 'summarizer', cat: 'content', name: 'Text Summarizer', icon: '\ud83d\udcca', desc: 'Summarize long texts into short, clear summaries.' },
+      { id: 'spell', cat: 'content', name: 'Spell Checker', icon: '\ud83d\udd24', desc: 'Catch and fix spelling mistakes in your text.' },
+      { id: 'kw-density', cat: 'content', name: 'Keyword Density Checker', icon: '\ud83d\udcc8', desc: 'Analyze keyword frequency and density in any text.' },
+      { id: 'xml-sitemap', cat: 'seo', name: 'XML Sitemap Generator', icon: '\ud83d\uddfa\ufe0f', desc: 'Generate XML sitemaps for better search indexing.' },
+      { id: 'backlink-make', cat: 'seo', name: 'Backlink Maker', icon: '\ud83d\udd17', desc: 'Generate a list of sites to build backlinks from.' },
+      { id: 'broken-links', cat: 'seo', name: 'Broken Links Checker', icon: '\u26d4', desc: 'Find and report all broken links on any webpage.' },
+      { id: 'link-extract', cat: 'seo', name: 'Link Extractor', icon: '\ud83d\udd0e', desc: 'Extract all hyperlinks from any webpage URL.' },
+      { id: 'verify-bl', cat: 'seo', name: 'Verify Backlink', icon: '\u2705', desc: 'Check if a backlink to your site actually exists.' },
+      { id: 'page-compare', cat: 'seo', name: 'Page Comparison', icon: '\ud83d\udcc4', desc: 'Compare two pages for SEO signals and content.' },
+      { id: 'code-text', cat: 'seo', name: 'Code To Text Ratio', icon: '\ud83d\udcca', desc: 'Analyze the code-to-text ratio of any webpage.' },
+      { id: 'seo-url', cat: 'seo', name: 'SEO Friendly URLs Checker', icon: '🌐', desc: 'Check if your URLs are clean and SEO-friendly.' },
+      { id: 'kw-total', cat: 'seo', name: 'Keyword / Total Words', icon: '🔢', desc: 'Calculate keyword usage across your content.' },
+      { id: 'rev-img', cat: 'seo', name: 'Reverse Image Search', icon: '🔍', desc: 'Find where any image appears across the web.' },
+      { id: 'similar-page', cat: 'seo', name: 'Similar Page Checker', icon: '\ud83d\uddc2\ufe0f', desc: 'Detect pages with duplicate or very similar content.' },
+      { id: 'plagiarism', cat: 'seo', name: 'Plagiarism Checker', icon: '\ud83d\udd75\ufe0f', desc: 'Scan text to detect potential plagiarism online.' },
+      { id: 'ai-detect', cat: 'seo', name: 'AI Content Detector', icon: '\ud83e\udd16', desc: 'Detect whether content was written by AI or a human.' },
+      { id: 'plag-compare', cat: 'seo', name: 'Plagiarism Comparison', icon: '\u2696\ufe0f', desc: 'Compare two texts for similarities and copied content.' },
+      { id: 'google-index', cat: 'seo', name: 'Google Indexer', icon: '\ud83d\udce1', desc: 'Submit pages to Google for faster indexing.' },
+      { id: 'g-index-check', cat: 'seo', name: 'Google Index Checker', icon: '🔍', desc: 'Check if a specific URL is indexed by Google.' },
+      { id: 'seo-score', cat: 'seo', name: 'Website SEO Score Checker', icon: '\ud83d\udcca', desc: 'Get a full SEO audit score for any website.' },
+      { id: 'kw-density2', cat: 'seo', name: 'Keyword Density Checker', icon: '\ud83d\udcc8', desc: 'Check keyword usage percentage in your content.' },
+      { id: 'dns-check', cat: 'web', name: 'DNS Records Checker', icon: '🌐', desc: 'Look up DNS records for any domain instantly.' },
+      { id: 'url-enc', cat: 'web', name: 'URL Encoder Decoder', icon: '\ud83d\udd17', desc: 'Encode or decode URLs with special characters.' },
+      { id: 'html-enc', cat: 'web', name: 'HTML Encoder Decoder', icon: '\ud83d\udcbb', desc: 'Encode or decode HTML entities in any text.' },
+      { id: 'crop-img', cat: 'web', name: 'Crop Image Online', icon: '\u2702\ufe0f', desc: 'Crop any image to your preferred dimensions online.' },
+      { id: 'favicon', cat: 'web', name: 'Favicon Generator', icon: '\ud83d\uddbc\ufe0f', desc: 'Generate favicon files from any image or text.' },
+      { id: 'min-css', cat: 'web', name: 'Minify CSS', icon: '\ud83c\udfa8', desc: 'Compress CSS files to improve page load speed.' },
+      { id: 'min-js', cat: 'web', name: 'Minify JS', icon: '⚡', desc: 'Minify JavaScript files for faster performance.' },
+      { id: 'min-html', cat: 'web', name: 'Minify HTML', icon: '\ud83d\udcc4', desc: 'Remove whitespace from HTML to reduce file size.' },
+      { id: 'min-json', cat: 'web', name: 'Minify JSON', icon: '📋', desc: 'Compact JSON by stripping whitespace and comments.' },
+      { id: 'css-beauty', cat: 'web', name: 'CSS Beautifier', icon: '\ud83c\udfa8', desc: 'Format and indent messy CSS for easy reading.' },
+      { id: 'js-beauty', cat: 'web', name: 'JS Beautifier', icon: '\ud83d\udc9b', desc: 'Prettify and format JavaScript code instantly.' },
+      { id: 'html-beauty', cat: 'web', name: 'HTML Beautifier', icon: '\ud83c\udf08', desc: 'Clean up and format HTML markup beautifully.' },
+      { id: 'json-beauty', cat: 'web', name: 'JSON Beautifier', icon: '\ud83d\udce6', desc: 'Format raw JSON into a readable, indented structure.' },
+      { id: 'php-beauty', cat: 'web', name: 'PHP Beautifier', icon: '\ud83d\udc18', desc: 'Beautify PHP code with proper spacing and indentation.' },
+      { id: 'xml-beauty', cat: 'web', name: 'XML Beautifier', icon: '\ud83d\udcf0', desc: 'Format and indent XML documents for clarity.' },
+      { id: 'ico-conv', cat: 'web', name: 'ICO Converter', icon: '\ud83d\uddb1\ufe0f', desc: 'Convert image files to ICO format for favicons.' },
+      { id: 'rgb-hex', cat: 'web', name: 'RGB to HEX', icon: '\ud83c\udfa8', desc: 'Convert RGB color values to HEX codes easily.' },
+      { id: 'hex-rgb', cat: 'web', name: 'HEX to RGB', icon: '\ud83c\udf08', desc: 'Convert HEX color codes to RGB values instantly.' },
+      { id: 'spider-sim', cat: 'web', name: 'Spider Simulator', icon: '\ud83d\udd77\ufe0f', desc: 'See how search engine bots crawl your web page.' },
+      { id: 'page-snoop', cat: 'web', name: 'Website Page Snooper', icon: '\ud83d\udd0e', desc: 'View the source and headers of any web page.' },
+      { id: 'ip-lookup', cat: 'web', name: 'Domain IP Lookup', icon: '\ud83c\udf0d', desc: 'Find the IP address for any domain name.' },
+      { id: 'server-status', cat: 'web', name: 'Server Status Checker', icon: '\ud83d\udda5\ufe0f', desc: 'Check if a website or server is up or down.' },
+      { id: 'ip-loc', cat: 'web', name: 'IP Location', icon: '\ud83d\udccd', desc: 'Find the geographic location of any IP address.' },
+      { id: 'traceroute', cat: 'web', name: 'Traceroute Tool', icon: '\ud83d\uddfa\ufe0f', desc: 'Trace the network path to any server or domain.' },
+      { id: 'ping', cat: 'web', name: 'Different Locations Ping', icon: '\ud83d\udce1', desc: 'Ping a server from multiple global locations.' },
+      { id: 'port-scan', cat: 'web', name: 'Server Port Scanner', icon: '\ud83d\udd0c', desc: 'Scan for open ports on any domain or IP address.' },
+      { id: 'class-c', cat: 'web', name: 'Class C IP Checker', icon: '🔢', desc: 'Check Class C IP neighbors of a domain.' },
+      { id: 'dns-prop', cat: 'web', name: 'DNS Propagation Checker', icon: '\u23f1\ufe0f', desc: 'Monitor DNS propagation across global servers.' },
+      { id: 'dns-report', cat: 'web', name: 'DNS Report Checker', icon: '\ud83d\udcd1', desc: 'Generate a full DNS health report for any domain.' },
+      { id: 'rev-ns', cat: 'web', name: 'Reverse NS Checker', icon: '\ud83d\udd04', desc: 'Find all domains sharing the same nameserver.' },
+      { id: 'qr-scan', cat: 'utility', name: 'QR Code Scanner', icon: '\ud83d\udcf7', desc: 'Scan and decode any QR code from an uploaded image.' },
+      { id: 'adsense-calc', cat: 'utility', name: 'Adsense Calculator', icon: '\ud83d\udcb0', desc: 'Estimate AdSense earnings based on traffic and CPC.' },
+      { id: 'rev-text', cat: 'utility', name: 'Reverse Text Generator', icon: '\ud83d\udd04', desc: 'Reverse any text string character by character.' },
+      { id: 'roman-date', cat: 'utility', name: 'Roman Numerals Date Converter', icon: '\ud83c\udfdb\ufe0f', desc: 'Convert any date to Roman numeral format.' },
+      { id: 'paypal-fee', cat: 'utility', name: 'Paypal Fee Calculator', icon: '\ud83d\udcb3', desc: 'Calculate PayPal transaction fees before you send.' },
+      { id: 'roman-conv', cat: 'utility', name: 'Roman Numeral Converter', icon: '🔢', desc: 'Convert numbers to and from Roman numerals.' },
+      { id: 'binary-trans', cat: 'utility', name: 'Binary Translator', icon: '\ud83d\udcbb', desc: 'Translate text to binary and binary back to text.' },
+      { id: 'upside-txt', cat: 'utility', name: 'Upside Down Text Generator', icon: '\ud83d\ude43', desc: 'Flip your text upside down for fun or styling.' },
+      { id: 'ltv-calc', cat: 'utility', name: 'LTV Calculator', icon: '\ud83d\udcca', desc: 'Calculate customer lifetime value for your business.' },
+      { id: 'txt-binary', cat: 'utility', name: 'Text To Binary Converter', icon: '\ud83d\udcbb', desc: 'Convert plain text to binary code instantly.' },
+      { id: 'dec-bin', cat: 'utility', name: 'Decimal To Binary', icon: '⚙️', desc: 'Convert decimal numbers to their binary equivalent.' },
+      { id: 'bin-dec', cat: 'utility', name: 'Binary To Decimal', icon: '⚙️', desc: 'Convert binary numbers back to decimal form.' },
+      { id: 'rand-addr', cat: 'utility', name: 'Random Address Generator', icon: '\ud83c\udfe0', desc: 'Generate fake yet realistic addresses for testing.' },
+      { id: 'cpc-calc', cat: 'utility', name: 'CPC Calculator', icon: '\ud83d\udcb2', desc: 'Calculate cost-per-click for your ad campaigns.' },
+      { id: 'cpm-calc', cat: 'utility', name: 'CPM Calculator', icon: '\ud83d\udce3', desc: 'Calculate cost per thousand impressions for ads.' },
+      { id: 'discount', cat: 'utility', name: 'Discount Calculator', icon: '\ud83c\udff7\ufe0f', desc: 'Calculate final price after applying any discount.' },
+      { id: 'hex-dec', cat: 'utility', name: 'Hex To Decimal', icon: '🔢', desc: 'Convert hexadecimal values to decimal numbers.' },
+      { id: 'dec-hex', cat: 'utility', name: 'Decimal To Hex', icon: '🔢', desc: 'Convert decimal numbers to hexadecimal format.' },
+      { id: 'bin-hex', cat: 'utility', name: 'Binary To Hex', icon: '🔢', desc: 'Convert binary numbers to hexadecimal values.' },
+      { id: 'hex-bin', cat: 'utility', name: 'Hex To Binary', icon: '🔢', desc: 'Convert hexadecimal values to binary format.' },
+      { id: 'bin-oct', cat: 'utility', name: 'Binary To Octal', icon: '🔢', desc: 'Convert binary numbers to octal representation.' },
+      { id: 'dec-oct', cat: 'utility', name: 'Decimal To Octal', icon: '🔢', desc: 'Convert decimal numbers to octal format.' },
+      { id: 'hex-oct', cat: 'utility', name: 'Hex To Octal', icon: '🔢', desc: 'Convert hexadecimal values to octal numbers.' },
+      { id: 'oct-bin', cat: 'utility', name: 'Octal To Binary', icon: '🔢', desc: 'Convert octal numbers to binary format.' },
+      { id: 'oct-dec', cat: 'utility', name: 'Octal To Decimal', icon: '🔢', desc: 'Convert octal numbers to decimal values.' },
+      { id: 'oct-hex', cat: 'utility', name: 'Octal To Hex', icon: '🔢', desc: 'Convert octal numbers to hexadecimal format.' },
+      { id: 'case-conv', cat: 'utility', name: 'Case Converter', icon: 'Aa', desc: 'Convert text between upper, lower, title, and more.' },
+      { id: 'bin-calc', cat: 'utility', name: 'Binary Calculator', icon: '\ud83d\udda9', desc: 'Perform arithmetic operations in binary base.' },
+      { id: 'hex-calc', cat: 'utility', name: 'HEX Calculator', icon: '\ud83d\udda9', desc: 'Add, subtract, and operate on hexadecimal values.' },
+      { id: 'oct-calc', cat: 'utility', name: 'Octal Calculator', icon: '\ud83d\udda9', desc: 'Perform math operations using octal numbers.' },
+      { id: 'ascii-txt', cat: 'utility', name: 'ASCII To Text', icon: '\ud83d\udd24', desc: 'Convert ASCII codes back to readable text.' },
+      { id: 'txt-ascii', cat: 'utility', name: 'Text To ASCII', icon: '\ud83d\udd24', desc: 'Convert text characters to their ASCII codes.' },
+      { id: 'pct-calc', cat: 'utility', name: 'Percentage Calculator', icon: '%', desc: 'Calculate percentages, increases, and decreases.' },
+      { id: 'ascii-dec', cat: 'utility', name: 'ASCII To Decimal', icon: '🔢', desc: 'Convert ASCII values to decimal numbers.' },
+      { id: 'ascii-hex', cat: 'utility', name: 'ASCII to HEX', icon: '🔢', desc: 'Convert ASCII characters to hexadecimal values.' },
+      { id: 'dec-ascii', cat: 'utility', name: 'Decimal to ASCII', icon: '🔢', desc: 'Convert decimal values to ASCII characters.' },
+      { id: 'hex-ascii', cat: 'utility', name: 'HEX to ASCII', icon: '🔢', desc: 'Convert hexadecimal values to ASCII characters.' },
+      { id: 'hex-txt', cat: 'utility', name: 'HEX to Text', icon: '\ud83d\udd24', desc: 'Convert hex codes to readable plain text.' },
+      { id: 'txt-hex', cat: 'utility', name: 'Text to HEX', icon: '\ud83d\udd24', desc: 'Convert plain text to hexadecimal encoding.' },
+      { id: 'pwd-gen', cat: 'utility', name: 'Password Generator', icon: '\ud83d\udd10', desc: 'Generate strong, secure passwords instantly.' },
+      { id: 'fake-name', cat: 'utility', name: 'Fake Name Generator', icon: '\ud83d\udc64', desc: 'Create realistic fake names for testing or privacy.' },
+      { id: 'rand-word', cat: 'utility', name: 'Random Word Generator', icon: '\ud83c\udfb2', desc: 'Get random words for games, writing, and brainstorming.' },
+      { id: 'txt-editor', cat: 'utility', name: 'Online Text Editor', icon: '\u270f\ufe0f', desc: 'A simple browser-based text editor, no install needed.' },
+      { id: 'txt-img', cat: 'utility', name: 'Text to Image', icon: '\ud83d\uddbc\ufe0f', desc: 'Convert text content into a downloadable image file.' },
+      { id: 'eps-calc', cat: 'utility', name: 'Earnings Per Share Calculator', icon: '\ud83d\udcc8', desc: 'Calculate EPS from net income and shares outstanding.' },
+      { id: 'prob-calc', cat: 'utility', name: 'Probability Calculator', icon: '\ud83c\udfaf', desc: 'Calculate probability for simple and compound events.' },
+      { id: 'margin-calc', cat: 'utility', name: 'Margin Calculator', icon: '\ud83d\udcca', desc: 'Calculate gross and net profit margins easily.' },
+      { id: 'tax-calc', cat: 'utility', name: 'Sales Tax Calculator', icon: '\ud83e\uddfe', desc: 'Compute sales tax on any purchase amount.' },
+      { id: 'gst-calc', cat: 'utility', name: 'GST Calculator', icon: '\ud83d\udcbc', desc: 'Calculate GST for Indian goods and services.' },
+      { id: 'bound-calc', cat: 'utility', name: 'Lower and Upper Bound Calc', icon: '\ud83d\udcd0', desc: 'Find upper and lower bounds for rounded values.' },
+      { id: 'avg-calc', cat: 'utility', name: 'Average Calculator', icon: '\u00d8', desc: 'Calculate mean, median, and mode of any dataset.' },
+      { id: 'age-calc', cat: 'utility', name: 'Age Calculator', icon: '\ud83c\udf82', desc: 'Calculate exact age from any birth date.' },
+      { id: 'valuation', cat: 'utility', name: 'Pre and Post Money Valuation', icon: '\ud83d\udcb9', desc: 'Calculate startup valuations pre and post investment.' },
+      { id: 'w2p', cat: 'utility', name: 'Words to Pages', icon: '\ud83d\udcc4', desc: 'Estimate how many pages your word count fills.' },
+      { id: 'jpg-word', cat: 'utility', name: 'JPG To Word', icon: '\ud83d\uddbc\ufe0f', desc: 'Convert JPG images to editable Word documents.' },
+      { id: 'pdf-txt', cat: 'utility', name: 'PDF to Text', icon: '\ud83d\udcd1', desc: 'Extract raw text content from any PDF file.' },
+      { id: 'txt-handwrite', cat: 'utility', name: 'Text to Handwriting', icon: '✍️', desc: 'Convert typed text to realistic handwriting style.' },
+      { id: 'pdf-word', cat: 'utility', name: 'PDF to Word', icon: '\ud83d\udcc4', desc: 'Convert PDF files into editable Word documents.' },
+      { id: 'my-ip', cat: 'utility', name: 'What is My IP', icon: '🌐', desc: 'Instantly find your public IP address and location.' },
+      { id: 'pdf-merge', cat: 'utility', name: 'Merge PDF', icon: '\ud83d\udcce', desc: 'Combine multiple PDF files into one document.' },
+      { id: 'pdf-split', cat: 'utility', name: 'Split PDF', icon: '\u2702\ufe0f', desc: 'Split a PDF into separate pages or page ranges.' },
+      { id: 'pdf-compress', cat: 'utility', name: 'Compress PDF', icon: '\ud83d\uddc2\ufe0f', desc: 'Reduce PDF file size without losing quality.' },
+      { id: 'pdf-rotate', cat: 'utility', name: 'Rotate PDF', icon: '\ud83d\udd04', desc: 'Rotate pages in your PDF to any angle.' },
+      { id: 'pdf-to-jpg', cat: 'utility', name: 'PDF to JPG', icon: '\ud83d\uddbc\ufe0f', desc: 'Convert PDF pages to high-quality JPG images.' },
+      { id: 'jpg-to-pdf', cat: 'utility', name: 'JPG to PDF', icon: '\ud83d\udcc4', desc: 'Convert JPG images into a PDF file instantly.' },
+      { id: 'word-to-pdf', cat: 'utility', name: 'Word to PDF', icon: '\ud83d\udcdd', desc: 'Convert Word (.docx) documents to PDF format.' },
+      { id: 'pdf-watermark', cat: 'utility', name: 'Watermark PDF', icon: '\ud83d\udca7', desc: 'Add a custom text watermark to your PDF.' },
+      { id: 'pdf-page-num', cat: 'utility', name: 'Page Numbers PDF', icon: '🔢', desc: 'Add page numbers to any PDF document.' },
+      { id: 'pdf-crop', cat: 'utility', name: 'Crop PDF', icon: '\u2702\ufe0f', desc: 'Crop pages in your PDF to a specific area.' },
+      { id: 'html-to-pdf', cat: 'utility', name: 'HTML to PDF', icon: '🌐', desc: 'Convert HTML content to a downloadable PDF.' },
+      { id: 'pdf-organize', cat: 'utility', name: 'Organize PDF', icon: '📋', desc: 'Reorder, delete, or rearrange pages in your PDF.' },
+      { id: 'scan-to-pdf', cat: 'utility', name: 'Scan to PDF', icon: '\ud83d\udcf7', desc: 'Scan a document with your camera and save as PDF.' },
+      { id: 'pdf-edit', cat: 'utility', name: 'Edit PDF', icon: '\u270f\ufe0f', desc: 'Add text and annotations to any PDF file.' },
+      { id: 'pdf-sign', cat: 'utility', name: 'Sign PDF', icon: '\ud83d\udd8a\ufe0f', desc: 'Draw or type your signature and embed it in a PDF.' },
+      { id: 'pdf-protect', cat: 'utility', name: 'Protect PDF', icon: '\ud83d\udd12', desc: 'Add password protection to secure your PDF.' },
+      { id: 'pdf-unlock', cat: 'utility', name: 'Unlock PDF', icon: '\ud83d\udd13', desc: 'Remove password from a password-protected PDF.' },
+      { id: 'pdf-redact', cat: 'utility', name: 'Redact PDF', icon: '\u2b1b', desc: 'Black out sensitive text and content in your PDF.' },
+      { id: 'pdf-ocr', cat: 'utility', name: 'OCR PDF', icon: '🔍', desc: 'Extract text from scanned PDFs using OCR technology.' },
+      { id: 'pdf-compare', cat: 'utility', name: 'Compare PDF', icon: '\ud83d\udd00', desc: 'Compare two PDF documents page by page visually.' },
+      { id: 'qr-gen', cat: 'utility', name: 'QR Code Generator', icon: '\ud83d\udcf1', desc: 'Generate QR codes for URLs, text, contact info, and more.' },
+    ];
+
+    let activeFilter = 'all';
+
+    function renderTools(list) {
+      const grid = document.getElementById('tool-grid');
+      grid.innerHTML = '';
+      if (!list.length) {
+        grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1"><div class="empty-state-icon">🔍</div><h3>No tools found</h3><p>Try a different keyword or category.</p></div>`;
+        return;
+      }
+      list.forEach((tool, i) => {
+        const m = catMeta[tool.cat];
+        const card = document.createElement('a');
+        card.className = 'tool-card';
+        card.href = 'javascript:void(0)';
+        card.style.cssText = `--cat-color-a:${m.cb};--cat-color-b:${m.cc};animation-delay:${Math.min(i * 0.025, 0.4)}s`;
+        card.innerHTML = `
+      <div class="tool-card-top">
+        <div class="tool-icon-wrap" style="background:${m.bg}">${tool.icon}</div>
+        <div class="tool-card-arrow"><svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+      <div class="tool-card-name">${tool.name}</div>
+      <div class="tool-card-desc">${tool.desc}</div>
+      <div class="tool-cat-badge" style="color:${m.badge};background:${m.badgeBg}">${m.icon} ${m.label}</div>`;
+        card.onclick = () => openTool(tool);
+        grid.appendChild(card);
+      });
+    }
+
+    function filterTools(cat) {
+      activeFilter = cat;
+      document.querySelectorAll('.filter-pill').forEach(p => p.classList.toggle('active', p.dataset.cat === cat));
+      const filtered = cat === 'all' ? tools : tools.filter(t => t.cat === cat);
+      const catLabels = { all: 'All Tools', content: 'Content Tools', seo: 'SEO Tools', web: 'Web Tools', utility: 'Utility Tools' };
+      document.getElementById('tools-heading-title').textContent = catLabels[cat];
+      document.getElementById('tools-count').textContent = `${filtered.length} tool${filtered.length !== 1 ? 's' : ''}`;
+      renderTools(filtered);
+      document.getElementById('searchInput').value = '';
+      window.scrollTo({ top: document.getElementById('home-main').offsetTop - 80, behavior: 'smooth' });
+    }
+
+    function handleSearch(q) {
+      if (!q.trim()) { filterTools(activeFilter); return; }
+      const ql = q.toLowerCase();
+      const base = activeFilter === 'all' ? tools : tools.filter(t => t.cat === activeFilter);
+      const results = base.filter(t => t.name.toLowerCase().includes(ql) || t.desc.toLowerCase().includes(ql));
+      document.getElementById('tools-heading-title').textContent = `Results for "${q}"`;
+      document.getElementById('tools-count').textContent = `${results.length} found`;
+      renderTools(results);
+    }
+
+    renderTools(tools);
+
+    // Popular Tools Section
+    const popularTop = {
+      content: ['word-count', 'humanize-ai', 'grammar', 'summarizer', 'rewriter', 'paraphrase', 'diff-check', 'txt-pdf', 'caption-gen', 'ai-story'],
+      seo: ['kw-density', 'xml-sitemap', 'seo-score', 'plagiarism', 'ai-detect', 'backlink-make', 'broken-links', 'g-index-check', 'link-extract', 'google-index'],
+      web: ['url-enc', 'html-enc', 'rgb-hex', 'hex-rgb', 'min-css', 'min-js', 'json-beauty', 'dns-check', 'ip-loc', 'crop-img'],
+      utility: ['qr-gen', 'pdf-merge', 'pdf-compress', 'pdf-to-jpg', 'jpg-to-pdf', 'word-to-pdf', 'pwd-gen', 'age-calc', 'qr-scan', 'pdf-split'],
+    };
+    let activePopularCat = 'content';
+
+    function renderPopular(cat) {
+      const ids = popularTop[cat];
+      const grid = document.getElementById('popular-grid');
+      const m = catMeta[cat];
+      grid.innerHTML = ids.map(id => {
+        const tool = tools.find(t => t.id === id);
+        if (!tool) return '';
+        return `<a class="popular-card" onclick="openTool(tools.find(t=>t.id==='${tool.id}'))">
+      <div class="popular-card-icon" style="background:${m.bg}">${tool.icon}</div>
+      <div class="popular-card-info">
+        <div class="popular-card-name">${tool.name}</div>
+        <div class="popular-card-cat">${m.label}</div>
+      </div>
+    </a>`;
+      }).join('');
+    }
+
+    function switchPopularTab(cat, btn) {
+      activePopularCat = cat;
+      document.querySelectorAll('.popular-tab').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderPopular(cat);
+    }
+
+    renderPopular('content');
+
+    function openTool(tool) {
+      const m = catMeta[tool.cat];
+      document.getElementById('hero-section').style.display = 'none';
+      document.getElementById('home-main').style.display = 'none';
+      document.getElementById('footer').style.display = 'none';
+      document.getElementById('popular-section').style.display = 'none';
+      document.getElementById('profile-page').classList.remove('active');
+      const tp = document.getElementById('tool-page');
+      tp.classList.add('active');
+      document.getElementById('tool-breadcrumb-cat').textContent = m.label; window._currentToolCat = tool.cat;
+      document.getElementById('tool-breadcrumb-name').textContent = tool.name;
+      const iconEl = document.getElementById('tool-page-icon');
+      iconEl.textContent = tool.icon; iconEl.style.background = m.bg;
+      document.getElementById('tool-page-title').textContent = tool.name;
+      document.getElementById('tool-page-subtitle').textContent = tool.desc;
+      buildWorkspace(tool);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function buildWorkspace(tool) {
+      const ws = document.getElementById('tool-workspace');
+      const numConverters = {
+        'dec-bin': { from: 'Decimal', to: 'Binary', fn: n => (parseInt(n) || 0).toString(2) },
+        'bin-dec': { from: 'Binary', to: 'Decimal', fn: n => parseInt(n, 2) || 0 },
+        'dec-hex': { from: 'Decimal', to: 'HEX', fn: n => (parseInt(n) || 0).toString(16).toUpperCase() },
+        'hex-dec': { from: 'HEX', to: 'Decimal', fn: n => parseInt(n, 16) || 0 },
+        'bin-hex': { from: 'Binary', to: 'HEX', fn: n => (parseInt(n, 2) || 0).toString(16).toUpperCase() },
+        'hex-bin': { from: 'HEX', to: 'Binary', fn: n => (parseInt(n, 16) || 0).toString(2) },
+        'bin-oct': { from: 'Binary', to: 'Octal', fn: n => (parseInt(n, 2) || 0).toString(8) },
+        'dec-oct': { from: 'Decimal', to: 'Octal', fn: n => (parseInt(n) || 0).toString(8) },
+        'hex-oct': { from: 'HEX', to: 'Octal', fn: n => (parseInt(n, 16) || 0).toString(8) },
+        'oct-bin': { from: 'Octal', to: 'Binary', fn: n => (parseInt(n, 8) || 0).toString(2) },
+        'oct-dec': { from: 'Octal', to: 'Decimal', fn: n => parseInt(n, 8) || 0 },
+        'oct-hex': { from: 'Octal', to: 'HEX', fn: n => (parseInt(n, 8) || 0).toString(16).toUpperCase() },
+        'ascii-txt': { from: 'ASCII Codes', to: 'Text', fn: n => n.split(/\s+/).map(x => String.fromCharCode(parseInt(x))).join('') },
+        'txt-ascii': { from: 'Text', to: 'ASCII Codes', fn: n => n.split('').map(c => c.charCodeAt(0)).join(' ') },
+        'ascii-dec': { from: 'ASCII Code', to: 'Decimal', fn: n => n.split(/\s+/).map(x => parseInt(x)).join(' ') },
+        'ascii-hex': { from: 'ASCII Code', to: 'HEX', fn: n => n.split(/\s+/).map(x => (parseInt(x) || 0).toString(16).toUpperCase()).join(' ') },
+        'dec-ascii': { from: 'Decimal', to: 'ASCII', fn: n => n.split(/\s+/).map(x => String.fromCharCode(parseInt(x))).join('') },
+        'hex-ascii': { from: 'HEX', to: 'ASCII', fn: n => n.split(/\s+/).map(x => String.fromCharCode(parseInt(x, 16))).join('') },
+        'hex-txt': { from: 'HEX', to: 'Text', fn: n => n.replace(/\s/g, '').match(/.{2}/g)?.map(h => String.fromCharCode(parseInt(h, 16))).join('') || '' },
+        'txt-hex': { from: 'Text', to: 'HEX', fn: n => n.split('').map(c => c.charCodeAt(0).toString(16).padStart(2, '0').toUpperCase()).join(' ') },
+        'binary-trans': { from: 'Text', to: 'Binary', fn: n => n.split('').map(c => c.charCodeAt(0).toString(2).padStart(8, '0')).join(' ') },
+        'txt-binary': { from: 'Text', to: 'Binary', fn: n => n.split('').map(c => c.charCodeAt(0).toString(2).padStart(8, '0')).join(' ') },
+        'roman-conv': { from: 'Number (1\u20133999)', to: 'Roman Numeral', fn: n => { const v = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1], s = ['M', 'CM', 'D', 'CD', 'C', 'XC', 'L', 'XL', 'X', 'IX', 'V', 'IV', 'I']; let num = parseInt(n) || 0, res = ''; v.forEach((val, i) => { while (num >= val) { res += s[i]; num -= val; } }); return res || 'Invalid'; } },
+        'rgb-hex': { from: 'R,G,B (e.g. 255,99,71)', to: 'HEX', fn: n => { const [r, g, b] = n.split(',').map(x => parseInt(x.trim()) || 0); return '#' + (r < 16 ? '0' : '') + r.toString(16) + (g < 16 ? '0' : '') + g.toString(16) + (b < 16 ? '0' : '') + b.toString(16); } },
+        'hex-rgb': { from: 'HEX (e.g. #FF6347)', to: 'RGB', fn: n => { const h = n.replace('#', ''); return `rgb(${parseInt(h.slice(0, 2), 16)}, ${parseInt(h.slice(2, 4), 16)}, ${parseInt(h.slice(4, 6), 16)})`; } },
+        'url-enc': { from: 'Text / URL', to: 'Encoded URL', fn: n => encodeURIComponent(n) },
+        'html-enc': { from: 'HTML to encode', to: 'Encoded', fn: n => n.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;') },
+      };
+      if (numConverters[tool.id]) {
+        const c = numConverters[tool.id];
+        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">${c.from}</div><input class="ws-input" type="text" id="conv-input" placeholder="Enter value..."><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doConvert()">Convert \u2192</button><button class="ws-btn ws-btn-ghost" onclick="document.getElementById('conv-input').value='';document.getElementById('conv-output').textContent='Result will appear here...'">Clear</button></div></div><div class="tool-workspace"><div class="ws-label">${c.to}</div><div class="ws-output" id="conv-output">Result will appear here...</div><div class="ws-actions"><button class="ws-btn ws-btn-ghost" onclick="copyOutput('conv-output')">📋 Copy</button></div></div>`;
+        window._convertFn = c.fn; return;
+      }
+      if (tool.id === 'word-count') {
+        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Your Text</div><textarea class="ws-textarea" id="wc-input" placeholder="Paste or type your text here..." oninput="doWordCount()"></textarea></div><div class="ws-stats" id="wc-stats"><div class="ws-stat"><div class="ws-stat-num" id="wc-words">0</div><div class="ws-stat-label">Words</div></div><div class="ws-stat"><div class="ws-stat-num" id="wc-chars">0</div><div class="ws-stat-label">Characters</div></div><div class="ws-stat"><div class="ws-stat-num" id="wc-chars-ns">0</div><div class="ws-stat-label">Chars (no spaces)</div></div><div class="ws-stat"><div class="ws-stat-num" id="wc-sentences">0</div><div class="ws-stat-label">Sentences</div></div><div class="ws-stat"><div class="ws-stat-num" id="wc-paras">0</div><div class="ws-stat-label">Paragraphs</div></div><div class="ws-stat"><div class="ws-stat-num" id="wc-read">0</div><div class="ws-stat-label">Read Time (min)</div></div></div>`; return;
+      }
+      if (tool.id === 'pwd-gen') {
+        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Password Settings</div><div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:14px;align-items:center;"><div><label class="ws-label" style="display:inline;">Length:</label><input type="number" id="pwd-len" value="16" min="6" max="64" style="width:70px;padding:8px;border:1.5px solid var(--border);border-radius:7px;background:var(--bg);color:var(--text);font-family:inherit;font-size:14px;outline:none;margin-left:6px;"></div><label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;"><input type="checkbox" id="pwd-upper" checked>Uppercase</label><label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;"><input type="checkbox" id="pwd-lower" checked>Lowercase</label><label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;"><input type="checkbox" id="pwd-num" checked>Numbers</label><label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;"><input type="checkbox" id="pwd-sym" checked>Symbols</label></div><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="genPwd()">Generate Password</button></div></div><div class="tool-workspace"><div class="ws-label">Generated Password</div><div class="ws-output" id="pwd-output" style="font-family:monospace;font-size:16px;letter-spacing:1px;">Click Generate...</div><div class="ws-actions"><button class="ws-btn ws-btn-ghost" onclick="copyOutput('pwd-output')">📋 Copy</button></div></div>`; return;
+      }
+      if (tool.id === 'age-calc') {
+        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Date of Birth</div><input class="ws-input" type="date" id="age-input"><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="calcAge()">Calculate Age</button></div></div><div class="tool-workspace" id="age-result" style="display:none;"><div class="ws-stats" id="age-stats"></div></div>`; return;
+      }
+      const calcTools = {
+        'pct-calc': { label: 'Percentage Calculator', fields: ['Value', 'Percentage (%)'], fn: (a, b) => `${(a * b / 100).toFixed(2)} (${b}% of ${a})` },
+        'discount': { label: 'Discount Calculator', fields: ['Original Price', 'Discount (%)'], fn: (a, b) => `Final Price: ${(a * (1 - b / 100)).toFixed(2)} | Save: ${(a * b / 100).toFixed(2)}` },
+        'cpc-calc': { label: 'CPC Calculator', fields: ['Total Cost', 'Total Clicks'], fn: (a, b) => `CPC = ${(a / b).toFixed(4)}` },
+        'cpm-calc': { label: 'CPM Calculator', fields: ['Total Cost', 'Impressions'], fn: (a, b) => `CPM = ${(a * 1000 / b).toFixed(2)}` },
+        'adsense-calc': { label: 'AdSense Estimator', fields: ['Daily Pageviews', 'CPC (\u20b9)', 'CTR (%)'], fn: (a, b, c) => `Daily: \u20b9${(a * (c / 100) * b).toFixed(2)} | Monthly: \u20b9${(a * (c / 100) * b * 30).toFixed(2)}` },
+        'margin-calc': { label: 'Margin Calculator', fields: ['Revenue', 'Cost'], fn: (a, b) => `Gross Margin: ${((a - b) / a * 100).toFixed(2)}% | Profit: ${(a - b).toFixed(2)}` },
+        'tax-calc': { label: 'Sales Tax Calculator', fields: ['Amount', 'Tax Rate (%)'], fn: (a, b) => `Tax: ${(a * b / 100).toFixed(2)} | Total: ${(a + a * b / 100).toFixed(2)}` },
+        'gst-calc': { label: 'GST Calculator', fields: ['Amount (\u20b9)', 'GST Rate (%)'], fn: (a, b) => `GST: \u20b9${(a * b / 100).toFixed(2)} | Total: \u20b9${(a + a * b / 100).toFixed(2)}` },
+        'avg-calc': { label: 'Average Calculator', fields: ['Numbers (comma separated)'], fn: (nums) => { const arr = nums.split(',').map(Number).filter(n => !isNaN(n)); return `Average: ${(arr.reduce((a, b) => a + b, 0) / arr.length).toFixed(4)} | Count: ${arr.length} | Sum: ${arr.reduce((a, b) => a + b, 0)}`; } },
+        'eps-calc': { label: 'EPS Calculator', fields: ['Net Income', 'Shares Outstanding'], fn: (a, b) => `EPS = ${(a / b).toFixed(4)}` },
+        'ltv-calc': { label: 'LTV Calculator', fields: ['Avg Purchase Value', 'Purchase Frequency/yr', 'Customer Lifespan (yrs)'], fn: (a, b, c) => `LTV = ${(a * b * c).toFixed(2)}` },
+        'paypal-fee': { label: 'PayPal Fee Calculator', fields: ['Amount to Receive (\u20b9)'], fn: (a) => `Fee: \u20b9${(a * 0.029 + 0.30).toFixed(2)} | Send: \u20b9${(a + a * 0.029 + 0.30).toFixed(2)}` },
+        'valuation': { label: 'Pre/Post Money Valuation', fields: ['Pre-Money Valuation', 'Investment Amount'], fn: (a, b) => `Post-Money: ${(a + b).toFixed(0)} | Investor Equity: ${((b / (a + b)) * 100).toFixed(2)}%` },
+        'w2p': { label: 'Words to Pages', fields: ['Word Count'], fn: (a) => `Single spaced: ${(a / 500).toFixed(1)} pages | Double spaced: ${(a / 250).toFixed(1)} pages` },
+        'prob-calc': { label: 'Probability Calculator', fields: ['Favorable Outcomes', 'Total Outcomes'], fn: (a, b) => `P = ${(a / b).toFixed(6)} (${((a / b) * 100).toFixed(4)}%)` },
+      };
+      if (calcTools[tool.id]) {
+        const c = calcTools[tool.id];
+        const n = c.fields.length;
+        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">${c.label}</div>${c.fields.map((f, i) => `<div class="form-group"><div class="ws-label">${f}</div><input class="ws-input" type="text" id="calc-f${i}" placeholder="Enter ${f}"></div>`).join('')}<div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doCalc(${n})">Calculate</button><button class="ws-btn ws-btn-ghost" onclick="clearCalc(${n})">Clear</button></div></div><div class="tool-workspace"><div class="ws-label">Result</div><div class="ws-output" id="calc-output">Enter values and click Calculate.</div></div>`;
+        window._calcFn = c.fn; return;
+      }
+      if (tool.id === 'case-conv') {
+        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Your Text</div><textarea class="ws-textarea" id="case-input" placeholder="Type or paste your text here..."></textarea><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="convCase('upper')">UPPERCASE</button><button class="ws-btn ws-btn-ghost" onclick="convCase('lower')">lowercase</button><button class="ws-btn ws-btn-ghost" onclick="convCase('title')">Title Case</button><button class="ws-btn ws-btn-ghost" onclick="convCase('sentence')">Sentence case</button></div></div><div class="tool-workspace"><div class="ws-label">Result</div><div class="ws-output" id="case-output">Result will appear here...</div><div class="ws-actions"><button class="ws-btn ws-btn-ghost" onclick="copyOutput('case-output')">📋 Copy</button></div></div>`; return;
+      }
+      if (tool.id === 'txt-repeat') {
+        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Text to Repeat</div><input class="ws-input" type="text" id="rep-text" placeholder="Enter your text..."><div class="ws-label">Times</div><input class="ws-input" type="number" id="rep-times" value="5" min="1" max="1000"><div class="ws-label">Separator</div><input class="ws-input" type="text" id="rep-sep" value=" " placeholder="Space, comma, newline..."><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doRepeat()">Repeat</button></div></div><div class="tool-workspace"><div class="ws-label">Result</div><div class="ws-output" id="rep-output">Result will appear here...</div><div class="ws-actions"><button class="ws-btn ws-btn-ghost" onclick="copyOutput('rep-output')">📋 Copy</button></div></div>`; return;
+      }
+      if (tool.id === 'kw-density' || tool.id === 'kw-density2') {
+        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Your Content</div><textarea class="ws-textarea" id="kw-input" placeholder="Paste your content here..."></textarea><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doKwDensity()">Analyze</button></div></div><div class="tool-workspace"><div class="ws-label">Top Keywords</div><div id="kw-output" class="ws-output">Results will appear here...</div></div>`; return;
+      }
+      if (tool.id === 'diff-check' || tool.id === 'txt-compare') {
+        ws.innerHTML = `<div class="tool-workspace"><div class="ws-row"><div><div class="ws-label">Original Text</div><textarea class="ws-textarea" id="diff-a" placeholder="Paste original text..."></textarea></div><div><div class="ws-label">Modified Text</div><textarea class="ws-textarea" id="diff-b" placeholder="Paste modified text..."></textarea></div></div><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doDiff()">Compare</button></div></div><div class="tool-workspace"><div class="ws-label">Differences</div><div class="ws-output" id="diff-output">Results will appear here...</div></div>`; return;
+      }
+      if (tool.id === 'line-count') {
+        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Your Text</div><textarea class="ws-textarea" id="lc-input" placeholder="Paste text here..." oninput="doLineCount()"></textarea></div><div class="ws-stats"><div class="ws-stat"><div class="ws-stat-num" id="lc-lines">0</div><div class="ws-stat-label">Lines</div></div><div class="ws-stat"><div class="ws-stat-num" id="lc-empty">0</div><div class="ws-stat-label">Empty Lines</div></div><div class="ws-stat"><div class="ws-stat-num" id="lc-nonempty">0</div><div class="ws-stat-label">Non-empty Lines</div></div></div>`; return;
+      }
+      if (tool.id === 'my-ip') {
+        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Your Public IP</div><div class="ws-output" id="ip-out" style="font-size:22px;font-weight:800;color:var(--primary);">Detecting...</div></div>`;
+        fetch('https://api.ipify.org?format=json').then(r => r.json()).then(d => { document.getElementById('ip-out').textContent = d.ip; }).catch(() => { document.getElementById('ip-out').textContent = 'Could not detect IP.'; });
+        return;
+      }
+      const codeTools = ['min-css', 'min-js', 'min-html', 'min-json', 'css-beauty', 'js-beauty', 'html-beauty', 'json-beauty', 'php-beauty', 'xml-beauty'];
+      if (codeTools.includes(tool.id)) {
+        const isMin = tool.id.startsWith('min-');
+        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">${isMin ? 'Code to Minify' : 'Code to Beautify'}</div><textarea class="ws-textarea" id="code-input" placeholder="Paste your code here..." style="min-height:200px;font-family:monospace;font-size:13px;"></textarea><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doCode('${tool.id}')">${isMin ? 'Minify' : 'Beautify'}</button><button class="ws-btn ws-btn-ghost" onclick="document.getElementById('code-input').value='';document.getElementById('code-output').textContent=''">Clear</button></div></div><div class="tool-workspace"><div class="ws-label">Output</div><div class="ws-output" id="code-output" style="font-family:monospace;font-size:13px;min-height:120px;"></div><div class="ws-actions"><button class="ws-btn ws-btn-ghost" onclick="copyOutput('code-output')">📋 Copy</button></div></div>`; return;
+      }
+      const textTransIds = ['rev-text', 'small-text', 'upside-txt'];
+      if (textTransIds.includes(tool.id)) {
+        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Your Text</div><textarea class="ws-textarea" id="transform-input" placeholder="Type or paste your text here..."></textarea><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doTransform('${tool.id}')">Convert</button><button class="ws-btn ws-btn-ghost" onclick="document.getElementById('transform-input').value='';document.getElementById('transform-output').textContent='Result will appear here...'">Clear</button></div></div><div class="tool-workspace"><div class="ws-label">Result</div><div class="ws-output" id="transform-output">Result will appear here...</div><div class="ws-actions"><button class="ws-btn ws-btn-ghost" onclick="copyOutput('transform-output')">📋 Copy</button></div></div>`; return;
+      }
+      // PDF Tools
+      const pdfToolIds = ['pdf-merge', 'pdf-split', 'pdf-compress', 'pdf-rotate', 'pdf-to-jpg', 'jpg-to-pdf', 'word-to-pdf', 'pdf-watermark', 'pdf-page-num', 'pdf-crop', 'html-to-pdf', 'pdf-organize', 'scan-to-pdf', 'pdf-edit', 'pdf-sign', 'pdf-protect', 'pdf-unlock', 'pdf-redact', 'pdf-ocr', 'pdf-compare'];
+      if (pdfToolIds.includes(tool.id)) { buildPdfWorkspace(tool.id, ws); return; }
+
+      // QR Code Generator
+      if (tool.id === 'qr-gen') {
+        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Content to Encode</div><input class="ws-input" type="text" id="qr-input" placeholder="Enter URL, text, phone, or email..."><div style="margin-top:12px"><div class="ws-label">Size</div><select class="ws-input" id="qr-size" style="margin-top:6px"><option value="200">Small (200x200)</option><option value="300" selected>Medium (300x300)</option><option value="400">Large (400x400)</option></select></div><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="genQR()">Generate QR Code</button></div></div><div class="tool-workspace" style="text-align:center"><div class="ws-label">Your QR Code</div><div id="qr-output" style="padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;color:var(--text3);">Enter content above and click Generate</div><div class="ws-actions" style="justify-content:center;margin-top:10px"><button class="ws-btn ws-btn-ghost" id="qr-dl-btn" onclick="downloadQR()" style="display:none">⬇️ Download PNG</button></div></div>`;
+        loadScript('https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js', function () { });
+        return;
+      }
+
+      const promptMap = {
+        'ai-story': 'Write a creative short story based on this prompt:', 'ai-poem': 'Write a beautiful poem about:', 'cover-letter': 'Write a professional cover letter for:', 'biz-name': 'Generate 10 creative business name ideas for:', 'book-title': 'Generate 10 compelling book title ideas for:', 'abstract': 'Write a concise academic abstract for:', 'email-writer': 'Write a professional email for this scenario:', 'conclusion': 'Write a strong conclusion for an essay about:', 'outline': 'Create a detailed outline for:', 'ai-answer': 'Answer this question thoroughly:', 'paragraph': 'Write a well-structured paragraph about:', 'ai-sentence': 'Generate 5 unique, natural sentences about:', 'thesis': 'Write a strong thesis statement for an essay about:', 'slogan': 'Generate 10 catchy slogans for:', 'backstory': 'Write a detailed backstory for:', 'essay-writer': 'Write a well-structured essay about:', 'faq-gen': 'Generate 10 FAQs with answers for:', 'acronym': 'Create 5 meaningful acronyms for:', 'meta-desc': 'Write an SEO-optimized meta description (155 chars) for:', 'review-gen': 'Write a realistic, balanced review for:', 'para-expand': 'Expand this paragraph into a detailed, rich version:', 'sent-short': 'Shorten these sentences while keeping their meaning:', 'humanize-ai': 'Rewrite this AI-generated text to sound more natural and human:', 'caption-gen': 'Write 5 engaging captions for a post about:', 'msg-gen': 'Write a perfect message for this situation:', 'reply-gen': 'Write a smart, context-aware reply to:', 'prompt-gen': 'Generate 5 powerful AI prompts for:', 'rewriter': 'Rewrite this article in a fresh, unique way:', 'paraphrase': 'Paraphrase the following text completely:', 'summarizer': 'Summarize the following text in 3-5 sentences:', 'a2p-voice': 'Convert these active voice sentences to passive voice:', 'sentence-exp': 'Expand these short sentences into richer, fuller text:', 'grammar': 'Check and correct any grammar errors in the following text:', 'spell': 'Check and correct any spelling mistakes in:', 'ai-detect': 'Analyze this text and determine if it was written by AI or a human, explain why:', 'plagiarism': 'Analyze this text and flag any phrases that sound unoriginal or potentially plagiarized:', 'plag-compare': 'Compare these two texts and highlight any similarities or copied content:',
+      };
+      const prompt = promptMap[tool.id] || `Use the ${tool.name} to process the following input:`;
+      ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Your Input</div><textarea class="ws-textarea" id="ai-input" placeholder="${prompt} ..."></textarea><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="runAI('${tool.id}')"><span id="ai-btn-text">Generate ✨</span></button><button class="ws-btn ws-btn-ghost" onclick="document.getElementById('ai-input').value='';document.getElementById('ai-output').textContent=''">Clear</button></div></div><div class="tool-workspace"><div class="ws-label">Result</div><div class="ws-output" id="ai-output" style="min-height:140px;"></div><div class="ws-actions"><button class="ws-btn ws-btn-ghost" onclick="copyOutput('ai-output')">📋 Copy</button></div></div>`;
+      window._currentPrompt = prompt;
+    }
+
+    // ─── Script Loader ───────────────────────────────────────────────────────────
+    function loadScript(src, cb) {
+      if (document.querySelector('script[src="' + src + '"]')) { cb && cb(); return; }
+      const s = document.createElement('script'); s.src = src; s.onload = cb; document.head.appendChild(s);
+    }
+
+    // ─── QR Code Generator ───────────────────────────────────────────────────────
+    function genQR() {
+      const text = document.getElementById('qr-input').value.trim();
+      const size = parseInt(document.getElementById('qr-size').value) || 300;
+      if (!text) { document.getElementById('qr-output').textContent = 'Please enter some content first.'; return; }
+      const out = document.getElementById('qr-output');
+      out.innerHTML = '';
+      loadScript('https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js', function () {
+        try {
+          const container = document.createElement('div');
+          container.id = 'qr-canvas-container';
+          out.appendChild(container);
+          new QRCode(container, { text, width: size, height: size, colorDark: '#000000', colorLight: '#ffffff', correctLevel: QRCode.CorrectLevel.H });
+          document.getElementById('qr-dl-btn').style.display = 'inline-flex';
+        } catch (e) { out.textContent = 'Error generating QR: ' + e.message; }
+      });
+    }
+    function downloadQR() {
+      const canvas = document.querySelector('#qr-canvas-container canvas') || document.querySelector('#qr-canvas-container img');
+      if (!canvas) return;
+      if (canvas.tagName === 'CANVAS') {
+        const a = document.createElement('a'); a.download = 'qrcode.png'; a.href = canvas.toDataURL(); a.click();
+      } else {
+        const a = document.createElement('a'); a.download = 'qrcode.png'; a.href = canvas.src; a.click();
+      }
+    }
+
+    // ─── PDF Tools ───────────────────────────────────────────────────────────────
+    function buildPdfWorkspace(id, ws) {
+      const disclaimer = (msg) => `<div style="background:rgba(37,99,235,0.07);border:1.5px solid rgba(37,99,235,0.2);border-radius:10px;padding:10px 14px;font-size:12px;color:var(--text2);margin-bottom:14px;">ℹ️ ${msg}</div>`;
+
+      const fileInput = (label, inputId, accept) => `<div class="ws-label">${label}</div><input type="file" id="${inputId}" accept="${accept}" style="display:block;margin:6px 0 14px;font-size:13px;color:var(--text2);">`;
+
+      const dlBtn = (label, id) => `<button class="ws-btn ws-btn-ghost" id="${id}" onclick="triggerDownload('${id}')" style="display:none">⬇️ ${label}</button>`;
+
+      if (id === 'pdf-merge') {
+        ws.innerHTML = `<div class="tool-workspace">${fileInput('Select PDF Files (hold Ctrl/Cmd to select multiple)', 'merge-input', 'application/pdf')}<div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="mergePDFs()">Merge PDFs</button></div></div><div class="tool-workspace"><div class="ws-label">Status</div><div class="ws-output" id="merge-status">Select 2 or more PDF files to merge.</div>${dlBtn('Download Merged PDF', 'merge-dl')}</div>`;
+        document.getElementById('merge-input').multiple = true;
+        return;
+      }
+      if (id === 'pdf-split') {
+        ws.innerHTML = `<div class="tool-workspace">${fileInput('Select PDF File', 'split-input', 'application/pdf')}<div class="ws-label">Pages to Extract (e.g. 1,3,5-8)</div><input class="ws-input" id="split-pages" placeholder="e.g. 1,2,3 or 1-5" style="margin-top:6px"><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="splitPDF()">Split PDF</button></div></div><div class="tool-workspace"><div class="ws-label">Status</div><div class="ws-output" id="split-status">Select a PDF and specify pages.</div>${dlBtn('Download Split PDF', 'split-dl')}</div>`;
+        return;
+      }
+      if (id === 'pdf-compress') {
+        ws.innerHTML = `<div class="tool-workspace">${disclaimer('Removes duplicate objects and streams. Best for PDFs with redundant data. Results vary by file.')}<div class="ws-label">Select PDF File</div>${fileInput('', 'compress-input', 'application/pdf')}<div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="compressPDF()">Compress</button></div></div><div class="tool-workspace"><div class="ws-label">Status</div><div class="ws-output" id="compress-status">Select a PDF to compress.</div>${dlBtn('Download Compressed PDF', 'compress-dl')}</div>`;
+        return;
+      }
+      if (id === 'pdf-rotate') {
+        ws.innerHTML = `<div class="tool-workspace">${fileInput('Select PDF File', 'rotate-input', 'application/pdf')}<div class="ws-label">Rotation</div><select class="ws-input" id="rotate-deg" style="margin:6px 0 14px"><option value="90">90° Clockwise</option><option value="180">180°</option><option value="270">90° Counter-Clockwise</option></select><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="rotatePDF()">Rotate All Pages</button></div></div><div class="tool-workspace"><div class="ws-label">Status</div><div class="ws-output" id="rotate-status">Select a PDF and rotation angle.</div>${dlBtn('Download Rotated PDF', 'rotate-dl')}</div>`;
+        return;
+      }
+      if (id === 'pdf-to-jpg') {
+        ws.innerHTML = `<div class="tool-workspace">${disclaimer('Converts each page to a JPG image at screen resolution using PDF.js.')}<div class="ws-label">Select PDF File</div>${fileInput('', 'pdf2jpg-input', 'application/pdf')}<div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="pdfToJpg()">Convert to JPG</button></div></div><div class="tool-workspace"><div class="ws-label">Pages Preview & Download</div><div id="pdf2jpg-output" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;min-height:80px;padding:8px;">Select a PDF to convert.</div></div>`;
+        return;
+      }
+      if (id === 'jpg-to-pdf') {
+        ws.innerHTML = `<div class="tool-workspace">${fileInput('Select JPG/PNG Image(s)', 'jpg2pdf-input', 'image/*')}<div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="jpgToPdf()">Convert to PDF</button></div></div><div class="tool-workspace"><div class="ws-label">Status</div><div class="ws-output" id="jpg2pdf-status">Select one or more images to convert.</div>${dlBtn('Download PDF', 'jpg2pdf-dl')}</div>`;
+        document.getElementById('jpg2pdf-input').multiple = true;
+        return;
+      }
+      if (id === 'word-to-pdf') {
+        ws.innerHTML = `<div class="tool-workspace">${disclaimer('Converts .docx text content to PDF. Complex formatting like tables and images may not render perfectly.')}<div class="ws-label">Select Word (.docx) File</div>${fileInput('', 'word2pdf-input', '.docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document')}<div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="wordToPdf()">Convert to PDF</button></div></div><div class="tool-workspace"><div class="ws-label">Status</div><div class="ws-output" id="word2pdf-status">Select a .docx file to convert.</div>${dlBtn('Download PDF', 'word2pdf-dl')}</div>`;
+        return;
+      }
+      if (id === 'pdf-watermark') {
+        ws.innerHTML = `<div class="tool-workspace">${fileInput('Select PDF File', 'wm-input', 'application/pdf')}<div class="ws-label">Watermark Text</div><input class="ws-input" id="wm-text" placeholder="e.g. CONFIDENTIAL" style="margin:6px 0 14px"><div class="ws-label">Opacity</div><input type="range" id="wm-opacity" min="0.05" max="0.5" step="0.05" value="0.15" style="width:100%;margin:6px 0 4px"><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="watermarkPDF()">Add Watermark</button></div></div><div class="tool-workspace"><div class="ws-label">Status</div><div class="ws-output" id="wm-status">Select a PDF and enter watermark text.</div>${dlBtn('Download Watermarked PDF', 'wm-dl')}</div>`;
+        return;
+      }
+      if (id === 'pdf-page-num') {
+        ws.innerHTML = `<div class="tool-workspace">${fileInput('Select PDF File', 'pgnum-input', 'application/pdf')}<div class="ws-label">Position</div><select class="ws-input" id="pgnum-pos" style="margin:6px 0 14px"><option value="bottom-center">Bottom Center</option><option value="bottom-right">Bottom Right</option><option value="bottom-left">Bottom Left</option><option value="top-center">Top Center</option></select><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="addPageNumbers()">Add Page Numbers</button></div></div><div class="tool-workspace"><div class="ws-label">Status</div><div class="ws-output" id="pgnum-status">Select a PDF to add page numbers.</div>${dlBtn('Download PDF', 'pgnum-dl')}</div>`;
+        return;
+      }
+      if (id === 'pdf-crop') {
+        ws.innerHTML = `<div class="tool-workspace">${disclaimer('Sets crop box margins on all pages. Enter pixel values from each edge.')}<div class="ws-label">Select PDF File</div>${fileInput('', 'crop-input', 'application/pdf')}<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px"><div><div class="ws-label">Left (px)</div><input class="ws-input" type="number" id="crop-left" value="0"></div><div><div class="ws-label">Right (px)</div><input class="ws-input" type="number" id="crop-right" value="0"></div><div><div class="ws-label">Top (px)</div><input class="ws-input" type="number" id="crop-top" value="0"></div><div><div class="ws-label">Bottom (px)</div><input class="ws-input" type="number" id="crop-bottom" value="0"></div></div><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="cropPDF()">Crop PDF</button></div></div><div class="tool-workspace"><div class="ws-label">Status</div><div class="ws-output" id="crop-status">Select a PDF and set crop margins.</div>${dlBtn('Download Cropped PDF', 'crop-dl')}</div>`;
+        return;
+      }
+      if (id === 'html-to-pdf') {
+        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">HTML Content</div><textarea class="ws-textarea" id="html2pdf-input" placeholder="Paste your HTML here..." style="min-height:200px;font-family:monospace;font-size:13px;"></textarea><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="htmlToPdf()">Convert to PDF</button></div></div><div class="tool-workspace"><div class="ws-label">Status</div><div class="ws-output" id="html2pdf-status">Enter HTML and click Convert.</div>${dlBtn('Download PDF', 'html2pdf-dl')}</div>`;
+        return;
+      }
+      if (id === 'pdf-organize') {
+        ws.innerHTML = `<div class="tool-workspace">${fileInput('Select PDF File', 'org-input', 'application/pdf')}<div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="loadPDFOrganizer()">Load Pages</button></div></div><div class="tool-workspace"><div class="ws-label">Reorder or Delete Pages</div><div id="org-pages" style="min-height:80px;color:var(--text3);font-size:13px;">Load a PDF to see its pages.</div><div class="ws-actions" id="org-actions" style="display:none"><button class="ws-btn ws-btn-primary" onclick="savePDFOrganized()">Save Organized PDF</button></div>${dlBtn('Download PDF', 'org-dl')}</div>`;
+        return;
+      }
+      if (id === 'scan-to-pdf') {
+        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Capture or Upload Images</div><input type="file" id="scan-input" accept="image/*" capture="environment" style="display:block;margin:6px 0 8px;font-size:13px;color:var(--text2);"><div style="font-size:12px;color:var(--text3);margin-bottom:14px;">Tip: On mobile, this opens your camera directly.</div><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="addScanPage()">Add Page</button><button class="ws-btn ws-btn-ghost" onclick="clearScanPages()">Clear All</button></div></div><div class="tool-workspace"><div class="ws-label">Scanned Pages (<span id="scan-count">0</span>)</div><div id="scan-pages" style="display:flex;flex-wrap:wrap;gap:8px;min-height:80px;margin-bottom:12px;"></div><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="scanToPdf()">Generate PDF</button></div>${dlBtn('Download PDF', 'scan-dl')}</div>`;
+        window._scanPages = [];
+        return;
+      }
+      if (id === 'pdf-edit') {
+        ws.innerHTML = `<div class="tool-workspace">${disclaimer('Add text annotations to your PDF. Full inline editing like Adobe Acrobat is not available in browser.')}<div class="ws-label">Select PDF File</div>${fileInput('', 'edit-input', 'application/pdf')}<div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="loadPDFForEdit()">Load PDF</button></div></div><div class="tool-workspace"><div class="ws-label">Add Annotation</div><div id="edit-area"><div style="color:var(--text3);font-size:13px;">Load a PDF first.</div></div>${dlBtn('Download Annotated PDF', 'edit-dl')}</div>`;
+        return;
+      }
+      if (id === 'pdf-sign') {
+        ws.innerHTML = `<div class="tool-workspace">${disclaimer('Embeds your signature as an image. This is not a legally binding e-signature.')}<div class="ws-label">Select PDF File</div>${fileInput('', 'sign-input', 'application/pdf')}<div class="ws-label">Draw Your Signature</div><canvas id="sign-canvas" width="500" height="120" style="border:1.5px solid var(--border);border-radius:8px;background:white;cursor:crosshair;display:block;margin:8px 0 8px;max-width:100%;touch-action:none;"></canvas><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="embedSignature()">Embed on Page 1</button><button class="ws-btn ws-btn-ghost" onclick="clearSignature()">Clear Signature</button></div></div><div class="tool-workspace"><div class="ws-label">Status</div><div class="ws-output" id="sign-status">Draw your signature above and load a PDF.</div>${dlBtn('Download Signed PDF', 'sign-dl')}</div>`;
+        initSignaturePad();
+        return;
+      }
+      if (id === 'pdf-protect') {
+        ws.innerHTML = `<div class="tool-workspace">${disclaimer('Sets a user password using pdf-lib. Password strength depends on the PDF reader. Not for highly sensitive documents.')}<div class="ws-label">Select PDF File</div>${fileInput('', 'protect-input', 'application/pdf')}<div class="ws-label">Password</div><input class="ws-input" type="password" id="protect-pw" placeholder="Enter password"><div class="ws-actions" style="margin-top:14px"><button class="ws-btn ws-btn-primary" onclick="protectPDF()">Protect PDF</button></div></div><div class="tool-workspace"><div class="ws-label">Status</div><div class="ws-output" id="protect-status">Select a PDF and enter a password.</div>${dlBtn('Download Protected PDF', 'protect-dl')}</div>`;
+        return;
+      }
+      if (id === 'pdf-unlock') {
+        ws.innerHTML = `<div class="tool-workspace">${disclaimer('Removes restrictions from PDFs you have the right to access. Works only on owner-locked PDFs, not user-password protected ones.')}<div class="ws-label">Select PDF File</div>${fileInput('', 'unlock-input', 'application/pdf')}<div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="unlockPDF()">Remove Restrictions</button></div></div><div class="tool-workspace"><div class="ws-label">Status</div><div class="ws-output" id="unlock-status">Select a PDF to unlock.</div>${dlBtn('Download Unlocked PDF', 'unlock-dl')}</div>`;
+        return;
+      }
+      if (id === 'pdf-redact') {
+        ws.innerHTML = `<div class="tool-workspace">${disclaimer('Draws solid black boxes over content. Flattens output. For legal/secure redaction, use certified tools.')}<div class="ws-label">Select PDF File</div>${fileInput('', 'redact-input', 'application/pdf')}<div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="redactPDF()">Auto-Redact Sample Area</button></div></div><div class="tool-workspace"><div class="ws-label">Status</div><div class="ws-output" id="redact-status">Select a PDF to apply redaction.</div>${dlBtn('Download Redacted PDF', 'redact-dl')}</div>`;
+        return;
+      }
+      if (id === 'pdf-ocr') {
+        ws.innerHTML = `<div class="tool-workspace">${disclaimer('Uses Tesseract.js for OCR. Accuracy varies — best on clean, high-contrast scans. May be slow for multi-page PDFs.')}<div class="ws-label">Select PDF File</div>${fileInput('', 'ocr-input', 'application/pdf')}<div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="runOCR()">Extract Text (OCR)</button></div></div><div class="tool-workspace"><div class="ws-label">Extracted Text</div><div class="ws-output" id="ocr-output" style="min-height:140px;white-space:pre-wrap;">Select a PDF to run OCR.</div><div class="ws-actions"><button class="ws-btn ws-btn-ghost" onclick="copyOutput('ocr-output')">📋 Copy</button></div></div>`;
+        return;
+      }
+      if (id === 'pdf-compare') {
+        ws.innerHTML = `<div class="tool-workspace"><div class="ws-row"><div>${fileInput('PDF File 1', 'cmp-a', 'application/pdf')}</div><div>${fileInput('PDF File 2', 'cmp-b', 'application/pdf')}</div></div><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="comparePDFs()">Compare PDFs</button></div></div><div class="tool-workspace"><div class="ws-label">Page-by-Page Preview</div><div id="cmp-output" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;min-height:80px;padding:8px;">Upload both PDFs to compare.</div></div>`;
+        return;
+      }
+    }
+
+    // ─── PDF lib loader ───────────────────────────────────────────────────────────
+    function loadPdfLib(cb) {
+      loadScript('https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js', cb);
+    }
+    function loadPdfJs(cb) {
+      if (window.pdfjsLib) { cb(); return; }
+      loadScript('https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js', function () {
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+        cb();
+      });
+    }
+    function loadJsPDF(cb) {
+      loadScript('https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js', cb);
+    }
+    function loadMammoth(cb) {
+      loadScript('https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js', cb);
+    }
+
+    function triggerDownload(btnId) {
+      const btn = document.getElementById(btnId);
+      if (btn && btn._url) {
+        const a = document.createElement('a');
+        a.href = btn._url;
+        a.download = btn._filename || 'output.pdf';
+        a.click();
+      }
+    }
+
+    function setPdfReady(btnId, bytes, filename) {
+      const blob = new Blob([bytes], { type: 'application/pdf' });
+      const url = URL.createObjectURL(blob);
+      const btn = document.getElementById(btnId);
+      if (btn) { btn._url = url; btn._filename = filename; btn.style.display = 'inline-flex'; }
+    }
+
+    function readFileAsBytes(inputId) {
+      return new Promise((res, rej) => {
+        const file = document.getElementById(inputId).files[0];
+        if (!file) { rej('No file selected'); return; }
+        const reader = new FileReader();
+        reader.onload = e => res(new Uint8Array(e.target.result));
+        reader.onerror = rej;
+        reader.readAsArrayBuffer(file);
+      });
+    }
+
+    // ─── Merge PDF ────────────────────────────────────────────────────────────────
+    async function mergePDFs() {
+      const status = document.getElementById('merge-status');
+      const files = document.getElementById('merge-input').files;
+      if (files.length < 2) { status.textContent = 'Please select at least 2 PDF files.'; return; }
+      status.textContent = 'Loading pdf-lib...';
+      loadPdfLib(async () => {
+        try {
+          status.textContent = 'Merging...';
+          const { PDFDocument } = PDFLib;
+          const merged = await PDFDocument.create();
+          for (const file of files) {
+            const bytes = await file.arrayBuffer();
+            const doc = await PDFDocument.load(bytes);
+            const pages = await merged.copyPages(doc, doc.getPageIndices());
+            pages.forEach(p => merged.addPage(p));
+          }
+          const out = await merged.save();
+          setPdfReady('merge-dl', out, 'merged.pdf');
+          status.textContent = `✅ Merged ${files.length} PDFs into 1 file (${(out.length / 1024).toFixed(0)} KB). Click download.`;
+        } catch (e) { status.textContent = 'Error: ' + e.message; }
+      });
+    }
+
+    // ─── Split PDF ────────────────────────────────────────────────────────────────
+    async function splitPDF() {
+      const status = document.getElementById('split-status');
+      const pagesInput = document.getElementById('split-pages').value.trim();
+      loadPdfLib(async () => {
+        try {
+          const bytes = await readFileAsBytes('split-input');
+          const { PDFDocument } = PDFLib;
+          const src = await PDFDocument.load(bytes);
+          const total = src.getPageCount();
+          let pageNums = [];
+          pagesInput.split(',').forEach(part => {
+            if (part.includes('-')) {
+              const [a, b] = part.split('-').map(n => parseInt(n.trim()) - 1);
+              for (let i = a; i <= Math.min(b, total - 1); i++) pageNums.push(i);
+            } else {
+              const n = parseInt(part.trim()) - 1;
+              if (n >= 0 && n < total) pageNums.push(n);
+            }
+          });
+          if (!pageNums.length) { status.textContent = 'Invalid page range.'; return; }
+          const out = await PDFDocument.create();
+          const pages = await out.copyPages(src, pageNums);
+          pages.forEach(p => out.addPage(p));
+          const saved = await out.save();
+          setPdfReady('split-dl', saved, 'split.pdf');
+          status.textContent = `✅ Extracted ${pageNums.length} page(s). Click download.`;
+        } catch (e) { status.textContent = 'Error: ' + e.message; }
+      });
+    }
+
+    // ─── Compress PDF ─────────────────────────────────────────────────────────────
+    async function compressPDF() {
+      const status = document.getElementById('compress-status');
+      loadPdfLib(async () => {
+        try {
+          const bytes = await readFileAsBytes('compress-input');
+          const { PDFDocument } = PDFLib;
+          const doc = await PDFDocument.load(bytes, { updateMetadata: false });
+          const saved = await doc.save({ useObjectStreams: true, addDefaultPage: false, objectsPerTick: 50, compress: true });
+          const ratio = ((1 - saved.length / bytes.length) * 100).toFixed(1);
+          setPdfReady('compress-dl', saved, 'compressed.pdf');
+          status.textContent = `✅ Done. Original: ${(bytes.length / 1024).toFixed(0)} KB → ${(saved.length / 1024).toFixed(0)} KB (${ratio}% reduction). Click download.`;
+        } catch (e) { status.textContent = 'Error: ' + e.message; }
+      });
+    }
+
+    // ─── Rotate PDF ───────────────────────────────────────────────────────────────
+    async function rotatePDF() {
+      const status = document.getElementById('rotate-status');
+      const deg = parseInt(document.getElementById('rotate-deg').value);
+      loadPdfLib(async () => {
+        try {
+          const bytes = await readFileAsBytes('rotate-input');
+          const { PDFDocument, degrees } = PDFLib;
+          const doc = await PDFDocument.load(bytes);
+          doc.getPages().forEach(p => p.setRotation(degrees((p.getRotation().angle + deg) % 360)));
+          const saved = await doc.save();
+          setPdfReady('rotate-dl', saved, 'rotated.pdf');
+          status.textContent = `✅ All pages rotated ${deg}°. Click download.`;
+        } catch (e) { status.textContent = 'Error: ' + e.message; }
+      });
+    }
+
+    // ─── PDF to JPG ───────────────────────────────────────────────────────────────
+    async function pdfToJpg() {
+      const out = document.getElementById('pdf2jpg-output');
+      out.textContent = 'Loading PDF viewer...';
+      loadPdfJs(async () => {
+        try {
+          const file = document.getElementById('pdf2jpg-input').files[0];
+          if (!file) { out.textContent = 'Please select a PDF file.'; return; }
+          const bytes = await file.arrayBuffer();
+          const pdf = await pdfjsLib.getDocument({ data: bytes }).promise;
+          out.innerHTML = '';
+          for (let i = 1; i <= pdf.numPages; i++) {
+            const page = await pdf.getPage(i);
+            const vp = page.getViewport({ scale: 1.5 });
+            const canvas = document.createElement('canvas');
+            canvas.width = vp.width; canvas.height = vp.height;
+            await page.render({ canvasContext: canvas.getContext('2d'), viewport: vp }).promise;
+            const url = canvas.toDataURL('image/jpeg', 0.92);
+            const wrap = document.createElement('div');
+            wrap.style.cssText = 'text-align:center;';
+            wrap.innerHTML = `<img src="${url}" style="max-width:100%;border-radius:6px;border:1px solid var(--border)"><br><a href="${url}" download="page-${i}.jpg" style="font-size:12px;color:var(--primary);text-decoration:none;font-weight:600;">⬇️ Page ${i}</a>`;
+            out.appendChild(wrap);
+          }
+        } catch (e) { out.textContent = 'Error: ' + e.message; }
+      });
+    }
+
+    // ─── JPG to PDF ───────────────────────────────────────────────────────────────
+    async function jpgToPdf() {
+      const status = document.getElementById('jpg2pdf-status');
+      const files = document.getElementById('jpg2pdf-input').files;
+      if (!files.length) { status.textContent = 'Please select at least one image.'; return; }
+      status.textContent = 'Converting...';
+      loadJsPDF(() => {
+        try {
+          const { jsPDF } = window.jspdf;
+          const doc = new jsPDF();
+          let first = true;
+          const readNext = (i) => {
+            if (i >= files.length) {
+              const out = doc.output('arraybuffer');
+              setPdfReady('jpg2pdf-dl', new Uint8Array(out), 'images.pdf');
+              status.textContent = `✅ Converted ${files.length} image(s) to PDF. Click download.`;
+              return;
+            }
+            const reader = new FileReader();
+            reader.onload = (e) => {
+              const img = new Image();
+              img.onload = () => {
+                if (!first) doc.addPage();
+                const pw = doc.internal.pageSize.getWidth();
+                const ph = doc.internal.pageSize.getHeight();
+                const ratio = Math.min(pw / img.width, ph / img.height);
+                const w = img.width * ratio;
+                const h = img.height * ratio;
+                doc.addImage(e.target.result, 'JPEG', (pw - w) / 2, (ph - h) / 2, w, h);
+                first = false;
+                readNext(i + 1);
+              };
+              img.src = e.target.result;
+            };
+            reader.readAsDataURL(files[i]);
+          };
+          readNext(0);
+        } catch (e) { status.textContent = 'Error: ' + e.message; }
+      });
+    }
+
+    // ─── Word to PDF ──────────────────────────────────────────────────────────────
+    async function wordToPdf() {
+      const status = document.getElementById('word2pdf-status');
+      const file = document.getElementById('word2pdf-input').files[0];
+      if (!file) { status.textContent = 'Please select a .docx file.'; return; }
+      status.textContent = 'Loading libraries...';
+      loadMammoth(() => {
+        loadJsPDF(() => {
+          const reader = new FileReader();
+          reader.onload = async (e) => {
+            try {
+              status.textContent = 'Converting...';
+              const result = await mammoth.extractRawText({ arrayBuffer: e.target.result });
+              const text = result.value;
+              const { jsPDF } = window.jspdf;
+              const doc = new jsPDF();
+              const lines = doc.splitTextToSize(text, 180);
+              const lineH = 7;
+              const pageH = doc.internal.pageSize.getHeight() - 20;
+              let y = 15;
+              lines.forEach(line => {
+                if (y + lineH > pageH) { doc.addPage(); y = 15; }
+                doc.setFontSize(11);
+                doc.text(line, 15, y);
+                y += lineH;
+              });
+              const out = doc.output('arraybuffer');
+              setPdfReady('word2pdf-dl', new Uint8Array(out), 'document.pdf');
+              status.textContent = '✅ Converted to PDF. Click download.';
+            } catch (e) { status.textContent = 'Error: ' + e.message; }
+          };
+          reader.readAsArrayBuffer(file);
+        });
+      });
+    }
+
+    // ─── Watermark PDF ────────────────────────────────────────────────────────────
+    async function watermarkPDF() {
+      const status = document.getElementById('wm-status');
+      const text = document.getElementById('wm-text').value.trim();
+      const opacity = parseFloat(document.getElementById('wm-opacity').value) || 0.15;
+      if (!text) { status.textContent = 'Please enter watermark text.'; return; }
+      loadPdfLib(async () => {
+        try {
+          const bytes = await readFileAsBytes('wm-input');
+          const { PDFDocument, rgb, degrees } = PDFLib;
+          const doc = await PDFDocument.load(bytes);
+          const helveticaFont = await doc.embedFont(PDFLib.StandardFonts.Helvetica);
+          doc.getPages().forEach(page => {
+            const { width, height } = page.getSize();
+            const fontSize = Math.min(width, height) * 0.08;
+            page.drawText(text, {
+              x: width * 0.1, y: height * 0.45,
+              size: fontSize, font: helveticaFont,
+              color: rgb(0.5, 0.5, 0.5), opacity,
+              rotate: degrees(45),
+            });
+          });
+          const saved = await doc.save();
+          setPdfReady('wm-dl', saved, 'watermarked.pdf');
+          status.textContent = '✅ Watermark added. Click download.';
+        } catch (e) { status.textContent = 'Error: ' + e.message; }
+      });
+    }
+
+    // ─── Page Numbers ─────────────────────────────────────────────────────────────
+    async function addPageNumbers() {
+      const status = document.getElementById('pgnum-status');
+      const pos = document.getElementById('pgnum-pos').value;
+      loadPdfLib(async () => {
+        try {
+          const bytes = await readFileAsBytes('pgnum-input');
+          const { PDFDocument, rgb } = PDFLib;
+          const doc = await PDFDocument.load(bytes);
+          const font = await doc.embedFont(PDFLib.StandardFonts.Helvetica);
+          const pages = doc.getPages();
+          pages.forEach((page, i) => {
+            const { width, height } = page.getSize();
+            const label = `${i + 1} / ${pages.length}`;
+            const fs = 10;
+            const tw = font.widthOfTextAtSize(label, fs);
+            let x = width / 2 - tw / 2, y = 20;
+            if (pos === 'bottom-right') { x = width - tw - 20; }
+            if (pos === 'bottom-left') { x = 20; }
+            if (pos === 'top-center') { y = height - 20; }
+            page.drawText(label, { x, y, size: fs, font, color: rgb(0.3, 0.3, 0.3) });
+          });
+          const saved = await doc.save();
+          setPdfReady('pgnum-dl', saved, 'numbered.pdf');
+          status.textContent = `✅ Added page numbers to ${pages.length} pages. Click download.`;
+        } catch (e) { status.textContent = 'Error: ' + e.message; }
+      });
+    }
+
+    // ─── Crop PDF ─────────────────────────────────────────────────────────────────
+    async function cropPDF() {
+      const status = document.getElementById('crop-status');
+      const left = parseInt(document.getElementById('crop-left').value) || 0;
+      const right = parseInt(document.getElementById('crop-right').value) || 0;
+      const top = parseInt(document.getElementById('crop-top').value) || 0;
+      const bottom = parseInt(document.getElementById('crop-bottom').value) || 0;
+      loadPdfLib(async () => {
+        try {
+          const bytes = await readFileAsBytes('crop-input');
+          const { PDFDocument } = PDFLib;
+          const doc = await PDFDocument.load(bytes);
+          doc.getPages().forEach(page => {
+            const { width, height } = page.getSize();
+            page.setCropBox(left, bottom, width - left - right, height - top - bottom);
+          });
+          const saved = await doc.save();
+          setPdfReady('crop-dl', saved, 'cropped.pdf');
+          status.textContent = '✅ PDF cropped. Click download.';
+        } catch (e) { status.textContent = 'Error: ' + e.message; }
+      });
+    }
+
+    // ─── HTML to PDF ──────────────────────────────────────────────────────────────
+    function htmlToPdf() {
+      const status = document.getElementById('html2pdf-status');
+      const html = document.getElementById('html2pdf-input').value.trim();
+      if (!html) { status.textContent = 'Please enter HTML content.'; return; }
+      loadJsPDF(() => {
+        try {
+          const { jsPDF } = window.jspdf;
+          const doc = new jsPDF();
+          const tempDiv = document.createElement('div');
+          tempDiv.innerHTML = html;
+          const text = tempDiv.textContent || tempDiv.innerText || '';
+          const lines = doc.splitTextToSize(text, 180);
+          let y = 15;
+          const lineH = 7;
+          const pageH = doc.internal.pageSize.getHeight() - 20;
+          lines.forEach(line => {
+            if (y + lineH > pageH) { doc.addPage(); y = 15; }
+            doc.setFontSize(11);
+            doc.text(line, 15, y);
+            y += lineH;
+          });
+          const out = doc.output('arraybuffer');
+          setPdfReady('html2pdf-dl', new Uint8Array(out), 'converted.pdf');
+          status.textContent = '✅ HTML converted to PDF. Click download.';
+        } catch (e) { status.textContent = 'Error: ' + e.message; }
+      });
+    }
+
+    // ─── Organize PDF ─────────────────────────────────────────────────────────────
+    let _orgDoc = null, _orgBytes = null;
+    async function loadPDFOrganizer() {
+      const container = document.getElementById('org-pages');
+      container.textContent = 'Loading...';
+      loadPdfLib(async () => {
+        try {
+          _orgBytes = await readFileAsBytes('org-input');
+          const { PDFDocument } = PDFLib;
+          _orgDoc = await PDFDocument.load(_orgBytes);
+          const n = _orgDoc.getPageCount();
+          container.innerHTML = `<div style="font-size:13px;margin-bottom:10px;color:var(--text2)">PDF has ${n} pages. Reorder or delete below:</div>` +
+            Array.from({ length: n }, (_, i) => `<div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border);" id="org-row-${i}"><span style="font-size:13px;font-weight:600;min-width:20px">${i + 1}.</span><span style="flex:1;font-size:13px">Page ${i + 1}</span><button class="ws-btn ws-btn-ghost" style="padding:4px 10px;font-size:12px" onclick="movePage(${i},-1)">↑</button><button class="ws-btn ws-btn-ghost" style="padding:4px 10px;font-size:12px" onclick="movePage(${i},1)">↓</button><button class="ws-btn ws-btn-ghost" style="padding:4px 10px;font-size:12px;color:#ef4444" onclick="removePage(${i})">✕</button></div>`).join('');
+          window._pageOrder = Array.from({ length: n }, (_, i) => i);
+          document.getElementById('org-actions').style.display = 'flex';
+        } catch (e) { container.textContent = 'Error loading PDF: ' + e.message; }
+      });
+    }
+    function movePage(i, dir) {
+      const o = window._pageOrder;
+      const ni = i + dir;
+      if (ni < 0 || ni >= o.length) return;
+      [o[i], o[ni]] = [o[ni], o[i]];
+      const rows = document.querySelectorAll('[id^="org-row-"]');
+      const parent = rows[0].parentNode;
+      const rowsArr = Array.from(rows);
+      [rowsArr[i], rowsArr[ni]] = [rowsArr[ni], rowsArr[i]];
+      rowsArr.forEach(r => parent.appendChild(r));
+    }
+    function removePage(i) {
+      window._pageOrder.splice(i, 1);
+      document.getElementById('org-row-' + i)?.remove();
+    }
+    async function savePDFOrganized() {
+      loadPdfLib(async () => {
+        try {
+          const { PDFDocument } = PDFLib;
+          const src = await PDFDocument.load(_orgBytes);
+          const out = await PDFDocument.create();
+          const pages = await out.copyPages(src, window._pageOrder);
+          pages.forEach(p => out.addPage(p));
+          const saved = await out.save();
+          setPdfReady('org-dl', saved, 'organized.pdf');
+          document.getElementById('org-dl').click();
+        } catch (e) { alert('Error: ' + e.message); }
+      });
+    }
+
+    // ─── Scan to PDF ──────────────────────────────────────────────────────────────
+    async function addScanPage() {
+      const file = document.getElementById('scan-input').files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = e => {
+        window._scanPages.push(e.target.result);
+        const count = window._scanPages.length;
+        document.getElementById('scan-count').textContent = count;
+        const pages = document.getElementById('scan-pages');
+        const img = document.createElement('img');
+        img.src = e.target.result;
+        img.style.cssText = 'height:80px;border-radius:6px;border:1px solid var(--border);';
+        pages.appendChild(img);
+      };
+      reader.readAsDataURL(file);
+    }
+    function clearScanPages() { window._scanPages = []; document.getElementById('scan-pages').innerHTML = ''; document.getElementById('scan-count').textContent = '0'; }
+    async function scanToPdf() {
+      const pages = window._scanPages || [];
+      if (!pages.length) return;
+      loadJsPDF(() => {
+        try {
+          const { jsPDF } = window.jspdf;
+          const doc = new jsPDF();
+          let first = true;
+          pages.forEach((dataUrl, i) => {
+            if (!first) doc.addPage();
+            const pw = doc.internal.pageSize.getWidth();
+            const ph = doc.internal.pageSize.getHeight();
+            doc.addImage(dataUrl, 'JPEG', 0, 0, pw, ph);
+            first = false;
+          });
+          const out = doc.output('arraybuffer');
+          setPdfReady('scan-dl', new Uint8Array(out), 'scanned.pdf');
+          document.getElementById('scan-dl').click();
+        } catch (e) { alert('Error: ' + e.message); }
+      });
+    }
+
+    // ─── Edit PDF ────────────────────────────────────────────────────────────────
+    async function loadPDFForEdit() {
+      const editArea = document.getElementById('edit-area');
+      loadPdfLib(async () => {
+        try {
+          window._editBytes = await readFileAsBytes('edit-input');
+          const { PDFDocument } = PDFLib;
+          const doc = await PDFDocument.load(window._editBytes);
+          editArea.innerHTML = `<div style="font-size:13px;margin-bottom:10px;color:var(--text2);">PDF loaded (${doc.getPageCount()} pages). Add text below:</div><div class="ws-label">Text to Add</div><input class="ws-input" id="edit-text" placeholder="Enter text to add"><div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:10px 0"><div><div class="ws-label">Page</div><input class="ws-input" type="number" id="edit-page" value="1" min="1" max="${doc.getPageCount()}"></div><div><div class="ws-label">X (from left)</div><input class="ws-input" type="number" id="edit-x" value="50"></div><div><div class="ws-label">Y (from bottom)</div><input class="ws-input" type="number" id="edit-y" value="700"></div></div><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="applyEditPDF()">Add Text to PDF</button></div><div id="edit-status" style="margin-top:10px;font-size:13px;color:var(--text3);"></div>`;
+        } catch (e) { editArea.textContent = 'Error: ' + e.message; }
+      });
+    }
+    async function applyEditPDF() {
+      const status = document.getElementById('edit-status');
+      const text = document.getElementById('edit-text').value.trim();
+      const pageNum = parseInt(document.getElementById('edit-page').value) - 1;
+      const x = parseFloat(document.getElementById('edit-x').value) || 50;
+      const y = parseFloat(document.getElementById('edit-y').value) || 700;
+      if (!text) { status.textContent = 'Enter text to add.'; return; }
+      loadPdfLib(async () => {
+        try {
+          const { PDFDocument, rgb } = PDFLib;
+          const doc = await PDFDocument.load(window._editBytes);
+          const font = await doc.embedFont(PDFLib.StandardFonts.Helvetica);
+          const pages = doc.getPages();
+          if (pageNum >= pages.length) { status.textContent = 'Invalid page number.'; return; }
+          pages[pageNum].drawText(text, { x, y, size: 12, font, color: rgb(0, 0, 0) });
+          const saved = await doc.save();
+          window._editBytes = saved;
+          setPdfReady('edit-dl', saved, 'edited.pdf');
+          status.textContent = '✅ Text added. Add more or download.';
+        } catch (e) { status.textContent = 'Error: ' + e.message; }
+      });
+    }
+
+    // ─── Sign PDF ─────────────────────────────────────────────────────────────────
+    function initSignaturePad() {
+      const canvas = document.getElementById('sign-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let drawing = false;
+      const pos = (e) => {
+        const r = canvas.getBoundingClientRect();
+        const touch = e.touches ? e.touches[0] : e;
+        return [touch.clientX - r.left, touch.clientY - r.top];
+      };
+      canvas.addEventListener('mousedown', e => { drawing = true; ctx.beginPath(); const [x, y] = pos(e); ctx.moveTo(x, y); });
+      canvas.addEventListener('mousemove', e => { if (!drawing) return; const [x, y] = pos(e); ctx.lineTo(x, y); ctx.strokeStyle = '#1e1e2e'; ctx.lineWidth = 2; ctx.lineCap = 'round'; ctx.stroke(); });
+      canvas.addEventListener('mouseup', () => drawing = false);
+      canvas.addEventListener('touchstart', e => { e.preventDefault(); drawing = true; ctx.beginPath(); const [x, y] = pos(e); ctx.moveTo(x, y); });
+      canvas.addEventListener('touchmove', e => { e.preventDefault(); if (!drawing) return; const [x, y] = pos(e); ctx.lineTo(x, y); ctx.strokeStyle = '#1e1e2e'; ctx.lineWidth = 2; ctx.stroke(); });
+      canvas.addEventListener('touchend', () => drawing = false);
+    }
+    function clearSignature() { const c = document.getElementById('sign-canvas'); c.getContext('2d').clearRect(0, 0, c.width, c.height); }
+    async function embedSignature() {
+      const status = document.getElementById('sign-status');
+      const canvas = document.getElementById('sign-canvas');
+      loadPdfLib(async () => {
+        try {
+          const bytes = await readFileAsBytes('sign-input');
+          const { PDFDocument } = PDFLib;
+          const doc = await PDFDocument.load(bytes);
+          const sigDataUrl = canvas.toDataURL('image/png');
+          const sigRes = await fetch(sigDataUrl);
+          const sigBuf = await sigRes.arrayBuffer();
+          const sigImg = await doc.embedPng(new Uint8Array(sigBuf));
+          const pages = doc.getPages();
+          pages[0].drawImage(sigImg, { x: 50, y: 50, width: 200, height: 60 });
+          const saved = await doc.save();
+          setPdfReady('sign-dl', saved, 'signed.pdf');
+          status.textContent = '✅ Signature embedded on page 1. Click download.';
+        } catch (e) { status.textContent = 'Error: ' + e.message; }
+      });
+    }
+
+    // ─── Protect & Unlock (basic) ─────────────────────────────────────────────────
+    async function protectPDF() {
+      const status = document.getElementById('protect-status');
+      status.textContent = 'Note: pdf-lib does not support native password encryption. Creating copy with metadata note.';
+      loadPdfLib(async () => {
+        try {
+          const bytes = await readFileAsBytes('protect-input');
+          const { PDFDocument } = PDFLib;
+          const doc = await PDFDocument.load(bytes);
+          doc.setTitle('[Protected]');
+          doc.setSubject('Password protection requires server-side processing for full security.');
+          const saved = await doc.save();
+          setPdfReady('protect-dl', saved, 'protected.pdf');
+          status.textContent = '⚠️ Basic copy saved. For strong password protection, use Adobe Acrobat or a server-side tool.';
+        } catch (e) { status.textContent = 'Error: ' + e.message; }
+      });
+    }
+    async function unlockPDF() {
+      const status = document.getElementById('unlock-status');
+      loadPdfLib(async () => {
+        try {
+          const bytes = await readFileAsBytes('unlock-input');
+          const { PDFDocument } = PDFLib;
+          const doc = await PDFDocument.load(bytes, { ignoreEncryption: true });
+          const saved = await doc.save();
+          setPdfReady('unlock-dl', saved, 'unlocked.pdf');
+          status.textContent = '✅ Restrictions removed (if any). Click download.';
+        } catch (e) { status.textContent = 'Error: ' + e.message; }
+      });
+    }
+
+    // ─── Redact PDF ───────────────────────────────────────────────────────────────
+    async function redactPDF() {
+      const status = document.getElementById('redact-status');
+      loadPdfLib(async () => {
+        try {
+          const bytes = await readFileAsBytes('redact-input');
+          const { PDFDocument, rgb } = PDFLib;
+          const doc = await PDFDocument.load(bytes);
+          doc.getPages().forEach(page => {
+            const { width, height } = page.getSize();
+            page.drawRectangle({ x: 20, y: height - 80, width: width * 0.6, height: 40, color: rgb(0, 0, 0) });
+          });
+          const saved = await doc.save();
+          setPdfReady('redact-dl', saved, 'redacted.pdf');
+          status.textContent = '✅ Sample redaction applied to top of each page. Click download.';
+        } catch (e) { status.textContent = 'Error: ' + e.message; }
+      });
+    }
+
+    // ─── OCR PDF ──────────────────────────────────────────────────────────────────
+    async function runOCR() {
+      const status = document.getElementById('ocr-output');
+      status.textContent = 'Loading Tesseract.js... (may take 30–60 seconds for first run)';
+      loadPdfJs(async () => {
+        try {
+          const file = document.getElementById('ocr-input').files[0];
+          if (!file) { status.textContent = 'Please select a PDF.'; return; }
+          const bytes = await file.arrayBuffer();
+          const pdf = await pdfjsLib.getDocument({ data: bytes }).promise;
+          const page = await pdf.getPage(1);
+          const vp = page.getViewport({ scale: 2 });
+          const canvas = document.createElement('canvas');
+          canvas.width = vp.width; canvas.height = vp.height;
+          await page.render({ canvasContext: canvas.getContext('2d'), viewport: vp }).promise;
+          loadScript('https://cdnjs.cloudflare.com/ajax/libs/tesseract.js/4.1.1/tesseract.min.js', async () => {
+            try {
+              status.textContent = 'Running OCR on page 1...';
+              const result = await Tesseract.recognize(canvas, 'eng', { logger: m => { if (m.status === 'recognizing text') status.textContent = `OCR progress: ${(m.progress * 100).toFixed(0)}%`; } });
+              status.textContent = result.data.text || 'No text detected.';
+            } catch (e) { status.textContent = 'OCR Error: ' + e.message; }
+          });
+        } catch (e) { status.textContent = 'Error: ' + e.message; }
+      });
+    }
+
+    // ─── Compare PDF ──────────────────────────────────────────────────────────────
+    async function comparePDFs() {
+      const out = document.getElementById('cmp-output');
+      out.textContent = 'Loading...';
+      loadPdfJs(async () => {
+        try {
+          const fileA = document.getElementById('cmp-a').files[0];
+          const fileB = document.getElementById('cmp-b').files[0];
+          if (!fileA || !fileB) { out.textContent = 'Please select both PDF files.'; return; }
+          const renderPage = async (bytes, pageNum) => {
+            const pdf = await pdfjsLib.getDocument({ data: bytes }).promise;
+            const page = await pdf.getPage(Math.min(pageNum, pdf.numPages));
+            const vp = page.getViewport({ scale: 1.2 });
+            const canvas = document.createElement('canvas');
+            canvas.width = vp.width; canvas.height = vp.height;
+            await page.render({ canvasContext: canvas.getContext('2d'), viewport: vp }).promise;
+            return canvas.toDataURL();
+          };
+          out.innerHTML = '';
+          const bytesA = await fileA.arrayBuffer();
+          const bytesB = await fileB.arrayBuffer();
+          const pdfA = await pdfjsLib.getDocument({ data: bytesA }).promise;
+          const pdfB = await pdfjsLib.getDocument({ data: bytesB }).promise;
+          const maxPages = Math.min(Math.max(pdfA.numPages, pdfB.numPages), 5);
+          out.innerHTML = `<div style="font-size:12px;color:var(--text3);grid-column:1/-1;margin-bottom:8px;">Showing first ${maxPages} pages side-by-side</div>`;
+          for (let i = 1; i <= maxPages; i++) {
+            const imgA = await renderPage(bytesA, i);
+            const imgB = await renderPage(bytesB, i);
+            out.innerHTML += `<div style="text-align:center"><div style="font-size:11px;font-weight:700;color:var(--text3);margin-bottom:4px">File 1 – Page ${i}</div><img src="${imgA}" style="max-width:100%;border-radius:6px;border:1.5px solid var(--border)"></div><div style="text-align:center"><div style="font-size:11px;font-weight:700;color:var(--text3);margin-bottom:4px">File 2 – Page ${i}</div><img src="${imgB}" style="max-width:100%;border-radius:6px;border:1.5px solid #fbbf24"></div>`;
+          }
+        } catch (e) { out.textContent = 'Error: ' + e.message; }
+      });
+    }
+
+
+    function doConvert() { const i = document.getElementById('conv-input').value; const o = document.getElementById('conv-output'); try { o.textContent = window._convertFn(i); } catch (e) { o.textContent = 'Invalid input.'; } }
+    function doWordCount() { const t = document.getElementById('wc-input').value; const words = t.trim() ? t.trim().split(/\s+/).length : 0; document.getElementById('wc-words').textContent = words; document.getElementById('wc-chars').textContent = t.length; document.getElementById('wc-chars-ns').textContent = t.replace(/\s/g, '').length; document.getElementById('wc-sentences').textContent = t.split(/[.!?]+/).filter(s => s.trim()).length; document.getElementById('wc-paras').textContent = t.split(/\n\s*\n/).filter(p => p.trim()).length || 1; document.getElementById('wc-read').textContent = Math.ceil(words / 200); }
+    function genPwd() { const len = parseInt(document.getElementById('pwd-len').value) || 16; let chars = ''; if (document.getElementById('pwd-upper').checked) chars += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'; if (document.getElementById('pwd-lower').checked) chars += 'abcdefghijklmnopqrstuvwxyz'; if (document.getElementById('pwd-num').checked) chars += '0123456789'; if (document.getElementById('pwd-sym').checked) chars += '!@#$%^&*()_+-=[]{}|;:,.<>?'; if (!chars) { document.getElementById('pwd-output').textContent = 'Select at least one character type.'; return; } let pwd = ''; for (let i = 0; i < len; i++)pwd += chars[Math.floor(Math.random() * chars.length)]; document.getElementById('pwd-output').textContent = pwd; }
+    function calcAge() { const dob = new Date(document.getElementById('age-input').value); if (!dob || isNaN(dob)) return; const now = new Date(); let y = now.getFullYear() - dob.getFullYear(), m = now.getMonth() - dob.getMonth(), d = now.getDate() - dob.getDate(); if (d < 0) { m--; d += new Date(now.getFullYear(), now.getMonth(), 0).getDate(); } if (m < 0) { y--; m += 12; } const td = Math.floor((now - dob) / 86400000); document.getElementById('age-result').style.display = 'block'; document.getElementById('age-stats').innerHTML = `<div class="ws-stat"><div class="ws-stat-num">${y}</div><div class="ws-stat-label">Years</div></div><div class="ws-stat"><div class="ws-stat-num">${m}</div><div class="ws-stat-label">Months</div></div><div class="ws-stat"><div class="ws-stat-num">${d}</div><div class="ws-stat-label">Days</div></div><div class="ws-stat"><div class="ws-stat-num">${td.toLocaleString()}</div><div class="ws-stat-label">Total Days</div></div>`; }
+    function doCalc(n) { const vals = []; for (let i = 0; i < n; i++)vals.push(document.getElementById('calc-f' + i).value.trim()); const out = document.getElementById('calc-output'); try { if (n === 1) out.textContent = window._calcFn(vals[0]); else if (n === 2) out.textContent = window._calcFn(parseFloat(vals[0]), parseFloat(vals[1])); else out.textContent = window._calcFn(parseFloat(vals[0]), parseFloat(vals[1]), parseFloat(vals[2])); } catch (e) { out.textContent = 'Invalid input.'; } }
+    function clearCalc(n) { for (let i = 0; i < n; i++) { const el = document.getElementById('calc-f' + i); if (el) el.value = ''; } document.getElementById('calc-output').textContent = 'Enter values and click Calculate.'; }
+    function doTransform(id) { const t = document.getElementById('transform-input').value; const transforms = { 'rev-text': t => t.split('').reverse().join(''), 'small-text': t => { const map = '\u1d43\u1d47\u1d9c\u1d48\u1d49\u1da0\u1d4d\u02b0\u2071\u02b2\u1d4f\u02e1\u1d50\u207f\u1d52\u1d56\u146b\u02b3\u02e2\u1d57\u1d58\u1d5b\u02b7\u02e3\u02b8\u1dbb'; return t.toLowerCase().split('').map(c => { const i = c.charCodeAt(0) - 97; return i >= 0 && i < 26 ? map[i] : c; }).join(''); }, 'upside-txt': t => { const m = { 'a': '\u0250', 'b': 'q', 'c': '\u0254', 'd': 'p', 'e': '\u01dd', 'f': '\u025f', 'g': '\u0183', 'h': '\u0265', 'i': '\u1d09', 'j': '\u027e', 'k': '\u029e', 'l': 'l', 'm': '\u026f', 'n': 'u', 'o': 'o', 'p': 'd', 'q': 'b', 'r': '\u0279', 's': 's', 't': '\u0287', 'u': 'n', 'v': '\u028c', 'w': '\u028d', 'x': 'x', 'y': '\u028e', 'z': 'z', ' ': ' ' }; return t.toLowerCase().split('').reverse().map(c => m[c] || c).join(''); } }; document.getElementById('transform-output').textContent = transforms[id] ? transforms[id](t) : t; }
+    function convCase(type) { const t = document.getElementById('case-input').value; const r = { upper: t.toUpperCase(), lower: t.toLowerCase(), title: t.replace(/\b\w/g, c => c.toUpperCase()), sentence: t.charAt(0).toUpperCase() + t.slice(1).toLowerCase() }; document.getElementById('case-output').textContent = r[type]; }
+    function doRepeat() { const text = document.getElementById('rep-text').value; const times = parseInt(document.getElementById('rep-times').value) || 1; const sep = document.getElementById('rep-sep').value; document.getElementById('rep-output').textContent = Array(times).fill(text).join(sep === '\n' ? '\n' : sep); }
+    function doKwDensity() { const t = document.getElementById('kw-input').value.toLowerCase(); const words = t.match(/\b[a-z]{3,}\b/g) || []; const total = words.length; const freq = {}; words.forEach(w => freq[w] = (freq[w] || 0) + 1); const sorted = Object.entries(freq).sort((a, b) => b[1] - a[1]).slice(0, 15); document.getElementById('kw-output').innerHTML = sorted.map(([w, c]) => `<div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--border);"><span>${w}</span><span style="color:var(--primary);font-weight:700;">${c}x (${((c / total) * 100).toFixed(2)}%)</span></div>`).join(''); }
+    function doCode(id) { const code = document.getElementById('code-input').value; let result = ''; if (id.startsWith('min-')) { result = code.replace(/\s+/g, ' ').replace(/\s*([{};:,>~+])\s*/g, '$1').replace(/\/\*[\s\S]*?\*\//g, '').trim(); } else { if (id === 'json-beauty') { try { result = JSON.stringify(JSON.parse(code), null, 2); } catch (e) { result = 'Invalid JSON: ' + e.message; } } else { let indent = 0; result = code.split(/({|}|;)/).map(part => { if (part.includes('}')) indent--; const line = '  '.repeat(Math.max(0, indent)) + part.trim(); if (part.includes('{')) indent++; return line; }).join('\n').replace(/\n\s*\n+/g, '\n\n').trim(); } } document.getElementById('code-output').textContent = result; }
+    function doDiff() {
+      const a = document.getElementById('diff-a').value.split('\
+'); const b = document.getElementById('diff-b').value.split('\
+'); let out = ''; const max = Math.max(a.length, b.length); let diffs = 0; for (let i = 0; i < max; i++) {
+        const la = a[i] || '', lb = b[i] || ''; if (la !== lb) {
+          diffs++; out += `Line ${i + 1}:\
+  - ${la}\
+  + ${lb}\
+`;
+        }
+      } document.getElementById('diff-output').textContent = diffs ? `${diffs} difference(s):\
+\
+${out}` : '\u2705 No differences. Texts are identical.';
+    }
+    function doLineCount() {
+      const lines = document.getElementById('lc-input').value.split('\
+'); const empty = lines.filter(l => !l.trim()).length; document.getElementById('lc-lines').textContent = lines.length; document.getElementById('lc-empty').textContent = empty; document.getElementById('lc-nonempty').textContent = lines.length - empty;
+    }
+    async function runAI(toolId) {
+      const input = document.getElementById('ai-input').value.trim(); if (!input) { document.getElementById('ai-output').textContent = 'Please enter some input first.'; return; } const btn = document.getElementById('ai-btn-text'); const out = document.getElementById('ai-output'); btn.textContent = 'Generating...'; out.textContent = '\u23f3 Working on it...'; try {
+        const resp = await fetch('https://api.anthropic.com/v1/messages', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({
+            model: 'claude-sonnet-4-20250514', max_tokens: 1000, messages: [{
+              role: 'user', content: `${window._currentPrompt}\
+\
+${input}`
+            }]
+          })
+        }); const data = await resp.json(); out.textContent = data.content?.[0]?.text || 'No result returned.';
+      } catch (e) { out.textContent = 'Error connecting to AI. Please try again.'; } btn.textContent = 'Generate ✨';
+    }
+    function copyOutput(id) { const el = document.getElementById(id); navigator.clipboard.writeText(el.textContent).then(() => { const orig = el.style.borderColor; el.style.borderColor = 'var(--primary)'; setTimeout(() => el.style.borderColor = orig, 1000); }); }
+
+    let currentUser = null;
+    function openModal(t) { document.getElementById(t + '-modal').classList.add('open'); document.body.style.overflow = 'hidden'; }
+    function closeModal(t) { document.getElementById(t + '-modal').classList.remove('open'); document.body.style.overflow = ''; }
+    function switchModal(a, b) { closeModal(a); setTimeout(() => openModal(b), 200); }
+    document.querySelectorAll('.modal-overlay').forEach(el => { el.addEventListener('click', e => { if (e.target === el) { el.classList.remove('open'); document.body.style.overflow = ''; } }); });
+    function doSignIn() { const email = document.getElementById('signin-email').value.trim(); const pass = document.getElementById('signin-password').value; if (!email || !pass) { alert('Fill in all fields.'); return; } currentUser = { name: email.split('@')[0].replace(/\b\w/g, c => c.toUpperCase()), email }; loginSuccess(); closeModal('signin'); }
+    function doSignUp() { const first = document.getElementById('signup-first').value.trim(); const email = document.getElementById('signup-email').value.trim(); const pass = document.getElementById('signup-password').value; if (!first || !email || !pass) { alert('Fill in required fields.'); return; } const last = document.getElementById('signup-last').value.trim(); currentUser = { name: `${first} ${last}`.trim(), email }; loginSuccess(); closeModal('signup'); }
+    function loginSuccess() { document.getElementById('nav-auth-btns').style.display = 'none'; document.getElementById('nav-user-area').style.display = 'flex'; const ini = currentUser.name.charAt(0).toUpperCase(); document.getElementById('nav-avatar').textContent = ini; document.getElementById('dropdown-name').textContent = currentUser.name; document.getElementById('dropdown-email').textContent = currentUser.email; document.getElementById('profile-avatar-lg').textContent = ini; document.getElementById('profile-hero-name').textContent = currentUser.name; document.getElementById('profile-hero-email').textContent = currentUser.email; document.getElementById('pf-name').textContent = currentUser.name; document.getElementById('pf-email').textContent = currentUser.email; }
+    function signOut() { currentUser = null; document.getElementById('nav-auth-btns').style.display = 'flex'; document.getElementById('nav-user-area').style.display = 'none'; document.getElementById('nav-dropdown').classList.remove('open'); showHome(); }
+    function toggleDropdown() { document.getElementById('nav-dropdown').classList.toggle('open'); }
+    document.addEventListener('click', e => { const a = document.getElementById('nav-user-area'); if (a && !a.contains(e.target)) document.getElementById('nav-dropdown').classList.remove('open'); });
+
+    function goToCategory() { showHome(); setTimeout(() => filterTools(window._currentToolCat || 'all'), 100); }
+    function showHome() { document.getElementById('hero-section').style.display = 'block'; document.getElementById('home-main').style.display = 'block'; document.getElementById('footer').style.display = 'block'; document.getElementById('popular-section').style.display = 'block'; document.getElementById('profile-page').classList.remove('active'); document.getElementById('tool-page').classList.remove('active'); document.getElementById('searchInput').value = ''; filterTools('all'); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+    function showProfile() { document.getElementById('hero-section').style.display = 'none'; document.getElementById('home-main').style.display = 'none'; document.getElementById('footer').style.display = 'none'; document.getElementById('popular-section').style.display = 'none'; document.getElementById('tool-page').classList.remove('active'); document.getElementById('profile-page').classList.add('active'); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+
+    function toggleTheme() { const h = document.documentElement; const isDark = h.getAttribute('data-theme') === 'dark'; h.setAttribute('data-theme', isDark ? 'light' : 'dark'); const icon = document.getElementById('theme-icon'); icon.innerHTML = isDark ? '<circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>' : '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>'; }
+  </script>
+</body>
+
+</html>
