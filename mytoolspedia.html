@@ -515,7 +515,12 @@
     .hero {
       background: var(--surface);
       border-bottom: 1px solid var(--border);
-      padding: 56px 28px 48px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 28px 60px;
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -575,6 +580,75 @@
       justify-content: center;
       gap: 36px;
       flex-wrap: wrap;
+    }
+
+    .hero-cta-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 32px;
+    }
+
+    .hero-cta-btn {
+      padding: 13px 28px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      border: none;
+      background: var(--primary);
+      color: white;
+      box-shadow: 0 4px 16px rgba(37, 99, 235, 0.3);
+      transition: all 0.2s;
+    }
+
+    .hero-cta-btn:hover {
+      background: #1d4ed8;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+    }
+
+    .hero-cta-ghost {
+      background: transparent !important;
+      border: 2px solid var(--primary) !important;
+      color: var(--primary) !important;
+      box-shadow: none !important;
+    }
+
+    .hero-cta-ghost:hover {
+      background: var(--bg2) !important;
+    }
+
+    .hero-scroll-down {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      margin-top: 44px;
+      color: var(--text3);
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      animation: bounceDown 2s ease-in-out infinite;
+      transition: color 0.2s;
+    }
+
+    .hero-scroll-down:hover {
+      color: var(--primary);
+    }
+
+    @keyframes bounceDown {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(7px);
+      }
     }
 
     .stat {
@@ -1463,6 +1537,92 @@
         grid-template-columns: 1fr;
       }
     }
+
+    /* ── Auth Validation ───────────────────────────────────────────────── */
+    .field-error {
+      display: block;
+      color: #ef4444;
+      font-size: 11.5px;
+      margin-top: 4px;
+      min-height: 16px;
+    }
+
+    .form-input.error {
+      border-color: #ef4444 !important;
+      background: #fff5f5;
+    }
+
+    .form-input.success {
+      border-color: #22c55e !important;
+    }
+
+    .form-alert {
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 14px;
+    }
+
+    .form-alert.error {
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      color: #dc2626;
+    }
+
+    .form-alert.success {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      color: #16a34a;
+    }
+
+    .input-pw-wrap {
+      position: relative;
+    }
+
+    .input-pw-wrap .form-input {
+      padding-right: 42px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .pw-toggle {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 15px;
+      padding: 0;
+      opacity: 0.6;
+    }
+
+    .pw-toggle:hover {
+      opacity: 1;
+    }
+
+    .pw-strength-bar {
+      height: 4px;
+      background: var(--border);
+      border-radius: 4px;
+      margin-top: 8px;
+      overflow: hidden;
+    }
+
+    .pw-strength-fill {
+      height: 100%;
+      border-radius: 4px;
+      transition: width 0.3s, background 0.3s;
+    }
+
+    .pw-strength-label {
+      font-size: 11px;
+      font-weight: 600;
+      margin-top: 4px;
+      display: block;
+    }
   </style>
 </head>
 
@@ -1531,13 +1691,25 @@
       </div>
       <h2>Welcome back</h2>
       <p class="modal-sub">Login to your account</p>
-      <div class="form-group"><label class="form-label">Email</label><input class="form-input" type="email"
-          id="signin-email" placeholder="you@example.com"></div>
-      <div class="form-group"><label class="form-label">Password</label><input class="form-input" type="password"
-          id="signin-password" placeholder="Your password"></div>
-      <button class="btn-full" onclick="doSignIn()">Login</button>
+      <div id="signin-alert" class="form-alert" style="display:none"></div>
+      <div class="form-group">
+        <label class="form-label">Email</label>
+        <input class="form-input" type="email" id="signin-email" placeholder="you@example.com"
+          oninput="clearFieldError('signin-email')">
+        <span class="field-error" id="err-signin-email"></span>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Password</label>
+        <div class="input-pw-wrap">
+          <input class="form-input" type="password" id="signin-password" placeholder="Your password"
+            oninput="clearFieldError('signin-password')" onkeydown="if(event.key==='Enter')doSignIn()">
+          <button type="button" class="pw-toggle" onclick="togglePw('signin-password',this)">👁</button>
+        </div>
+        <span class="field-error" id="err-signin-password"></span>
+      </div>
+      <button class="btn-full" id="signin-btn" onclick="doSignIn()">Login</button>
       <div class="modal-divider">or</div>
-      <button class="btn-google"><svg width="16" height="16" viewBox="0 0 48 48">
+      <button class="btn-google" onclick="doGoogleAuth()"><svg width="16" height="16" viewBox="0 0 48 48">
           <path fill="#EA4335"
             d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z" />
           <path fill="#4285F4"
@@ -1563,19 +1735,42 @@
       </div>
       <h2>Create account</h2>
       <p class="modal-sub">Free forever. No credit card needed.</p>
+      <div id="signup-alert" class="form-alert" style="display:none"></div>
       <div class="form-row">
-        <div class="form-group"><label class="form-label">First name</label><input class="form-input" type="text"
-            id="signup-first" placeholder="John"></div>
-        <div class="form-group"><label class="form-label">Last name</label><input class="form-input" type="text"
-            id="signup-last" placeholder="Doe"></div>
+        <div class="form-group">
+          <label class="form-label">First name</label>
+          <input class="form-input" type="text" id="signup-first" placeholder="John"
+            oninput="clearFieldError('signup-first')">
+          <span class="field-error" id="err-signup-first"></span>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Last name</label>
+          <input class="form-input" type="text" id="signup-last" placeholder="Doe">
+        </div>
       </div>
-      <div class="form-group"><label class="form-label">Email</label><input class="form-input" type="email"
-          id="signup-email" placeholder="you@example.com"></div>
-      <div class="form-group"><label class="form-label">Password</label><input class="form-input" type="password"
-          id="signup-password" placeholder="Min. 8 characters"></div>
-      <button class="btn-full" onclick="doSignUp()">Create Account</button>
+      <div class="form-group">
+        <label class="form-label">Email</label>
+        <input class="form-input" type="email" id="signup-email" placeholder="you@example.com"
+          oninput="clearFieldError('signup-email')">
+        <span class="field-error" id="err-signup-email"></span>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Password</label>
+        <div class="input-pw-wrap">
+          <input class="form-input" type="password" id="signup-password" placeholder="Min. 8 characters"
+            oninput="checkPwStrength(this.value);clearFieldError('signup-password')"
+            onkeydown="if(event.key==='Enter')doSignUp()">
+          <button type="button" class="pw-toggle" onclick="togglePw('signup-password',this)">👁</button>
+        </div>
+        <span class="field-error" id="err-signup-password"></span>
+        <div class="pw-strength-bar" id="pw-strength-bar" style="display:none">
+          <div class="pw-strength-fill" id="pw-strength-fill"></div>
+        </div>
+        <span class="pw-strength-label" id="pw-strength-label"></span>
+      </div>
+      <button class="btn-full" id="signup-btn" onclick="doSignUp()">Create Account</button>
       <div class="modal-divider">or</div>
-      <button class="btn-google"><svg width="16" height="16" viewBox="0 0 48 48">
+      <button class="btn-google" onclick="doGoogleAuth()"><svg width="16" height="16" viewBox="0 0 48 48">
           <path fill="#EA4335"
             d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z" />
           <path fill="#4285F4"
@@ -1708,6 +1903,19 @@
         <div class="stat-label">Place for All Tools</div>
       </div>
     </div>
+    <div class="hero-cta-row">
+      <button class="hero-cta-btn"
+        onclick="document.getElementById('popular-section').scrollIntoView({behavior:'smooth'})">Explore Tools</button>
+      <button class="hero-cta-btn hero-cta-ghost"
+        onclick="document.getElementById('home-main').scrollIntoView({behavior:'smooth'})">Browse All 150+</button>
+    </div>
+    <div class="hero-scroll-down"
+      onclick="document.getElementById('popular-section').scrollIntoView({behavior:'smooth'})">
+      <span>Scroll to explore</span>
+      <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path d="M12 5v14M5 12l7 7 7-7" />
+      </svg>
+    </div>
   </section>
 
 
@@ -1812,6 +2020,7 @@
     </div>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
   <script>
     const catMeta = {
       content: { label: 'Content Tools', icon: '✍️', ca: '#EEF2FF', cb: '#2563EB', cc: '#2563EB', bg: '#EEF2FF', badge: '#3B82F6', badgeBg: '#EEF2FF' },
@@ -3012,14 +3221,192 @@ ${input}`
     function copyOutput(id) { const el = document.getElementById(id); navigator.clipboard.writeText(el.textContent).then(() => { const orig = el.style.borderColor; el.style.borderColor = 'var(--primary)'; setTimeout(() => el.style.borderColor = orig, 1000); }); }
 
     let currentUser = null;
+
+    // ─── Supabase Auth ────────────────────────────────────────────────────────────
+    const _sb = supabase.createClient('https://apdjcjcexbdhmdqrmqee.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFwZGpjamNleGJkaG1kcXJtcWVlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyNDI5MTgsImV4cCI6MjA4ODgxODkxOH0.yxfXbgQUp1UW7WZwvlaSjyFu_FcUwAner_JxUKFHbxw');
+
+    // Restore session on load
+    _sb.auth.getSession().then(async ({ data }) => {
+      if (data.session) {
+        const u = data.session.user;
+        const meta = u.user_metadata || {};
+        currentUser = {
+          name: ((meta.first_name || '') + ' ' + (meta.last_name || '')).trim() || u.email.split('@')[0],
+          email: u.email,
+          id: u.id
+        };
+        loginSuccess();
+      }
+    });
+
+    // Auth state listener
+    _sb.auth.onAuthStateChange(async (event, session) => {
+      if ((event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED' || event === 'INITIAL_SESSION') && session) {
+        const u = session.user;
+        const meta = u.user_metadata || {};
+        const name = ((meta.full_name || meta.name || '')).trim()
+          || ((meta.first_name || '') + ' ' + (meta.last_name || '')).trim()
+          || u.email.split('@')[0];
+        currentUser = { name, email: u.email, id: u.id };
+        loginSuccess();
+        // Close any open modals after OAuth redirect
+        document.querySelectorAll('.modal-overlay.open').forEach(m => m.classList.remove('open'));
+        document.body.style.overflow = '';
+      } else if (event === 'SIGNED_OUT') {
+        currentUser = null;
+        document.getElementById('nav-auth-btns').style.display = 'flex';
+        document.getElementById('nav-user-area').style.display = 'none';
+      }
+    });
     function openModal(t) { document.getElementById(t + '-modal').classList.add('open'); document.body.style.overflow = 'hidden'; }
     function closeModal(t) { document.getElementById(t + '-modal').classList.remove('open'); document.body.style.overflow = ''; }
     function switchModal(a, b) { closeModal(a); setTimeout(() => openModal(b), 200); }
     document.querySelectorAll('.modal-overlay').forEach(el => { el.addEventListener('click', e => { if (e.target === el) { el.classList.remove('open'); document.body.style.overflow = ''; } }); });
-    function doSignIn() { const email = document.getElementById('signin-email').value.trim(); const pass = document.getElementById('signin-password').value; if (!email || !pass) { alert('Fill in all fields.'); return; } currentUser = { name: email.split('@')[0].replace(/\b\w/g, c => c.toUpperCase()), email }; loginSuccess(); closeModal('signin'); }
-    function doSignUp() { const first = document.getElementById('signup-first').value.trim(); const email = document.getElementById('signup-email').value.trim(); const pass = document.getElementById('signup-password').value; if (!first || !email || !pass) { alert('Fill in required fields.'); return; } const last = document.getElementById('signup-last').value.trim(); currentUser = { name: `${first} ${last}`.trim(), email }; loginSuccess(); closeModal('signup'); }
+    // ── Validation Helpers ───────────────────────────────────────────────────────
+    function setFieldError(id, msg) {
+      const el = document.getElementById(id);
+      if (el) { el.classList.add('error'); el.classList.remove('success'); }
+      const err = document.getElementById('err-' + id);
+      if (err) err.textContent = msg;
+    }
+    function setFieldOk(id) {
+      const el = document.getElementById(id);
+      if (el) { el.classList.remove('error'); el.classList.add('success'); }
+      const err = document.getElementById('err-' + id);
+      if (err) err.textContent = '';
+    }
+    function clearFieldError(id) {
+      const el = document.getElementById(id);
+      if (el) { el.classList.remove('error', 'success'); }
+      const err = document.getElementById('err-' + id);
+      if (err) err.textContent = '';
+    }
+    function showAlert(modalId, msg, type = 'error') {
+      const el = document.getElementById(modalId + '-alert');
+      if (!el) return;
+      el.textContent = msg;
+      el.className = 'form-alert ' + type;
+      el.style.display = 'block';
+      if (type === 'success') setTimeout(() => { el.style.display = 'none'; }, 4000);
+    }
+    function clearAlert(modalId) {
+      const el = document.getElementById(modalId + '-alert');
+      if (el) { el.style.display = 'none'; el.textContent = ''; }
+    }
+    function togglePw(inputId, btn) {
+      const inp = document.getElementById(inputId);
+      if (!inp) return;
+      inp.type = inp.type === 'password' ? 'text' : 'password';
+      btn.textContent = inp.type === 'password' ? '👁' : '🙈';
+    }
+    function checkPwStrength(val) {
+      const bar = document.getElementById('pw-strength-bar');
+      const fill = document.getElementById('pw-strength-fill');
+      const label = document.getElementById('pw-strength-label');
+      if (!bar) return;
+      if (!val) { bar.style.display = 'none'; label.textContent = ''; return; }
+      bar.style.display = 'block';
+      let score = 0;
+      if (val.length >= 8) score++;
+      if (val.length >= 12) score++;
+      if (/[A-Z]/.test(val)) score++;
+      if (/[0-9]/.test(val)) score++;
+      if (/[^A-Za-z0-9]/.test(val)) score++;
+      const levels = [
+        { w: '20%', bg: '#ef4444', txt: 'Very weak' },
+        { w: '40%', bg: '#f97316', txt: 'Weak' },
+        { w: '60%', bg: '#eab308', txt: 'Fair' },
+        { w: '80%', bg: '#3b82f6', txt: 'Good' },
+        { w: '100%', bg: '#22c55e', txt: 'Strong' },
+      ];
+      const l = levels[Math.min(score, 4)];
+      fill.style.width = l.w; fill.style.background = l.bg;
+      label.textContent = l.txt; label.style.color = l.bg;
+    }
+    function isValidEmail(e) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e); }
+
+    // ── Sign In ──────────────────────────────────────────────────────────────────
+    async function doSignIn() {
+      clearAlert('signin');
+      const email = document.getElementById('signin-email').value.trim();
+      const pass = document.getElementById('signin-password').value;
+      let valid = true;
+      if (!email) { setFieldError('signin-email', 'Email is required.'); valid = false; }
+      else if (!isValidEmail(email)) { setFieldError('signin-email', 'Enter a valid email address.'); valid = false; }
+      else setFieldOk('signin-email');
+      if (!pass) { setFieldError('signin-password', 'Password is required.'); valid = false; }
+      else setFieldOk('signin-password');
+      if (!valid) return;
+      const btn = document.getElementById('signin-btn');
+      btn.textContent = 'Signing in...'; btn.disabled = true;
+      const { data, error } = await _sb.auth.signInWithPassword({ email, password: pass });
+      btn.textContent = 'Login'; btn.disabled = false;
+      if (error) {
+        if (error.message.toLowerCase().includes('invalid') || error.message.toLowerCase().includes('credentials')) {
+          showAlert('signin', 'Incorrect email or password. Please try again.');
+        } else {
+          showAlert('signin', error.message);
+        }
+        return;
+      }
+      closeModal('signin');
+    }
+    // ── Sign Up ──────────────────────────────────────────────────────────────────
+    async function doSignUp() {
+      clearAlert('signup');
+      const first = document.getElementById('signup-first').value.trim();
+      const last = document.getElementById('signup-last').value.trim();
+      const email = document.getElementById('signup-email').value.trim();
+      const pass = document.getElementById('signup-password').value;
+      let valid = true;
+      if (!first) { setFieldError('signup-first', 'First name is required.'); valid = false; }
+      else setFieldOk('signup-first');
+      if (!email) { setFieldError('signup-email', 'Email is required.'); valid = false; }
+      else if (!isValidEmail(email)) { setFieldError('signup-email', 'Enter a valid email address.'); valid = false; }
+      else setFieldOk('signup-email');
+      if (!pass) { setFieldError('signup-password', 'Password is required.'); valid = false; }
+      else if (pass.length < 8) { setFieldError('signup-password', 'Password must be at least 8 characters.'); valid = false; }
+      else setFieldOk('signup-password');
+      if (!valid) return;
+      const btn = document.getElementById('signup-btn');
+      btn.textContent = 'Creating account...'; btn.disabled = true;
+      const { data, error } = await _sb.auth.signUp({
+        email, password: pass,
+        options: { data: { first_name: first, last_name: last } }
+      });
+      btn.textContent = 'Create Account'; btn.disabled = false;
+      if (error) {
+        if (error.message.toLowerCase().includes('already registered') || error.message.toLowerCase().includes('already in use')) {
+          setFieldError('signup-email', 'This email is already registered.');
+          showAlert('signup', 'This email is already in use. Try signing in instead.');
+        } else {
+          showAlert('signup', error.message);
+        }
+        return;
+      }
+      // Clear form fields
+      ['signup-first', 'signup-last', 'signup-email', 'signup-password'].forEach(id => {
+        const el = document.getElementById(id); if (el) el.value = '';
+        clearFieldError(id);
+      });
+      document.getElementById('pw-strength-bar').style.display = 'none';
+      document.getElementById('pw-strength-label').textContent = '';
+      closeModal('signup');
+    }
+
+    // ── Google OAuth ─────────────────────────────────────────────────────────────
+    async function doGoogleAuth() {
+      const { error } = await _sb.auth.signInWithOAuth({
+        provider: 'google',
+        options: {
+          redirectTo: 'https://mytoolspedia.vercel.app',
+          skipBrowserRedirect: false
+        }
+      });
+      if (error) showAlert('signin', error.message);
+    }
     function loginSuccess() { document.getElementById('nav-auth-btns').style.display = 'none'; document.getElementById('nav-user-area').style.display = 'flex'; const ini = currentUser.name.charAt(0).toUpperCase(); document.getElementById('nav-avatar').textContent = ini; document.getElementById('dropdown-name').textContent = currentUser.name; document.getElementById('dropdown-email').textContent = currentUser.email; document.getElementById('profile-avatar-lg').textContent = ini; document.getElementById('profile-hero-name').textContent = currentUser.name; document.getElementById('profile-hero-email').textContent = currentUser.email; document.getElementById('pf-name').textContent = currentUser.name; document.getElementById('pf-email').textContent = currentUser.email; }
-    function signOut() { currentUser = null; document.getElementById('nav-auth-btns').style.display = 'flex'; document.getElementById('nav-user-area').style.display = 'none'; document.getElementById('nav-dropdown').classList.remove('open'); showHome(); }
+    async function signOut() { await _sb.auth.signOut(); currentUser = null; document.getElementById('nav-auth-btns').style.display = 'flex'; document.getElementById('nav-user-area').style.display = 'none'; document.getElementById('nav-dropdown').classList.remove('open'); showHome(); }
     function toggleDropdown() { document.getElementById('nav-dropdown').classList.toggle('open'); }
     document.addEventListener('click', e => { const a = document.getElementById('nav-user-area'); if (a && !a.contains(e.target)) document.getElementById('nav-dropdown').classList.remove('open'); });
 
