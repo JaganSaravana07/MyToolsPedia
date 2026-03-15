@@ -1490,28 +1490,129 @@
         grid-template-columns: 1fr 1fr;
         gap: 24px;
       }
+
+      .popular-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
 
-    @media (max-width: 640px) {
+    @media (max-width: 768px) {
+
+      /* NAV */
       .nav-inner {
         gap: 8px;
-        padding: 0 16px;
+        padding: 0 14px;
+        height: 56px;
+      }
+
+      .nav-search {
+        max-width: 240px;
+        min-width: 0;
+      }
+
+      .nav-search input {
+        font-size: 13px;
       }
 
       .btn-ghost {
         display: none;
       }
 
+      .btn-primary {
+        padding: 6px 12px;
+        font-size: 12px;
+      }
+
+      /* HERO */
       .hero {
-        padding: 40px 16px 36px;
+        padding: 50px 16px 36px;
+        min-height: auto;
+      }
+
+      .hero h1 {
+        font-size: clamp(24px, 6vw, 36px);
+        letter-spacing: -1px;
+      }
+
+      .hero p {
+        font-size: 14px;
+        margin-bottom: 24px;
       }
 
       .hero-stats {
-        gap: 18px;
+        gap: 14px;
       }
 
-      .page-main {
-        padding: 24px 16px 56px;
+      .hero-cta-row {
+        gap: 8px;
+      }
+
+      .hero-cta-btn {
+        padding: 11px 20px;
+        font-size: 14px;
+      }
+
+      /* POPULAR SECTION */
+      .popular-section {
+        padding: 28px 0 8px;
+      }
+
+      .popular-tabs {
+        gap: 6px;
+        padding: 0 4px;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        padding-bottom: 6px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+
+      .popular-tabs::-webkit-scrollbar {
+        display: none;
+      }
+
+      .popular-tab {
+        white-space: nowrap;
+        padding: 7px 14px;
+        font-size: 12px;
+        flex-shrink: 0;
+      }
+
+      .popular-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+      }
+
+      .popular-card {
+        padding: 10px 12px;
+        gap: 10px;
+      }
+
+      .popular-card-name {
+        font-size: 12px;
+      }
+
+      /* TOOL GRID */
+      .filter-pills {
+        gap: 6px;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        padding-bottom: 6px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        justify-content: flex-start;
+      }
+
+      .filter-pills::-webkit-scrollbar {
+        display: none;
+      }
+
+      .filter-pill {
+        white-space: nowrap;
+        flex-shrink: 0;
+        padding: 7px 13px;
+        font-size: 12px;
       }
 
       .tool-grid {
@@ -1519,10 +1620,82 @@
         gap: 10px;
       }
 
+      .tool-card {
+        padding: 14px 12px;
+        gap: 8px;
+      }
+
+      .tool-card-name {
+        font-size: 13px;
+      }
+
+      /* TOOL WORKSPACE */
+      .tool-workspace {
+        padding: 18px 14px;
+      }
+
       .ws-row {
         grid-template-columns: 1fr;
       }
 
+      .ws-actions {
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .ws-btn {
+        padding: 9px 16px;
+        font-size: 12px;
+      }
+
+      .ws-textarea {
+        min-height: 120px;
+        font-size: 13px;
+      }
+
+      .ws-input {
+        font-size: 13px;
+      }
+
+      .ws-stats {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+      }
+
+      .ws-stat {
+        padding: 10px 6px;
+      }
+
+      .ws-stat-num {
+        font-size: 20px;
+      }
+
+      /* MODAL */
+      .modal {
+        padding: 24px 18px;
+        border-radius: 14px;
+        max-width: calc(100vw - 32px);
+      }
+
+      .modal h2 {
+        font-size: 18px;
+      }
+
+      /* TOOL PAGE */
+      .tool-header {
+        padding: 20px 14px 0;
+      }
+
+      .page-main {
+        padding: 20px 14px 48px;
+      }
+
+      /* PROFILE */
+      .profile-grid {
+        grid-template-columns: 1fr;
+      }
+
+      /* FOOTER */
       .footer-top {
         grid-template-columns: 1fr 1fr;
         gap: 20px;
@@ -1531,10 +1704,62 @@
       .footer-bottom {
         flex-direction: column;
         text-align: center;
+        gap: 8px;
+      }
+    }
+
+    @media (max-width: 480px) {
+
+      /* NAV — show logo only + compact search + auth */
+      .nav-search {
+        max-width: 160px;
       }
 
-      .profile-grid {
+      .nav-search input::placeholder {
+        color: transparent;
+      }
+
+      /* HERO */
+      .hero h1 {
+        font-size: 26px;
+      }
+
+      .hero-stats {
+        gap: 10px;
+      }
+
+      .hero-stat-num {
+        font-size: 22px;
+      }
+
+      /* TOOL GRID — 1 col on very small screens */
+      .tool-grid {
         grid-template-columns: 1fr;
+      }
+
+      .popular-grid {
+        grid-template-columns: 1fr;
+      }
+
+      /* WORKSPACE */
+      .tool-workspace {
+        padding: 14px 12px;
+        border-radius: 12px;
+      }
+
+      .ws-stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      /* MODAL */
+      .modal {
+        padding: 20px 16px;
+      }
+
+      /* FOOTER */
+      .footer-top {
+        grid-template-columns: 1fr;
+        gap: 20px;
       }
     }
 
@@ -2408,6 +2633,262 @@
       if (textTransIds.includes(tool.id)) {
         ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Your Text</div><textarea class="ws-textarea" id="transform-input" placeholder="Type or paste your text here..."></textarea><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doTransform('${tool.id}')">Convert</button><button class="ws-btn ws-btn-ghost" onclick="document.getElementById('transform-input').value='';document.getElementById('transform-output').textContent='Result will appear here...'">Clear</button></div></div><div class="tool-workspace"><div class="ws-label">Result</div><div class="ws-output" id="transform-output">Result will appear here...</div><div class="ws-actions"><button class="ws-btn ws-btn-ghost" onclick="copyOutput('transform-output')">📋 Copy</button></div></div>`; return;
       }
+      // ── Word Combiner ─────────────────────────────────────────────────────────────
+      if (tool.id === 'word-combo') {
+        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Word List 1 (one per line)</div><textarea class="ws-textarea" id="wc1-input" placeholder="apple\nbanana\norange" style="min-height:100px;"></textarea><div class="ws-label" style="margin-top:12px;">Word List 2 (one per line)</div><textarea class="ws-textarea" id="wc2-input" placeholder="pie\njuice\ncake" style="min-height:100px;"></textarea><div class="ws-label" style="margin-top:12px;">Separator</div><input class="ws-input" id="wc-sep" value=" " placeholder="space, comma, hyphen..."><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doWordCombo()">Combine</button><button class="ws-btn ws-btn-ghost" onclick="document.getElementById('wc1-input').value='';document.getElementById('wc2-input').value='';document.getElementById('wc-combo-output').textContent=''">Clear</button></div></div><div class="tool-workspace"><div class="ws-label">Combined Words (<span id="wc-combo-count">0</span>)</div><div class="ws-output" id="wc-combo-output" style="white-space:pre-wrap;">Results will appear here...</div><div class="ws-actions"><button class="ws-btn ws-btn-ghost" onclick="copyOutput('wc-combo-output')">📋 Copy</button></div></div>`;
+        return;
+      }
+      // ── Readability Checker ───────────────────────────────────────────────────────
+      if (tool.id === 'readability') {
+        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Your Text</div><textarea class="ws-textarea" id="read-input" placeholder="Paste your content here to check readability..."></textarea><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doReadability()">Check Readability</button><button class="ws-btn ws-btn-ghost" onclick="document.getElementById('read-input').value='';document.getElementById('read-output').innerHTML=''">Clear</button></div></div><div class="tool-workspace"><div class="ws-label">Readability Analysis</div><div class="ws-output" id="read-output" style="min-height:120px;">Paste text and click Check Readability.</div></div>`;
+        return;
+      }
+      // ── Grammar Checker ───────────────────────────────────────────────────────────
+      if (tool.id === 'grammar') {
+        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Your Text</div><textarea class="ws-textarea" id="gram-input" placeholder="Type or paste text to check grammar..."></textarea><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doGrammarCheck()">Check Grammar</button><button class="ws-btn ws-btn-ghost" onclick="document.getElementById('gram-input').value='';document.getElementById('gram-output').innerHTML=''">Clear</button></div></div><div class="tool-workspace"><div class="ws-label">Grammar Analysis</div><div class="ws-output" id="gram-output" style="min-height:120px;line-height:1.8;">Results will appear here...</div></div>`;
+        return;
+      }
+      // ── Spell Checker ─────────────────────────────────────────────────────────────
+      if (tool.id === 'spell') {
+        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Your Text</div><textarea class="ws-textarea" id="spell-input" placeholder="Type or paste text to check spelling..."></textarea><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doSpellCheck()">Check Spelling</button><button class="ws-btn ws-btn-ghost" onclick="document.getElementById('spell-input').value='';document.getElementById('spell-output').innerHTML=''">Clear</button></div></div><div class="tool-workspace"><div class="ws-label">Spell Check Result</div><div class="ws-output" id="spell-output" style="min-height:120px;line-height:1.8;">Results will appear here...</div></div>`;
+        return;
+      }
+      // ── Text to PDF ───────────────────────────────────────────────────────────────
+      if (tool.id === 'txt-pdf') {
+        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Your Text</div><textarea class="ws-textarea" id="txtpdf-input" placeholder="Type or paste your text here..." style="min-height:200px;"></textarea><div class="ws-label" style="margin-top:12px;">Font Size</div><select class="ws-input" id="txtpdf-size" style="margin-top:6px;"><option value="10">Small (10px)</option><option value="12" selected>Normal (12px)</option><option value="14">Large (14px)</option><option value="16">Extra Large (16px)</option></select><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doTextToPdf()">Convert to PDF</button></div></div><div class="tool-workspace"><div class="ws-label">Status</div><div class="ws-output" id="txtpdf-status">Enter text and click Convert.</div><div class="ws-actions" style="margin-top:10px"><button class="ws-btn ws-btn-ghost" id="txtpdf-dl" style="display:none" onclick="triggerDownload('txtpdf-dl')">⬇️ Download PDF</button></div></div>`;
+        return;
+      }
+      // ── Image to Text (OCR) ───────────────────────────────────────────────────────
+      if (tool.id === 'img2text') {
+        ws.innerHTML = `<div class="tool-workspace">
+      <div class="ws-label">Upload Image</div>
+      <input type="file" id="ocr-img-input" accept="image/*" style="display:block;margin:6px 0 8px;font-size:13px;color:var(--text2);" onchange="onOcrImgSelected()">
+      <div id="ocr-img-fileinfo" style="display:none;padding:8px 12px;background:var(--bg2);border-radius:8px;font-size:13px;color:var(--text2);margin-bottom:10px;align-items:center;justify-content:space-between;gap:10px;">
+        <span id="ocr-img-filename" style="font-weight:600;"></span>
+        <button class="ws-btn ws-btn-ghost" style="padding:4px 10px;font-size:12px;" onclick="resetOcrImg()">✕ Remove</button>
+      </div>
+      <div style="font-size:12px;color:var(--text3);margin-bottom:10px;">Best results: clear text on plain background, good lighting</div>
+      <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;margin-bottom:14px;">
+        <input type="checkbox" id="ocr-ai-clean" checked>
+        <span>Auto-format extracted text <span style="color:var(--text3);font-size:11px;">(removes noise, improves structure)</span></span>
+      </label>
+      <div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doImageOCR()">Extract Text</button></div>
+    </div>
+    <div class="tool-workspace">
+      <div class="ws-label">Extracted Text</div>
+      <textarea class="ws-textarea" id="ocr-img-output" readonly placeholder="Extracted text will appear here..." style="min-height:200px;white-space:pre-wrap;"></textarea>
+      <div class="ws-actions">
+        <button class="ws-btn ws-btn-ghost" onclick="copyOutput('ocr-img-output')">📋 Copy</button>
+      </div>
+    </div>`;
+        return;
+      }
+      // ── IP Locator ────────────────────────────────────────────────────────────────
+      if (tool.id === 'ip-loc') {
+        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">IP Address (leave blank for your own IP)</div><input class="ws-input" id="iploc-input" placeholder="e.g. 8.8.8.8 or leave blank"><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doIpLocate()">Lookup IP</button></div></div><div class="tool-workspace"><div class="ws-label">IP Details</div><div class="ws-output" id="iploc-output" style="min-height:120px;">Enter an IP or click Lookup for your own.</div></div>`;
+        return;
+      }
+      // ── Crop Image ────────────────────────────────────────────────────────────────
+      if (tool.id === 'crop-img') {
+        ws.innerHTML = `<div class="tool-workspace">
+      <div class="ws-label">Upload Image</div>
+      <input type="file" id="crop-file" accept="image/*" style="display:block;margin:6px 0 8px;font-size:13px;color:var(--text2);" onchange="loadCropImage()">
+      <div id="crop-preview-wrap" style="display:none;">
+        <img id="crop-preview-img" style="max-width:100%;max-height:260px;border-radius:8px;border:1.5px solid var(--border);display:block;margin-bottom:8px;">
+        <div id="crop-coords" style="font-size:12px;color:var(--text3);margin-bottom:10px;"></div>
+        <div class="ws-label">Crop Dimensions</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px;">
+          <div><div class="ws-label">X (left)</div><input class="ws-input" type="number" id="crop-x" value="0" min="0"></div>
+          <div><div class="ws-label">Y (top)</div><input class="ws-input" type="number" id="crop-y" value="0" min="0"></div>
+          <div><div class="ws-label">Width</div><input class="ws-input" type="number" id="crop-w" value="200" min="1"></div>
+          <div><div class="ws-label">Height</div><input class="ws-input" type="number" id="crop-h" value="200" min="1"></div>
+        </div>
+        <div class="ws-actions">
+          <button class="ws-btn ws-btn-primary" onclick="doCropImage()">✂️ Crop</button>
+          <button class="ws-btn ws-btn-ghost" onclick="resetCropTool()">🗑 Remove Image</button>
+        </div>
+      </div>
+    </div>
+    <div class="tool-workspace">
+      <div class="ws-label">Cropped Result</div>
+      <div id="crop-output" style="min-height:120px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--text3);">Upload an image to get started.</div>
+    </div>`;
+        _cropImg = null;
+        return;
+      }
+      // ── Favicon Generator ─────────────────────────────────────────────────────────
+      if (tool.id === 'favicon') {
+        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Upload Image (PNG recommended)</div><input type="file" id="fav-file" accept="image/*" style="display:block;margin:6px 0 14px;font-size:13px;color:var(--text2);"><div class="ws-label">Or enter text/emoji for text favicon</div><input class="ws-input" id="fav-text" placeholder="e.g. MT or 🔧"><div class="ws-label" style="margin-top:12px;">Background Color</div><input type="color" id="fav-bg" value="#2563EB" style="margin:6px 0 14px;width:60px;height:36px;border:none;border-radius:6px;cursor:pointer;"><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doFavicon()">Generate Favicon</button></div></div><div class="tool-workspace"><div class="ws-label">Preview & Download</div><div id="fav-output" style="min-height:120px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:var(--text3);">Generate a favicon to see preview here.</div></div>`;
+        return;
+      }
+      // ── DNS Records Checker ───────────────────────────────────────────────────────
+      if (tool.id === 'dns-check') {
+        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Domain Name</div><input class="ws-input" id="dns-input" placeholder="e.g. google.com"><div class="ws-label" style="margin-top:12px;">Record Type</div><select class="ws-input" id="dns-type" style="margin-top:6px;"><option value="A">A (IPv4)</option><option value="AAAA">AAAA (IPv6)</option><option value="MX">MX (Mail)</option><option value="TXT">TXT</option><option value="NS">NS (Nameservers)</option><option value="CNAME">CNAME</option></select><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doDnsCheck()">Lookup DNS</button></div></div><div class="tool-workspace"><div class="ws-label">DNS Records</div><div class="ws-output" id="dns-output" style="min-height:120px;font-family:monospace;font-size:13px;">Enter a domain and click Lookup.</div></div>`;
+        return;
+      }
+      // ── Broken Links Checker ──────────────────────────────────────────────────────
+      if (tool.id === 'broken-links') {
+        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Website URL</div><input class="ws-input" id="bl-input" placeholder="https://example.com"><div style="font-size:12px;color:var(--text3);margin-top:6px;">Due to browser security (CORS), we check links you paste manually below.</div><div class="ws-label" style="margin-top:14px;">Or paste URLs to check (one per line)</div><textarea class="ws-textarea" id="bl-urls" placeholder="https://example.com/page1&#10;https://example.com/page2" style="min-height:100px;"></textarea><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doCheckLinks()">Check Links</button></div></div><div class="tool-workspace"><div class="ws-label">Results</div><div class="ws-output" id="bl-output" style="min-height:120px;">Enter URLs and click Check Links.</div></div>`;
+        return;
+      }
+      // ── Link Extractor ────────────────────────────────────────────────────────────
+      if (tool.id === 'link-extract') {
+        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Paste HTML or Text with Links</div><textarea class="ws-textarea" id="le-input" placeholder="Paste your HTML source or text containing links here..."></textarea><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doLinkExtract()">Extract Links</button><button class="ws-btn ws-btn-ghost" onclick="document.getElementById('le-input').value='';document.getElementById('le-output').innerHTML=''">Clear</button></div></div><div class="tool-workspace"><div class="ws-label">Extracted Links (<span id="le-count">0</span>)</div><div class="ws-output" id="le-output" style="min-height:120px;">Results will appear here...</div><div class="ws-actions"><button class="ws-btn ws-btn-ghost" onclick="copyOutput('le-output')">📋 Copy</button></div></div>`;
+        return;
+      }
+      // ── Google Index Checker ──────────────────────────────────────────────────────
+      if (tool.id === 'g-index-check') {
+        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">URL to Check</div><input class="ws-input" id="gic-input" placeholder="https://example.com/page"><div style="font-size:12px;color:var(--text3);margin-top:6px;">Opens Google's "site:" search so you can verify indexation.</div><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doGoogleIndexCheck()">Check Index</button></div></div><div class="tool-workspace"><div class="ws-label">Result</div><div class="ws-output" id="gic-output" style="min-height:80px;">Enter a URL and click Check Index.</div></div>`;
+        return;
+      }
+      // ── SEO Score Checker ─────────────────────────────────────────────────────────
+      if (tool.id === 'seo-score') {
+        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Paste Page HTML or Content</div><textarea class="ws-textarea" id="seo-input" placeholder="Paste your full page HTML or article content here..." style="min-height:180px;"></textarea><div class="ws-label" style="margin-top:12px;">Target Keyword</div><input class="ws-input" id="seo-kw" placeholder="e.g. digital marketing"><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doSeoScore()">Analyze SEO</button></div></div><div class="tool-workspace"><div class="ws-label">SEO Analysis</div><div id="seo-output" class="ws-output" style="min-height:140px;">Paste content and click Analyze.</div></div>`;
+        return;
+      }
+      // ── URL Decoder (separate from encoder) ──────────────────────────────────────
+      if (tool.id === 'url-dec') {
+        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Encoded URL</div><textarea class="ws-textarea" id="urldec-input" placeholder="Paste encoded URL here..."></textarea><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doUrlDec()">Decode</button><button class="ws-btn ws-btn-ghost" onclick="document.getElementById('urldec-input').value='';document.getElementById('urldec-output').textContent=''">Clear</button></div></div><div class="tool-workspace"><div class="ws-label">Decoded Result</div><div class="ws-output" id="urldec-output">Result will appear here...</div><div class="ws-actions"><button class="ws-btn ws-btn-ghost" onclick="copyOutput('urldec-output')">📋 Copy</button></div></div>`;
+        return;
+      }
+      // ── HTML Decoder ──────────────────────────────────────────────────────────────
+      if (tool.id === 'html-dec') {
+        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Encoded HTML</div><textarea class="ws-textarea" id="htmldec-input" placeholder="Paste encoded HTML entities here..."></textarea><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doHtmlDec()">Decode</button></div></div><div class="tool-workspace"><div class="ws-label">Decoded Result</div><div class="ws-output" id="htmldec-output">Result will appear here...</div><div class="ws-actions"><button class="ws-btn ws-btn-ghost" onclick="copyOutput('htmldec-output')">📋 Copy</button></div></div>`;
+        return;
+      }
+      // ── XML Sitemap Generator ─────────────────────────────────────────────────────
+      if (tool.id === 'xml-sitemap') {
+        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Domain (e.g. https://example.com)</div><input class="ws-input" id="sm-domain" placeholder="https://yoursite.com"><div class="ws-label" style="margin-top:12px;">URLs / Paths (one per line)</div><textarea class="ws-textarea" id="sm-urls" placeholder="/&#10;/about&#10;/contact&#10;/blog&#10;/blog/post-1" style="min-height:140px;"></textarea><div class="ws-label" style="margin-top:12px;">Change Frequency</div><select class="ws-input" id="sm-freq" style="margin-top:6px;"><option value="daily">Daily</option><option value="weekly" selected>Weekly</option><option value="monthly">Monthly</option></select><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doSitemap()">Generate Sitemap</button></div></div><div class="tool-workspace"><div class="ws-label">XML Sitemap</div><textarea class="ws-textarea" id="sm-output" readonly placeholder="Sitemap XML will appear here..." style="min-height:200px;font-family:monospace;font-size:12px;"></textarea><div class="ws-actions"><button class="ws-btn ws-btn-ghost" onclick="copySitemap()">📋 Copy XML</button><button class="ws-btn ws-btn-ghost" onclick="downloadSitemap()">⬇️ Download</button></div></div>`;
+        return;
+      }
+      // ── Backlink Maker ────────────────────────────────────────────────────────────
+      if (tool.id === 'backlink-make') {
+        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Your Website URL</div><input class="ws-input" id="bm-url" placeholder="https://yoursite.com"><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doBacklinkMaker()">Generate Backlink Sites</button></div></div><div class="tool-workspace"><div class="ws-label">High Authority Sites to Submit To</div><div class="ws-output" id="bm-output" style="min-height:200px;">Enter your URL to see submission opportunities.</div></div>`;
+        return;
+      }
+      // ── Meta Description Generator (local fallback) ───────────────────────────────
+      // ── Page Comparison ───────────────────────────────────────────────────────────
+      if (tool.id === 'page-compare') {
+        ws.innerHTML = `<div class="tool-workspace"><div class="ws-row"><div><div class="ws-label">Page 1 Content / HTML</div><textarea class="ws-textarea" id="pc-a" placeholder="Paste content of page 1..." style="min-height:160px;"></textarea></div><div><div class="ws-label">Page 2 Content / HTML</div><textarea class="ws-textarea" id="pc-b" placeholder="Paste content of page 2..." style="min-height:160px;"></textarea></div></div><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doPageCompare()">Compare Pages</button></div></div><div class="tool-workspace"><div class="ws-label">Comparison Report</div><div class="ws-output" id="pc-output" style="min-height:120px;">Paste both pages and click Compare.</div></div>`;
+        return;
+      }
+      // ── Code to Text Ratio ────────────────────────────────────────────────────────
+      if (tool.id === 'code-text') {
+        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Paste HTML Source Code</div><textarea class="ws-textarea" id="ctr-input" placeholder="Paste full HTML source of your page here..." style="min-height:200px;font-family:monospace;font-size:13px;"></textarea><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doCodeTextRatio()">Analyze</button></div></div><div class="tool-workspace"><div class="ws-label">Analysis</div><div class="ws-output" id="ctr-output" style="min-height:120px;">Paste HTML and click Analyze.</div></div>`;
+        return;
+      }
+
+      // ── QR Code Scanner ───────────────────────────────────────────────────────────
+      if (tool.id === 'qr-scan') {
+        ws.innerHTML = `<div class="tool-workspace">
+      <div class="ws-label">Upload QR Code Image</div>
+      <input type="file" id="qrscan-input" accept="image/*" style="display:block;margin:6px 0 8px;font-size:13px;color:var(--text2);" onchange="onQrScanSelected()">
+      <div id="qrscan-fileinfo" style="display:none;padding:8px 12px;background:var(--bg2);border-radius:8px;font-size:13px;color:var(--text2);margin-bottom:10px;align-items:center;justify-content:space-between;gap:10px;">
+        <span id="qrscan-filename" style="font-weight:600;"></span>
+        <button class="ws-btn ws-btn-ghost" style="padding:4px 10px;font-size:12px;" onclick="resetQrScan()">✕ Remove</button>
+      </div>
+      <div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doQRScan()">Scan QR Code</button></div>
+    </div>
+    <div class="tool-workspace">
+      <div class="ws-label">Decoded Content</div>
+      <textarea class="ws-textarea" id="qrscan-output" readonly placeholder="Upload a QR code image to decode it." style="min-height:80px;word-break:break-all;"></textarea>
+      <div class="ws-actions"><button class="ws-btn ws-btn-ghost" onclick="copyOutput('qrscan-output')">📋 Copy</button></div>
+    </div>`;
+        return;
+      }
+      // ── Random Word Generator ─────────────────────────────────────────────────────
+      if (tool.id === 'rand-word') {
+        ws.innerHTML = `<div class="tool-workspace">
+      <div class="ws-label">Number of Words</div>
+      <input class="ws-input" type="number" id="rw-count" value="10" min="1" max="1000" placeholder="e.g. 10"
+        oninput="
+          const v = parseInt(this.value);
+          const err = document.getElementById('rw-count-err');
+          if (v > 1000) {
+            this.value = 1000;
+            err.style.display = 'block';
+            setTimeout(() => err.style.display = 'none', 2500);
+          } else {
+            err.style.display = 'none';
+          }
+        "
+        onkeydown="if(parseInt(this.value) >= 1000 && event.key !== 'Backspace' && event.key !== 'Delete' && event.key !== 'ArrowLeft' && event.key !== 'ArrowRight' && !isNaN(event.key)) event.preventDefault();"
+      >
+      <div id="rw-count-err" style="display:none;margin-top:6px;padding:7px 12px;background:#FEF2F2;border:1px solid #FECACA;border-radius:8px;font-size:12px;color:#DC2626;font-weight:600;">
+        ⚠️ Maximum is 1000 words. Input has been capped.
+      </div>
+      <div style="font-size:12px;color:var(--text3);margin-top:4px;">Maximum: 1000 words</div>
+      <div class="ws-label" style="margin-top:12px;">Type</div>
+      <select class="ws-input" id="rw-type" style="margin-top:6px;">
+        <option value="any">Any</option>
+        <option value="noun">Nouns</option>
+        <option value="verb">Verbs</option>
+        <option value="adj">Adjectives</option>
+      </select>
+      <div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doRandWord()">Generate</button></div>
+    </div>
+    <div class="tool-workspace">
+      <div class="ws-label">Random Words <span id="rw-count-display" style="color:var(--text3);font-size:12px;font-weight:400;"></span></div>
+      <div class="ws-output" id="rw-output" style="min-height:80px;white-space:pre-wrap;word-break:break-word;">Click Generate to get random words.</div>
+      <div class="ws-actions"><button class="ws-btn ws-btn-ghost" onclick="copyOutput('rw-output')">📋 Copy</button></div>
+    </div>`;
+        return;
+      }
+      // ── Fake Name Generator ───────────────────────────────────────────────────────
+      if (tool.id === 'fake-name') {
+        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Gender</div><select class="ws-input" id="fn-gender" style="margin-top:6px;"><option value="any">Any</option><option value="male">Male</option><option value="female">Female</option></select><div class="ws-label" style="margin-top:12px;">How Many?</div><input class="ws-input" type="number" id="fn-count" value="5" min="1" max="20"><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doFakeName()">Generate</button></div></div><div class="tool-workspace"><div class="ws-label">Generated Identities</div><div class="ws-output" id="fn-output" style="min-height:120px;">Click Generate to create fake names.</div><div class="ws-actions"><button class="ws-btn ws-btn-ghost" onclick="copyOutput('fn-output')">📋 Copy</button></div></div>`;
+        return;
+      }
+      // ── Random Address Generator ──────────────────────────────────────────────────
+      if (tool.id === 'rand-addr') {
+        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Country</div><select class="ws-input" id="ra-country" style="margin-top:6px;"><option value="us">United States</option><option value="uk">United Kingdom</option><option value="in">India</option><option value="ca">Canada</option><option value="au">Australia</option></select><div class="ws-label" style="margin-top:12px;">How Many?</div><input class="ws-input" type="number" id="ra-count" value="3" min="1" max="10"><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doRandAddr()">Generate</button></div></div><div class="tool-workspace"><div class="ws-label">Random Addresses</div><div class="ws-output" id="ra-output" style="min-height:120px;">Click Generate to create addresses.</div><div class="ws-actions"><button class="ws-btn ws-btn-ghost" onclick="copyOutput('ra-output')">📋 Copy</button></div></div>`;
+        return;
+      }
+      // ── Roman Numerals Date Converter ─────────────────────────────────────────────
+      if (tool.id === 'roman-date') {
+        const today = new Date().toISOString().split('T')[0];
+        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Select a Date</div><input class="ws-input" type="date" id="rd-input" value="${today}"><div style="font-size:12px;color:var(--text3);margin-top:6px;">Example: 2026-03-15 → XV · III · MMXXVI</div><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doRomanDate()">Convert to Roman Numerals</button></div></div><div class="tool-workspace"><div class="ws-label">Roman Numeral Date</div><div class="ws-output" id="rd-output" style="font-size:24px;font-weight:800;letter-spacing:3px;text-align:center;padding:20px 10px;">Click Convert above.</div><div class="ws-actions"><button class="ws-btn ws-btn-ghost" onclick="copyOutput('rd-output')">📋 Copy</button></div></div>`;
+        return;
+      }
+      // ── Binary/Hex/Octal Calculators ──────────────────────────────────────────────
+      if (tool.id === 'bin-calc' || tool.id === 'hex-calc' || tool.id === 'oct-calc') {
+        const base = tool.id === 'bin-calc' ? 2 : tool.id === 'hex-calc' ? 16 : 8;
+        const name = tool.id === 'bin-calc' ? 'Binary' : tool.id === 'hex-calc' ? 'Hexadecimal' : 'Octal';
+        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">${name} Number 1</div><input class="ws-input" id="bcalc-a" placeholder="e.g. ${base === 2 ? '1010' : base === 16 ? 'FF' : '17'}"><div class="ws-label" style="margin-top:10px;">Operation</div><select class="ws-input" id="bcalc-op" style="margin-top:6px;"><option value="+">Add (+)</option><option value="-">Subtract (−)</option><option value="*">Multiply (×)</option></select><div class="ws-label" style="margin-top:10px;">${name} Number 2</div><input class="ws-input" id="bcalc-b" placeholder="e.g. ${base === 2 ? '0110' : base === 16 ? '0A' : '05'}"><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doBaseCalc(${base})">Calculate</button></div></div><div class="tool-workspace"><div class="ws-label">Result</div><div class="ws-output" id="bcalc-output" style="font-family:monospace;font-size:16px;">Enter values to calculate.</div></div>`;
+        return;
+      }
+      // ── Lower/Upper Bound Calculator ──────────────────────────────────────────────
+      if (tool.id === 'bound-calc') {
+        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Value (e.g. 4.5)</div><input class="ws-input" type="number" id="bound-val" placeholder="e.g. 4.5" step="any"><div class="ws-label" style="margin-top:12px;">Degree of Accuracy</div><select class="ws-input" id="bound-acc" style="margin-top:6px;"><option value="1">Nearest 1</option><option value="0.5">Nearest 0.5</option><option value="0.1">Nearest 0.1</option><option value="0.01">Nearest 0.01</option><option value="10">Nearest 10</option><option value="100">Nearest 100</option></select><div style="font-size:12px;color:var(--text3);margin-top:6px;">Example: 4.5 rounded to nearest 1 → Lower: 4.0, Upper: 5.0</div><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doBoundCalc()">Calculate Bounds</button></div></div><div class="tool-workspace"><div class="ws-label">Result</div><div class="ws-output" id="bound-output" style="min-height:80px;">Enter a value above to calculate.</div></div>`;
+        return;
+      }
+      // ── Text to Image ─────────────────────────────────────────────────────────────
+      if (tool.id === 'txt-img') {
+        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Text</div><textarea class="ws-textarea" id="ti-text" placeholder="Enter text to render as image..."></textarea><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px;"><div><div class="ws-label">Font Size</div><input class="ws-input" type="number" id="ti-size" value="24" min="10" max="100"></div><div><div class="ws-label">Text Color</div><input type="color" id="ti-color" value="#0F172A" style="width:100%;height:40px;border:1.5px solid var(--border);border-radius:8px;cursor:pointer;"></div><div><div class="ws-label">Background</div><input type="color" id="ti-bg" value="#FFFFFF" style="width:100%;height:40px;border:1.5px solid var(--border);border-radius:8px;cursor:pointer;"></div><div><div class="ws-label">Canvas Width</div><input class="ws-input" type="number" id="ti-width" value="600" min="100" max="2000"></div></div><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doTextToImage()">Generate Image</button></div></div><div class="tool-workspace"><div class="ws-label">Generated Image</div><div id="ti-output" style="min-height:100px;display:flex;flex-direction:column;align-items:center;gap:10px;">Click Generate to create image.</div></div>`;
+        return;
+      }
+      // ── PDF to Text ───────────────────────────────────────────────────────────────
+      if (tool.id === 'pdf-txt') {
+        ws.innerHTML = `<div class="tool-workspace">
+      <div class="ws-label">Select PDF File</div>
+      <input type="file" id="pdftxt-input" accept="application/pdf" style="display:block;margin:6px 0 8px;font-size:13px;color:var(--text2);" onchange="onPdfTxtSelected()">
+      <div id="pdftxt-fileinfo" style="display:none;padding:8px 12px;background:var(--bg2);border-radius:8px;font-size:13px;color:var(--text2);margin-bottom:10px;display:flex;align-items:center;justify-content:space-between;gap:10px;">
+        <span id="pdftxt-filename" style="font-weight:600;">No file</span>
+        <button class="ws-btn ws-btn-ghost" style="padding:4px 10px;font-size:12px;" onclick="resetPdfTxt()">✕ Remove</button>
+      </div>
+      <div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doPdfToText()">Extract Text</button></div>
+    </div>
+    <div class="tool-workspace">
+      <div class="ws-label">Extracted Text</div>
+      <textarea class="ws-textarea" id="pdftxt-output" readonly placeholder="Extracted text will appear here..." style="min-height:220px;"></textarea>
+      <div class="ws-actions">
+        <button class="ws-btn ws-btn-ghost" onclick="copyOutput('pdftxt-output')">📋 Copy</button>
+        <button class="ws-btn ws-btn-ghost" onclick="downloadPdfText()">⬇️ Download .txt</button>
+      </div>
+    </div>`;
+        return;
+      }
+
       // PDF Tools
       const pdfToolIds = ['pdf-merge', 'pdf-split', 'pdf-compress', 'pdf-rotate', 'pdf-to-jpg', 'jpg-to-pdf', 'word-to-pdf', 'pdf-watermark', 'pdf-page-num', 'pdf-crop', 'html-to-pdf', 'pdf-organize', 'scan-to-pdf', 'pdf-edit', 'pdf-sign', 'pdf-protect', 'pdf-unlock', 'pdf-redact', 'pdf-ocr', 'pdf-compare'];
       if (pdfToolIds.includes(tool.id)) { buildPdfWorkspace(tool.id, ws); return; }
@@ -2420,7 +2901,7 @@
       }
 
       const promptMap = {
-        'ai-story': 'Write a creative short story based on this prompt:', 'ai-poem': 'Write a beautiful poem about:', 'cover-letter': 'Write a professional cover letter for:', 'biz-name': 'Generate 10 creative business name ideas for:', 'book-title': 'Generate 10 compelling book title ideas for:', 'abstract': 'Write a concise academic abstract for:', 'email-writer': 'Write a professional email for this scenario:', 'conclusion': 'Write a strong conclusion for an essay about:', 'outline': 'Create a detailed outline for:', 'ai-answer': 'Answer this question thoroughly:', 'paragraph': 'Write a well-structured paragraph about:', 'ai-sentence': 'Generate 5 unique, natural sentences about:', 'thesis': 'Write a strong thesis statement for an essay about:', 'slogan': 'Generate 10 catchy slogans for:', 'backstory': 'Write a detailed backstory for:', 'essay-writer': 'Write a well-structured essay about:', 'faq-gen': 'Generate 10 FAQs with answers for:', 'acronym': 'Create 5 meaningful acronyms for:', 'meta-desc': 'Write an SEO-optimized meta description (155 chars) for:', 'review-gen': 'Write a realistic, balanced review for:', 'para-expand': 'Expand this paragraph into a detailed, rich version:', 'sent-short': 'Shorten these sentences while keeping their meaning:', 'humanize-ai': 'Rewrite this AI-generated text to sound more natural and human:', 'caption-gen': 'Write 5 engaging captions for a post about:', 'msg-gen': 'Write a perfect message for this situation:', 'reply-gen': 'Write a smart, context-aware reply to:', 'prompt-gen': 'Generate 5 powerful AI prompts for:', 'rewriter': 'Rewrite this article in a fresh, unique way:', 'paraphrase': 'Paraphrase the following text completely:', 'summarizer': 'Summarize the following text in 3-5 sentences:', 'a2p-voice': 'Convert these active voice sentences to passive voice:', 'sentence-exp': 'Expand these short sentences into richer, fuller text:', 'grammar': 'Check and correct any grammar errors in the following text:', 'spell': 'Check and correct any spelling mistakes in:', 'ai-detect': 'Analyze this text and determine if it was written by AI or a human, explain why:', 'plagiarism': 'Analyze this text and flag any phrases that sound unoriginal or potentially plagiarized:', 'plag-compare': 'Compare these two texts and highlight any similarities or copied content:',
+        'ai-story': 'Write a creative short story based on this prompt:', 'ai-poem': 'Write a beautiful poem about:', 'cover-letter': 'Write a professional cover letter for:', 'biz-name': 'Generate 10 creative business name ideas for:', 'book-title': 'Generate 10 compelling book title ideas for:', 'abstract': 'Write a concise academic abstract for:', 'email-writer': 'Write a professional email for this scenario:', 'conclusion': 'Write a strong conclusion for an essay about:', 'outline': 'Create a detailed outline for:', 'ai-answer': 'Answer this question thoroughly:', 'paragraph': 'Write a well-structured paragraph about:', 'ai-sentence': 'Generate 5 unique, natural sentences about:', 'thesis': 'Write a strong thesis statement for an essay about:', 'slogan': 'Generate 10 catchy slogans for:', 'backstory': 'Write a detailed backstory for:', 'essay-writer': 'Write a well-structured essay about:', 'faq-gen': 'Generate 10 FAQs with answers for:', 'acronym': 'Create 5 meaningful acronyms for:', 'meta-desc': 'Write an SEO-optimized meta description (155 chars) for:', 'review-gen': 'Write a realistic, balanced review for:', 'para-expand': 'Expand this paragraph into a detailed, rich version:', 'sent-short': 'Shorten these sentences while keeping their meaning:', 'humanize-ai': 'Rewrite this AI-generated text to sound more natural and human:', 'caption-gen': 'Write 5 engaging captions for a post about:', 'msg-gen': 'Write a perfect message for this situation:', 'reply-gen': 'Write a smart, context-aware reply to:', 'prompt-gen': 'Generate 5 powerful AI prompts for:', 'rewriter': 'Rewrite this article in a fresh, unique way:', 'paraphrase': 'Paraphrase the following text completely:', 'summarizer': 'Summarize the following text in 3-5 sentences:', 'a2p-voice': 'Convert these active voice sentences to passive voice:', 'sentence-exp': 'Expand these short sentences into richer, fuller text:', 'ai-detect': 'Analyze this text and determine if it was written by AI or a human, explain why:', 'plagiarism': 'Analyze this text and flag any phrases that sound unoriginal or potentially plagiarized:', 'plag-compare': 'Compare these two texts and highlight any similarities or copied content:',
       };
       const prompt = promptMap[tool.id] || `Use the ${tool.name} to process the following input:`;
       ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Your Input</div><textarea class="ws-textarea" id="ai-input" placeholder="${prompt} ..."></textarea><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="runAI('${tool.id}')"><span id="ai-btn-text">Generate ✨</span></button><button class="ws-btn ws-btn-ghost" onclick="document.getElementById('ai-input').value='';document.getElementById('ai-output').textContent=''">Clear</button></div></div><div class="tool-workspace"><div class="ws-label">Result</div><div class="ws-output" id="ai-output" style="min-height:140px;"></div><div class="ws-actions"><button class="ws-btn ws-btn-ghost" onclick="copyOutput('ai-output')">📋 Copy</button></div></div>`;
@@ -3176,6 +3657,815 @@
     }
 
 
+    // ── Word Combiner ─────────────────────────────────────────────────────────────
+    // ── QR Scanner ────────────────────────────────────────────────────────────────
+    function onQrScanSelected() {
+      const file = document.getElementById('qrscan-input').files[0];
+      const info = document.getElementById('qrscan-fileinfo');
+      if (file) {
+        document.getElementById('qrscan-filename').textContent = `🖼 ${file.name}`;
+        info.style.display = 'flex';
+      }
+    }
+    function resetQrScan() {
+      document.getElementById('qrscan-input').value = '';
+      document.getElementById('qrscan-fileinfo').style.display = 'none';
+      document.getElementById('qrscan-output').value = '';
+    }
+    function doQRScan() {
+      const file = document.getElementById('qrscan-input').files[0];
+      const out = document.getElementById('qrscan-output');
+      if (!file) { out.value = 'Please select a QR code image.'; return; }
+      out.value = 'Loading scanner...';
+      loadScript('https://cdnjs.cloudflare.com/ajax/libs/jsQR/1.4.0/jsQR.min.js', () => {
+        const img = new Image();
+        img.onload = () => {
+          const canvas = document.createElement('canvas');
+          canvas.width = img.width; canvas.height = img.height;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0);
+          const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+          const code = jsQR(imgData.data, imgData.width, imgData.height);
+          out.value = code ? code.data : '❌ No QR code detected. Try a higher-resolution image.';
+        };
+        img.src = URL.createObjectURL(file);
+      });
+    }
+
+    // ── Random Word Generator ─────────────────────────────────────────────────────
+    function doRandWord() {
+      const raw = parseInt(document.getElementById('rw-count').value);
+      const count = (!raw || raw < 1) ? 10 : Math.min(raw, 1000);
+      document.getElementById('rw-count').value = count;
+      const type = document.getElementById('rw-type').value;
+      const nouns = ['apple', 'ocean', 'mountain', 'city', 'forest', 'river', 'garden', 'shadow', 'mirror', 'bridge', 'flame', 'stone', 'cloud', 'thunder', 'lantern', 'voyage', 'crystal', 'horizon', 'whisper', 'echo', 'wind', 'fire', 'water', 'earth', 'sky', 'moon', 'star', 'door', 'window', 'road', 'tree', 'flower', 'dream', 'mind', 'heart', 'power', 'world', 'light', 'time', 'space', 'book', 'table', 'chair', 'house', 'street', 'wall', 'floor', 'roof', 'glass', 'paper', 'clock', 'phone', 'music', 'voice', 'smile', 'tears', 'dance', 'song', 'night', 'dawn', 'dusk', 'wave', 'sand', 'rock', 'leaf', 'seed', 'root', 'branch', 'nest', 'feather', 'rain', 'snow', 'frost', 'ice', 'steam', 'smoke', 'dust', 'shadow', 'spark', 'glow', 'beam', 'ray', 'pulse', 'echo', 'drift', 'tide', 'shore', 'depth', 'peak', 'ridge', 'valley', 'plain', 'desert', 'jungle', 'swamp', 'cave', 'cliff', 'reef', 'island', 'cape', 'bay', 'gulf', 'lake', 'pond', 'creek', 'brook', 'spring', 'well', 'dam', 'tunnel', 'tower', 'arch', 'dome', 'spire', 'gate', 'fence', 'hedge', 'field', 'meadow', 'grove', 'orchard', 'vineyard', 'park', 'plaza', 'court', 'lane', 'trail', 'path', 'highway', 'harbor', 'port', 'airport', 'station', 'market', 'temple', 'castle', 'palace', 'school', 'library', 'museum', 'theater', 'stadium', 'arena'];
+      const verbs = ['run', 'build', 'create', 'discover', 'imagine', 'transform', 'explore', 'inspire', 'achieve', 'connect', 'evolve', 'design', 'craft', 'launch', 'master', 'navigate', 'pursue', 'reflect', 'share', 'unlock', 'write', 'speak', 'listen', 'grow', 'move', 'learn', 'teach', 'give', 'take', 'see', 'hear', 'feel', 'think', 'know', 'believe', 'understand', 'remember', 'decide', 'choose', 'change', 'begin', 'finish', 'open', 'close', 'enter', 'leave', 'arrive', 'rise', 'fall', 'push', 'pull', 'lift', 'carry', 'throw', 'catch', 'hold', 'release', 'break', 'fix', 'make', 'save', 'find', 'seek', 'show', 'reveal', 'lead', 'follow', 'chase', 'escape', 'protect', 'heal', 'expand', 'reduce', 'accelerate', 'turn', 'bend', 'stretch', 'press', 'cut', 'join', 'split', 'merge', 'collect', 'gather', 'spread', 'fill', 'empty', 'clean', 'start', 'stop', 'continue', 'sing', 'play', 'draw', 'paint', 'carve', 'weave', 'cook', 'bake', 'plant', 'harvest', 'test', 'scale', 'debug', 'deploy', 'review', 'analyze', 'optimize', 'monitor', 'track', 'measure', 'compare', 'validate', 'export', 'import', 'convert', 'compress', 'generate', 'download', 'upload', 'process'];
+      const adjs = ['bright', 'bold', 'calm', 'deep', 'elegant', 'fierce', 'gentle', 'happy', 'intense', 'kind', 'lively', 'mysterious', 'noble', 'open', 'peaceful', 'quick', 'radiant', 'strong', 'wise', 'vibrant', 'clear', 'dark', 'warm', 'cold', 'fast', 'slow', 'new', 'old', 'big', 'small', 'tall', 'short', 'wide', 'narrow', 'heavy', 'light', 'rough', 'smooth', 'sharp', 'dull', 'hard', 'soft', 'wet', 'dry', 'loud', 'quiet', 'sweet', 'bitter', 'sour', 'fresh', 'stale', 'clean', 'dirty', 'rich', 'poor', 'young', 'ancient', 'simple', 'complex', 'plain', 'fancy', 'wild', 'tame', 'brave', 'timid', 'clever', 'honest', 'loyal', 'patient', 'graceful', 'clumsy', 'proud', 'humble', 'eager', 'lazy', 'cheerful', 'gloomy', 'lively', 'weary', 'tense', 'relaxed', 'serious', 'playful', 'strict', 'famous', 'visible', 'hidden', 'full', 'empty', 'whole', 'broken', 'solid', 'hollow', 'flat', 'curved', 'round', 'square', 'long', 'thick', 'thin', 'dense', 'crisp', 'faint', 'silky', 'coarse', 'modern', 'classic', 'digital', 'natural', 'global', 'local', 'unique', 'common', 'rare', 'popular', 'trusted', 'proven'];
+      const pool = type === 'noun' ? nouns : type === 'verb' ? verbs : type === 'adj' ? adjs : [...nouns, ...verbs, ...adjs];
+      const result = Array.from({ length: count }, () => pool[Math.floor(Math.random() * pool.length)]);
+      document.getElementById('rw-output').textContent = result.join(', ');
+      const display = document.getElementById('rw-count-display');
+      if (display) display.textContent = `— ${count} generated`;
+    }
+
+    // ── Fake Name Generator ───────────────────────────────────────────────────────
+    function doFakeName() {
+      const gender = document.getElementById('fn-gender').value;
+      const count = Math.min(parseInt(document.getElementById('fn-count').value) || 5, 20);
+      const mFirst = ['James', 'John', 'Robert', 'Michael', 'William', 'David', 'Richard', 'Joseph', 'Thomas', 'Charles', 'Daniel', 'Matthew', 'Anthony', 'Steven', 'Paul', 'Andrew', 'Kevin', 'Brian', 'Edward', 'George'];
+      const fFirst = ['Mary', 'Patricia', 'Jennifer', 'Linda', 'Barbara', 'Elizabeth', 'Susan', 'Jessica', 'Sarah', 'Karen', 'Lisa', 'Nancy', 'Betty', 'Sandra', 'Ashley', 'Kimberly', 'Emily', 'Donna', 'Michelle', 'Carol'];
+      const last = ['Smith', 'Johnson', 'Williams', 'Brown', 'Jones', 'Garcia', 'Miller', 'Davis', 'Wilson', 'Taylor', 'Anderson', 'Thomas', 'Jackson', 'White', 'Harris', 'Martin', 'Thompson', 'Lewis', 'Lee', 'Walker'];
+      const domains = ['gmail.com', 'yahoo.com', 'outlook.com', 'example.com', 'mail.com'];
+      const results = Array.from({ length: count }, () => {
+        const male = gender === 'male' || (gender === 'any' && Math.random() > 0.5);
+        const fn = male ? mFirst[Math.floor(Math.random() * mFirst.length)] : fFirst[Math.floor(Math.random() * fFirst.length)];
+        const ln = last[Math.floor(Math.random() * last.length)];
+        const age = Math.floor(Math.random() * 50) + 18;
+        const email = `${fn.toLowerCase()}.${ln.toLowerCase()}${Math.floor(Math.random() * 999)}@${domains[Math.floor(Math.random() * domains.length)]}`;
+        return `${fn} ${ln} | Age: ${age} | ${email}`;
+      });
+      document.getElementById('fn-output').textContent = results.join('\n');
+    }
+
+    // ── Random Address Generator ──────────────────────────────────────────────────
+    function doRandAddr() {
+      const country = document.getElementById('ra-country').value;
+      const count = Math.min(parseInt(document.getElementById('ra-count').value) || 3, 10);
+      const data = {
+        us: { streets: ['Main St', 'Oak Ave', 'Maple Dr', 'Cedar Ln', 'Pine Rd', 'Elm St', 'Park Ave', 'Washington Blvd'], cities: ['New York', 'Los Angeles', 'Chicago', 'Houston', 'Phoenix', 'Philadelphia', 'Dallas', 'San Jose'], states: ['NY', 'CA', 'IL', 'TX', 'AZ', 'PA', 'FL', 'OH'], zip: () => String(Math.floor(10000 + Math.random() * 90000)) },
+        uk: { streets: ['High Street', 'Church Road', 'Park Lane', 'Victoria Road', 'Station Road', 'Mill Lane', 'The Green', 'London Road'], cities: ['London', 'Manchester', 'Birmingham', 'Leeds', 'Liverpool', 'Sheffield', 'Bristol', 'Edinburgh'], states: ['England', 'Scotland', 'Wales', 'N. Ireland'], zip: () => `${String.fromCharCode(65 + Math.floor(Math.random() * 26))}${Math.floor(1 + Math.random() * 9)} ${Math.floor(1 + Math.random() * 9)}${String.fromCharCode(65 + Math.floor(Math.random() * 26))}${String.fromCharCode(65 + Math.floor(Math.random() * 26))}` },
+        in: { streets: ['MG Road', 'Gandhi Nagar', 'Nehru Street', 'Anna Salai', 'Brigade Road', 'Park Street', 'Linking Road', 'Commercial Street'], cities: ['Mumbai', 'Delhi', 'Bangalore', 'Chennai', 'Hyderabad', 'Pune', 'Kolkata', 'Ahmedabad'], states: ['Maharashtra', 'Karnataka', 'Tamil Nadu', 'Delhi', 'Telangana', 'Gujarat'], zip: () => String(Math.floor(100000 + Math.random() * 900000)) },
+        ca: { streets: ['Main Street', 'Queen Street', 'King Street', 'Yonge Street', 'Bloor Street', 'Dundas Street', 'College Street', 'Bay Street'], cities: ['Toronto', 'Vancouver', 'Montreal', 'Calgary', 'Ottawa', 'Edmonton', 'Winnipeg', 'Quebec City'], states: ['ON', 'BC', 'QC', 'AB', 'MB', 'SK'], zip: () => `${String.fromCharCode(65 + Math.floor(Math.random() * 26))}${Math.floor(Math.random() * 10)}${String.fromCharCode(65 + Math.floor(Math.random() * 26))} ${Math.floor(Math.random() * 10)}${String.fromCharCode(65 + Math.floor(Math.random() * 26))}${Math.floor(Math.random() * 10)}` },
+        au: { streets: ['George Street', 'Pitt Street', 'Collins Street', 'Bourke Street', 'Flinders Street', 'Swanston Street', 'Elizabeth Street', 'William Street'], cities: ['Sydney', 'Melbourne', 'Brisbane', 'Perth', 'Adelaide', 'Gold Coast', 'Canberra', 'Darwin'], states: ['NSW', 'VIC', 'QLD', 'WA', 'SA', 'ACT'], zip: () => String(Math.floor(1000 + Math.random() * 9000)) },
+      };
+      const d = data[country];
+      const results = Array.from({ length: count }, () => {
+        const num = Math.floor(1 + Math.random() * 999);
+        const street = d.streets[Math.floor(Math.random() * d.streets.length)];
+        const city = d.cities[Math.floor(Math.random() * d.cities.length)];
+        const state = d.states[Math.floor(Math.random() * d.states.length)];
+        return `${num} ${street}\n${city}, ${state} ${d.zip()}`;
+      });
+      document.getElementById('ra-output').textContent = results.join('\n\n');
+    }
+
+    // ── Roman Date Converter ──────────────────────────────────────────────────────
+    function doRomanDate() {
+      const val = document.getElementById('rd-input').value;
+      if (!val) { document.getElementById('rd-output').textContent = 'Please select a date.'; return; }
+      const d = new Date(val + 'T00:00:00');
+      const toRoman = n => {
+        const v = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1], s = ['M', 'CM', 'D', 'CD', 'C', 'XC', 'L', 'XL', 'X', 'IX', 'V', 'IV', 'I'];
+        let res = ''; v.forEach((val, i) => { while (n >= val) { res += s[i]; n -= val; } }); return res || 'N/A';
+      };
+      document.getElementById('rd-output').textContent = `${toRoman(d.getDate())} · ${toRoman(d.getMonth() + 1)} · ${toRoman(d.getFullYear())}`;
+    }
+
+    // ── Base Calculators ──────────────────────────────────────────────────────────
+    function doBaseCalc(base) {
+      const a = parseInt((document.getElementById('bcalc-a').value || '').trim(), base);
+      const b = parseInt((document.getElementById('bcalc-b').value || '').trim(), base);
+      const op = document.getElementById('bcalc-op').value;
+      const out = document.getElementById('bcalc-output');
+      if (isNaN(a) || isNaN(b)) { out.textContent = 'Invalid input for base ' + base; return; }
+      const result = op === '+' ? a + b : op === '-' ? a - b : a * b;
+      const label = base === 2 ? 'Binary' : base === 16 ? 'Hex' : 'Octal';
+      out.innerHTML = `Result: <strong>${result.toString(base).toUpperCase()}</strong> (${label})<br><small style="color:var(--text3);">Decimal equivalent: ${result}</small>`;
+    }
+
+    // ── Lower/Upper Bound Calc ────────────────────────────────────────────────────
+    function doBoundCalc() {
+      const val = parseFloat(document.getElementById('bound-val').value);
+      const acc = parseFloat(document.getElementById('bound-acc').value);
+      const out = document.getElementById('bound-output');
+      if (isNaN(val)) { out.textContent = 'Please enter a valid number.'; return; }
+      const lower = (val - acc / 2).toFixed(10).replace(/\.?0+$/, '');
+      const upper = (val + acc / 2).toFixed(10).replace(/\.?0+$/, '');
+      out.innerHTML = `<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;"><div style="text-align:center;padding:14px;background:var(--bg2);border-radius:10px;"><div style="font-size:22px;font-weight:800;color:var(--primary);">${lower}</div><div style="font-size:12px;color:var(--text3);">Lower Bound</div></div><div style="text-align:center;padding:14px;background:var(--bg2);border-radius:10px;"><div style="font-size:22px;font-weight:800;color:var(--primary);">${upper}</div><div style="font-size:12px;color:var(--text3);">Upper Bound</div></div></div><div style="font-size:13px;color:var(--text2);text-align:center;">${lower} ≤ x < ${upper}</div>`;
+    }
+
+    // ── Text to Image ─────────────────────────────────────────────────────────────
+    function doTextToImage() {
+      const text = document.getElementById('ti-text').value;
+      const out = document.getElementById('ti-output');
+      if (!text.trim()) { out.textContent = 'Please enter some text.'; return; }
+      const fontSize = parseInt(document.getElementById('ti-size').value) || 24;
+      const color = document.getElementById('ti-color').value;
+      const bg = document.getElementById('ti-bg').value;
+      const width = Math.min(parseInt(document.getElementById('ti-width').value) || 600, 2000);
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      ctx.font = `bold ${fontSize}px Arial,sans-serif`;
+      const lines = text.split('\n');
+      const maxW = width - 40;
+      const wrapped = [];
+      lines.forEach(line => {
+        const words = line.split(' ');
+        let cur = '';
+        words.forEach(w => {
+          const test = cur ? cur + ' ' + w : w;
+          if (ctx.measureText(test).width > maxW && cur) { wrapped.push(cur); cur = w; }
+          else cur = test;
+        });
+        wrapped.push(cur);
+      });
+      const lh = fontSize * 1.5;
+      const height = wrapped.length * lh + 40;
+      canvas.width = width; canvas.height = height;
+      ctx.fillStyle = bg; ctx.fillRect(0, 0, width, height);
+      ctx.fillStyle = color; ctx.font = `bold ${fontSize}px Arial,sans-serif`; ctx.textBaseline = 'top';
+      wrapped.forEach((line, i) => ctx.fillText(line, 20, 20 + i * lh));
+      const url = canvas.toDataURL('image/png');
+      out.innerHTML = `<img src="${url}" style="max-width:100%;border-radius:8px;border:1px solid var(--border);display:block;margin-bottom:10px;"><a href="${url}" download="text-image.png" style="padding:8px 16px;background:var(--primary);color:white;border-radius:8px;text-decoration:none;font-size:13px;font-weight:600;">⬇️ Download PNG</a>`;
+    }
+
+    // ── PDF to Text ───────────────────────────────────────────────────────────────
+    // ── PDF to Text helpers ───────────────────────────────────────────────────────
+    function onPdfTxtSelected() {
+      const file = document.getElementById('pdftxt-input').files[0];
+      const info = document.getElementById('pdftxt-fileinfo');
+      if (file) {
+        document.getElementById('pdftxt-filename').textContent = `📄 ${file.name} (${(file.size / 1024).toFixed(0)} KB)`;
+        info.style.display = 'flex';
+      }
+    }
+    function resetPdfTxt() {
+      document.getElementById('pdftxt-input').value = '';
+      document.getElementById('pdftxt-fileinfo').style.display = 'none';
+      document.getElementById('pdftxt-filename').textContent = 'No file';
+      document.getElementById('pdftxt-output').value = '';
+    }
+    function downloadPdfText() {
+      const text = document.getElementById('pdftxt-output').value;
+      if (!text.trim()) return;
+      const blob = new Blob([text], { type: 'text/plain' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'extracted-text.txt';
+      a.click();
+    }
+
+    async function doPdfToText() {
+      const out = document.getElementById('pdftxt-output');
+      const file = document.getElementById('pdftxt-input').files[0];
+      if (!file) { out.value = 'Please select a PDF file.'; return; }
+      out.value = 'Loading PDF...';
+      loadPdfJs(async () => {
+        try {
+          const bytes = await file.arrayBuffer();
+          const pdf = await pdfjsLib.getDocument({ data: bytes }).promise;
+          let text = '';
+          for (let i = 1; i <= pdf.numPages; i++) {
+            const page = await pdf.getPage(i);
+            const content = await page.getTextContent();
+            text += `--- Page ${i} ---\n` + content.items.map(s => s.str).join(' ') + '\n\n';
+          }
+          out.value = text.trim() || 'No text found. This PDF may be image-based — try the OCR PDF tool instead.';
+        } catch (e) { out.value = 'Error: ' + e.message; }
+      });
+    }
+
+    function doWordCombo() {
+      const raw1 = document.getElementById('wc1-input').value;
+      const raw2 = document.getElementById('wc2-input').value;
+      const list1 = raw1.split(/[\n,]+/).map(w => w.trim()).filter(Boolean);
+      const list2 = raw2.split(/[\n,]+/).map(w => w.trim()).filter(Boolean);
+      const sep = document.getElementById('wc-sep').value;
+      let results = [];
+      if (!list1.length) { document.getElementById('wc-combo-output').textContent = 'Enter at least one word in List 1.'; return; }
+      if (!list2.length) {
+        results = list1;
+      } else {
+        list1.forEach(a => list2.forEach(b => results.push(a + sep + b)));
+      }
+      document.getElementById('wc-combo-count').textContent = results.length;
+      document.getElementById('wc-combo-output').textContent = results.join('\n');
+    }
+
+    // ── Readability Checker ───────────────────────────────────────────────────────
+    function doReadability() {
+      const text = document.getElementById('read-input').value.trim();
+      if (!text) { document.getElementById('read-output').textContent = 'Please enter some text first.'; return; }
+      const words = text.trim().split(/\s+/).length;
+      const sentences = text.split(/[.!?]+/).filter(s => s.trim()).length || 1;
+      const syllables = text.toLowerCase().replace(/[^a-z]/g, ' ').split(/\s+/).reduce((acc, w) => {
+        return acc + (w.match(/[aeiouy]{1,2}/g) || ['x']).length;
+      }, 0);
+      const fk = 206.835 - 1.015 * (words / sentences) - 84.6 * (syllables / words);
+      const fkGrade = 0.39 * (words / sentences) + 11.8 * (syllables / words) - 15.59;
+      const avgSentLen = (words / sentences).toFixed(1);
+      const avgWordLen = (text.replace(/\s/g, '').length / words).toFixed(1);
+      let level = '', color = '';
+      if (fk >= 70) { level = 'Very Easy'; color = '#10B981'; }
+      else if (fk >= 60) { level = 'Easy'; color = '#10B981'; }
+      else if (fk >= 50) { level = 'Fairly Easy'; color = '#F59E0B'; }
+      else if (fk >= 40) { level = 'Standard'; color = '#F59E0B'; }
+      else if (fk >= 30) { level = 'Fairly Difficult'; color = '#EF4444'; }
+      else { level = 'Difficult'; color = '#EF4444'; }
+      document.getElementById('read-output').innerHTML = `
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px;">
+      <div style="text-align:center;padding:12px;background:var(--bg2);border-radius:10px;"><div style="font-size:24px;font-weight:800;color:${color};">${fk.toFixed(1)}</div><div style="font-size:12px;color:var(--text3);">Flesch Score</div></div>
+      <div style="text-align:center;padding:12px;background:var(--bg2);border-radius:10px;"><div style="font-size:24px;font-weight:800;color:var(--primary);">Grade ${Math.max(1, Math.round(fkGrade))}</div><div style="font-size:12px;color:var(--text3);">Reading Level</div></div>
+      <div style="text-align:center;padding:12px;background:var(--bg2);border-radius:10px;"><div style="font-size:22px;font-weight:800;color:${color};">${level}</div><div style="font-size:12px;color:var(--text3);">Difficulty</div></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:13px;">
+      <div style="padding:8px 12px;background:var(--surface2);border-radius:8px;"><b>Words:</b> ${words}</div>
+      <div style="padding:8px 12px;background:var(--surface2);border-radius:8px;"><b>Sentences:</b> ${sentences}</div>
+      <div style="padding:8px 12px;background:var(--surface2);border-radius:8px;"><b>Avg sentence length:</b> ${avgSentLen} words</div>
+      <div style="padding:8px 12px;background:var(--surface2);border-radius:8px;"><b>Avg word length:</b> ${avgWordLen} chars</div>
+    </div>`;
+    }
+
+    // ── Grammar Checker ───────────────────────────────────────────────────────────
+    function doGrammarCheck() {
+      const text = document.getElementById('gram-input').value;
+      if (!text.trim()) { document.getElementById('gram-output').innerHTML = 'Please enter some text.'; return; }
+      const rules = [
+        { re: /\b(i)\b/g, msg: '"i" should be capitalized to "I"' },
+        { re: /\b(dont|cant|wont|shouldnt|wouldnt|couldnt|isnt|arent|wasnt|werent|hasnt|havent|hadnt|doesnt|didnt)\b/gi, msg: 'Missing apostrophe in contraction' },
+        { re: /\s{2,}/g, msg: 'Extra spaces detected' },
+        { re: /\b(\w+)\s+\1\b/gi, msg: 'Repeated word detected' },
+        { re: /\ba ([aeiou]\w)/gi, msg: '"a" before vowel — should be "an"' },
+        { re: /[.!?][a-z]/g, msg: 'Sentence should start with capital letter' },
+      ];
+      let errorCount = 0;
+      const found = [];
+      rules.forEach(rule => {
+        const matches = [...text.matchAll(rule.re)];
+        if (matches.length) {
+          errorCount += matches.length;
+          found.push({ msg: rule.msg, count: matches.length, examples: matches.slice(0, 2).map(m => m[0]) });
+        }
+      });
+      const out = document.getElementById('gram-output');
+      if (!found.length) {
+        out.innerHTML = `<div style="padding:10px 14px;background:#F0FDF4;border-radius:8px;font-size:13px;color:#16A34A;">✅ No common grammar issues detected!</div>`;
+      } else {
+        out.innerHTML = `<div style="margin-bottom:10px;padding:8px 12px;background:#FEF2F2;border-radius:8px;font-size:13px;color:#DC2626;">⚠️ Found ${errorCount} potential issue(s):</div>` +
+          found.map(f => `<div style="padding:8px 12px;background:var(--surface2);border-radius:8px;margin-bottom:6px;font-size:13px;"><b>→ ${f.msg}</b> <span style="color:var(--text3);font-size:12px;">(${f.count}x — e.g. "${f.examples[0]}")</span></div>`).join('') +
+          `<div style="margin-top:10px;font-size:12px;color:var(--text3);">💡 For deep grammar checking, use the AI Grammar tool or Grammarly.</div>`;
+      }
+    }
+
+    // ── Spell Checker ─────────────────────────────────────────────────────────────
+    function doSpellCheck() {
+      const text = document.getElementById('spell-input').value;
+      if (!text.trim()) { document.getElementById('spell-output').innerHTML = 'Please enter some text.'; return; }
+      const commonMisspellings = {
+        'recieve': 'receive', 'occured': 'occurred', 'seperate': 'separate', 'definately': 'definitely',
+        'goverment': 'government', 'beleive': 'believe', 'freind': 'friend', 'wierd': 'weird',
+        'acheive': 'achieve', 'accomodate': 'accommodate', 'begining': 'beginning', 'calender': 'calendar',
+        'catagory': 'category', 'cemetary': 'cemetery', 'commitee': 'committee', 'concious': 'conscious',
+        'dissapear': 'disappear', 'enviroment': 'environment', 'existance': 'existence', 'familar': 'familiar',
+        'grammer': 'grammar', 'harrass': 'harass', 'independant': 'independent', 'liason': 'liaison',
+        'maintainance': 'maintenance', 'millenium': 'millennium', 'miniscule': 'minuscule', 'mischievious': 'mischievous',
+        'neccessary': 'necessary', 'noticable': 'noticeable', 'occassion': 'occasion', 'occurance': 'occurrence',
+        'persistance': 'persistence', 'pharoah': 'pharaoh', 'privelege': 'privilege', 'publically': 'publicly',
+        'reccomend': 'recommend', 'relevent': 'relevant', 'rythm': 'rhythm', 'schedual': 'schedule',
+        'supercede': 'supersede', 'tendancy': 'tendency', 'thier': 'their', 'truely': 'truly',
+        'untill': 'until', 'whereever': 'wherever', 'writting': 'writing', 'arguement': 'argument',
+        'convinient': 'convenient', 'absense': 'absence', 'appearence': 'appearance', 'bussiness': 'business',
+      };
+      const words = text.split(/(\s+|[,.!?;:()"])/);
+      let errorCount = 0;
+      const highlighted = words.map(word => {
+        const clean = word.toLowerCase().replace(/[^a-z]/g, '');
+        if (commonMisspellings[clean]) {
+          errorCount++;
+          return `<span style="background:#FEE2E2;color:#DC2626;border-bottom:2px solid #DC2626;border-radius:3px;padding:0 2px;" title="Did you mean: ${commonMisspellings[clean]}">${word}</span>`;
+        }
+        return word;
+      }).join('');
+      document.getElementById('spell-output').innerHTML = errorCount > 0
+        ? `<div style="margin-bottom:10px;padding:8px 12px;background:#FEF2F2;border-radius:8px;font-size:13px;color:#DC2626;">⚠️ Found ${errorCount} potential spelling issue(s). Hover over red words for suggestions.</div>${highlighted}`
+        : `<div style="margin-bottom:10px;padding:8px 12px;background:#F0FDF4;border-radius:8px;font-size:13px;color:#16A34A;">✅ No common spelling errors detected!</div>${highlighted}`;
+    }
+
+    // ── Text to PDF ───────────────────────────────────────────────────────────────
+    function doTextToPdf() {
+      const text = document.getElementById('txtpdf-input').value;
+      const fontSize = parseInt(document.getElementById('txtpdf-size').value) || 12;
+      const status = document.getElementById('txtpdf-status');
+      if (!text.trim()) { status.textContent = 'Please enter some text first.'; return; }
+      status.textContent = 'Generating PDF...';
+      loadJsPDF(() => {
+        try {
+          const { jsPDF } = window.jspdf;
+          const doc = new jsPDF();
+          doc.setFontSize(fontSize);
+          const lines = doc.splitTextToSize(text, 180);
+          const lineH = fontSize * 0.5;
+          const pageH = doc.internal.pageSize.getHeight() - 20;
+          let y = 15;
+          lines.forEach(line => {
+            if (y + lineH > pageH) { doc.addPage(); y = 15; }
+            doc.text(line, 15, y);
+            y += lineH;
+          });
+          const out = doc.output('arraybuffer');
+          const blob = new Blob([out], { type: 'application/pdf' });
+          const url = URL.createObjectURL(blob);
+          const btn = document.getElementById('txtpdf-dl');
+          btn._url = url; btn._filename = 'text-document.pdf';
+          btn.style.display = 'inline-flex';
+          status.textContent = `✅ PDF created (${(out.byteLength / 1024).toFixed(0)} KB). Click download.`;
+        } catch (e) { status.textContent = 'Error: ' + e.message; }
+      });
+    }
+
+    // ── Image OCR ─────────────────────────────────────────────────────────────────
+    function onOcrImgSelected() {
+      const file = document.getElementById('ocr-img-input').files[0];
+      const info = document.getElementById('ocr-img-fileinfo');
+      if (file) {
+        document.getElementById('ocr-img-filename').textContent = `🖼 ${file.name} (${(file.size / 1024).toFixed(0)} KB)`;
+        info.style.display = 'flex';
+      }
+    }
+    function resetOcrImg() {
+      document.getElementById('ocr-img-input').value = '';
+      document.getElementById('ocr-img-fileinfo').style.display = 'none';
+      document.getElementById('ocr-img-output').value = '';
+    }
+    function cleanOcrText(raw) {
+      const lines = raw.split('\n').map(line => {
+        return line
+          // Strip known OCR noise characters that are never part of real words
+          .replace(/[|\\^`~<>{}[\]@#$%_=]/g, '')
+          // Remove isolated non-letter clusters (e.g. r::;le → rle, but keep apostrophes)
+          .replace(/[^a-zA-Z0-9\s.,!?;:'"()\-\/]/g, '')
+          // Collapse multiple spaces
+          .replace(/\s{2,}/g, ' ')
+          .trim();
+      })
+        .filter(line => {
+          if (line.length < 2) return false;
+          // Remove lines that are still mostly non-letter after cleaning
+          const letters = (line.match(/[a-zA-Z]/g) || []).length;
+          return letters >= 2 && letters / line.length >= 0.30;
+        });
+      return lines.join('\n').replace(/\n{3,}/g, '\n\n').trim();
+    }
+    function doImageOCR() {
+      const file = document.getElementById('ocr-img-input').files[0];
+      const out = document.getElementById('ocr-img-output');
+      const useAI = document.getElementById('ocr-ai-clean')?.checked !== false;
+      if (!file) { out.value = 'Please select an image first.'; return; }
+      out.value = '⏳ Starting text extraction...';
+
+      // User-friendly status map — hide internal Tesseract labels
+      const statusMap = {
+        'loading tesseract core': '⏳ Loading engine...',
+        'initializing tesseract': '⚙️ Initializing...',
+        'initialized tesseract': '⚙️ Initializing...',
+        'loading language traineddata': '📥 Loading language data...',
+        'loaded language traineddata': '📥 Language data ready...',
+        'initializing api': '⚙️ Getting ready...',
+        'recognizing text': null, // handled separately with progress
+      };
+
+      loadScript('https://unpkg.com/tesseract.js@2.1.5/dist/tesseract.min.js', async () => {
+        try {
+          const imageUrl = URL.createObjectURL(file);
+          const worker = Tesseract.createWorker({
+            logger: m => {
+              if (!m.status) return;
+              const key = m.status.toLowerCase();
+              if (key === 'recognizing text') {
+                out.value = `🔍 Extracting text: ${(m.progress * 100).toFixed(0)}%`;
+              } else if (statusMap[key] !== undefined) {
+                if (statusMap[key]) out.value = statusMap[key];
+              }
+              // Suppress everything else — don't show raw internal status strings
+            }
+          });
+          await worker.load();
+          await worker.loadLanguage('eng');
+          await worker.initialize('eng');
+          const { data: { text } } = await worker.recognize(imageUrl);
+          await worker.terminate();
+          URL.revokeObjectURL(imageUrl);
+
+          const rawCleaned = cleanOcrText(text);
+          if (!rawCleaned) {
+            out.value = 'No readable text detected. Try a clearer, higher-contrast image.';
+            return;
+          }
+
+          if (useAI) {
+            out.value = '✨ Formatting extracted text...';
+            try {
+              const resp = await fetch('https://api.anthropic.com/v1/messages', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  model: 'claude-sonnet-4-20250514',
+                  max_tokens: 2000,
+                  messages: [{
+                    role: 'user',
+                    content: `The following text was extracted from an image using OCR. Clean it up by: removing OCR noise and garbage characters, fixing broken words, preserving the real readable content and its natural structure. Return ONLY the cleaned text with no explanation, no preamble, no commentary.\n\n${rawCleaned}`
+                  }]
+                })
+              });
+              const data = await resp.json();
+              out.value = data.content?.[0]?.text?.trim() || rawCleaned;
+            } catch (e) {
+              out.value = rawCleaned;
+            }
+          } else {
+            out.value = rawCleaned;
+          }
+        } catch (e) {
+          out.value = 'Extraction failed. Try a different image or format.';
+        }
+      });
+    }
+
+    // ── IP Locator ────────────────────────────────────────────────────────────────
+    async function doIpLocate() {
+      const input = document.getElementById('iploc-input').value.trim();
+      const out = document.getElementById('iploc-output');
+      out.textContent = 'Looking up...';
+      try {
+        const url = input
+          ? `https://ipwho.is/${encodeURIComponent(input)}`
+          : `https://ipwho.is/`;
+        const r = await fetch(url);
+        const d = await r.json();
+        if (!d.success) { out.textContent = 'Error: ' + (d.message || 'Invalid IP address.'); return; }
+        out.innerHTML = `
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:13px;">
+        <div style="padding:8px 12px;background:var(--surface2);border-radius:8px;"><b>IP:</b> ${d.ip}</div>
+        <div style="padding:8px 12px;background:var(--surface2);border-radius:8px;"><b>Type:</b> ${d.type || 'N/A'}</div>
+        <div style="padding:8px 12px;background:var(--surface2);border-radius:8px;"><b>City:</b> ${d.city || 'N/A'}</div>
+        <div style="padding:8px 12px;background:var(--surface2);border-radius:8px;"><b>Region:</b> ${d.region || 'N/A'}</div>
+        <div style="padding:8px 12px;background:var(--surface2);border-radius:8px;"><b>Country:</b> ${d.country || 'N/A'} ${d.flag?.emoji || ''}</div>
+        <div style="padding:8px 12px;background:var(--surface2);border-radius:8px;"><b>Postal:</b> ${d.postal || 'N/A'}</div>
+        <div style="padding:8px 12px;background:var(--surface2);border-radius:8px;"><b>ISP:</b> ${d.connection?.isp || 'N/A'}</div>
+        <div style="padding:8px 12px;background:var(--surface2);border-radius:8px;"><b>Timezone:</b> ${d.timezone?.id || 'N/A'}</div>
+        <div style="padding:8px 12px;background:var(--surface2);border-radius:8px;"><b>Latitude:</b> ${d.latitude || 'N/A'}</div>
+        <div style="padding:8px 12px;background:var(--surface2);border-radius:8px;"><b>Longitude:</b> ${d.longitude || 'N/A'}</div>
+      </div>`;
+      } catch (e) { out.textContent = 'Error fetching IP data. Check your connection and try again.'; }
+    }
+
+    // ── Crop Image ────────────────────────────────────────────────────────────────
+    let _cropImg = null;
+    function loadCropImage() {
+      const file = document.getElementById('crop-file').files[0];
+      if (!file) return;
+      const img = new Image();
+      const url = URL.createObjectURL(file);
+      img.onload = () => {
+        _cropImg = img;
+        document.getElementById('crop-preview-img').src = url;
+        document.getElementById('crop-preview-wrap').style.display = 'block';
+        document.getElementById('crop-w').value = Math.round(img.width * 0.5);
+        document.getElementById('crop-h').value = Math.round(img.height * 0.5);
+        document.getElementById('crop-coords').textContent = `Original size: ${img.width} × ${img.height}px`;
+      };
+      img.src = url;
+    }
+    function resetCropTool() {
+      _cropImg = null;
+      document.getElementById('crop-file').value = '';
+      document.getElementById('crop-preview-wrap').style.display = 'none';
+      document.getElementById('crop-output').innerHTML = 'Upload an image to get started.';
+    }
+    function doCropImage() {
+      if (!_cropImg) { document.getElementById('crop-output').textContent = 'Please upload an image first.'; return; }
+      const x = parseInt(document.getElementById('crop-x').value) || 0;
+      const y = parseInt(document.getElementById('crop-y').value) || 0;
+      const w = parseInt(document.getElementById('crop-w').value) || 200;
+      const h = parseInt(document.getElementById('crop-h').value) || 200;
+      if (w <= 0 || h <= 0) { document.getElementById('crop-output').textContent = 'Width and height must be greater than 0.'; return; }
+      const canvas = document.createElement('canvas');
+      canvas.width = w; canvas.height = h;
+      canvas.getContext('2d').drawImage(_cropImg, x, y, w, h, 0, 0, w, h);
+      const url = canvas.toDataURL('image/png');
+      document.getElementById('crop-output').innerHTML = `
+    <img src="${url}" style="max-width:100%;max-height:320px;border-radius:8px;border:1.5px solid var(--border);display:block;margin-bottom:10px;">
+    <div style="font-size:12px;color:var(--text3);margin-bottom:10px;">Cropped: ${w}×${h}px from (${x}, ${y})</div>
+    <a href="${url}" download="cropped.png" style="display:inline-flex;align-items:center;gap:6px;padding:8px 16px;background:var(--primary);color:white;border-radius:8px;text-decoration:none;font-size:13px;font-weight:600;">⬇️ Download PNG</a>`;
+    }
+
+    // ── Favicon Generator ─────────────────────────────────────────────────────────
+    function doFavicon() {
+      const textInput = document.getElementById('fav-text').value.trim();
+      const bgColor = document.getElementById('fav-bg').value;
+      const file = document.getElementById('fav-file').files[0];
+      const out = document.getElementById('fav-output');
+      const sizes = [16, 32, 64, 128];
+      out.innerHTML = '<div style="color:var(--text3);font-size:13px;">Generating...</div>';
+      const generate = (imgSrc) => {
+        const canvases = {};
+        sizes.forEach(size => {
+          const canvas = document.createElement('canvas');
+          canvas.width = size; canvas.height = size;
+          const ctx = canvas.getContext('2d');
+          if (imgSrc) {
+            ctx.drawImage(imgSrc, 0, 0, size, size);
+          } else {
+            ctx.fillStyle = bgColor;
+            ctx.fillRect(0, 0, size, size);
+            ctx.fillStyle = '#ffffff';
+            ctx.font = `bold ${Math.round(size * 0.48)}px Arial, sans-serif`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText((textInput || 'MT').slice(0, 2), size / 2, size / 2 + 1);
+          }
+          canvases[size] = canvas.toDataURL('image/png');
+        });
+        out.innerHTML = '<div style="font-size:13px;font-weight:700;color:var(--text2);margin-bottom:12px;width:100%;">Click size to download:</div><div style="display:flex;flex-wrap:wrap;gap:16px;justify-content:center;">' +
+          sizes.map(size => {
+            const url = canvases[size];
+            const display = Math.max(size, 48);
+            return `<div style="text-align:center;">
+          <img src="${url}" width="${display}" height="${display}" style="border:1px solid var(--border);border-radius:6px;image-rendering:pixelated;display:block;margin:0 auto 6px;">
+          <a href="${url}" download="favicon-${size}x${size}.png" style="font-size:12px;color:var(--primary);font-weight:700;text-decoration:none;">⬇️ ${size}×${size}</a>
+        </div>`;
+          }).join('') + '</div>';
+      };
+      if (file) {
+        const img = new Image();
+        img.onload = () => generate(img);
+        img.src = URL.createObjectURL(file);
+      } else if (textInput) {
+        generate(null);
+      } else {
+        out.textContent = 'Enter text or upload an image first.';
+      }
+    }
+
+    // ── DNS Checker ───────────────────────────────────────────────────────────────
+    async function doDnsCheck() {
+      const domain = document.getElementById('dns-input').value.trim().replace(/^https?:\/\//, '').split('/')[0];
+      const type = document.getElementById('dns-type').value;
+      const out = document.getElementById('dns-output');
+      if (!domain) { out.textContent = 'Please enter a domain name.'; return; }
+      out.textContent = `Looking up ${type} records for ${domain}...`;
+      try {
+        const r = await fetch(`https://dns.google/resolve?name=${encodeURIComponent(domain)}&type=${type}`);
+        const d = await r.json();
+        if (!d.Answer || !d.Answer.length) {
+          out.textContent = `No ${type} records found for ${domain}.`;
+          return;
+        }
+        out.innerHTML = d.Answer.map(rec => {
+          const ttl = `TTL: ${rec.TTL}s`;
+          return `<div style="padding:8px 12px;background:var(--surface2);border-radius:8px;margin-bottom:6px;font-size:13px;"><span style="color:var(--primary);font-weight:700;">${type}</span> <span style="color:var(--text2);">${ttl}</span><br><span style="word-break:break-all;">${rec.data}</span></div>`;
+        }).join('');
+      } catch (e) { out.textContent = 'Error: Could not fetch DNS records. ' + e.message; }
+    }
+
+    // ── Broken Links Checker ──────────────────────────────────────────────────────
+    async function doCheckLinks() {
+      const urls = document.getElementById('bl-urls').value.split('\n').map(u => u.trim()).filter(u => u.startsWith('http'));
+      const out = document.getElementById('bl-output');
+      if (!urls.length) { out.textContent = 'Please enter at least one URL (must start with http).'; return; }
+      out.innerHTML = `<div style="font-size:13px;color:var(--text3);">Checking ${urls.length} URL(s)... Due to browser security, results may vary.</div>`;
+      const results = [];
+      for (const url of urls.slice(0, 10)) {
+        try {
+          const r = await fetch(url, { method: 'HEAD', mode: 'no-cors' });
+          results.push({ url, status: '✅ Reachable', color: '#10B981' });
+        } catch (e) {
+          results.push({ url, status: '❌ Broken / Unreachable', color: '#EF4444' });
+        }
+      }
+      out.innerHTML = results.map(r => `<div style="padding:8px 12px;background:var(--surface2);border-radius:8px;margin-bottom:6px;font-size:13px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;"><span style="word-break:break-all;color:var(--text2);">${r.url}</span><span style="font-weight:700;color:${r.color};white-space:nowrap;">${r.status}</span></div>`).join('');
+    }
+
+    // ── Link Extractor ────────────────────────────────────────────────────────────
+    function doLinkExtract() {
+      const html = document.getElementById('le-input').value;
+      const urlRegex = /https?:\/\/[^\s"'<>]+/g;
+      const hrefRegex = /href=["']([^"']+)["']/g;
+      const links = new Set();
+      let m;
+      while ((m = urlRegex.exec(html)) !== null) links.add(m[0]);
+      while ((m = hrefRegex.exec(html)) !== null) links.add(m[1]);
+      const arr = [...links].filter(l => l.startsWith('http') || l.startsWith('/'));
+      document.getElementById('le-count').textContent = arr.length;
+      document.getElementById('le-output').innerHTML = arr.length
+        ? arr.map(l => `<div style="padding:6px 10px;background:var(--surface2);border-radius:6px;margin-bottom:5px;font-size:13px;word-break:break-all;color:var(--primary);">${l}</div>`).join('')
+        : 'No links found.';
+    }
+
+    // ── Google Index Checker ──────────────────────────────────────────────────────
+    function doGoogleIndexCheck() {
+      const url = document.getElementById('gic-input').value.trim();
+      const out = document.getElementById('gic-output');
+      if (!url) { out.textContent = 'Please enter a URL.'; return; }
+      const searchUrl = `https://www.google.com/search?q=site:${encodeURIComponent(url)}`;
+      out.innerHTML = `<div style="margin-bottom:10px;font-size:13px;color:var(--text2);">Click the button below to check if <strong>${url}</strong> is indexed by Google:</div>
+    <a href="${searchUrl}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;padding:10px 20px;background:var(--primary);color:white;border-radius:8px;text-decoration:none;font-size:13px;font-weight:600;">🔍 Check on Google</a>
+    <div style="margin-top:10px;font-size:12px;color:var(--text3);">If Google shows results → page is indexed. No results → not indexed yet.</div>`;
+    }
+
+    // ── SEO Score ─────────────────────────────────────────────────────────────────
+    function doSeoScore() {
+      const content = document.getElementById('seo-input').value;
+      const kw = document.getElementById('seo-kw').value.trim().toLowerCase();
+      const out = document.getElementById('seo-output');
+      if (!content.trim()) { out.textContent = 'Please paste some content.'; return; }
+      const text = content.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+      const words = text.split(/\s+/).length;
+      const hasTitle = /<title[^>]*>(.+?)<\/title>/i.test(content);
+      const hasH1 = /<h1[^>]*>/i.test(content);
+      const hasH2 = /<h2[^>]*>/i.test(content);
+      const hasMeta = /<meta[^>]*description/i.test(content);
+      const hasImg = /<img[^>]*>/i.test(content);
+      const hasAlt = /<img[^>]*alt=["'][^"']+["']/i.test(content);
+      const kwCount = kw ? (text.toLowerCase().match(new RegExp(kw.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g')) || []).length : 0;
+      const kwDensity = kw && words > 0 ? ((kwCount / words) * 100).toFixed(2) : 'N/A';
+      let score = 0;
+      const checks = [
+        { label: 'Title Tag', pass: hasTitle, tip: 'Add a <title> tag to your page' },
+        { label: 'H1 Heading', pass: hasH1, tip: 'Add an <h1> tag with your main keyword' },
+        { label: 'H2 Headings', pass: hasH2, tip: 'Use <h2> tags to structure your content' },
+        { label: 'Meta Description', pass: hasMeta, tip: 'Add a meta description tag' },
+        { label: 'Images Present', pass: hasImg, tip: 'Add relevant images to your content' },
+        { label: 'Image Alt Text', pass: hasAlt, tip: 'Add alt attributes to your images' },
+        { label: 'Content Length', pass: words >= 300, tip: 'Aim for at least 300 words' },
+        { label: 'Keyword Usage', pass: kw ? kwCount > 0 : true, tip: 'Include your target keyword in the content' },
+        { label: 'Keyword Density', pass: kw ? (parseFloat(kwDensity) >= 0.5 && parseFloat(kwDensity) <= 3) : true, tip: 'Keep keyword density between 0.5% and 3%' },
+      ];
+      checks.forEach(c => { if (c.pass) score++; });
+      const pct = Math.round((score / checks.length) * 100);
+      const color = pct >= 75 ? '#10B981' : pct >= 50 ? '#F59E0B' : '#EF4444';
+      out.innerHTML = `
+    <div style="text-align:center;margin-bottom:14px;">
+      <div style="font-size:48px;font-weight:900;color:${color};">${pct}</div>
+      <div style="font-size:13px;color:var(--text3);">SEO Score / 100</div>
+      ${kw ? `<div style="font-size:12px;color:var(--text3);margin-top:4px;">Keyword: "${kw}" — ${kwCount} occurrence(s) — Density: ${kwDensity}%</div>` : ''}
+    </div>
+    <div style="display:grid;gap:6px;">
+      ${checks.map(c => `<div style="display:flex;align-items:center;gap:10px;padding:8px 12px;background:var(--surface2);border-radius:8px;font-size:13px;">
+        <span style="font-size:15px;">${c.pass ? '✅' : '❌'}</span>
+        <span style="flex:1;">${c.label}</span>
+        ${!c.pass ? `<span style="font-size:11px;color:#F59E0B;">${c.tip}</span>` : ''}
+      </div>`).join('')}
+    </div>`;
+    }
+
+    // ── URL Decoder ───────────────────────────────────────────────────────────────
+    function doUrlDec() { document.getElementById('urldec-output').textContent = decodeURIComponent(document.getElementById('urldec-input').value); }
+    function doHtmlDec() { const t = document.createElement('textarea'); t.innerHTML = document.getElementById('htmldec-input').value; document.getElementById('htmldec-output').textContent = t.value; }
+
+    // ── XML Sitemap Generator ─────────────────────────────────────────────────────
+    function doSitemap() {
+      const domain = document.getElementById('sm-domain').value.trim().replace(/\/$/, '');
+      const urls = document.getElementById('sm-urls').value.split('\n').map(u => u.trim()).filter(Boolean);
+      const freq = document.getElementById('sm-freq').value;
+      if (!domain) { document.getElementById('sm-output').value = 'Please enter a domain.'; return; }
+      const today = new Date().toISOString().split('T')[0];
+      const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${urls.map(u => {
+        const loc = u.startsWith('http') ? u : `${domain}${u.startsWith('/') ? '' : '/'}${u}`;
+        return `  <url>
+    <loc>${loc}</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>${freq}</changefreq>
+    <priority>${u === '/' || u === '' ? '1.0' : '0.8'}</priority>
+  </url>`;
+      }).join('\n')}
+</urlset>`;
+      document.getElementById('sm-output').value = xml;
+    }
+    function copySitemap() { navigator.clipboard.writeText(document.getElementById('sm-output').value); }
+    function downloadSitemap() {
+      const xml = document.getElementById('sm-output').value;
+      const blob = new Blob([xml], { type: 'application/xml' });
+      const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'sitemap.xml'; a.click();
+    }
+
+    // ── Backlink Maker ────────────────────────────────────────────────────────────
+    function doBacklinkMaker() {
+      const url = document.getElementById('bm-url').value.trim();
+      const out = document.getElementById('bm-output');
+      if (!url) { out.textContent = 'Please enter your website URL.'; return; }
+      const sites = [
+        { name: 'Reddit', url: `https://reddit.com/submit?url=${encodeURIComponent(url)}`, da: '91' },
+        { name: 'LinkedIn', url: `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(url)}`, da: '98' },
+        { name: 'Twitter/X', url: `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}`, da: '95' },
+        { name: 'Pinterest', url: `https://pinterest.com/pin/create/button/?url=${encodeURIComponent(url)}`, da: '94' },
+        { name: 'Tumblr', url: `https://www.tumblr.com/share/link?url=${encodeURIComponent(url)}`, da: '93' },
+        { name: 'Mix', url: `https://mix.com/add?url=${encodeURIComponent(url)}`, da: '73' },
+        { name: 'Diigo', url: `https://www.diigo.com/post?url=${encodeURIComponent(url)}`, da: '84' },
+        { name: 'Instapaper', url: `https://www.instapaper.com/hello2?url=${encodeURIComponent(url)}`, da: '83' },
+        { name: 'Pocket', url: `https://getpocket.com/save?url=${encodeURIComponent(url)}`, da: '90' },
+        { name: 'Flipboard', url: `https://share.flipboard.com/bookmarklet/popout?v=2&url=${encodeURIComponent(url)}`, da: '91' },
+        { name: 'Scoop.it', url: `https://www.scoop.it/bookmarklet?url=${encodeURIComponent(url)}`, da: '79' },
+        { name: 'Folkd', url: `https://www.folkd.com/submit/${encodeURIComponent(url)}`, da: '66' },
+      ];
+      out.innerHTML = `<div style="font-size:12px;color:var(--text3);margin-bottom:12px;">Submit your site to these high DA directories. Click each link to submit.</div>` +
+        sites.map(s => `<div style="display:flex;justify-content:space-between;align-items:center;padding:8px 12px;background:var(--surface2);border-radius:8px;margin-bottom:6px;">
+      <div><div style="font-weight:700;font-size:13px;">${s.name}</div><div style="font-size:11px;color:var(--text3);">DA: ${s.da}</div></div>
+      <a href="${s.url}" target="_blank" rel="noopener" style="padding:6px 14px;background:var(--primary);color:white;border-radius:7px;font-size:12px;font-weight:600;text-decoration:none;">Submit →</a>
+    </div>`).join('');
+    }
+
+    // ── Page Comparison ───────────────────────────────────────────────────────────
+    function doPageCompare() {
+      const a = document.getElementById('pc-a').value;
+      const b = document.getElementById('pc-b').value;
+      const out = document.getElementById('pc-output');
+      if (!a.trim() || !b.trim()) { out.textContent = 'Please paste content in both fields.'; return; }
+      const strip = h => h.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+      const ta = strip(a), tb = strip(b);
+      const wa = ta.split(/\s+/).length, wb = tb.split(/\s+/).length;
+      const h1a = (a.match(/<h1[^>]*>(.*?)<\/h1>/i) || ['', ''])[1].replace(/<[^>]*>/g, '');
+      const h1b = (b.match(/<h1[^>]*>(.*?)<\/h1>/i) || ['', ''])[1].replace(/<[^>]*>/g, '');
+      const tita = (a.match(/<title[^>]*>(.*?)<\/title>/i) || ['', ''])[1];
+      const titb = (b.match(/<title[^>]*>(.*?)<\/title>/i) || ['', ''])[1];
+      const imga = (a.match(/<img/gi) || []).length, imgb = (b.match(/<img/gi) || []).length;
+      const linka = (a.match(/<a /gi) || []).length, linkb = (b.match(/<a /gi) || []).length;
+      const rows = [
+        ['Word Count', wa, wb],
+        ['Title Tag', tita || 'Not found', titb || 'Not found'],
+        ['H1 Tag', h1a || 'Not found', h1b || 'Not found'],
+        ['Images', imga, imgb],
+        ['Links', linka, linkb],
+      ];
+      out.innerHTML = `<div style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:0;border-radius:10px;overflow:hidden;border:1px solid var(--border);">
+    <div style="padding:8px 12px;background:var(--primary);color:white;font-weight:700;font-size:12px;">Metric</div>
+    <div style="padding:8px 12px;background:var(--primary);color:white;font-weight:700;font-size:12px;">Page 1</div>
+    <div style="padding:8px 12px;background:var(--primary);color:white;font-weight:700;font-size:12px;">Page 2</div>
+    ${rows.map((r, i) => `
+      <div style="padding:8px 12px;background:${i % 2 ? 'var(--surface2)' : 'var(--surface)'};font-size:13px;font-weight:600;">${r[0]}</div>
+      <div style="padding:8px 12px;background:${i % 2 ? 'var(--surface2)' : 'var(--surface)'};font-size:13px;word-break:break-all;">${r[1]}</div>
+      <div style="padding:8px 12px;background:${i % 2 ? 'var(--surface2)' : 'var(--surface)'};font-size:13px;word-break:break-all;">${r[2]}</div>
+    `).join('')}
+  </div>`;
+    }
+
+    // ── Code to Text Ratio ────────────────────────────────────────────────────────
+    function doCodeTextRatio() {
+      const html = document.getElementById('ctr-input').value;
+      const out = document.getElementById('ctr-output');
+      if (!html.trim()) { out.textContent = 'Please paste your HTML source.'; return; }
+      const totalChars = html.length;
+      const text = html.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+      const textChars = text.length;
+      const codeChars = totalChars - textChars;
+      const ratio = ((textChars / totalChars) * 100).toFixed(1);
+      const color = parseFloat(ratio) >= 20 ? '#10B981' : parseFloat(ratio) >= 10 ? '#F59E0B' : '#EF4444';
+      const suggestion = parseFloat(ratio) >= 20 ? 'Good! Your text ratio is healthy.' : parseFloat(ratio) >= 10 ? 'Average. Try to reduce HTML/code bloat or add more text content.' : 'Low text ratio. Add more written content or clean up excess HTML/JS/CSS.';
+      out.innerHTML = `
+    <div style="text-align:center;margin-bottom:14px;">
+      <div style="font-size:48px;font-weight:900;color:${color};">${ratio}%</div>
+      <div style="font-size:13px;color:var(--text3);">Text to Code Ratio</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:12px;">
+      <div style="text-align:center;padding:10px;background:var(--surface2);border-radius:8px;"><div style="font-weight:700;">${(totalChars / 1024).toFixed(1)} KB</div><div style="font-size:11px;color:var(--text3);">Total Size</div></div>
+      <div style="text-align:center;padding:10px;background:var(--surface2);border-radius:8px;"><div style="font-weight:700;color:${color};">${(textChars / 1024).toFixed(1)} KB</div><div style="font-size:11px;color:var(--text3);">Text Content</div></div>
+      <div style="text-align:center;padding:10px;background:var(--surface2);border-radius:8px;"><div style="font-weight:700;">${(codeChars / 1024).toFixed(1)} KB</div><div style="font-size:11px;color:var(--text3);">HTML/Code</div></div>
+    </div>
+    <div style="padding:10px 14px;background:${parseFloat(ratio) >= 20 ? '#F0FDF4' : parseFloat(ratio) >= 10 ? '#FFFBEB' : '#FEF2F2'};border-radius:8px;font-size:13px;color:${color};">${suggestion}</div>`;
+    }
+
     function doConvert() { const i = document.getElementById('conv-input').value; const o = document.getElementById('conv-output'); try { o.textContent = window._convertFn(i); } catch (e) { o.textContent = 'Invalid input.'; } }
     function doWordCount() { const t = document.getElementById('wc-input').value; const words = t.trim() ? t.trim().split(/\s+/).length : 0; document.getElementById('wc-words').textContent = words; document.getElementById('wc-chars').textContent = t.length; document.getElementById('wc-chars-ns').textContent = t.replace(/\s/g, '').length; document.getElementById('wc-sentences').textContent = t.split(/[.!?]+/).filter(s => s.trim()).length; document.getElementById('wc-paras').textContent = t.split(/\n\s*\n/).filter(p => p.trim()).length || 1; document.getElementById('wc-read').textContent = Math.ceil(words / 200); }
     function genPwd() { const len = parseInt(document.getElementById('pwd-len').value) || 16; let chars = ''; if (document.getElementById('pwd-upper').checked) chars += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'; if (document.getElementById('pwd-lower').checked) chars += 'abcdefghijklmnopqrstuvwxyz'; if (document.getElementById('pwd-num').checked) chars += '0123456789'; if (document.getElementById('pwd-sym').checked) chars += '!@#$%^&*()_+-=[]{}|;:,.<>?'; if (!chars) { document.getElementById('pwd-output').textContent = 'Select at least one character type.'; return; } let pwd = ''; for (let i = 0; i < len; i++)pwd += chars[Math.floor(Math.random() * chars.length)]; document.getElementById('pwd-output').textContent = pwd; }
@@ -3188,19 +4478,31 @@
     function doKwDensity() { const t = document.getElementById('kw-input').value.toLowerCase(); const words = t.match(/\b[a-z]{3,}\b/g) || []; const total = words.length; const freq = {}; words.forEach(w => freq[w] = (freq[w] || 0) + 1); const sorted = Object.entries(freq).sort((a, b) => b[1] - a[1]).slice(0, 15); document.getElementById('kw-output').innerHTML = sorted.map(([w, c]) => `<div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--border);"><span>${w}</span><span style="color:var(--primary);font-weight:700;">${c}x (${((c / total) * 100).toFixed(2)}%)</span></div>`).join(''); }
     function doCode(id) { const code = document.getElementById('code-input').value; let result = ''; if (id.startsWith('min-')) { result = code.replace(/\s+/g, ' ').replace(/\s*([{};:,>~+])\s*/g, '$1').replace(/\/\*[\s\S]*?\*\//g, '').trim(); } else { if (id === 'json-beauty') { try { result = JSON.stringify(JSON.parse(code), null, 2); } catch (e) { result = 'Invalid JSON: ' + e.message; } } else { let indent = 0; result = code.split(/({|}|;)/).map(part => { if (part.includes('}')) indent--; const line = '  '.repeat(Math.max(0, indent)) + part.trim(); if (part.includes('{')) indent++; return line; }).join('\n').replace(/\n\s*\n+/g, '\n\n').trim(); } } document.getElementById('code-output').textContent = result; }
     function doDiff() {
-      const a = document.getElementById('diff-a').value.split('\
-'); const b = document.getElementById('diff-b').value.split('\
-'); let out = ''; const max = Math.max(a.length, b.length); let diffs = 0; for (let i = 0; i < max; i++) {
-        const la = a[i] || '', lb = b[i] || ''; if (la !== lb) {
-          diffs++; out += `Line ${i + 1}:\
-  - ${la}\
-  + ${lb}\
-`;
+      const a = document.getElementById('diff-a').value;
+      const b = document.getElementById('diff-b').value;
+      const out = document.getElementById('diff-output');
+      if (!a.trim() && !b.trim()) { out.textContent = 'Please enter text in both fields.'; return; }
+      const aLines = a.split('\n');
+      const bLines = b.split('\n');
+      const max = Math.max(aLines.length, bLines.length);
+      let diffs = 0;
+      let html = '';
+      for (let i = 0; i < max; i++) {
+        const la = aLines[i] !== undefined ? aLines[i] : '';
+        const lb = bLines[i] !== undefined ? bLines[i] : '';
+        if (la === lb) {
+          html += `<div style="padding:3px 8px;font-size:13px;color:var(--text3);font-family:monospace;">&nbsp; ${escHtml(la) || '&nbsp;'}</div>`;
+        } else {
+          diffs++;
+          if (la) html += `<div style="padding:3px 8px;font-size:13px;background:#FEE2E2;color:#DC2626;font-family:monospace;border-left:3px solid #DC2626;">− ${escHtml(la)}</div>`;
+          if (lb) html += `<div style="padding:3px 8px;font-size:13px;background:#DCFCE7;color:#16A34A;font-family:monospace;border-left:3px solid #16A34A;">+ ${escHtml(lb)}</div>`;
         }
-      } document.getElementById('diff-output').textContent = diffs ? `${diffs} difference(s):\
-\
-${out}` : '\u2705 No differences. Texts are identical.';
+      }
+      out.innerHTML = diffs
+        ? `<div style="margin-bottom:8px;font-size:13px;font-weight:700;color:var(--text2);">${diffs} line(s) differ:</div>${html}`
+        : `<div style="padding:10px 14px;background:#F0FDF4;border-radius:8px;font-size:13px;color:#16A34A;">✅ No differences. Texts are identical.</div>`;
     }
+    function escHtml(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
     function doLineCount() {
       const lines = document.getElementById('lc-input').value.split('\
 '); const empty = lines.filter(l => !l.trim()).length; document.getElementById('lc-lines').textContent = lines.length; document.getElementById('lc-empty').textContent = empty; document.getElementById('lc-nonempty').textContent = lines.length - empty;
@@ -3218,7 +4520,35 @@ ${input}`
         }); const data = await resp.json(); out.textContent = data.content?.[0]?.text || 'No result returned.';
       } catch (e) { out.textContent = 'Error connecting to AI. Please try again.'; } btn.textContent = 'Generate ✨';
     }
-    function copyOutput(id) { const el = document.getElementById(id); navigator.clipboard.writeText(el.textContent).then(() => { const orig = el.style.borderColor; el.style.borderColor = 'var(--primary)'; setTimeout(() => el.style.borderColor = orig, 1000); }); }
+    function copyOutput(id) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      // Get text from textarea.value or element.textContent/innerText
+      const text = (el.tagName === 'TEXTAREA' || el.tagName === 'INPUT')
+        ? el.value
+        : el.innerText || el.textContent;
+      if (!text.trim()) return;
+      navigator.clipboard.writeText(text.trim()).then(() => {
+        // Find nearest copy button and show feedback
+        const btns = document.querySelectorAll(`[onclick*="copyOutput('${id}')"]`);
+        btns.forEach(btn => {
+          const orig = btn.textContent;
+          btn.textContent = '✅ Copied!';
+          btn.style.color = 'var(--primary)';
+          setTimeout(() => { btn.textContent = orig; btn.style.color = ''; }, 1800);
+        });
+      }).catch(() => {
+        // Fallback for browsers that block clipboard
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+      });
+    }
 
     let currentUser = null;
 
