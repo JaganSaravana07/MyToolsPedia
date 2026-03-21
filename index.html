@@ -1030,6 +1030,7 @@
       justify-content: center;
       font-size: 26px;
       flex-shrink: 0;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
     }
 
     .tool-page-title {
@@ -1051,6 +1052,308 @@
       padding: 32px 28px 72px;
     }
 
+    /* INNER PAGES (legal, company) */
+    .inner-page {
+      display: none;
+      flex: 1;
+    }
+
+    .inner-page.active {
+      display: block;
+    }
+
+    .inner-page-header {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      padding: 60px 28px 48px;
+      text-align: center;
+    }
+
+    .inner-page-header h1 {
+      font-size: 36px;
+      font-weight: 900;
+      color: white;
+      letter-spacing: -1px;
+      margin-bottom: 10px;
+    }
+
+    .inner-page-header p {
+      font-size: 15px;
+      color: rgba(255, 255, 255, 0.85);
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .inner-page-body {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 28px 80px;
+    }
+
+    .inner-page-section {
+      margin-bottom: 36px;
+    }
+
+    .inner-page-section h2 {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 12px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--border);
+    }
+
+    .inner-page-section h3 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      margin: 16px 0 8px;
+    }
+
+    .inner-page-section p {
+      font-size: 14px;
+      color: var(--text2);
+      line-height: 1.75;
+      margin-bottom: 10px;
+    }
+
+    .inner-page-section ul {
+      margin: 8px 0 12px 20px;
+    }
+
+    .inner-page-section ul li {
+      font-size: 14px;
+      color: var(--text2);
+      line-height: 1.75;
+      margin-bottom: 4px;
+    }
+
+    .inner-page-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      background: var(--surface2);
+      border: 1.5px solid var(--border);
+      border-radius: 9px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text2);
+      cursor: pointer;
+      margin-bottom: 32px;
+      transition: all 0.2s;
+    }
+
+    .inner-page-back:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .inner-page-last-updated {
+      font-size: 12px;
+      color: var(--text3);
+      margin-bottom: 28px;
+      padding: 8px 14px;
+      background: var(--surface2);
+      border-radius: 8px;
+      display: inline-block;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 20px 0;
+    }
+
+    .contact-card {
+      background: var(--surface2);
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      transition: all 0.2s;
+    }
+
+    .contact-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    .contact-card-icon {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .contact-card-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .contact-card-text {
+      font-size: 13px;
+      color: var(--text3);
+    }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin: 20px 0;
+    }
+
+    .blog-card {
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+
+    .blog-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .blog-card-img {
+      height: 140px;
+      background: linear-gradient(135deg, var(--bg2), var(--bg));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+    }
+
+    .blog-card-body {
+      padding: 16px;
+    }
+
+    .blog-card-cat {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+
+    .blog-card-title {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 6px;
+      line-height: 1.4;
+    }
+
+    .blog-card-meta {
+      font-size: 12px;
+      color: var(--text3);
+    }
+
+    .about-team {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 20px 0;
+    }
+
+    .team-card {
+      background: var(--surface2);
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .team-avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      color: white;
+      font-weight: 800;
+      margin: 0 auto 12px;
+    }
+
+    .team-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .team-role {
+      font-size: 12px;
+      color: var(--text3);
+      margin-top: 3px;
+    }
+
+    .value-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin: 20px 0;
+    }
+
+    .value-card {
+      background: var(--surface2);
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      padding: 18px;
+      text-align: center;
+    }
+
+    .value-card-icon {
+      font-size: 26px;
+      margin-bottom: 10px;
+    }
+
+    .value-card-title {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .value-card-text {
+      font-size: 12px;
+      color: var(--text3);
+      line-height: 1.6;
+    }
+
+    .press-stat {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin: 20px 0;
+    }
+
+    .press-stat-item {
+      background: var(--bg2);
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      padding: 18px;
+      text-align: center;
+    }
+
+    .press-stat-num {
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--primary);
+    }
+
+    .press-stat-label {
+      font-size: 12px;
+      color: var(--text3);
+      margin-top: 4px;
+    }
+
     /* WORKSPACE */
     .tool-workspace {
       background: var(--surface);
@@ -1060,13 +1363,69 @@
       margin-bottom: 20px;
     }
 
+    .tool-workspace-title {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tool-workspace-title svg {
+      color: var(--primary);
+    }
+
     .ws-label {
       font-size: 12px;
       font-weight: 700;
       color: var(--text2);
       text-transform: uppercase;
       letter-spacing: 0.6px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .ws-hint {
+      font-size: 12px;
+      color: var(--text3);
+      margin-top: -4px;
       margin-bottom: 10px;
+    }
+
+    .ws-info-box {
+      background: var(--bg2);
+      border: 1.5px solid #C7D7FF;
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-size: 12px;
+      color: var(--text2);
+      margin-bottom: 14px;
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+    }
+
+    .ws-info-box svg {
+      color: var(--primary);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .ws-warning-box {
+      background: #FFFBEB;
+      border: 1.5px solid #FDE68A;
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-size: 12px;
+      color: #92400E;
+      margin-bottom: 14px;
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
     }
 
     .ws-textarea {
@@ -1087,6 +1446,7 @@
 
     .ws-textarea:focus {
       border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.08);
     }
 
     .ws-input {
@@ -1105,6 +1465,7 @@
 
     .ws-input:focus {
       border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.08);
     }
 
     .ws-row {
@@ -1116,8 +1477,15 @@
     .ws-actions {
       display: flex;
       gap: 10px;
-      margin-top: 14px;
+      margin-top: 16px;
       flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .ws-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 18px 0;
     }
 
     .ws-btn {
@@ -1129,6 +1497,9 @@
       font-size: 13px;
       font-weight: 700;
       transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
 
     .ws-btn-primary {
@@ -1142,6 +1513,10 @@
       box-shadow: 0 5px 14px rgba(37, 99, 235, 0.35);
     }
 
+    .ws-btn-primary:active {
+      transform: translateY(0);
+    }
+
     .ws-btn-ghost {
       background: var(--surface2);
       border: 1.5px solid var(--border);
@@ -1151,12 +1526,24 @@
     .ws-btn-ghost:hover {
       border-color: var(--primary);
       color: var(--primary);
+      background: var(--bg2);
+    }
+
+    .ws-btn-danger {
+      background: #FEF2F2;
+      border: 1.5px solid #FECACA;
+      color: #DC2626;
+    }
+
+    .ws-btn-danger:hover {
+      background: #DC2626;
+      color: white;
     }
 
     .ws-output {
       width: 100%;
       min-height: 120px;
-      padding: 14px;
+      padding: 16px;
       border: 1.5px solid var(--border);
       border-radius: 10px;
       background: var(--bg2);
@@ -1168,29 +1555,110 @@
       word-break: break-word;
     }
 
+    .ws-output-success {
+      border-color: #86EFAC;
+      background: #F0FDF4;
+    }
+
+    .ws-output-error {
+      border-color: #FECACA;
+      background: #FEF2F2;
+    }
+
+    .ws-result-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .ws-result-badge.green {
+      background: #DCFCE7;
+      color: #16A34A;
+    }
+
+    .ws-result-badge.red {
+      background: #FEE2E2;
+      color: #DC2626;
+    }
+
+    .ws-result-badge.yellow {
+      background: #FEF9C3;
+      color: #CA8A04;
+    }
+
     .ws-stats {
       display: flex;
-      gap: 16px;
+      gap: 14px;
       flex-wrap: wrap;
-      margin-top: 10px;
+      margin-top: 16px;
     }
 
     .ws-stat {
       background: var(--bg2);
-      border-radius: 8px;
-      padding: 10px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 18px;
+      flex: 1;
+      min-width: 90px;
+      text-align: center;
     }
 
     .ws-stat-num {
-      font-size: 20px;
-      font-weight: 800;
+      font-size: 24px;
+      font-weight: 900;
       color: var(--primary);
+      line-height: 1;
     }
 
     .ws-stat-label {
       font-size: 11px;
       color: var(--text3);
-      margin-top: 2px;
+      margin-top: 4px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+
+    .ws-file-info {
+      display: none;
+      padding: 8px 12px;
+      background: var(--bg2);
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      font-size: 13px;
+      color: var(--text2);
+      margin-bottom: 12px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .ws-file-info.show {
+      display: flex;
+    }
+
+    .ws-progress {
+      height: 4px;
+      background: var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-top: 10px;
+      display: none;
+    }
+
+    .ws-progress.show {
+      display: block;
+    }
+
+    .ws-progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      border-radius: 4px;
+      transition: width 0.3s;
     }
 
     /* PROFILE */
@@ -1468,6 +1936,16 @@
     }
 
     /* ANIM */
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
     @keyframes fadeUp {
       from {
         opacity: 0;
@@ -1821,9 +2299,37 @@
         padding: 20px 14px 48px;
       }
 
-      /* PROFILE */
-      .profile-grid {
+      /* INNER PAGES */
+      .inner-page-header {
+        padding: 40px 20px 32px;
+      }
+
+      .inner-page-header h1 {
+        font-size: 26px;
+      }
+
+      .inner-page-body {
+        padding: 32px 20px 60px;
+      }
+
+      .contact-grid {
         grid-template-columns: 1fr;
+      }
+
+      .blog-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .value-cards {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .press-stat {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .about-team {
+        grid-template-columns: 1fr 1fr;
       }
 
       /* FOOTER */
@@ -1880,6 +2386,19 @@
 
       .ws-stats {
         grid-template-columns: repeat(2, 1fr);
+      }
+
+      /* INNER PAGES */
+      .value-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .press-stat {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .about-team {
+        grid-template-columns: 1fr;
       }
 
       /* MODAL */
@@ -2090,6 +2609,11 @@
     <button class="mobile-menu-btn" onclick="filterTools('seo');closeMobileMenu();">🔍 SEO Tools</button>
     <button class="mobile-menu-btn" onclick="filterTools('web');closeMobileMenu();">🌐 Web Tools</button>
     <button class="mobile-menu-btn" onclick="filterTools('utility');closeMobileMenu();">⚙️ Utility Tools</button>
+    <div class="mobile-menu-divider"></div>
+    <div class="mobile-menu-label">Company</div>
+    <button class="mobile-menu-btn" onclick="showInnerPage('about');">⚡ About Us</button>
+    <button class="mobile-menu-btn" onclick="showInnerPage('contact');">📬 Contact Us</button>
+    <button class="mobile-menu-btn" onclick="showInnerPage('blog');">📝 Blog</button>
   </div>
 
   <!-- SIGN IN MODAL -->
@@ -2194,6 +2718,542 @@
             d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.31-8.16 2.31-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z" />
         </svg>Continue with Google</button>
       <p class="modal-switch">Have an account? <a onclick="switchModal('signup','signin')">Sign in</a></p>
+    </div>
+  </div>
+
+  <!-- INNER PAGES -->
+  <!-- Security -->
+  <div class="inner-page" id="page-security">
+    <div class="inner-page-header">
+      <h1>🔒 Security</h1>
+      <p>How we protect your data and privacy at MyToolsPedia.</p>
+    </div>
+    <div class="inner-page-body">
+      <button class="inner-page-back" onclick="showHome()"><svg width="13" height="13" fill="none" stroke="currentColor"
+          stroke-width="2.5" viewBox="0 0 24 24">
+          <path d="M15 18l-6-6 6-6" />
+        </svg>Back to Home</button>
+      <div class="inner-page-last-updated">Last updated: March 2026</div>
+      <div class="inner-page-section">
+        <h2>Our Security Commitment</h2>
+        <p>At MyToolsPedia, security is not an afterthought — it is built into the foundation of everything we do. We
+          are committed to protecting your data and ensuring a safe, private experience for all users.</p>
+      </div>
+      <div class="inner-page-section">
+        <h2>Data Processing</h2>
+        <h3>Client-Side Processing</h3>
+        <p>The vast majority of our tools run entirely in your browser. Your text, files, and inputs never leave your
+          device. There is no server-side processing of your data for tools like word counters, PDF tools, image tools,
+          code formatters, and converters.</p>
+        <h3>AI-Powered Tools</h3>
+        <p>Tools that use AI (marked with ✨) send your input to the Anthropic Claude API over encrypted HTTPS
+          connections. We do not store your inputs or outputs. API communications use TLS 1.2+ encryption.</p>
+      </div>
+      <div class="inner-page-section">
+        <h2>Authentication Security</h2>
+        <ul>
+          <li>Passwords are hashed using bcrypt — we never store plain-text passwords</li>
+          <li>Authentication is handled by Supabase with industry-standard JWT tokens</li>
+          <li>Google OAuth uses OAuth 2.0 — we never see your Google password</li>
+          <li>Sessions expire automatically after inactivity</li>
+          <li>All connections are encrypted with HTTPS/TLS</li>
+        </ul>
+      </div>
+      <div class="inner-page-section">
+        <h2>Infrastructure</h2>
+        <p>MyToolsPedia is hosted on Vercel's global edge network with automatic DDoS protection and SSL certificates.
+          Our database is hosted on Supabase with row-level security (RLS) enabled on all tables.</p>
+      </div>
+      <div class="inner-page-section">
+        <h2>Responsible Disclosure</h2>
+        <p>Found a security vulnerability? We appreciate responsible disclosure. Please contact us at <strong><a
+              href="/cdn-cgi/l/email-protection" class="__cf_email__"
+              data-cfemail="4231272137302b363b022f3b362d2d2e313227262b236c212d2f">[email&#160;protected]</a></strong>
+          and we will respond within 48 hours. Please do not publicly disclose the vulnerability until we have had a
+          chance to address it.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Privacy Policy -->
+  <div class="inner-page" id="page-privacy">
+    <div class="inner-page-header">
+      <h1>🔏 Privacy Policy</h1>
+      <p>Your privacy matters. Here is exactly what we collect and why.</p>
+    </div>
+    <div class="inner-page-body">
+      <button class="inner-page-back" onclick="showHome()"><svg width="13" height="13" fill="none" stroke="currentColor"
+          stroke-width="2.5" viewBox="0 0 24 24">
+          <path d="M15 18l-6-6 6-6" />
+        </svg>Back to Home</button>
+      <div class="inner-page-last-updated">Last updated: March 2026</div>
+      <div class="inner-page-section">
+        <h2>1. Information We Collect</h2>
+        <h3>Account Information</h3>
+        <p>When you create an account, we collect your email address and name. This is stored securely in our database
+          and used only for account management purposes.</p>
+        <h3>Usage Data</h3>
+        <p>We may collect anonymous usage data such as which tools are most frequently used, page views, and general
+          interaction patterns. This data is aggregated and never tied to your identity.</p>
+        <h3>What We Do Not Collect</h3>
+        <ul>
+          <li>We do not collect the content you process in our tools</li>
+          <li>We do not sell your data to third parties</li>
+          <li>We do not track you across other websites</li>
+          <li>We do not serve behavioral advertising</li>
+        </ul>
+      </div>
+      <div class="inner-page-section">
+        <h2>2. How We Use Your Information</h2>
+        <ul>
+          <li>To provide and maintain your account</li>
+          <li>To send important service updates (not marketing, unless you opt in)</li>
+          <li>To improve our tools and user experience</li>
+          <li>To respond to your support requests</li>
+        </ul>
+      </div>
+      <div class="inner-page-section">
+        <h2>3. Data Storage & Retention</h2>
+        <p>Your account data is stored on Supabase's secure servers in the Asia Pacific region. You may request deletion
+          of your account and all associated data at any time by contacting us.</p>
+      </div>
+      <div class="inner-page-section">
+        <h2>4. Third-Party Services</h2>
+        <p>We use the following third-party services: <strong>Supabase</strong> (authentication and database),
+          <strong>Vercel</strong> (hosting), <strong>Anthropic Claude API</strong> (AI-powered tools), and
+          <strong>Google OAuth</strong> (sign-in). Each of these services has their own privacy policies.</p>
+      </div>
+      <div class="inner-page-section">
+        <h2>5. Your Rights</h2>
+        <p>You have the right to access, correct, or delete your personal data at any time. Contact us at <strong><a
+              href="/cdn-cgi/l/email-protection" class="__cf_email__"
+              data-cfemail="a5d5d7ccd3c4c6dce5c8dcd1cacac9d6d5c0c1ccc48bc6cac8">[email&#160;protected]</a></strong> to
+          exercise these rights.</p>
+      </div>
+      <div class="inner-page-section">
+        <h2>6. Contact</h2>
+        <p>Questions about this policy? Email us at <strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__"
+              data-cfemail="4030322936212339002d39342f2f2c3330252429216e232f2d">[email&#160;protected]</a></strong>.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Terms & Conditions -->
+  <div class="inner-page" id="page-terms">
+    <div class="inner-page-header">
+      <h1>📋 Terms & Conditions</h1>
+      <p>The rules that govern your use of MyToolsPedia.</p>
+    </div>
+    <div class="inner-page-body">
+      <button class="inner-page-back" onclick="showHome()"><svg width="13" height="13" fill="none" stroke="currentColor"
+          stroke-width="2.5" viewBox="0 0 24 24">
+          <path d="M15 18l-6-6 6-6" />
+        </svg>Back to Home</button>
+      <div class="inner-page-last-updated">Last updated: March 2026</div>
+      <div class="inner-page-section">
+        <h2>1. Acceptance of Terms</h2>
+        <p>By accessing or using MyToolsPedia, you agree to be bound by these Terms and Conditions. If you disagree with
+          any part of these terms, you may not use our services.</p>
+      </div>
+      <div class="inner-page-section">
+        <h2>2. Use of Service</h2>
+        <p>MyToolsPedia provides free tools for personal and commercial use. You agree to use our services only for
+          lawful purposes and in accordance with these Terms.</p>
+        <h3>You may not use our services to:</h3>
+        <ul>
+          <li>Process, store, or transmit any unlawful, harmful, or offensive content</li>
+          <li>Violate any applicable laws or regulations</li>
+          <li>Infringe on the intellectual property rights of others</li>
+          <li>Attempt to gain unauthorized access to our systems</li>
+          <li>Transmit malware, viruses, or any malicious code</li>
+          <li>Use automated scraping or excessive API requests</li>
+        </ul>
+      </div>
+      <div class="inner-page-section">
+        <h2>3. Intellectual Property</h2>
+        <p>The MyToolsPedia platform, including its code, design, and content, is owned by MyToolsPedia and protected by
+          copyright law. You retain full ownership of any content you create or process using our tools.</p>
+      </div>
+      <div class="inner-page-section">
+        <h2>4. Disclaimer of Warranties</h2>
+        <p>Our tools are provided "as is" without warranties of any kind. We do not guarantee uninterrupted service,
+          accuracy of AI outputs, or suitability for any particular purpose. Use AI-generated content at your own
+          discretion.</p>
+      </div>
+      <div class="inner-page-section">
+        <h2>5. Limitation of Liability</h2>
+        <p>MyToolsPedia shall not be liable for any indirect, incidental, or consequential damages arising from your use
+          of our services. Our total liability shall not exceed the amount you paid us in the 12 months preceding the
+          claim.</p>
+      </div>
+      <div class="inner-page-section">
+        <h2>6. Changes to Terms</h2>
+        <p>We may update these terms at any time. We will notify registered users by email of significant changes.
+          Continued use after changes constitutes acceptance.</p>
+      </div>
+      <div class="inner-page-section">
+        <h2>7. Contact</h2>
+        <p>Questions about these terms? Email <strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__"
+              data-cfemail="dcb0b9bbbdb09cb1a5a8b3b3b0afacb9b8b5bdf2bfb3b1">[email&#160;protected]</a></strong>.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cookies -->
+  <div class="inner-page" id="page-cookies">
+    <div class="inner-page-header">
+      <h1>🍪 Cookie Policy</h1>
+      <p>How and why we use cookies on MyToolsPedia.</p>
+    </div>
+    <div class="inner-page-body">
+      <button class="inner-page-back" onclick="showHome()"><svg width="13" height="13" fill="none" stroke="currentColor"
+          stroke-width="2.5" viewBox="0 0 24 24">
+          <path d="M15 18l-6-6 6-6" />
+        </svg>Back to Home</button>
+      <div class="inner-page-last-updated">Last updated: March 2026</div>
+      <div class="inner-page-section">
+        <h2>What Are Cookies?</h2>
+        <p>Cookies are small text files stored on your device by your browser. They help websites remember your
+          preferences and improve your experience.</p>
+      </div>
+      <div class="inner-page-section">
+        <h2>Cookies We Use</h2>
+        <h3>Essential Cookies</h3>
+        <p>These are required for the site to function. They include authentication tokens that keep you logged in and
+          session identifiers. You cannot opt out of these without losing site functionality.</p>
+        <h3>Preference Cookies</h3>
+        <p>We store your theme preference (light/dark mode) in local storage so it persists between visits. This is
+          stored on your device only.</p>
+        <h3>Analytics Cookies</h3>
+        <p>We may use anonymous analytics to understand which tools are most popular. This data is aggregated and does
+          not identify individual users.</p>
+      </div>
+      <div class="inner-page-section">
+        <h2>What We Do NOT Use Cookies For</h2>
+        <ul>
+          <li>Advertising or ad targeting</li>
+          <li>Tracking you across third-party websites</li>
+          <li>Selling data to advertisers</li>
+          <li>Building personal profiles for marketing</li>
+        </ul>
+      </div>
+      <div class="inner-page-section">
+        <h2>Managing Cookies</h2>
+        <p>You can control cookies through your browser settings. Note that disabling essential cookies will prevent
+          login functionality. Most browsers allow you to view, delete, and block cookies through their settings menu.
+        </p>
+      </div>
+      <div class="inner-page-section">
+        <h2>Contact</h2>
+        <p>Questions about our cookie use? Email <strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__"
+              data-cfemail="0a7a78637c6b69734a67737e656566797a6f6e636b24696567">[email&#160;protected]</a></strong>.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- About Us -->
+  <div class="inner-page" id="page-about">
+    <div class="inner-page-header">
+      <h1>⚡ About MyToolsPedia</h1>
+      <p>Built by makers, for everyone who needs to get things done.</p>
+    </div>
+    <div class="inner-page-body">
+      <button class="inner-page-back" onclick="showHome()"><svg width="13" height="13" fill="none" stroke="currentColor"
+          stroke-width="2.5" viewBox="0 0 24 24">
+          <path d="M15 18l-6-6 6-6" />
+        </svg>Back to Home</button>
+      <div class="inner-page-section">
+        <h2>Our Story</h2>
+        <p>MyToolsPedia was born out of frustration. Every time we needed a quick tool — to convert a file, check a word
+          count, generate a QR code, or clean up some code — we ended up on a different site, dealing with ads,
+          paywalls, and terrible UX.</p>
+        <p>We decided to build one place that has everything. 173 tools, free forever, no ads, no signup required for
+          most features. Just tools that work.</p>
+      </div>
+      <div class="inner-page-section">
+        <h2>Our Mission</h2>
+        <p>To make professional-grade tools accessible to everyone — from students and freelancers to large teams and
+          enterprises. We believe powerful tools should not be gated behind paywalls.</p>
+      </div>
+      <div class="inner-page-section">
+        <h2>Our Values</h2>
+        <div class="value-cards">
+          <div class="value-card">
+            <div class="value-card-icon">🆓</div>
+            <div class="value-card-title">Free Forever</div>
+            <div class="value-card-text">Core tools will always be free. No tricks, no bait-and-switch.</div>
+          </div>
+          <div class="value-card">
+            <div class="value-card-icon">🔒</div>
+            <div class="value-card-title">Privacy First</div>
+            <div class="value-card-text">Most tools run in your browser. Your data stays on your device.</div>
+          </div>
+          <div class="value-card">
+            <div class="value-card-icon">🚀</div>
+            <div class="value-card-title">Always Improving</div>
+            <div class="value-card-text">We ship updates constantly based on user feedback.</div>
+          </div>
+          <div class="value-card">
+            <div class="value-card-icon">🎯</div>
+            <div class="value-card-title">No Distractions</div>
+            <div class="value-card-text">No ads, no popups, no dark patterns. Just tools.</div>
+          </div>
+          <div class="value-card">
+            <div class="value-card-icon">🌍</div>
+            <div class="value-card-title">For Everyone</div>
+            <div class="value-card-text">Designed to work for any user, anywhere in the world.</div>
+          </div>
+          <div class="value-card">
+            <div class="value-card-icon">⚡</div>
+            <div class="value-card-title">Fast & Reliable</div>
+            <div class="value-card-text">Edge-hosted globally. Tools that load and run instantly.</div>
+          </div>
+        </div>
+      </div>
+      <div class="inner-page-section">
+        <h2>By the Numbers</h2>
+        <div class="press-stat">
+          <div class="press-stat-item">
+            <div class="press-stat-num">173</div>
+            <div class="press-stat-label">Free Tools</div>
+          </div>
+          <div class="press-stat-item">
+            <div class="press-stat-num">4</div>
+            <div class="press-stat-label">Categories</div>
+          </div>
+          <div class="press-stat-item">
+            <div class="press-stat-num">100%</div>
+            <div class="press-stat-label">Ad Free</div>
+          </div>
+          <div class="press-stat-item">
+            <div class="press-stat-num">0</div>
+            <div class="press-stat-label">Paywalls</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact Us -->
+  <div class="inner-page" id="page-contact">
+    <div class="inner-page-header">
+      <h1>📬 Contact Us</h1>
+      <p>We would love to hear from you. Reach out any time.</p>
+    </div>
+    <div class="inner-page-body">
+      <button class="inner-page-back" onclick="showHome()"><svg width="13" height="13" fill="none" stroke="currentColor"
+          stroke-width="2.5" viewBox="0 0 24 24">
+          <path d="M15 18l-6-6 6-6" />
+        </svg>Back to Home</button>
+      <div class="inner-page-section">
+        <h2>Get in Touch</h2>
+        <p>Whether you have a bug report, feature request, partnership inquiry, or just want to say hello — we read
+          every message and respond within 48 hours.</p>
+        <div class="contact-grid">
+          <div class="contact-card">
+            <div class="contact-card-icon">🐛</div>
+            <div class="contact-card-title">Bug Reports</div>
+            <div class="contact-card-text"><a href="/cdn-cgi/l/email-protection" class="__cf_email__"
+                data-cfemail="1c7e697b6f5c7165687373706f6c7978757d327f7371">[email&#160;protected]</a></div>
+          </div>
+          <div class="contact-card">
+            <div class="contact-card-icon">💡</div>
+            <div class="contact-card-title">Feature Requests</div>
+            <div class="contact-card-text"><a href="/cdn-cgi/l/email-protection" class="__cf_email__"
+                data-cfemail="93f5f6f6f7f1f2f0f8d3feeae7fcfcffe0e3f6f7faf2bdf0fcfe">[email&#160;protected]</a></div>
+          </div>
+          <div class="contact-card">
+            <div class="contact-card-icon">🤝</div>
+            <div class="contact-card-title">Partnerships</div>
+            <div class="contact-card-text"><a href="/cdn-cgi/l/email-protection" class="__cf_email__"
+                data-cfemail="4c3c2d3e3822293e3f0c2135382323203f3c2928252d622f2321">[email&#160;protected]</a></div>
+          </div>
+          <div class="contact-card">
+            <div class="contact-card-icon">📰</div>
+            <div class="contact-card-title">Press & Media</div>
+            <div class="contact-card-text"><a href="/cdn-cgi/l/email-protection" class="__cf_email__"
+                data-cfemail="45353720363605283c312a2a29363520212c246b262a28">[email&#160;protected]</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="inner-page-section">
+        <h2>Send a Message</h2>
+        <div class="tool-workspace">
+          <div class="ws-label">Your Name</div>
+          <input class="ws-input" id="contact-name" placeholder="Your full name">
+          <div class="ws-label">Email Address</div>
+          <input class="ws-input" type="email" id="contact-email" placeholder="your@email.com">
+          <div class="ws-label">Subject</div>
+          <select class="ws-input" id="contact-subject">
+            <option value="">Select a topic...</option>
+            <option value="bug">Bug Report</option>
+            <option value="feature">Feature Request</option>
+            <option value="partnership">Partnership</option>
+            <option value="press">Press Inquiry</option>
+            <option value="other">Other</option>
+          </select>
+          <div class="ws-label">Message</div>
+          <textarea class="ws-textarea" id="contact-msg" placeholder="Tell us what's on your mind..."
+            style="min-height:140px;"></textarea>
+          <div class="ws-actions">
+            <button class="ws-btn ws-btn-primary" onclick="doContactForm()">Send Message</button>
+          </div>
+          <div id="contact-result"
+            style="display:none;margin-top:12px;padding:10px 14px;border-radius:8px;font-size:13px;"></div>
+        </div>
+      </div>
+      <div class="inner-page-section">
+        <h2>Response Time</h2>
+        <p>We typically respond within 24–48 hours on business days. For urgent security issues, email <strong><a
+              href="/cdn-cgi/l/email-protection" class="__cf_email__"
+              data-cfemail="8af9efe9fff8e3fef3cae7f3fee5e5e6f9faefeee3eba4e9e5e7">[email&#160;protected]</a></strong>
+          with "URGENT" in the subject line.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Blog -->
+  <div class="inner-page" id="page-blog">
+    <div class="inner-page-header">
+      <h1>📝 Blog</h1>
+      <p>Tips, tutorials, and updates from the MyToolsPedia team.</p>
+    </div>
+    <div class="inner-page-body">
+      <button class="inner-page-back" onclick="showHome()"><svg width="13" height="13" fill="none" stroke="currentColor"
+          stroke-width="2.5" viewBox="0 0 24 24">
+          <path d="M15 18l-6-6 6-6" />
+        </svg>Back to Home</button>
+      <div class="inner-page-section">
+        <h2>Latest Posts</h2>
+        <div class="blog-grid">
+          <div class="blog-card">
+            <div class="blog-card-img">🔧</div>
+            <div class="blog-card-body">
+              <div class="blog-card-cat">Tools Guide</div>
+              <div class="blog-card-title">173 Free Tools You Can Use Right Now — No Signup</div>
+              <div class="blog-card-meta">March 2026 · 5 min read</div>
+            </div>
+          </div>
+          <div class="blog-card">
+            <div class="blog-card-img">📄</div>
+            <div class="blog-card-body">
+              <div class="blog-card-cat">Tutorial</div>
+              <div class="blog-card-title">How to Merge, Split and Compress PDFs for Free</div>
+              <div class="blog-card-meta">March 2026 · 4 min read</div>
+            </div>
+          </div>
+          <div class="blog-card">
+            <div class="blog-card-img">✍️</div>
+            <div class="blog-card-body">
+              <div class="blog-card-cat">Content</div>
+              <div class="blog-card-title">10 AI Writing Tools That Actually Work in 2026</div>
+              <div class="blog-card-meta">February 2026 · 6 min read</div>
+            </div>
+          </div>
+          <div class="blog-card">
+            <div class="blog-card-img">🔍</div>
+            <div class="blog-card-body">
+              <div class="blog-card-cat">SEO</div>
+              <div class="blog-card-title">Complete SEO Checklist for 2026: Free Tools Included</div>
+              <div class="blog-card-meta">February 2026 · 8 min read</div>
+            </div>
+          </div>
+          <div class="blog-card">
+            <div class="blog-card-img">🛡️</div>
+            <div class="blog-card-body">
+              <div class="blog-card-cat">Security</div>
+              <div class="blog-card-title">Why We Built MyToolsPedia to Run 100% In Your Browser</div>
+              <div class="blog-card-meta">January 2026 · 3 min read</div>
+            </div>
+          </div>
+          <div class="blog-card">
+            <div class="blog-card-img">⚡</div>
+            <div class="blog-card-body">
+              <div class="blog-card-cat">Product</div>
+              <div class="blog-card-title">Building 173 Tools: Lessons Learned</div>
+              <div class="blog-card-meta">January 2026 · 7 min read</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="inner-page-section">
+        <h2>Stay Updated</h2>
+        <p>New posts every week. Want to be notified? Create a free account and we will let you know when we publish new
+          content.</p>
+        <div class="ws-actions" style="margin-top:0;">
+          <button class="ws-btn ws-btn-primary" onclick="openModal('signup')">Create Free Account</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Press -->
+  <div class="inner-page" id="page-press">
+    <div class="inner-page-header">
+      <h1>📰 Press & Media</h1>
+      <p>Everything you need to write about MyToolsPedia.</p>
+    </div>
+    <div class="inner-page-body">
+      <button class="inner-page-back" onclick="showHome()"><svg width="13" height="13" fill="none" stroke="currentColor"
+          stroke-width="2.5" viewBox="0 0 24 24">
+          <path d="M15 18l-6-6 6-6" />
+        </svg>Back to Home</button>
+      <div class="inner-page-section">
+        <h2>About MyToolsPedia</h2>
+        <p>MyToolsPedia is a free, all-in-one tool platform offering 173+ utilities across content creation, SEO, web
+          development, PDF management, and general utilities. Built for individuals and teams who need reliable tools
+          without paywalls or ads.</p>
+      </div>
+      <div class="inner-page-section">
+        <h2>Key Statistics</h2>
+        <div class="press-stat">
+          <div class="press-stat-item">
+            <div class="press-stat-num">173+</div>
+            <div class="press-stat-label">Free Tools</div>
+          </div>
+          <div class="press-stat-item">
+            <div class="press-stat-num">4</div>
+            <div class="press-stat-label">Categories</div>
+          </div>
+          <div class="press-stat-item">
+            <div class="press-stat-num">2026</div>
+            <div class="press-stat-label">Founded</div>
+          </div>
+          <div class="press-stat-item">
+            <div class="press-stat-num">0</div>
+            <div class="press-stat-label">Ads or Paywalls</div>
+          </div>
+        </div>
+      </div>
+      <div class="inner-page-section">
+        <h2>Brand Guidelines</h2>
+        <h3>Name</h3>
+        <p>Use "MyToolsPedia" — one word, capital M, T, and P. Do not abbreviate or alter the name.</p>
+        <h3>Logo & Colors</h3>
+        <p>Primary brand color: <strong>#2563EB</strong> (Blue). Accent: <strong>#06B6D4</strong> (Cyan). Logo symbol: ⚡
+        </p>
+        <h3>Tagline</h3>
+        <p>"Every Tool You Need, Right Here" — official tagline. "173+ free tools. No ads. No limits." — short version.
+        </p>
+      </div>
+      <div class="inner-page-section">
+        <h2>Press Contact</h2>
+        <p>For press inquiries, interviews, or media requests:</p>
+        <p><strong>Email:</strong> <a href="/cdn-cgi/l/email-protection" class="__cf_email__"
+            data-cfemail="d2a2a0b7a1a192bfaba6bdbdbea1a2b7b6bbb3fcb1bdbf">[email&#160;protected]</a><br><strong>Response
+            Time:</strong> Within 24 hours</p>
+      </div>
+      <div class="inner-page-section">
+        <h2>Key Differentiators</h2>
+        <ul>
+          <li>100% free — no freemium tricks, no credit cards</li>
+          <li>Privacy-first — most tools run entirely in the browser</li>
+          <li>173+ tools in a single platform (content, SEO, web, PDF, utility)</li>
+          <li>AI-powered tools alongside traditional utilities</li>
+          <li>No ads, no popups, no dark patterns</li>
+          <li>Fully responsive — works on desktop, tablet, and mobile</li>
+        </ul>
+      </div>
     </div>
   </div>
 
@@ -2401,19 +3461,19 @@
         <div>
           <div class="footer-col-title">Legal</div>
           <ul class="footer-links">
-            <li><a href="#">Security</a></li>
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Terms &amp; Conditions</a></li>
-            <li><a href="#">Cookies</a></li>
+            <li><a href="#" onclick="showInnerPage('security');return false;">Security</a></li>
+            <li><a href="#" onclick="showInnerPage('privacy');return false;">Privacy Policy</a></li>
+            <li><a href="#" onclick="showInnerPage('terms');return false;">Terms &amp; Conditions</a></li>
+            <li><a href="#" onclick="showInnerPage('cookies');return false;">Cookies</a></li>
           </ul>
         </div>
         <div>
           <div class="footer-col-title">Company</div>
           <ul class="footer-links">
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Contact Us</a></li>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">Press</a></li>
+            <li><a href="#" onclick="showInnerPage('about');return false;">About Us</a></li>
+            <li><a href="#" onclick="showInnerPage('contact');return false;">Contact Us</a></li>
+            <li><a href="#" onclick="showInnerPage('blog');return false;">Blog</a></li>
+            <li><a href="#" onclick="showInnerPage('press');return false;">Press</a></li>
           </ul>
         </div>
         <div>
@@ -2428,11 +3488,14 @@
       </div>
       <div class="footer-bottom">
         <div class="footer-copy">© 2026 MyToolsPedia. All rights reserved.</div>
-        <div class="footer-bottom-links"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Cookies</a></div>
+        <div class="footer-bottom-links"><a href="#" onclick="showInnerPage('privacy');return false;">Privacy</a><a
+            href="#" onclick="showInnerPage('terms');return false;">Terms</a><a href="#"
+            onclick="showInnerPage('cookies');return false;">Cookies</a></div>
       </div>
     </div>
   </footer>
 
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
   <script>
     const catMeta = {
@@ -2705,24 +3768,7 @@
 
     renderPopular('content');
 
-    function openTool(tool) {
-      const m = catMeta[tool.cat];
-      document.getElementById('hero-section').style.display = 'none';
-      document.getElementById('home-main').style.display = 'none';
-      document.getElementById('footer').style.display = 'none';
-      document.getElementById('popular-section').style.display = 'none';
-      document.getElementById('profile-page').classList.remove('active');
-      const tp = document.getElementById('tool-page');
-      tp.classList.add('active');
-      document.getElementById('tool-breadcrumb-cat').textContent = m.label; window._currentToolCat = tool.cat;
-      document.getElementById('tool-breadcrumb-name').textContent = tool.name;
-      const iconEl = document.getElementById('tool-page-icon');
-      iconEl.textContent = tool.icon; iconEl.style.background = m.bg;
-      document.getElementById('tool-page-title').textContent = tool.name;
-      document.getElementById('tool-page-subtitle').textContent = tool.desc;
-      buildWorkspace(tool);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+    // openTool handled by router below
 
     function buildWorkspace(tool) {
       const ws = document.getElementById('tool-workspace');
@@ -2761,13 +3807,58 @@
         window._convertFn = c.fn; return;
       }
       if (tool.id === 'word-count') {
-        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Your Text</div><textarea class="ws-textarea" id="wc-input" placeholder="Paste or type your text here..." oninput="doWordCount()"></textarea></div><div class="ws-stats" id="wc-stats"><div class="ws-stat"><div class="ws-stat-num" id="wc-words">0</div><div class="ws-stat-label">Words</div></div><div class="ws-stat"><div class="ws-stat-num" id="wc-chars">0</div><div class="ws-stat-label">Characters</div></div><div class="ws-stat"><div class="ws-stat-num" id="wc-chars-ns">0</div><div class="ws-stat-label">Chars (no spaces)</div></div><div class="ws-stat"><div class="ws-stat-num" id="wc-sentences">0</div><div class="ws-stat-label">Sentences</div></div><div class="ws-stat"><div class="ws-stat-num" id="wc-paras">0</div><div class="ws-stat-label">Paragraphs</div></div><div class="ws-stat"><div class="ws-stat-num" id="wc-read">0</div><div class="ws-stat-label">Read Time (min)</div></div></div>`; return;
+        ws.innerHTML = `<div class="tool-workspace">
+      <div class="ws-label">Your Text</div>
+      <div class="ws-hint">Paste or type anything — stats update as you type</div>
+      <textarea class="ws-textarea" id="wc-input" placeholder="Paste or type your text here..." oninput="doWordCount()" style="min-height:220px;"></textarea>
+      <div class="ws-actions">
+        <button class="ws-btn ws-btn-ghost" onclick="document.getElementById('wc-input').value='';doWordCount()">Clear</button>
+        <button class="ws-btn ws-btn-ghost" onclick="copyOutput('wc-input')">📋 Copy Text</button>
+      </div>
+    </div>
+    <div class="ws-stats" id="wc-stats">
+      <div class="ws-stat"><div class="ws-stat-num" id="wc-words">0</div><div class="ws-stat-label">Words</div></div>
+      <div class="ws-stat"><div class="ws-stat-num" id="wc-chars">0</div><div class="ws-stat-label">Characters</div></div>
+      <div class="ws-stat"><div class="ws-stat-num" id="wc-chars-ns">0</div><div class="ws-stat-label">No Spaces</div></div>
+      <div class="ws-stat"><div class="ws-stat-num" id="wc-sentences">0</div><div class="ws-stat-label">Sentences</div></div>
+      <div class="ws-stat"><div class="ws-stat-num" id="wc-paras">0</div><div class="ws-stat-label">Paragraphs</div></div>
+      <div class="ws-stat"><div class="ws-stat-num" id="wc-read">0</div><div class="ws-stat-label">Read (min)</div></div>
+    </div>`; return;
       }
       if (tool.id === 'pwd-gen') {
-        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Password Settings</div><div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:14px;align-items:center;"><div><label class="ws-label" style="display:inline;">Length:</label><input type="number" id="pwd-len" value="16" min="6" max="64" style="width:70px;padding:8px;border:1.5px solid var(--border);border-radius:7px;background:var(--bg);color:var(--text);font-family:inherit;font-size:14px;outline:none;margin-left:6px;"></div><label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;"><input type="checkbox" id="pwd-upper" checked>Uppercase</label><label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;"><input type="checkbox" id="pwd-lower" checked>Lowercase</label><label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;"><input type="checkbox" id="pwd-num" checked>Numbers</label><label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;"><input type="checkbox" id="pwd-sym" checked>Symbols</label></div><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="genPwd()">Generate Password</button></div></div><div class="tool-workspace"><div class="ws-label">Generated Password</div><div class="ws-output" id="pwd-output" style="font-family:monospace;font-size:16px;letter-spacing:1px;">Click Generate...</div><div class="ws-actions"><button class="ws-btn ws-btn-ghost" onclick="copyOutput('pwd-output')">📋 Copy</button></div></div>`; return;
+        ws.innerHTML = `<div class="tool-workspace">
+      <div class="ws-label">Password Settings</div>
+      <div class="ws-info-box"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Strong passwords use 16+ characters with all character types enabled.</div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+        <label class="ws-label" style="margin:0;white-space:nowrap;">Length:</label>
+        <input type="range" id="pwd-len-range" min="6" max="64" value="16" oninput="document.getElementById('pwd-len').value=this.value" style="flex:1;accent-color:var(--primary);">
+        <input type="number" id="pwd-len" value="16" min="6" max="64" oninput="document.getElementById('pwd-len-range').value=this.value" style="width:60px;padding:7px;border:1.5px solid var(--border);border-radius:7px;background:var(--bg);color:var(--text);font-family:inherit;font-size:13px;outline:none;text-align:center;">
+      </div>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:14px;">
+        <label style="display:flex;align-items:center;gap:7px;font-size:13px;cursor:pointer;"><input type="checkbox" id="pwd-upper" checked> <span>A–Z Uppercase</span></label>
+        <label style="display:flex;align-items:center;gap:7px;font-size:13px;cursor:pointer;"><input type="checkbox" id="pwd-lower" checked> <span>a–z Lowercase</span></label>
+        <label style="display:flex;align-items:center;gap:7px;font-size:13px;cursor:pointer;"><input type="checkbox" id="pwd-num" checked> <span>0–9 Numbers</span></label>
+        <label style="display:flex;align-items:center;gap:7px;font-size:13px;cursor:pointer;"><input type="checkbox" id="pwd-sym" checked> <span>!@# Symbols</span></label>
+      </div>
+      <div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="genPwd()">🔐 Generate Password</button></div>
+    </div>
+    <div class="tool-workspace">
+      <div class="ws-label">Generated Password</div>
+      <div class="ws-output" id="pwd-output" style="font-family:monospace;font-size:18px;letter-spacing:2px;word-break:break-all;text-align:center;padding:20px;">Click Generate...</div>
+      <div class="ws-actions">
+        <button class="ws-btn ws-btn-ghost" onclick="copyOutput('pwd-output')">📋 Copy</button>
+        <button class="ws-btn ws-btn-ghost" onclick="genPwd()">🔄 Regenerate</button>
+      </div>
+    </div>`; return;
       }
       if (tool.id === 'age-calc') {
-        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Date of Birth</div><input class="ws-input" type="date" id="age-input"><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="calcAge()">Calculate Age</button></div></div><div class="tool-workspace" id="age-result" style="display:none;"><div class="ws-stats" id="age-stats"></div></div>`; return;
+        ws.innerHTML = `<div class="tool-workspace">
+      <div class="ws-label">Date of Birth</div>
+      <div class="ws-hint">Select your birthdate to calculate your exact age</div>
+      <input class="ws-input" type="date" id="age-input">
+      <div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="calcAge()">🎂 Calculate Age</button></div>
+    </div>
+    <div class="tool-workspace" id="age-result" style="display:none;"><div class="ws-stats" id="age-stats"></div></div>`; return;
       }
       const calcTools = {
         'pct-calc': { label: 'Percentage Calculator', fields: ['Value', 'Percentage (%)'], fn: (a, b) => `${(a * b / 100).toFixed(2)} (${b}% of ${a})` },
@@ -2799,10 +3890,31 @@
         ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Text to Repeat</div><input class="ws-input" type="text" id="rep-text" placeholder="Enter your text..."><div class="ws-label">Times</div><input class="ws-input" type="number" id="rep-times" value="5" min="1" max="1000"><div class="ws-label">Separator</div><input class="ws-input" type="text" id="rep-sep" value=" " placeholder="Space, comma, newline..."><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doRepeat()">Repeat</button></div></div><div class="tool-workspace"><div class="ws-label">Result</div><div class="ws-output" id="rep-output">Result will appear here...</div><div class="ws-actions"><button class="ws-btn ws-btn-ghost" onclick="copyOutput('rep-output')">📋 Copy</button></div></div>`; return;
       }
       if (tool.id === 'kw-density' || tool.id === 'kw-density2') {
-        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Your Content</div><textarea class="ws-textarea" id="kw-input" placeholder="Paste your content here..."></textarea><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doKwDensity()">Analyze</button></div></div><div class="tool-workspace"><div class="ws-label">Top Keywords</div><div id="kw-output" class="ws-output">Results will appear here...</div></div>`; return;
+        ws.innerHTML = `<div class="tool-workspace">
+      <div class="ws-label">Your Content</div>
+      <div class="ws-hint">Ideal keyword density is 1–3%. Too high risks keyword stuffing penalties.</div>
+      <textarea class="ws-textarea" id="kw-input" placeholder="Paste your article or page content here..."></textarea>
+      <div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doKwDensity()">Analyze Density</button><button class="ws-btn ws-btn-ghost" onclick="document.getElementById('kw-input').value='';document.getElementById('kw-output').innerHTML=''">Clear</button></div>
+    </div>
+    <div class="tool-workspace"><div class="ws-label">Top Keywords</div><div id="kw-output" class="ws-output" style="min-height:120px;">Results will appear here...</div></div>`; return;
       }
       if (tool.id === 'diff-check' || tool.id === 'txt-compare') {
-        ws.innerHTML = `<div class="tool-workspace"><div class="ws-row"><div><div class="ws-label">Original Text</div><textarea class="ws-textarea" id="diff-a" placeholder="Paste original text..."></textarea></div><div><div class="ws-label">Modified Text</div><textarea class="ws-textarea" id="diff-b" placeholder="Paste modified text..."></textarea></div></div><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doDiff()">Compare</button></div></div><div class="tool-workspace"><div class="ws-label">Differences</div><div class="ws-output" id="diff-output">Results will appear here...</div></div>`; return;
+        ws.innerHTML = `<div class="tool-workspace">
+      <div class="ws-label">Compare Two Texts</div>
+      <div class="ws-hint">Differences are highlighted — green for additions, red for removals</div>
+      <div class="ws-row">
+        <div>
+          <div class="ws-label">Original Text</div>
+          <textarea class="ws-textarea" id="diff-a" placeholder="Paste original text..."></textarea>
+        </div>
+        <div>
+          <div class="ws-label">Modified Text</div>
+          <textarea class="ws-textarea" id="diff-b" placeholder="Paste modified text..."></textarea>
+        </div>
+      </div>
+      <div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doDiff()">Compare Texts</button><button class="ws-btn ws-btn-ghost" onclick="document.getElementById('diff-a').value='';document.getElementById('diff-b').value='';document.getElementById('diff-output').innerHTML=''">Clear</button></div>
+    </div>
+    <div class="tool-workspace"><div class="ws-label">Differences</div><div class="ws-output" id="diff-output" style="min-height:100px;">Results will appear here...</div></div>`; return;
       }
       if (tool.id === 'line-count') {
         ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Your Text</div><textarea class="ws-textarea" id="lc-input" placeholder="Paste text here..." oninput="doLineCount()"></textarea></div><div class="ws-stats"><div class="ws-stat"><div class="ws-stat-num" id="lc-lines">0</div><div class="ws-stat-label">Lines</div></div><div class="ws-stat"><div class="ws-stat-num" id="lc-empty">0</div><div class="ws-stat-label">Empty Lines</div></div><div class="ws-stat"><div class="ws-stat-num" id="lc-nonempty">0</div><div class="ws-stat-label">Non-empty Lines</div></div></div>`; return;
@@ -2828,23 +3940,55 @@
       }
       // ── Readability Checker ───────────────────────────────────────────────────────
       if (tool.id === 'readability') {
-        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Your Text</div><textarea class="ws-textarea" id="read-input" placeholder="Paste your content here to check readability..."></textarea><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doReadability()">Check Readability</button><button class="ws-btn ws-btn-ghost" onclick="document.getElementById('read-input').value='';document.getElementById('read-output').innerHTML=''">Clear</button></div></div><div class="tool-workspace"><div class="ws-label">Readability Analysis</div><div class="ws-output" id="read-output" style="min-height:120px;">Paste text and click Check Readability.</div></div>`;
-        return;
+        ws.innerHTML = `<div class="tool-workspace">
+      <div class="ws-label">Your Text</div>
+      <div class="ws-hint">Paste at least 100 words for accurate results. Flesch score 60–70 = easy to read.</div>
+      <textarea class="ws-textarea" id="read-input" placeholder="Paste your content here to check readability..." style="min-height:200px;"></textarea>
+      <div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doReadability()">Check Readability</button><button class="ws-btn ws-btn-ghost" onclick="document.getElementById('read-input').value='';document.getElementById('read-output').innerHTML=''">Clear</button></div>
+    </div>
+    <div class="tool-workspace"><div class="ws-label">Readability Analysis</div><div class="ws-output" id="read-output" style="min-height:120px;">Paste text and click Check Readability.</div></div>`; return;
       }
       // ── Grammar Checker ───────────────────────────────────────────────────────────
       if (tool.id === 'grammar') {
-        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Your Text</div><textarea class="ws-textarea" id="gram-input" placeholder="Type or paste text to check grammar..."></textarea><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doGrammarCheck()">Check Grammar</button><button class="ws-btn ws-btn-ghost" onclick="document.getElementById('gram-input').value='';document.getElementById('gram-output').innerHTML=''">Clear</button></div></div><div class="tool-workspace"><div class="ws-label">Grammar Analysis</div><div class="ws-output" id="gram-output" style="min-height:120px;line-height:1.8;">Results will appear here...</div></div>`;
-        return;
+        ws.innerHTML = `<div class="tool-workspace">
+      <div class="ws-label">Your Text</div>
+      <div class="ws-hint">Checks common grammar rules — subject-verb agreement, article usage, double words, and more.</div>
+      <textarea class="ws-textarea" id="gram-input" placeholder="Type or paste text to check grammar..." style="min-height:200px;"></textarea>
+      <div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doGrammarCheck()">Check Grammar</button><button class="ws-btn ws-btn-ghost" onclick="document.getElementById('gram-input').value='';document.getElementById('gram-output').innerHTML=''">Clear</button></div>
+    </div>
+    <div class="tool-workspace"><div class="ws-label">Grammar Analysis</div><div class="ws-output" id="gram-output" style="min-height:120px;line-height:1.8;">Results will appear here...</div></div>`; return;
       }
       // ── Spell Checker ─────────────────────────────────────────────────────────────
       if (tool.id === 'spell') {
-        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Your Text</div><textarea class="ws-textarea" id="spell-input" placeholder="Type or paste text to check spelling..."></textarea><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doSpellCheck()">Check Spelling</button><button class="ws-btn ws-btn-ghost" onclick="document.getElementById('spell-input').value='';document.getElementById('spell-output').innerHTML=''">Clear</button></div></div><div class="tool-workspace"><div class="ws-label">Spell Check Result</div><div class="ws-output" id="spell-output" style="min-height:120px;line-height:1.8;">Results will appear here...</div></div>`;
-        return;
+        ws.innerHTML = `<div class="tool-workspace">
+      <div class="ws-label">Your Text</div>
+      <div class="ws-hint">Misspelled words are highlighted. Click any suggestion to see the correction.</div>
+      <textarea class="ws-textarea" id="spell-input" placeholder="Type or paste text to check spelling..." style="min-height:200px;"></textarea>
+      <div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doSpellCheck()">Check Spelling</button><button class="ws-btn ws-btn-ghost" onclick="document.getElementById('spell-input').value='';document.getElementById('spell-output').innerHTML=''">Clear</button></div>
+    </div>
+    <div class="tool-workspace"><div class="ws-label">Spell Check Result</div><div class="ws-output" id="spell-output" style="min-height:120px;line-height:1.8;">Results will appear here...</div></div>`; return;
       }
       // ── Text to PDF ───────────────────────────────────────────────────────────────
       if (tool.id === 'txt-pdf') {
-        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Your Text</div><textarea class="ws-textarea" id="txtpdf-input" placeholder="Type or paste your text here..." style="min-height:200px;"></textarea><div class="ws-label" style="margin-top:12px;">Font Size</div><select class="ws-input" id="txtpdf-size" style="margin-top:6px;"><option value="10">Small (10px)</option><option value="12" selected>Normal (12px)</option><option value="14">Large (14px)</option><option value="16">Extra Large (16px)</option></select><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doTextToPdf()">Convert to PDF</button></div></div><div class="tool-workspace"><div class="ws-label">Status</div><div class="ws-output" id="txtpdf-status">Enter text and click Convert.</div><div class="ws-actions" style="margin-top:10px"><button class="ws-btn ws-btn-ghost" id="txtpdf-dl" style="display:none" onclick="triggerDownload('txtpdf-dl')">⬇️ Download PDF</button></div></div>`;
-        return;
+        ws.innerHTML = `<div class="tool-workspace">
+      <div class="ws-label">Your Text</div>
+      <div class="ws-hint">Your text is formatted and converted to a downloadable PDF instantly — no server needed.</div>
+      <textarea class="ws-textarea" id="txtpdf-input" placeholder="Type or paste your text here..." style="min-height:220px;"></textarea>
+      <div class="ws-divider"></div>
+      <div class="ws-label">Font Size</div>
+      <select class="ws-input" id="txtpdf-size">
+        <option value="10">Small (10pt)</option>
+        <option value="12" selected>Normal (12pt)</option>
+        <option value="14">Large (14pt)</option>
+        <option value="16">Extra Large (16pt)</option>
+      </select>
+      <div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doTextToPdf()">📄 Convert to PDF</button></div>
+    </div>
+    <div class="tool-workspace">
+      <div class="ws-label">Status</div>
+      <div class="ws-output" id="txtpdf-status">Enter text and click Convert.</div>
+      <div class="ws-actions" style="margin-top:10px"><button class="ws-btn ws-btn-ghost" id="txtpdf-dl" style="display:none" onclick="triggerDownload('txtpdf-dl')">⬇️ Download PDF</button></div>
+    </div>`; return;
       }
       // ── Image to Text (OCR) ───────────────────────────────────────────────────────
       if (tool.id === 'img2text') {
@@ -2873,8 +4017,13 @@
       }
       // ── IP Locator ────────────────────────────────────────────────────────────────
       if (tool.id === 'ip-loc') {
-        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">IP Address (leave blank for your own IP)</div><input class="ws-input" id="iploc-input" placeholder="e.g. 8.8.8.8 or leave blank"><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doIpLocate()">Lookup IP</button></div></div><div class="tool-workspace"><div class="ws-label">IP Details</div><div class="ws-output" id="iploc-output" style="min-height:120px;">Enter an IP or click Lookup for your own.</div></div>`;
-        return;
+        ws.innerHTML = `<div class="tool-workspace">
+      <div class="ws-label">IP Address</div>
+      <div class="ws-hint">Leave blank to look up your own public IP address</div>
+      <input class="ws-input" id="iploc-input" placeholder="e.g. 8.8.8.8  — or leave blank for your IP">
+      <div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doIpLocate()">🌍 Locate IP</button><button class="ws-btn ws-btn-ghost" onclick="document.getElementById('iploc-input').value='';doIpLocate()">📍 My IP</button></div>
+    </div>
+    <div class="tool-workspace"><div class="ws-label">Location Details</div><div class="ws-output" id="iploc-output" style="min-height:120px;">Enter an IP or click My IP.</div></div>`; return;
       }
       // ── Crop Image ────────────────────────────────────────────────────────────────
       if (tool.id === 'crop-img') {
@@ -2911,28 +4060,64 @@
       }
       // ── DNS Records Checker ───────────────────────────────────────────────────────
       if (tool.id === 'dns-check') {
-        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Domain Name</div><input class="ws-input" id="dns-input" placeholder="e.g. google.com"><div class="ws-label" style="margin-top:12px;">Record Type</div><select class="ws-input" id="dns-type" style="margin-top:6px;"><option value="A">A (IPv4)</option><option value="AAAA">AAAA (IPv6)</option><option value="MX">MX (Mail)</option><option value="TXT">TXT</option><option value="NS">NS (Nameservers)</option><option value="CNAME">CNAME</option></select><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doDnsCheck()">Lookup DNS</button></div></div><div class="tool-workspace"><div class="ws-label">DNS Records</div><div class="ws-output" id="dns-output" style="min-height:120px;font-family:monospace;font-size:13px;">Enter a domain and click Lookup.</div></div>`;
-        return;
+        ws.innerHTML = `<div class="tool-workspace">
+      <div class="ws-label">Domain Name</div>
+      <div class="ws-hint">Enter just the domain — no https:// prefix needed</div>
+      <input class="ws-input" id="dns-input" placeholder="e.g. google.com">
+      <div class="ws-label" style="margin-top:4px;">Record Type</div>
+      <select class="ws-input" id="dns-type">
+        <option value="A">A — IPv4 Address</option>
+        <option value="AAAA">AAAA — IPv6 Address</option>
+        <option value="MX">MX — Mail Servers</option>
+        <option value="TXT">TXT — Text Records</option>
+        <option value="NS">NS — Nameservers</option>
+        <option value="CNAME">CNAME — Alias</option>
+      </select>
+      <div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doDnsCheck()">🔍 Lookup DNS</button></div>
+    </div>
+    <div class="tool-workspace"><div class="ws-label">DNS Records</div><div class="ws-output" id="dns-output" style="min-height:120px;font-family:monospace;font-size:13px;">Enter a domain and click Lookup.</div></div>`; return;
       }
       // ── Broken Links Checker ──────────────────────────────────────────────────────
       if (tool.id === 'broken-links') {
-        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Website URL</div><input class="ws-input" id="bl-input" placeholder="https://example.com"><div style="font-size:12px;color:var(--text3);margin-top:6px;">Due to browser security (CORS), we check links you paste manually below.</div><div class="ws-label" style="margin-top:14px;">Or paste URLs to check (one per line)</div><textarea class="ws-textarea" id="bl-urls" placeholder="https://example.com/page1&#10;https://example.com/page2" style="min-height:100px;"></textarea><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doCheckLinks()">Check Links</button></div></div><div class="tool-workspace"><div class="ws-label">Results</div><div class="ws-output" id="bl-output" style="min-height:120px;">Enter URLs and click Check Links.</div></div>`;
-        return;
+        ws.innerHTML = `<div class="tool-workspace">
+      <div class="ws-label">URLs to Check</div>
+      <div class="ws-info-box"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Browser security (CORS) limits direct crawling. Paste specific URLs to test one by one.</div>
+      <textarea class="ws-textarea" id="bl-urls" placeholder="https://example.com/page1&#10;https://example.com/page2&#10;https://example.com/broken-link" style="min-height:120px;font-family:monospace;font-size:13px;"></textarea>
+      <div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doCheckLinks()">Check Links</button><button class="ws-btn ws-btn-ghost" onclick="document.getElementById('bl-urls').value='';document.getElementById('bl-output').innerHTML=''">Clear</button></div>
+    </div>
+    <div class="tool-workspace"><div class="ws-label">Results</div><div class="ws-output" id="bl-output" style="min-height:120px;">Enter URLs and click Check Links.</div></div>`; return;
       }
       // ── Link Extractor ────────────────────────────────────────────────────────────
       if (tool.id === 'link-extract') {
-        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Paste HTML or Text with Links</div><textarea class="ws-textarea" id="le-input" placeholder="Paste your HTML source or text containing links here..."></textarea><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doLinkExtract()">Extract Links</button><button class="ws-btn ws-btn-ghost" onclick="document.getElementById('le-input').value='';document.getElementById('le-output').innerHTML=''">Clear</button></div></div><div class="tool-workspace"><div class="ws-label">Extracted Links (<span id="le-count">0</span>)</div><div class="ws-output" id="le-output" style="min-height:120px;">Results will appear here...</div><div class="ws-actions"><button class="ws-btn ws-btn-ghost" onclick="copyOutput('le-output')">📋 Copy</button></div></div>`;
-        return;
+        ws.innerHTML = `<div class="tool-workspace">
+      <div class="ws-label">Paste HTML or Text</div>
+      <div class="ws-hint">All href links will be extracted and listed — internal and external</div>
+      <textarea class="ws-textarea" id="le-input" placeholder="Paste your HTML source or any text containing URLs..."></textarea>
+      <div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doLinkExtract()">Extract Links</button><button class="ws-btn ws-btn-ghost" onclick="document.getElementById('le-input').value='';document.getElementById('le-output').innerHTML=''">Clear</button></div>
+    </div>
+    <div class="tool-workspace"><div class="ws-label">Extracted Links <span id="le-count" style="font-weight:400;color:var(--text3);font-size:11px;"></span></div><div class="ws-output" id="le-output" style="min-height:120px;">Results will appear here...</div><div class="ws-actions"><button class="ws-btn ws-btn-ghost" onclick="copyOutput('le-output')">📋 Copy</button></div></div>`; return;
       }
       // ── Google Index Checker ──────────────────────────────────────────────────────
       if (tool.id === 'g-index-check') {
-        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">URL to Check</div><input class="ws-input" id="gic-input" placeholder="https://example.com/page"><div style="font-size:12px;color:var(--text3);margin-top:6px;">Opens Google's "site:" search so you can verify indexation.</div><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doGoogleIndexCheck()">Check Index</button></div></div><div class="tool-workspace"><div class="ws-label">Result</div><div class="ws-output" id="gic-output" style="min-height:80px;">Enter a URL and click Check Index.</div></div>`;
-        return;
+        ws.innerHTML = `<div class="tool-workspace">
+      <div class="ws-label">URL to Check</div>
+      <div class="ws-hint">Check if a specific page is indexed in Google's search results</div>
+      <input class="ws-input" id="gic-input" placeholder="https://example.com/page">
+      <div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doGoogleIndexCheck()">🔍 Check Google Index</button></div>
+    </div>
+    <div class="tool-workspace"><div class="ws-label">Result</div><div class="ws-output" id="gic-output" style="min-height:80px;">Enter a URL and click Check.</div></div>`; return;
       }
       // ── SEO Score Checker ─────────────────────────────────────────────────────────
       if (tool.id === 'seo-score') {
-        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Paste Page HTML or Content</div><textarea class="ws-textarea" id="seo-input" placeholder="Paste your full page HTML or article content here..." style="min-height:180px;"></textarea><div class="ws-label" style="margin-top:12px;">Target Keyword</div><input class="ws-input" id="seo-kw" placeholder="e.g. digital marketing"><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doSeoScore()">Analyze SEO</button></div></div><div class="tool-workspace"><div class="ws-label">SEO Analysis</div><div id="seo-output" class="ws-output" style="min-height:140px;">Paste content and click Analyze.</div></div>`;
-        return;
+        ws.innerHTML = `<div class="tool-workspace">
+      <div class="ws-label">Page HTML or Content</div>
+      <div class="ws-hint">Paste your full page HTML for the best score. The tool checks title, meta, headings, keywords, and more.</div>
+      <textarea class="ws-textarea" id="seo-input" placeholder="Paste your full page HTML or article content here..." style="min-height:180px;font-family:monospace;font-size:13px;"></textarea>
+      <div class="ws-label" style="margin-top:12px;">Target Keyword</div>
+      <input class="ws-input" id="seo-kw" placeholder="e.g. digital marketing tools">
+      <div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doSeoScore()">📊 Analyze SEO</button></div>
+    </div>
+    <div class="tool-workspace"><div class="ws-label">SEO Analysis</div><div id="seo-output" class="ws-output" style="min-height:140px;">Paste content and click Analyze.</div></div>`; return;
       }
       // ── URL Decoder (separate from encoder) ──────────────────────────────────────
       if (tool.id === 'url-dec') {
@@ -2946,24 +4131,81 @@
       }
       // ── XML Sitemap Generator ─────────────────────────────────────────────────────
       if (tool.id === 'xml-sitemap') {
-        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Domain (e.g. https://example.com)</div><input class="ws-input" id="sm-domain" placeholder="https://yoursite.com"><div class="ws-label" style="margin-top:12px;">URLs / Paths (one per line)</div><textarea class="ws-textarea" id="sm-urls" placeholder="/&#10;/about&#10;/contact&#10;/blog&#10;/blog/post-1" style="min-height:140px;"></textarea><div class="ws-label" style="margin-top:12px;">Change Frequency</div><select class="ws-input" id="sm-freq" style="margin-top:6px;"><option value="daily">Daily</option><option value="weekly" selected>Weekly</option><option value="monthly">Monthly</option></select><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doSitemap()">Generate Sitemap</button></div></div><div class="tool-workspace"><div class="ws-label">XML Sitemap</div><textarea class="ws-textarea" id="sm-output" readonly placeholder="Sitemap XML will appear here..." style="min-height:200px;font-family:monospace;font-size:12px;"></textarea><div class="ws-actions"><button class="ws-btn ws-btn-ghost" onclick="copySitemap()">📋 Copy XML</button><button class="ws-btn ws-btn-ghost" onclick="downloadSitemap()">⬇️ Download</button></div></div>`;
-        return;
+        ws.innerHTML = `<div class="tool-workspace">
+      <div class="ws-label">Domain</div>
+      <input class="ws-input" id="sm-domain" placeholder="https://yoursite.com">
+      <div class="ws-label" style="margin-top:4px;">Pages / Paths <span style="font-weight:400;color:var(--text3);">(one per line)</span></div>
+      <textarea class="ws-textarea" id="sm-urls" placeholder="/&#10;/about&#10;/contact&#10;/blog&#10;/blog/post-1" style="min-height:140px;font-family:monospace;font-size:13px;"></textarea>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px;">
+        <div>
+          <div class="ws-label">Change Frequency</div>
+          <select class="ws-input" id="sm-freq">
+            <option value="always">Always</option>
+            <option value="daily">Daily</option>
+            <option value="weekly" selected>Weekly</option>
+            <option value="monthly">Monthly</option>
+            <option value="yearly">Yearly</option>
+          </select>
+        </div>
+        <div>
+          <div class="ws-label">Priority</div>
+          <select class="ws-input" id="sm-priority">
+            <option value="1.0">1.0 — Highest</option>
+            <option value="0.8" selected>0.8 — High</option>
+            <option value="0.6">0.6 — Medium</option>
+            <option value="0.4">0.4 — Low</option>
+          </select>
+        </div>
+      </div>
+      <div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doSitemap()">🗺 Generate Sitemap</button></div>
+    </div>
+    <div class="tool-workspace">
+      <div class="ws-label">XML Output</div>
+      <textarea class="ws-textarea" id="sm-output" readonly placeholder="Sitemap XML will appear here..." style="min-height:200px;font-family:monospace;font-size:12px;"></textarea>
+      <div class="ws-actions">
+        <button class="ws-btn ws-btn-ghost" onclick="copySitemap()">📋 Copy XML</button>
+        <button class="ws-btn ws-btn-ghost" onclick="downloadSitemap()">⬇️ Download sitemap.xml</button>
+      </div>
+    </div>`; return;
       }
       // ── Backlink Maker ────────────────────────────────────────────────────────────
       if (tool.id === 'backlink-make') {
-        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Your Website URL</div><input class="ws-input" id="bm-url" placeholder="https://yoursite.com"><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doBacklinkMaker()">Generate Backlink Sites</button></div></div><div class="tool-workspace"><div class="ws-label">High Authority Sites to Submit To</div><div class="ws-output" id="bm-output" style="min-height:200px;">Enter your URL to see submission opportunities.</div></div>`;
-        return;
+        ws.innerHTML = `<div class="tool-workspace">
+      <div class="ws-label">Your Website URL</div>
+      <div class="ws-hint">We will generate a list of high-authority sites where you can submit your site for backlinks</div>
+      <input class="ws-input" id="bm-url" placeholder="https://yoursite.com">
+      <div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doBacklinkMaker()">🔗 Generate Backlink Sites</button></div>
+    </div>
+    <div class="tool-workspace"><div class="ws-label">Submission Opportunities</div><div class="ws-output" id="bm-output" style="min-height:200px;">Enter your URL to see high-DA sites to submit to.</div></div>`; return;
       }
-      // ── Meta Description Generator (local fallback) ───────────────────────────────
       // ── Page Comparison ───────────────────────────────────────────────────────────
       if (tool.id === 'page-compare') {
-        ws.innerHTML = `<div class="tool-workspace"><div class="ws-row"><div><div class="ws-label">Page 1 Content / HTML</div><textarea class="ws-textarea" id="pc-a" placeholder="Paste content of page 1..." style="min-height:160px;"></textarea></div><div><div class="ws-label">Page 2 Content / HTML</div><textarea class="ws-textarea" id="pc-b" placeholder="Paste content of page 2..." style="min-height:160px;"></textarea></div></div><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doPageCompare()">Compare Pages</button></div></div><div class="tool-workspace"><div class="ws-label">Comparison Report</div><div class="ws-output" id="pc-output" style="min-height:120px;">Paste both pages and click Compare.</div></div>`;
-        return;
+        ws.innerHTML = `<div class="tool-workspace">
+      <div class="ws-label">Compare Two Pages</div>
+      <div class="ws-hint">Paste HTML or text content from two pages to compare their SEO elements, word counts, and structure</div>
+      <div class="ws-row">
+        <div>
+          <div class="ws-label">Page 1</div>
+          <textarea class="ws-textarea" id="pc-a" placeholder="Paste content of page 1..." style="min-height:160px;font-family:monospace;font-size:13px;"></textarea>
+        </div>
+        <div>
+          <div class="ws-label">Page 2</div>
+          <textarea class="ws-textarea" id="pc-b" placeholder="Paste content of page 2..." style="min-height:160px;font-family:monospace;font-size:13px;"></textarea>
+        </div>
+      </div>
+      <div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doPageCompare()">Compare Pages</button><button class="ws-btn ws-btn-ghost" onclick="document.getElementById('pc-a').value='';document.getElementById('pc-b').value=''">Clear</button></div>
+    </div>
+    <div class="tool-workspace"><div class="ws-label">Comparison Report</div><div class="ws-output" id="pc-output" style="min-height:120px;">Paste both pages and click Compare.</div></div>`; return;
       }
       // ── Code to Text Ratio ────────────────────────────────────────────────────────
       if (tool.id === 'code-text') {
-        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Paste HTML Source Code</div><textarea class="ws-textarea" id="ctr-input" placeholder="Paste full HTML source of your page here..." style="min-height:200px;font-family:monospace;font-size:13px;"></textarea><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doCodeTextRatio()">Analyze</button></div></div><div class="tool-workspace"><div class="ws-label">Analysis</div><div class="ws-output" id="ctr-output" style="min-height:120px;">Paste HTML and click Analyze.</div></div>`;
-        return;
+        ws.innerHTML = `<div class="tool-workspace">
+      <div class="ws-label">Page HTML Source</div>
+      <div class="ws-hint">Ideal code-to-text ratio is 20–70%. Too low means thin content; too high means too much code vs text.</div>
+      <textarea class="ws-textarea" id="ctr-input" placeholder="Paste full HTML source of your page here..." style="min-height:200px;font-family:monospace;font-size:13px;"></textarea>
+      <div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doCodeTextRatio()">📊 Analyze Ratio</button></div>
+    </div>
+    <div class="tool-workspace"><div class="ws-label">Analysis</div><div class="ws-output" id="ctr-output" style="min-height:120px;">Paste HTML and click Analyze.</div></div>`; return;
       }
 
       // ── QR Code Scanner ───────────────────────────────────────────────────────────
@@ -3139,23 +4381,49 @@
       }
       // ── Traceroute Tool ───────────────────────────────────────────────────────────
       if (tool.id === 'traceroute') {
-        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Domain or IP</div><input class="ws-input" id="tr-input" placeholder="e.g. google.com"><div style="font-size:12px;color:var(--text3);margin-top:6px;">Note: Browser-based traceroute uses public DNS hop simulation.</div><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doTraceroute()">Trace Route</button></div></div><div class="tool-workspace"><div class="ws-label">Route Hops</div><div class="ws-output" id="tr-output" style="font-family:monospace;font-size:13px;min-height:120px;">Enter a domain to trace.</div></div>`;
-        return;
+        ws.innerHTML = `<div class="tool-workspace">
+      <div class="ws-label">Domain or IP</div>
+      <div class="ws-warning-box">⚠️ Browser-based traceroute uses DNS hop simulation — not full ICMP traceroute. For complete results use your OS terminal.</div>
+      <input class="ws-input" id="tr-input" placeholder="e.g. google.com">
+      <div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doTraceroute()">🔀 Trace Route</button></div>
+    </div>
+    <div class="tool-workspace"><div class="ws-label">Route Hops</div><div class="ws-output" id="tr-output" style="font-family:monospace;font-size:13px;min-height:120px;">Enter a domain to trace.</div></div>`; return;
       }
       // ── Ping Tool ─────────────────────────────────────────────────────────────────
       if (tool.id === 'ping') {
-        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Domain or IP to Ping</div><input class="ws-input" id="ping-input" placeholder="e.g. google.com or 8.8.8.8"><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doPing()">Ping</button></div></div><div class="tool-workspace"><div class="ws-label">Ping Results</div><div class="ws-output" id="ping-output" style="font-family:monospace;font-size:13px;min-height:100px;">Enter a domain or IP to ping.</div></div>`;
-        return;
+        ws.innerHTML = `<div class="tool-workspace">
+      <div class="ws-label">Domain or IP</div>
+      <div class="ws-info-box"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Sends 4 requests and shows round-trip time. Browser fetch timing — results may vary from native ping.</div>
+      <input class="ws-input" id="ping-input" placeholder="e.g. google.com or 8.8.8.8">
+      <div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doPing()">📡 Ping</button></div>
+    </div>
+    <div class="tool-workspace"><div class="ws-label">Ping Results</div><div class="ws-output" id="ping-output" style="font-family:monospace;font-size:13px;min-height:100px;">Enter a domain or IP to ping.</div></div>`; return;
       }
       // ── Port Scanner ──────────────────────────────────────────────────────────────
       if (tool.id === 'port-scan') {
-        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Domain or IP</div><input class="ws-input" id="ps-host" placeholder="e.g. example.com"><div class="ws-label" style="margin-top:12px;">Port Preset</div><select class="ws-input" id="ps-preset" style="margin-top:6px;"><option value="common">Common Ports (HTTP, HTTPS, FTP, SSH, SMTP)</option><option value="web">Web Ports (80, 443, 8080, 8443)</option><option value="mail">Mail Ports (25, 110, 143, 465, 587, 993)</option></select><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doPortScan()">Scan Ports</button></div></div><div class="tool-workspace"><div class="ws-label">Scan Results</div><div class="ws-output" id="ps-output" style="font-family:monospace;font-size:13px;min-height:120px;">Enter a domain to scan ports.</div></div>`;
-        return;
+        ws.innerHTML = `<div class="tool-workspace">
+      <div class="ws-label">Domain or IP</div>
+      <div class="ws-warning-box">⚠️ Browser CORS limits precise port detection. Results are indicative — use a native tool (nmap) for accurate scanning.</div>
+      <input class="ws-input" id="ps-host" placeholder="e.g. example.com">
+      <div class="ws-label" style="margin-top:4px;">Port Preset</div>
+      <select class="ws-input" id="ps-preset">
+        <option value="common">Common Ports — HTTP, HTTPS, FTP, SSH, SMTP</option>
+        <option value="web">Web Ports — 80, 443, 8080, 8443</option>
+        <option value="mail">Mail Ports — 25, 110, 143, 465, 587, 993</option>
+      </select>
+      <div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doPortScan()">🔍 Scan Ports</button></div>
+    </div>
+    <div class="tool-workspace"><div class="ws-label">Scan Results</div><div class="ws-output" id="ps-output" style="font-family:monospace;font-size:13px;min-height:120px;">Enter a domain to scan ports.</div></div>`; return;
       }
       // ── Class C IP Checker ────────────────────────────────────────────────────────
       if (tool.id === 'class-c') {
-        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">IP Address</div><input class="ws-input" id="classc-input" placeholder="e.g. 192.168.1.100"><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doClassC()">Check Class</button></div></div><div class="tool-workspace"><div class="ws-label">IP Class Information</div><div class="ws-output" id="classc-output" style="min-height:100px;">Enter an IP to check its class.</div></div>`;
-        return;
+        ws.innerHTML = `<div class="tool-workspace">
+      <div class="ws-label">IP Address</div>
+      <div class="ws-hint">Enter any IPv4 address to check its class (A, B, C, D, E) and whether it is private or public</div>
+      <input class="ws-input" id="classc-input" placeholder="e.g. 192.168.1.100">
+      <div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doClassC()">🔍 Check IP Class</button></div>
+    </div>
+    <div class="tool-workspace"><div class="ws-label">IP Class Information</div><div class="ws-output" id="classc-output" style="min-height:100px;">Enter an IP to check its class.</div></div>`; return;
       }
       // ── DNS Propagation Checker ───────────────────────────────────────────────────
       if (tool.id === 'dns-prop') {
@@ -3209,17 +4477,339 @@
 
       // QR Code Generator
       if (tool.id === 'qr-gen') {
-        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Content to Encode</div><input class="ws-input" type="text" id="qr-input" placeholder="Enter URL, text, phone, or email..."><div style="margin-top:12px"><div class="ws-label">Size</div><select class="ws-input" id="qr-size" style="margin-top:6px"><option value="200">Small (200x200)</option><option value="300" selected>Medium (300x300)</option><option value="400">Large (400x400)</option></select></div><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="genQR()">Generate QR Code</button></div></div><div class="tool-workspace" style="text-align:center"><div class="ws-label">Your QR Code</div><div id="qr-output" style="padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;color:var(--text3);">Enter content above and click Generate</div><div class="ws-actions" style="justify-content:center;margin-top:10px"><button class="ws-btn ws-btn-ghost" id="qr-dl-btn" onclick="downloadQR()" style="display:none">⬇️ Download PNG</button></div></div>`;
+        ws.innerHTML = `<div class="tool-workspace">
+      <div class="ws-label">Content to Encode</div>
+      <div class="ws-hint">Works with URLs, plain text, phone numbers, emails, or Wi-Fi credentials</div>
+      <input class="ws-input" type="text" id="qr-input" placeholder="https://yoursite.com or any text...">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:4px;">
+        <div>
+          <div class="ws-label">Size</div>
+          <select class="ws-input" id="qr-size">
+            <option value="200">Small — 200×200</option>
+            <option value="300" selected>Medium — 300×300</option>
+            <option value="400">Large — 400×400</option>
+          </select>
+        </div>
+        <div>
+          <div class="ws-label">Color</div>
+          <div style="display:flex;gap:8px;margin-top:6px;">
+            <input type="color" id="qr-color-dark" value="#000000" style="width:48px;height:38px;border:1.5px solid var(--border);border-radius:7px;cursor:pointer;" title="QR Color">
+            <input type="color" id="qr-color-light" value="#ffffff" style="width:48px;height:38px;border:1.5px solid var(--border);border-radius:7px;cursor:pointer;" title="Background Color">
+          </div>
+        </div>
+      </div>
+      <div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="genQR()">⬛ Generate QR Code</button></div>
+    </div>
+    <div class="tool-workspace" style="text-align:center;">
+      <div class="ws-label">Your QR Code</div>
+      <div id="qr-output" style="padding:20px;min-height:120px;display:flex;align-items:center;justify-content:center;color:var(--text3);">Enter content above and click Generate</div>
+      <div class="ws-actions" style="justify-content:center;margin-top:10px;">
+        <button class="ws-btn ws-btn-ghost" id="qr-dl-btn" onclick="downloadQR()" style="display:none;">⬇️ Download PNG</button>
+      </div>
+    </div>`;
         loadScript('https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js', function () { });
         return;
       }
 
-      const promptMap = {
-        'ai-story': 'Write a creative short story based on this prompt:', 'ai-poem': 'Write a beautiful poem about:', 'cover-letter': 'Write a professional cover letter for:', 'biz-name': 'Generate 10 creative business name ideas for:', 'book-title': 'Generate 10 compelling book title ideas for:', 'abstract': 'Write a concise academic abstract for:', 'email-writer': 'Write a professional email for this scenario:', 'conclusion': 'Write a strong conclusion for an essay about:', 'outline': 'Create a detailed outline for:', 'ai-answer': 'Answer this question thoroughly:', 'paragraph': 'Write a well-structured paragraph about:', 'ai-sentence': 'Generate 5 unique, natural sentences about:', 'thesis': 'Write a strong thesis statement for an essay about:', 'slogan': 'Generate 10 catchy slogans for:', 'backstory': 'Write a detailed backstory for:', 'essay-writer': 'Write a well-structured essay about:', 'faq-gen': 'Generate 10 FAQs with answers for:', 'acronym': 'Create 5 meaningful acronyms for:', 'meta-desc': 'Write an SEO-optimized meta description (155 chars) for:', 'review-gen': 'Write a realistic, balanced review for:', 'para-expand': 'Expand this paragraph into a detailed, rich version:', 'sent-short': 'Shorten these sentences while keeping their meaning:', 'humanize-ai': 'Rewrite this AI-generated text to sound more natural and human:', 'caption-gen': 'Write 5 engaging captions for a post about:', 'msg-gen': 'Write a perfect message for this situation:', 'reply-gen': 'Write a smart, context-aware reply to:', 'prompt-gen': 'Generate 5 powerful AI prompts for:', 'rewriter': 'Rewrite this article in a fresh, unique way:', 'paraphrase': 'Paraphrase the following text completely:', 'summarizer': 'Summarize the following text in 3-5 sentences:', 'a2p-voice': 'Convert these active voice sentences to passive voice:', 'sentence-exp': 'Expand these short sentences into richer, fuller text:', 'ai-detect': 'Analyze this text and determine if it was written by AI or a human, explain why:', 'plagiarism': 'Analyze this text and flag any phrases that sound unoriginal or potentially plagiarized:', 'plag-compare': 'Compare these two texts and highlight any similarities or copied content:',
+      // ── AI Tool Workspaces — tool-specific multi-field forms ──────────────────
+      const aiWorkspaces = {
+        'ai-story': `
+      <div class="ws-label">Story Genre</div>
+      <select class="ws-input" id="ai-genre">
+        <option value="Any">Any / Surprise me</option><option value="Fantasy">Fantasy</option><option value="Sci-Fi">Sci-Fi</option><option value="Mystery">Mystery</option><option value="Romance">Romance</option><option value="Horror">Horror</option><option value="Adventure">Adventure</option><option value="Thriller">Thriller</option>
+      </select>
+      <div class="ws-label">Story Topic or Prompt</div>
+      <textarea class="ws-textarea" id="ai-topic" placeholder="e.g. A detective who can read minds discovers a murder in a locked room..." style="min-height:100px;"></textarea>
+      <div class="ws-label">Length</div>
+      <select class="ws-input" id="ai-length">
+        <option value="Short (300-400 words)">Short — 300–400 words</option><option value="Medium (500-700 words)" selected>Medium — 500–700 words</option><option value="Long (900-1200 words)">Long — 900–1200 words</option>
+      </select>`,
+        'ai-poem': `
+      <div class="ws-label">Poem Topic</div>
+      <input class="ws-input" id="ai-poem-topic" placeholder="e.g. The silence after rain, childhood memories, lost love...">
+      <div class="ws-label">Poetry Style</div>
+      <select class="ws-input" id="ai-poem-style">
+        <option value="Free verse">Free Verse</option><option value="Haiku">Haiku</option><option value="Sonnet">Sonnet</option><option value="Limerick">Limerick</option><option value="Ode">Ode</option><option value="Ballad">Ballad</option>
+      </select>
+      <div class="ws-label">Mood / Tone</div>
+      <select class="ws-input" id="ai-poem-mood">
+        <option value="Any">Any</option><option value="Melancholic">Melancholic</option><option value="Joyful">Joyful</option><option value="Romantic">Romantic</option><option value="Reflective">Reflective</option><option value="Dramatic">Dramatic</option>
+      </select>`,
+        'cover-letter': `
+      <div class="ws-label">Job Title Applying For</div>
+      <input class="ws-input" id="ai-job-title" placeholder="e.g. Senior Product Manager, UI Designer...">
+      <div class="ws-label">Company Name</div>
+      <input class="ws-input" id="ai-company" placeholder="e.g. Google, startup name, or 'Not specified'">
+      <div class="ws-label">Your Key Skills (comma separated)</div>
+      <input class="ws-input" id="ai-skills" placeholder="e.g. Product strategy, Agile, user research, SQL...">
+      <div class="ws-label">Relevant Experience / Background</div>
+      <textarea class="ws-textarea" id="ai-experience" placeholder="e.g. 5 years in SaaS product management, led a team of 8, launched 3 products..." style="min-height:100px;"></textarea>`,
+        'biz-name': `
+      <div class="ws-label">Industry / Business Type</div>
+      <input class="ws-input" id="ai-industry" placeholder="e.g. Online fitness coaching, B2B SaaS, handmade jewellery...">
+      <div class="ws-label">Keywords / Values to Reflect</div>
+      <input class="ws-input" id="ai-keywords" placeholder="e.g. strength, clarity, minimal, fast, community...">
+      <div class="ws-label">Naming Style</div>
+      <select class="ws-input" id="ai-style">
+        <option value="Modern & Professional">Modern & Professional</option><option value="Fun & Playful">Fun & Playful</option><option value="Bold & Powerful">Bold & Powerful</option><option value="Minimal & Clean">Minimal & Clean</option><option value="Creative & Unique">Creative & Unique</option>
+      </select>`,
+        'book-title': `
+      <div class="ws-label">Book Genre</div>
+      <select class="ws-input" id="ai-book-genre">
+        <option value="Non-fiction">Non-Fiction</option><option value="Self-help">Self-Help</option><option value="Business">Business</option><option value="Fantasy">Fantasy</option><option value="Mystery / Thriller">Mystery / Thriller</option><option value="Romance">Romance</option><option value="Science Fiction">Science Fiction</option><option value="Biography">Biography</option>
+      </select>
+      <div class="ws-label">Book Topic / Theme</div>
+      <textarea class="ws-textarea" id="ai-book-topic" placeholder="e.g. Overcoming procrastination through neuroscience, or a dystopian world where emotions are illegal..." style="min-height:80px;"></textarea>
+      <div class="ws-label">Target Audience</div>
+      <input class="ws-input" id="ai-book-audience" placeholder="e.g. Young adults, entrepreneurs, parents, general readers...">`,
+        'abstract': `
+      <div class="ws-label">Paper / Research Title</div>
+      <input class="ws-input" id="ai-abstract-title" placeholder="e.g. The Impact of Social Media on Teen Mental Health">
+      <div class="ws-label">Content, Methods & Findings</div>
+      <textarea class="ws-textarea" id="ai-abstract-content" placeholder="Describe your research: what you studied, how (methods), and what you found. Bullet points are fine." style="min-height:160px;"></textarea>`,
+        'email-writer': `
+      <div class="ws-label">Recipient / Role</div>
+      <input class="ws-input" id="ai-email-to" placeholder="e.g. Hiring manager, client, team member, professor...">
+      <div class="ws-label">Email Purpose</div>
+      <textarea class="ws-textarea" id="ai-email-purpose" placeholder="e.g. Following up on a job application, requesting a meeting, apologising for a delay, asking for feedback..." style="min-height:80px;"></textarea>
+      <div class="ws-label">Tone</div>
+      <select class="ws-input" id="ai-email-tone">
+        <option value="Professional">Professional</option><option value="Friendly & Professional">Friendly & Professional</option><option value="Formal">Formal</option><option value="Casual">Casual</option><option value="Apologetic">Apologetic</option><option value="Persuasive">Persuasive</option>
+      </select>
+      <div class="ws-label">Additional Details (optional)</div>
+      <textarea class="ws-textarea" id="ai-email-details" placeholder="Any specific points, context, or info to include..." style="min-height:60px;"></textarea>`,
+        'conclusion': `
+      <div class="ws-label">Essay Topic</div>
+      <input class="ws-input" id="ai-essay-topic" placeholder="e.g. Climate change and its economic impact">
+      <div class="ws-label">Main Points Covered in Essay</div>
+      <textarea class="ws-textarea" id="ai-main-points" placeholder="e.g. Rising sea levels, agricultural disruption, cost of adaptation..." style="min-height:100px;"></textarea>
+      <div class="ws-label">Conclusion Tone</div>
+      <select class="ws-input" id="ai-conclusion-tone">
+        <option value="Academic">Academic</option><option value="Call to action">Call to Action</option><option value="Reflective">Reflective</option><option value="Optimistic">Optimistic</option>
+      </select>`,
+        'outline': `
+      <div class="ws-label">Topic / Title</div>
+      <input class="ws-input" id="ai-outline-topic" placeholder="e.g. How to launch a SaaS product, The history of artificial intelligence...">
+      <div class="ws-label">Content Type</div>
+      <select class="ws-input" id="ai-outline-type">
+        <option value="Essay">Essay</option><option value="Blog Article">Blog Article</option><option value="Research Paper">Research Paper</option><option value="Presentation">Presentation</option><option value="Book Chapter">Book Chapter</option><option value="Video Script">Video Script</option>
+      </select>
+      <div class="ws-label">Depth / Detail Level</div>
+      <select class="ws-input" id="ai-outline-depth">
+        <option value="Brief (3-4 sections)">Brief — 3-4 sections</option><option value="Standard (5-7 sections)" selected>Standard — 5-7 sections</option><option value="Detailed (8-12 sections)">Detailed — 8-12 sections</option>
+      </select>`,
+        'ai-answer': `
+      <div class="ws-label">Your Question</div>
+      <textarea class="ws-textarea" id="ai-question" placeholder="e.g. What is the difference between machine learning and deep learning? How do I start investing in stocks?" style="min-height:120px;"></textarea>
+      <div class="ws-label">Context or Background (optional)</div>
+      <input class="ws-input" id="ai-context" placeholder="e.g. I am a beginner, this is for a university assignment, I live in India...">`,
+        'paragraph': `
+      <div class="ws-label">Topic / Subject</div>
+      <input class="ws-input" id="ai-para-topic" placeholder="e.g. The benefits of morning exercise, How blockchain works...">
+      <div class="ws-label">Tone</div>
+      <select class="ws-input" id="ai-para-tone">
+        <option value="Informative">Informative</option><option value="Persuasive">Persuasive</option><option value="Casual">Casual</option><option value="Academic">Academic</option><option value="Descriptive">Descriptive</option>
+      </select>
+      <div class="ws-label">Length</div>
+      <select class="ws-input" id="ai-para-length">
+        <option value="Short (3-4 sentences)">Short — 3-4 sentences</option><option value="Medium (5-7 sentences)" selected>Medium — 5-7 sentences</option><option value="Long (8-10 sentences)">Long — 8-10 sentences</option>
+      </select>`,
+        'ai-sentence': `
+      <div class="ws-label">Topic or Subject</div>
+      <input class="ws-input" id="ai-sent-topic" placeholder="e.g. The power of habits, Space exploration, Indian street food...">
+      <div class="ws-label">Writing Style</div>
+      <select class="ws-input" id="ai-sent-style">
+        <option value="General">General</option><option value="Literary / Creative">Literary / Creative</option><option value="Journalistic">Journalistic</option><option value="Academic">Academic</option><option value="Conversational">Conversational</option>
+      </select>`,
+        'thesis': `
+      <div class="ws-label">Essay Topic</div>
+      <input class="ws-input" id="ai-thesis-topic" placeholder="e.g. Social media's effect on democracy, Universal basic income...">
+      <div class="ws-label">Your Position or Argument (optional)</div>
+      <input class="ws-input" id="ai-thesis-position" placeholder="e.g. Social media strengthens democracy by... or I believe UBI would...">
+      <div class="ws-label">Essay Type</div>
+      <select class="ws-input" id="ai-thesis-type">
+        <option value="Argumentative">Argumentative</option><option value="Analytical">Analytical</option><option value="Expository">Expository</option><option value="Compare & Contrast">Compare & Contrast</option><option value="Cause & Effect">Cause & Effect</option>
+      </select>`,
+        'slogan': `
+      <div class="ws-label">Brand / Company Name</div>
+      <input class="ws-input" id="ai-slogan-brand" placeholder="e.g. FitPulse, CloudNest, GreenRoute...">
+      <div class="ws-label">Product / Service</div>
+      <input class="ws-input" id="ai-slogan-product" placeholder="e.g. Fitness app, Cloud storage, Eco-friendly logistics...">
+      <div class="ws-label">Core Values / Unique Selling Point</div>
+      <input class="ws-input" id="ai-slogan-values" placeholder="e.g. Speed, sustainability, simplicity, trust, innovation...">`,
+        'backstory': `
+      <div class="ws-label">Character Name</div>
+      <input class="ws-input" id="ai-char-name" placeholder="e.g. Kiran Malhotra, Zara Voss, Marcus Reed...">
+      <div class="ws-label">Character Type</div>
+      <select class="ws-input" id="ai-char-type">
+        <option value="Human">Human</option><option value="Anti-hero">Anti-hero</option><option value="Villain">Villain</option><option value="Wizard / Mage">Wizard / Mage</option><option value="Warrior">Warrior</option><option value="AI / Robot">AI / Robot</option><option value="Alien">Alien</option>
+      </select>
+      <div class="ws-label">Personality Traits</div>
+      <input class="ws-input" id="ai-char-traits" placeholder="e.g. Stubborn but loyal, brilliant but reckless, quiet and observant...">
+      <div class="ws-label">Setting / World</div>
+      <input class="ws-input" id="ai-char-setting" placeholder="e.g. Medieval kingdom, near-future Mumbai, post-apocalyptic London...">`,
+        'essay-writer': `
+      <div class="ws-label">Essay Topic</div>
+      <input class="ws-input" id="ai-essay-topic2" placeholder="e.g. Should social media be regulated? The future of remote work...">
+      <div class="ws-label">Essay Type</div>
+      <select class="ws-input" id="ai-essay-type">
+        <option value="Argumentative">Argumentative</option><option value="Descriptive">Descriptive</option><option value="Narrative">Narrative</option><option value="Expository">Expository</option><option value="Cause & Effect">Cause & Effect</option>
+      </select>
+      <div class="ws-label">Word Count Target</div>
+      <select class="ws-input" id="ai-essay-length">
+        <option value="300-400 words">Short — 300–400 words</option><option value="500-700 words" selected>Medium — 500–700 words</option><option value="800-1000 words">Long — 800–1000 words</option>
+      </select>
+      <div class="ws-label">Key Points to Cover (optional)</div>
+      <textarea class="ws-textarea" id="ai-essay-points" placeholder="e.g. Economic impact, social consequences, alternative solutions..." style="min-height:80px;"></textarea>`,
+        'faq-gen': `
+      <div class="ws-label">Topic / Product / Service</div>
+      <input class="ws-input" id="ai-faq-topic" placeholder="e.g. Online banking app, yoga studio membership, SaaS dashboard...">
+      <div class="ws-label">Target Audience</div>
+      <input class="ws-input" id="ai-faq-audience" placeholder="e.g. First-time users, business owners, students...">
+      <div class="ws-label">Number of FAQs</div>
+      <select class="ws-input" id="ai-faq-count">
+        <option value="5">5 FAQs</option><option value="10" selected>10 FAQs</option><option value="15">15 FAQs</option><option value="20">20 FAQs</option>
+      </select>`,
+        'acronym': `
+      <div class="ws-label">Word or Phrase to Make Acronym From</div>
+      <input class="ws-input" id="ai-acronym-word" placeholder="e.g. FAST, SMART, GROWTH, LEAD...">
+      <div class="ws-label">Industry / Context</div>
+      <input class="ws-input" id="ai-acronym-context" placeholder="e.g. Business, Education, Healthcare, Technology...">`,
+        'meta-desc': `
+      <div class="ws-label">Page Topic / Content</div>
+      <textarea class="ws-textarea" id="ai-meta-page" placeholder="e.g. A blog post about 10 ways to improve productivity for remote workers..." style="min-height:80px;"></textarea>
+      <div class="ws-label">Target Keyword</div>
+      <input class="ws-input" id="ai-meta-kw" placeholder="e.g. remote work productivity tips">
+      <div class="ws-label">Desired CTA</div>
+      <input class="ws-input" id="ai-meta-cta" placeholder="e.g. Learn more, Read now, Discover, Try free...">`,
+        'review-gen': `
+      <div class="ws-label">Product / Service Name</div>
+      <input class="ws-input" id="ai-review-product" placeholder="e.g. Sony WH-1000XM5 headphones, Swiggy delivery, Notion app...">
+      <div class="ws-label">Overall Rating</div>
+      <select class="ws-input" id="ai-review-rating">
+        <option value="5/5 stars — Excellent">⭐⭐⭐⭐⭐ Excellent</option><option value="4/5 stars — Good" selected>⭐⭐⭐⭐ Good</option><option value="3/5 stars — Average">⭐⭐⭐ Average</option><option value="2/5 stars — Poor">⭐⭐ Poor</option><option value="1/5 stars — Very Bad">⭐ Very Bad</option>
+      </select>
+      <div class="ws-label">Aspects to Mention</div>
+      <input class="ws-input" id="ai-review-aspects" placeholder="e.g. Battery life, build quality, delivery speed, customer service...">`,
+        'para-expand': `
+      <div class="ws-label">Paragraph to Expand</div>
+      <textarea class="ws-textarea" id="ai-expand-text" placeholder="Paste the paragraph you want expanded with more detail, examples, and depth..." style="min-height:160px;"></textarea>`,
+        'sent-short': `
+      <div class="ws-label">Text to Shorten</div>
+      <textarea class="ws-textarea" id="ai-shorten-text" placeholder="Paste long sentences or paragraphs. Each will be shortened while keeping the core meaning..." style="min-height:160px;"></textarea>`,
+        'humanize-ai': `
+      <div class="ws-label">AI-Generated Text to Humanize</div>
+      <textarea class="ws-textarea" id="ai-humanize-text" placeholder="Paste the AI-written text here. It will be rewritten to sound natural, warm, and human..." style="min-height:180px;"></textarea>
+      <div class="ws-label">Desired Tone</div>
+      <select class="ws-input" id="ai-humanize-tone">
+        <option value="Conversational">Conversational</option><option value="Professional but warm">Professional but warm</option><option value="Casual & friendly">Casual & friendly</option><option value="Storytelling">Storytelling</option>
+      </select>`,
+        'caption-gen': `
+      <div class="ws-label">What is the post about?</div>
+      <textarea class="ws-textarea" id="ai-caption-topic" placeholder="e.g. A photo of my morning coffee and journal, new product launch, travel shot from Bali..." style="min-height:80px;"></textarea>
+      <div class="ws-label">Platform</div>
+      <select class="ws-input" id="ai-caption-platform">
+        <option value="Instagram">Instagram</option><option value="LinkedIn">LinkedIn</option><option value="Twitter/X">Twitter / X</option><option value="Facebook">Facebook</option><option value="YouTube">YouTube</option>
+      </select>
+      <div class="ws-label">Caption Tone</div>
+      <select class="ws-input" id="ai-caption-tone">
+        <option value="Engaging & Fun">Engaging & Fun</option><option value="Professional">Professional</option><option value="Inspirational">Inspirational</option><option value="Humorous">Humorous</option><option value="Educational">Educational</option>
+      </select>`,
+        'msg-gen': `
+      <div class="ws-label">Situation / Occasion</div>
+      <textarea class="ws-textarea" id="ai-msg-situation" placeholder="e.g. Congratulating a friend on a promotion, apologising to a client for a delay, wishing someone happy birthday..." style="min-height:100px;"></textarea>
+      <div class="ws-label">Recipient</div>
+      <input class="ws-input" id="ai-msg-recipient" placeholder="e.g. Best friend, boss, parent, colleague, romantic partner...">
+      <div class="ws-label">Tone</div>
+      <select class="ws-input" id="ai-msg-tone">
+        <option value="Warm & Friendly">Warm & Friendly</option><option value="Professional">Professional</option><option value="Funny & Light">Funny & Light</option><option value="Heartfelt & Sincere">Heartfelt & Sincere</option><option value="Formal">Formal</option>
+      </select>`,
+        'reply-gen': `
+      <div class="ws-label">Original Message to Reply To</div>
+      <textarea class="ws-textarea" id="ai-reply-original" placeholder="Paste the email, text, or message you received and need to reply to..." style="min-height:140px;"></textarea>
+      <div class="ws-label">Your Desired Response Tone</div>
+      <select class="ws-input" id="ai-reply-tone">
+        <option value="Professional & Friendly">Professional & Friendly</option><option value="Formal">Formal</option><option value="Casual">Casual</option><option value="Assertive">Assertive</option><option value="Empathetic">Empathetic</option>
+      </select>`,
+        'prompt-gen': `
+      <div class="ws-label">What do you want the AI to do?</div>
+      <textarea class="ws-textarea" id="ai-prompt-goal" placeholder="e.g. Write blog posts, create marketing plans, generate product descriptions, analyse data..." style="min-height:80px;"></textarea>
+      <div class="ws-label">Target AI System</div>
+      <select class="ws-input" id="ai-prompt-ai">
+        <option value="ChatGPT / Claude">ChatGPT / Claude</option><option value="Midjourney">Midjourney (image)</option><option value="DALL-E">DALL-E (image)</option><option value="Gemini">Gemini</option><option value="Any AI">Any AI</option>
+      </select>
+      <div class="ws-label">Prompt Style</div>
+      <select class="ws-input" id="ai-prompt-style">
+        <option value="Detailed & Specific">Detailed & Specific</option><option value="Brief & Flexible">Brief & Flexible</option><option value="Chain of thought">Chain of Thought</option><option value="Role-play / Persona">Role-play / Persona</option>
+      </select>`,
+        'rewriter': `
+      <div class="ws-label">Content to Rewrite</div>
+      <textarea class="ws-textarea" id="ai-rewrite-text" placeholder="Paste article, blog post, product description, or any text to rewrite..." style="min-height:180px;"></textarea>
+      <div class="ws-label">Rewrite Style</div>
+      <select class="ws-input" id="ai-rewrite-style">
+        <option value="Professional">Professional</option><option value="Casual & Conversational">Casual & Conversational</option><option value="More concise">More Concise</option><option value="More detailed">More Detailed</option><option value="SEO-optimised">SEO-Optimised</option>
+      </select>`,
+        'paraphrase': `
+      <div class="ws-label">Text to Paraphrase</div>
+      <textarea class="ws-textarea" id="ai-paraphrase-text" placeholder="Paste the text you want paraphrased. It will be completely reworded..." style="min-height:180px;"></textarea>
+      <div class="ws-label">Paraphrase Level</div>
+      <select class="ws-input" id="ai-paraphrase-level">
+        <option value="Standard">Standard</option><option value="Heavy (maximum rewriting)">Heavy — Maximum rewriting</option><option value="Light (minor rewording)">Light — Minor rewording</option>
+      </select>`,
+        'summarizer': `
+      <div class="ws-label">Text to Summarize</div>
+      <textarea class="ws-textarea" id="ai-summary-text" placeholder="Paste article, research paper, report, or any long content..." style="min-height:180px;"></textarea>
+      <div class="ws-label">Summary Length</div>
+      <select class="ws-input" id="ai-summary-length">
+        <option value="1-2 sentences (very brief)">1–2 sentences — Very brief</option><option value="3-5 sentences" selected>3–5 sentences — Standard</option><option value="1 paragraph">1 paragraph — Detailed</option><option value="Bullet points (5-7)">Bullet points — 5–7 points</option>
+      </select>
+      <div class="ws-label">Output Format</div>
+      <select class="ws-input" id="ai-summary-format">
+        <option value="Paragraph">Paragraph</option><option value="Bullet points">Bullet Points</option><option value="Numbered list">Numbered List</option>
+      </select>`,
+        'a2p-voice': `
+      <div class="ws-label">Active Voice Text</div>
+      <textarea class="ws-textarea" id="ai-a2p-text" placeholder="e.g. The team completed the project. The manager approved the proposal. Scientists discovered a new species..." style="min-height:180px;"></textarea>`,
+        'sentence-exp': `
+      <div class="ws-label">Short Sentences to Expand</div>
+      <textarea class="ws-textarea" id="ai-sent-exp-text" placeholder="e.g. The market is growing. AI is changing business. Remote work is popular..." style="min-height:120px;"></textarea>
+      <div class="ws-label">Expansion Style</div>
+      <select class="ws-input" id="ai-sent-exp-style">
+        <option value="Descriptive">Descriptive</option><option value="Analytical">Analytical</option><option value="Narrative">Narrative</option><option value="Persuasive">Persuasive</option>
+      </select>`,
+        'ai-detect': `
+      <div class="ws-label">Text to Analyze</div>
+      <div class="ws-hint">Paste at least 100 words for accurate detection. Works best with 200+ words.</div>
+      <textarea class="ws-textarea" id="ai-detect-text" placeholder="Paste the text you want to check for AI-generation..." style="min-height:200px;"></textarea>`,
+        'plagiarism': `
+      <div class="ws-label">Text to Check</div>
+      <textarea class="ws-textarea" id="ai-plag-text" placeholder="Paste your text to check for potential plagiarism, unoriginal phrases, or commonly copied content..." style="min-height:200px;"></textarea>`,
+        'plag-compare': `
+      <div class="ws-label">Text 1 (Original / Reference)</div>
+      <textarea class="ws-textarea" id="ai-plag-text1" placeholder="Paste the first text here (e.g. original source, reference text)..." style="min-height:140px;"></textarea>
+      <div class="ws-label" style="margin-top:12px;">Text 2 (Text to Compare)</div>
+      <textarea class="ws-textarea" id="ai-plag-text2" placeholder="Paste the second text here (e.g. suspected copy, student submission)..." style="min-height:140px;"></textarea>`,
       };
-      const prompt = promptMap[tool.id] || `Use the ${tool.name} to process the following input:`;
-      ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Your Input</div><textarea class="ws-textarea" id="ai-input" placeholder="${prompt} ..."></textarea><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="runAI('${tool.id}')"><span id="ai-btn-text">Generate ✨</span></button><button class="ws-btn ws-btn-ghost" onclick="document.getElementById('ai-input').value='';document.getElementById('ai-output').textContent=''">Clear</button></div></div><div class="tool-workspace"><div class="ws-label">Result</div><div class="ws-output" id="ai-output" style="min-height:140px;"></div><div class="ws-actions"><button class="ws-btn ws-btn-ghost" onclick="copyOutput('ai-output')">📋 Copy</button></div></div>`;
-      window._currentPrompt = prompt;
+
+      const aiWs = aiWorkspaces[tool.id];
+      const wsFields = aiWs || `<div class="ws-label">Your Input</div><textarea class="ws-textarea" id="ai-input" placeholder="Enter your text here..." style="min-height:180px;"></textarea>`;
+      ws.innerHTML = `
+    <div class="tool-workspace">
+      <div class="ws-info-box"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>✨ AI-powered — fill in the fields below for best results</div>
+      ${wsFields}
+      <div class="ws-actions" style="margin-top:16px;">
+        <button class="ws-btn ws-btn-primary" onclick="runAI('${tool.id}')">✨ Generate</button>
+        <button class="ws-btn ws-btn-ghost" onclick="document.getElementById('ai-output').innerHTML=''">Clear Output</button>
+      </div>
+    </div>
+    <div class="tool-workspace">
+      <div class="ws-label">Result</div>
+      <div class="ws-output" id="ai-output" style="min-height:180px;line-height:1.7;"></div>
+      <div class="ws-actions">
+        <button class="ws-btn ws-btn-ghost" onclick="copyOutput('ai-output')">📋 Copy</button>
+        <button class="ws-btn ws-btn-ghost" onclick="document.getElementById('ai-output').innerHTML='';runAI('${tool.id}')">🔄 Regenerate</button>
+      </div>
+    </div>`;
     }
 
     // ─── Script Loader ───────────────────────────────────────────────────────────
@@ -3232,6 +4822,8 @@
     function genQR() {
       const text = document.getElementById('qr-input').value.trim();
       const size = parseInt(document.getElementById('qr-size').value) || 300;
+      const colorDark = document.getElementById('qr-color-dark')?.value || '#000000';
+      const colorLight = document.getElementById('qr-color-light')?.value || '#ffffff';
       if (!text) { document.getElementById('qr-output').textContent = 'Please enter some content first.'; return; }
       const out = document.getElementById('qr-output');
       out.innerHTML = '';
@@ -3240,7 +4832,7 @@
           const container = document.createElement('div');
           container.id = 'qr-canvas-container';
           out.appendChild(container);
-          new QRCode(container, { text, width: size, height: size, colorDark: '#000000', colorLight: '#ffffff', correctLevel: QRCode.CorrectLevel.H });
+          new QRCode(container, { text, width: size, height: size, colorDark, colorLight, correctLevel: QRCode.CorrectLevel.H });
           document.getElementById('qr-dl-btn').style.display = 'inline-flex';
         } catch (e) { out.textContent = 'Error generating QR: ' + e.message; }
       });
@@ -5339,19 +6931,6 @@ ${urls.map(u => {
       const lines = document.getElementById('lc-input').value.split('\
 '); const empty = lines.filter(l => !l.trim()).length; document.getElementById('lc-lines').textContent = lines.length; document.getElementById('lc-empty').textContent = empty; document.getElementById('lc-nonempty').textContent = lines.length - empty;
     }
-    async function runAI(toolId) {
-      const input = document.getElementById('ai-input').value.trim(); if (!input) { document.getElementById('ai-output').textContent = 'Please enter some input first.'; return; } const btn = document.getElementById('ai-btn-text'); const out = document.getElementById('ai-output'); btn.textContent = 'Generating...'; out.textContent = '\u23f3 Working on it...'; try {
-        const resp = await fetch('https://api.anthropic.com/v1/messages', {
-          method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({
-            model: 'claude-sonnet-4-20250514', max_tokens: 1000, messages: [{
-              role: 'user', content: `${window._currentPrompt}\
-\
-${input}`
-            }]
-          })
-        }); const data = await resp.json(); out.textContent = data.content?.[0]?.text || 'No result returned.';
-      } catch (e) { out.textContent = 'Error connecting to AI. Please try again.'; } btn.textContent = 'Generate ✨';
-    }
     function copyOutput(id) {
       const el = document.getElementById(id);
       if (!el) return;
@@ -5640,10 +7219,424 @@ ${input}`
     document.addEventListener('click', e => { const a = document.getElementById('nav-user-area'); if (a && !a.contains(e.target)) document.getElementById('nav-dropdown').classList.remove('open'); });
 
     function goToCategory() { showHome(); setTimeout(() => filterTools(window._currentToolCat || 'all'), 100); }
-    function showHome() { document.getElementById('hero-section').style.display = 'block'; document.getElementById('home-main').style.display = 'block'; document.getElementById('footer').style.display = 'block'; document.getElementById('popular-section').style.display = 'block'; document.getElementById('profile-page').classList.remove('active'); document.getElementById('tool-page').classList.remove('active'); document.getElementById('searchInput').value = ''; filterTools('all'); window.scrollTo({ top: 0, behavior: 'smooth' }); }
-    function showProfile() { document.getElementById('hero-section').style.display = 'none'; document.getElementById('home-main').style.display = 'none'; document.getElementById('footer').style.display = 'none'; document.getElementById('popular-section').style.display = 'none'; document.getElementById('tool-page').classList.remove('active'); document.getElementById('profile-page').classList.add('active'); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+    const _innerPageIds = ['security', 'privacy', 'terms', 'cookies', 'about', 'contact', 'blog', 'press'];
+    function showInnerPage(id) {
+      // Hide everything
+      document.getElementById('hero-section').style.display = 'none';
+      document.getElementById('home-main').style.display = 'none';
+      document.getElementById('popular-section').style.display = 'none';
+      document.getElementById('profile-page').classList.remove('active');
+      document.getElementById('tool-page').classList.remove('active');
+      document.getElementById('footer').style.display = 'block';
+      // Hide all inner pages first
+      _innerPageIds.forEach(p => {
+        const el = document.getElementById('page-' + p);
+        if (el) el.classList.remove('active');
+      });
+      // Show target
+      const target = document.getElementById('page-' + id);
+      if (target) { target.classList.add('active'); }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      closeMobileMenu();
+    }
+    function doContactForm() {
+      const name = document.getElementById('contact-name').value.trim();
+      const email = document.getElementById('contact-email').value.trim();
+      const subject = document.getElementById('contact-subject').value;
+      const msg = document.getElementById('contact-msg').value.trim();
+      const result = document.getElementById('contact-result');
+      if (!name || !email || !subject || !msg) {
+        result.textContent = 'Please fill in all fields.';
+        result.style.cssText = 'display:block;background:#FEF2F2;border:1px solid #FECACA;color:#DC2626;padding:10px 14px;border-radius:8px;font-size:13px;margin-top:12px;';
+        return;
+      }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        result.textContent = 'Please enter a valid email address.';
+        result.style.cssText = 'display:block;background:#FEF2F2;border:1px solid #FECACA;color:#DC2626;padding:10px 14px;border-radius:8px;font-size:13px;margin-top:12px;';
+        return;
+      }
+      // Simulate submit
+      result.textContent = '✅ Message sent! We will get back to you within 48 hours.';
+      result.style.cssText = 'display:block;background:#F0FDF4;border:1px solid #86EFAC;color:#16A34A;padding:10px 14px;border-radius:8px;font-size:13px;margin-top:12px;';
+      document.getElementById('contact-name').value = '';
+      document.getElementById('contact-email').value = '';
+      document.getElementById('contact-subject').value = '';
+      document.getElementById('contact-msg').value = '';
+    }
+    // ── URL Router — browser back/forward support ─────────────────────────────────
+    function _hideAll() {
+      document.getElementById('hero-section').style.display = 'none';
+      document.getElementById('home-main').style.display = 'none';
+      document.getElementById('popular-section').style.display = 'none';
+      document.getElementById('footer').style.display = 'none';
+      document.getElementById('profile-page').classList.remove('active');
+      document.getElementById('tool-page').classList.remove('active');
+      _innerPageIds.forEach(p => { const el = document.getElementById('page-' + p); if (el) el.classList.remove('active'); });
+    }
+    function _navigate(state, pushHistory = true) {
+      _hideAll();
+      if (pushHistory) history.pushState(state, '', '#');
+      if (!state || state.view === 'home') {
+        document.getElementById('hero-section').style.display = 'block';
+        document.getElementById('home-main').style.display = 'block';
+        document.getElementById('popular-section').style.display = 'block';
+        document.getElementById('footer').style.display = 'block';
+        document.getElementById('searchInput').value = '';
+        filterTools('all');
+      } else if (state.view === 'tool') {
+        document.getElementById('footer').style.display = 'none';
+        const tp = document.getElementById('tool-page');
+        tp.classList.add('active');
+        const m = catMeta[state.tool.cat];
+        document.getElementById('tool-breadcrumb-cat').textContent = m.label;
+        window._currentToolCat = state.tool.cat;
+        document.getElementById('tool-breadcrumb-name').textContent = state.tool.name;
+        const iconEl = document.getElementById('tool-page-icon');
+        iconEl.textContent = state.tool.icon; iconEl.style.background = m.bg;
+        document.getElementById('tool-page-title').textContent = state.tool.name;
+        document.getElementById('tool-page-subtitle').textContent = state.tool.desc;
+        buildWorkspace(state.tool);
+      } else if (state.view === 'profile') {
+        document.getElementById('profile-page').classList.add('active');
+      } else if (state.view === 'page') {
+        document.getElementById('footer').style.display = 'block';
+        const target = document.getElementById('page-' + state.id);
+        if (target) target.classList.add('active');
+        closeMobileMenu();
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    window.addEventListener('popstate', e => { _navigate(e.state, false); });
 
-    function toggleTheme() { const h = document.documentElement; const isDark = h.getAttribute('data-theme') === 'dark'; h.setAttribute('data-theme', isDark ? 'light' : 'dark'); const icon = document.getElementById('theme-icon'); icon.innerHTML = isDark ? '<circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>' : '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>'; }
+    function showHome() {
+      _navigate({ view: 'home' });
+    }
+    function openTool(tool) {
+      _navigate({ view: 'tool', tool });
+    }
+    function showProfile() {
+      _navigate({ view: 'profile' });
+    }
+    function showInnerPage(id) {
+      _navigate({ view: 'page', id });
+    }
+    function goToCategory() {
+      showHome();
+      setTimeout(() => filterTools(window._currentToolCat || 'all'), 100);
+    }
+    function toggleTheme() {
+      const h = document.documentElement;
+      const isDark = h.getAttribute('data-theme') === 'dark';
+      h.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      const icon = document.getElementById('theme-icon');
+      icon.innerHTML = isDark
+        ? '<circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>'
+        : '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+    }
+
+    // ── AI Architecture — Supabase Edge Function Proxy ────────────────────────────
+    // Falls back to direct API call in dev, uses proxy in prod to avoid CORS
+    const _SBURL = 'https://apdjcjcexbdhmdqrmqee.supabase.co';
+    const _SBANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFwZGpjamNleGJkaG1kcXJtcWVlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyNDI5MTgsImV4cCI6MjA4ODgxODkxOH0.yxfXbgQUp1UW7WZwvlaSjyFu_FcUwAner_JxUKFHbxw';
+
+    async function callAI(systemPrompt, userContent, maxTokens = 1200) {
+      const body = JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: maxTokens,
+        system: systemPrompt,
+        messages: [{ role: 'user', content: userContent }]
+      });
+      // Try Supabase edge function proxy first (avoids CORS)
+      try {
+        const resp = await fetch(`${_SBURL}/functions/v1/ai-proxy`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${_SBANON}` },
+          body
+        });
+        if (resp.ok) {
+          const d = await resp.json();
+          return d.content?.[0]?.text || d.text || 'No result returned.';
+        }
+      } catch (_) { }
+      // Fallback: direct API (works in Claude artifacts, may fail in prod due to CORS)
+      try {
+        const resp = await fetch('https://api.anthropic.com/v1/messages', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'anthropic-dangerous-direct-browser-access': 'true' },
+          body
+        });
+        const d = await resp.json();
+        if (d.content?.[0]?.text) return d.content[0].text;
+        throw new Error(d.error?.message || 'API error');
+      } catch (e) {
+        throw new Error(e.message || 'AI unavailable');
+      }
+    }
+
+    async function runAI(toolId) {
+      // Collect all inputs for this tool
+      const inputs = collectAIInputs(toolId);
+      if (!inputs) return;
+      const { system, user } = inputs;
+
+      const out = document.getElementById('ai-output');
+      const btns = document.querySelectorAll(`[onclick*="runAI('${toolId}')"]`);
+      btns.forEach(b => { b.disabled = true; b.style.opacity = '0.7'; });
+      out.innerHTML = '<div style="display:flex;align-items:center;gap:10px;color:var(--text3);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="animation:spin 1s linear infinite;"><path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/><path d="M21 12a9 9 0 0 0-9-9"/></svg>✨ Generating...</div>';
+
+      try {
+        const text = await callAI(system, user, 1500);
+        // Format output nicely
+        out.innerHTML = text.split('\n').filter(l => l.trim()).map(line => {
+          if (/^\d+\./.test(line.trim())) return `<div style="padding:4px 0;"><b>${line.trim()}</b></div>`;
+          if (/^[-•*]/.test(line.trim())) return `<div style="padding:3px 0 3px 14px;">• ${line.trim().replace(/^[-•*]\s*/, '')}</div>`;
+          if (/^#{1,3}\s/.test(line)) return `<div style="font-weight:800;font-size:15px;margin:10px 0 4px;">${line.replace(/^#+\s/, '')}</div>`;
+          return `<div style="padding:3px 0;">${line}</div>`;
+        }).join('');
+      } catch (e) {
+        out.innerHTML = `<div style="color:#DC2626;padding:10px;background:#FEF2F2;border-radius:8px;font-size:13px;">⚠️ ${e.message}<br><br><span style="color:var(--text3);">Check your internet connection or try again in a moment.</span></div>`;
+      }
+      btns.forEach(b => { b.disabled = false; b.style.opacity = '1'; });
+    }
+
+    // ── AI Input Collector — tool-specific multi-field forms ──────────────────────
+    function collectAIInputs(toolId) {
+      const out = document.getElementById('ai-output');
+      const configs = {
+        'ai-story': {
+          system: 'You are a creative fiction writer. Write engaging, vivid stories with strong characters and plot.',
+          fields: ['ai-genre', 'ai-topic', 'ai-length'],
+          build: (vals) => `Genre: ${vals[0] || 'Any'}\nTopic/Prompt: ${vals[1]}\nLength: ${vals[2] || 'Short (300-500 words)'}`,
+          validate: (vals) => vals[1] ? null : 'Please enter a story topic or prompt.'
+        },
+        'ai-poem': {
+          system: 'You are a skilled poet. Write beautiful, evocative poetry with strong imagery and emotion.',
+          fields: ['ai-poem-topic', 'ai-poem-style', 'ai-poem-mood'],
+          build: (vals) => `Topic: ${vals[0]}\nStyle: ${vals[1] || 'Free verse'}\nMood/Tone: ${vals[2] || 'Any'}`,
+          validate: (vals) => vals[0] ? null : 'Please enter a poem topic.'
+        },
+        'cover-letter': {
+          system: 'You are a professional career coach. Write compelling, personalized cover letters.',
+          fields: ['ai-job-title', 'ai-company', 'ai-skills', 'ai-experience'],
+          build: (vals) => `Job Title: ${vals[0]}\nCompany: ${vals[1] || 'the company'}\nKey Skills: ${vals[2]}\nRelevant Experience: ${vals[3] || 'Not specified'}`,
+          validate: (vals) => vals[0] && vals[2] ? null : 'Please enter job title and key skills.'
+        },
+        'biz-name': {
+          system: 'You are a branding expert. Generate creative, memorable, unique business names.',
+          fields: ['ai-industry', 'ai-keywords', 'ai-style'],
+          build: (vals) => `Industry: ${vals[0]}\nKeywords/Values: ${vals[1]}\nStyle: ${vals[2] || 'Modern & Professional'}`,
+          validate: (vals) => vals[0] && vals[1] ? null : 'Please enter industry and keywords.'
+        },
+        'book-title': {
+          system: 'You are a literary expert and book marketing specialist. Generate compelling book titles.',
+          fields: ['ai-book-genre', 'ai-book-topic', 'ai-book-audience'],
+          build: (vals) => `Genre: ${vals[0]}\nTopic/Theme: ${vals[1]}\nTarget Audience: ${vals[2] || 'General readers'}`,
+          validate: (vals) => vals[0] && vals[1] ? null : 'Please enter genre and topic.'
+        },
+        'abstract': {
+          system: 'You are an academic writing expert. Write precise, structured academic abstracts.',
+          fields: ['ai-abstract-title', 'ai-abstract-content'],
+          build: (vals) => `Paper Title: ${vals[0]}\nContent/Methods/Findings:\n${vals[1]}`,
+          validate: (vals) => vals[0] && vals[1] ? null : 'Please enter title and content.'
+        },
+        'email-writer': {
+          system: 'You are a professional communication expert. Write clear, effective business emails.',
+          fields: ['ai-email-to', 'ai-email-purpose', 'ai-email-tone', 'ai-email-details'],
+          build: (vals) => `Recipient: ${vals[0] || 'Recipient'}\nPurpose: ${vals[1]}\nTone: ${vals[2] || 'Professional'}\nKey Points: ${vals[3] || ''}`,
+          validate: (vals) => vals[1] ? null : 'Please enter the email purpose.'
+        },
+        'conclusion': {
+          system: 'You are an expert essay writer. Write powerful, memorable conclusions.',
+          fields: ['ai-essay-topic', 'ai-main-points', 'ai-conclusion-tone'],
+          build: (vals) => `Essay Topic: ${vals[0]}\nMain Points Covered: ${vals[1]}\nTone: ${vals[2] || 'Academic'}`,
+          validate: (vals) => vals[0] && vals[1] ? null : 'Please enter topic and main points.'
+        },
+        'outline': {
+          system: 'You are a content strategist. Create detailed, well-structured outlines.',
+          fields: ['ai-outline-topic', 'ai-outline-type', 'ai-outline-depth'],
+          build: (vals) => `Topic: ${vals[0]}\nType: ${vals[1] || 'Essay/Article'}\nDepth: ${vals[2] || 'Standard (5-7 sections)'}`,
+          validate: (vals) => vals[0] ? null : 'Please enter a topic.'
+        },
+        'ai-answer': {
+          system: 'You are a knowledgeable expert. Provide clear, accurate, comprehensive answers.',
+          fields: ['ai-question', 'ai-context'],
+          build: (vals) => `Question: ${vals[0]}\nContext/Background: ${vals[1] || 'None provided'}`,
+          validate: (vals) => vals[0] ? null : 'Please enter your question.'
+        },
+        'paragraph': {
+          system: 'You are a skilled writer. Write clear, engaging, well-structured paragraphs.',
+          fields: ['ai-para-topic', 'ai-para-tone', 'ai-para-length'],
+          build: (vals) => `Topic: ${vals[0]}\nTone: ${vals[1] || 'Informative'}\nLength: ${vals[2] || 'Medium (5-8 sentences)'}`,
+          validate: (vals) => vals[0] ? null : 'Please enter a topic.'
+        },
+        'ai-sentence': {
+          system: 'You are a creative writing expert. Generate varied, natural-sounding sentences.',
+          fields: ['ai-sent-topic', 'ai-sent-style'],
+          build: (vals) => `Topic: ${vals[0]}\nStyle: ${vals[1] || 'General'}`,
+          validate: (vals) => vals[0] ? null : 'Please enter a topic.'
+        },
+        'thesis': {
+          system: 'You are an academic writing coach. Write strong, arguable thesis statements.',
+          fields: ['ai-thesis-topic', 'ai-thesis-position', 'ai-thesis-type'],
+          build: (vals) => `Topic: ${vals[0]}\nYour Position/Argument: ${vals[1] || 'Not specified'}\nEssay Type: ${vals[2] || 'Argumentative'}`,
+          validate: (vals) => vals[0] ? null : 'Please enter your essay topic.'
+        },
+        'slogan': {
+          system: 'You are a marketing expert and copywriter. Create catchy, memorable slogans.',
+          fields: ['ai-slogan-brand', 'ai-slogan-product', 'ai-slogan-values'],
+          build: (vals) => `Brand/Company: ${vals[0]}\nProduct/Service: ${vals[1]}\nCore Values/USP: ${vals[2] || 'Quality, Innovation'}`,
+          validate: (vals) => vals[0] && vals[1] ? null : 'Please enter brand and product.'
+        },
+        'backstory': {
+          system: 'You are a creative fiction writer. Create rich, detailed character backstories.',
+          fields: ['ai-char-name', 'ai-char-type', 'ai-char-traits', 'ai-char-setting'],
+          build: (vals) => `Character Name: ${vals[0] || 'Unknown'}\nCharacter Type: ${vals[1] || 'Human'}\nPersonality Traits: ${vals[2]}\nSetting/World: ${vals[3] || 'Contemporary'}`,
+          validate: (vals) => vals[2] ? null : 'Please enter character traits.'
+        },
+        'essay-writer': {
+          system: 'You are an expert academic writer. Write well-structured, researched essays.',
+          fields: ['ai-essay-topic2', 'ai-essay-type', 'ai-essay-length', 'ai-essay-points'],
+          build: (vals) => `Topic: ${vals[0]}\nEssay Type: ${vals[1] || 'Argumentative'}\nLength: ${vals[2] || '500-700 words'}\nKey Points to Cover: ${vals[3] || ''}`,
+          validate: (vals) => vals[0] ? null : 'Please enter an essay topic.'
+        },
+        'faq-gen': {
+          system: 'You are a content expert. Generate realistic, helpful FAQs with clear answers.',
+          fields: ['ai-faq-topic', 'ai-faq-audience', 'ai-faq-count'],
+          build: (vals) => `Topic/Product: ${vals[0]}\nTarget Audience: ${vals[1] || 'General users'}\nNumber of FAQs: ${vals[2] || '10'}`,
+          validate: (vals) => vals[0] ? null : 'Please enter a topic.'
+        },
+        'acronym': {
+          system: 'You are a creative linguist. Generate meaningful, relevant acronyms.',
+          fields: ['ai-acronym-word', 'ai-acronym-context'],
+          build: (vals) => `Word/Phrase: ${vals[0]}\nContext/Industry: ${vals[1] || 'General'}`,
+          validate: (vals) => vals[0] ? null : 'Please enter a word or phrase.'
+        },
+        'meta-desc': {
+          system: 'You are an SEO expert. Write compelling meta descriptions that improve click-through rates. Keep to 150-160 characters.',
+          fields: ['ai-meta-page', 'ai-meta-kw', 'ai-meta-cta'],
+          build: (vals) => `Page Topic/Content: ${vals[0]}\nTarget Keyword: ${vals[1]}\nDesired CTA: ${vals[2] || 'Learn more'}`,
+          validate: (vals) => vals[0] && vals[1] ? null : 'Please enter page topic and keyword.'
+        },
+        'review-gen': {
+          system: 'You are a balanced reviewer. Write authentic, helpful reviews with pros and cons.',
+          fields: ['ai-review-product', 'ai-review-rating', 'ai-review-aspects'],
+          build: (vals) => `Product/Service: ${vals[0]}\nOverall Rating: ${vals[1] || '4/5 stars'}\nKey Aspects to Mention: ${vals[2] || 'Quality, Value, Service'}`,
+          validate: (vals) => vals[0] ? null : 'Please enter a product or service name.'
+        },
+        'para-expand': {
+          system: 'You are a writing expert. Expand paragraphs with rich detail, examples, and depth while maintaining the original meaning.',
+          fields: ['ai-expand-text'],
+          build: (vals) => vals[0],
+          validate: (vals) => vals[0] ? null : 'Please paste the paragraph to expand.'
+        },
+        'sent-short': {
+          system: 'You are an editor. Shorten sentences to be concise and punchy without losing meaning.',
+          fields: ['ai-shorten-text'],
+          build: (vals) => vals[0],
+          validate: (vals) => vals[0] ? null : 'Please paste text to shorten.'
+        },
+        'humanize-ai': {
+          system: 'You are an expert editor. Rewrite AI-generated text to sound natural, human, and conversational. Remove robotic patterns, vary sentence structure, add personality.',
+          fields: ['ai-humanize-text', 'ai-humanize-tone'],
+          build: (vals) => `Tone: ${vals[1] || 'Conversational'}\n\nText to humanize:\n${vals[0]}`,
+          validate: (vals) => vals[0] ? null : 'Please paste the AI text to humanize.'
+        },
+        'caption-gen': {
+          system: 'You are a social media expert. Write engaging, platform-optimized captions with relevant hashtags.',
+          fields: ['ai-caption-topic', 'ai-caption-platform', 'ai-caption-tone'],
+          build: (vals) => `Content Topic: ${vals[0]}\nPlatform: ${vals[1] || 'Instagram'}\nTone: ${vals[2] || 'Engaging & Fun'}`,
+          validate: (vals) => vals[0] ? null : 'Please describe your post content.'
+        },
+        'msg-gen': {
+          system: 'You are a communication expert. Write the perfect message for any situation.',
+          fields: ['ai-msg-situation', 'ai-msg-recipient', 'ai-msg-tone'],
+          build: (vals) => `Situation: ${vals[0]}\nRecipient: ${vals[1] || 'Friend/Colleague'}\nTone: ${vals[2] || 'Friendly'}`,
+          validate: (vals) => vals[0] ? null : 'Please describe the situation.'
+        },
+        'reply-gen': {
+          system: 'You are a communication expert. Write smart, context-appropriate replies.',
+          fields: ['ai-reply-original', 'ai-reply-tone'],
+          build: (vals) => `Original message:\n${vals[0]}\n\nDesired tone: ${vals[1] || 'Professional & Friendly'}`,
+          validate: (vals) => vals[0] ? null : 'Please paste the message you want to reply to.'
+        },
+        'prompt-gen': {
+          system: 'You are an AI prompt engineering expert. Write detailed, effective prompts for various AI systems.',
+          fields: ['ai-prompt-goal', 'ai-prompt-ai', 'ai-prompt-style'],
+          build: (vals) => `Goal: ${vals[0]}\nTarget AI: ${vals[1] || 'ChatGPT/Claude'}\nStyle: ${vals[2] || 'Detailed & Specific'}`,
+          validate: (vals) => vals[0] ? null : 'Please describe what you want the AI to do.'
+        },
+        'rewriter': {
+          system: 'You are a skilled editor. Rewrite content in a fresh, unique way while preserving the core message and improving clarity.',
+          fields: ['ai-rewrite-text', 'ai-rewrite-style'],
+          build: (vals) => `Style: ${vals[1] || 'Professional'}\n\nContent:\n${vals[0]}`,
+          validate: (vals) => vals[0] ? null : 'Please paste content to rewrite.'
+        },
+        'paraphrase': {
+          system: 'You are a writing expert. Paraphrase text completely — different words, different structure, same meaning.',
+          fields: ['ai-paraphrase-text', 'ai-paraphrase-level'],
+          build: (vals) => `Paraphrase level: ${vals[1] || 'Standard'}\n\nText:\n${vals[0]}`,
+          validate: (vals) => vals[0] ? null : 'Please paste text to paraphrase.'
+        },
+        'summarizer': {
+          system: 'You are an expert at summarizing. Create concise, accurate summaries that capture the key points.',
+          fields: ['ai-summary-text', 'ai-summary-length', 'ai-summary-format'],
+          build: (vals) => `Length: ${vals[1] || '3-5 sentences'}\nFormat: ${vals[2] || 'Paragraph'}\n\nText to summarize:\n${vals[0]}`,
+          validate: (vals) => vals[0] ? null : 'Please paste text to summarize.'
+        },
+        'a2p-voice': {
+          system: 'You are a grammar expert. Convert active voice sentences to passive voice accurately.',
+          fields: ['ai-a2p-text'],
+          build: (vals) => vals[0],
+          validate: (vals) => vals[0] ? null : 'Please paste text to convert.'
+        },
+        'sentence-exp': {
+          system: 'You are a writing coach. Expand short sentences into rich, detailed, engaging text.',
+          fields: ['ai-sent-exp-text', 'ai-sent-exp-style'],
+          build: (vals) => `Expand in style: ${vals[1] || 'Descriptive'}\n\nSentences:\n${vals[0]}`,
+          validate: (vals) => vals[0] ? null : 'Please paste sentences to expand.'
+        },
+        'ai-detect': {
+          system: 'You are an AI detection expert. Analyze text for AI-generated patterns: unnatural phrasing, repetitive structure, lack of personality, generic language. Give a percentage likelihood and explain your reasoning.',
+          fields: ['ai-detect-text'],
+          build: (vals) => vals[0],
+          validate: (vals) => vals[0] && vals[0].length > 50 ? null : 'Please paste at least 50 characters of text to analyze.'
+        },
+        'plagiarism': {
+          system: 'You are a plagiarism detection expert. Identify phrases that sound unoriginal, overly generic, commonly copied, or plagiarized. Flag suspicious sections and explain why they may be problematic.',
+          fields: ['ai-plag-text'],
+          build: (vals) => vals[0],
+          validate: (vals) => vals[0] ? null : 'Please paste text to check.'
+        },
+        'plag-compare': {
+          system: 'You are a plagiarism comparison expert. Compare two texts and identify similarities, copied phrases, paraphrased content, and structural overlap. Give a similarity percentage.',
+          fields: ['ai-plag-text1', 'ai-plag-text2'],
+          build: (vals) => `TEXT 1:\n${vals[0]}\n\nTEXT 2:\n${vals[1]}`,
+          validate: (vals) => vals[0] && vals[1] ? null : 'Please provide both texts to compare.'
+        },
+      };
+
+      const cfg = configs[toolId];
+      if (!cfg) {
+        // Generic fallback
+        const input = document.getElementById('ai-input')?.value?.trim();
+        if (!input) { out.textContent = 'Please enter some input first.'; return null; }
+        return { system: `You are a helpful AI assistant. Help with: ${toolId}`, user: input };
+      }
+
+      // Collect field values
+      const vals = cfg.fields.map(id => (document.getElementById(id)?.value || '').trim());
+      const error = cfg.validate(vals);
+      if (error) {
+        out.innerHTML = `<div style="color:#DC2626;padding:10px 14px;background:#FEF2F2;border-radius:8px;font-size:13px;">⚠️ ${error}</div>`;
+        return null;
+      }
+      return { system: cfg.system, user: cfg.build(vals) };
+    }
+
+    // Bootstrap on load
+    window.addEventListener('load', () => {
+      history.replaceState({ view: 'home' }, '', window.location.href);
+    });
   </script>
 </body>
 
