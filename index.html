@@ -1484,6 +1484,128 @@
       animation: fadeUp 0.35s ease both;
     }
 
+    /* HAMBURGER & MOBILE MENU — base styles (hidden by default on desktop) */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 36px;
+      height: 36px;
+      background: none;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      padding: 0 8px;
+      flex-shrink: 0;
+      transition: all 0.2s;
+    }
+
+    .hamburger:hover {
+      border-color: var(--primary);
+    }
+
+    .hamburger span {
+      display: block;
+      width: 16px;
+      height: 2px;
+      background: var(--text2);
+      border-radius: 2px;
+      transition: all 0.25s;
+    }
+
+    .hamburger.open span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .hamburger.open span:nth-child(2) {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+
+    .hamburger.open span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 56px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--surface);
+      z-index: 190;
+      padding: 20px 20px 40px;
+      overflow-y: auto;
+      flex-direction: column;
+      gap: 10px;
+      border-top: 1px solid var(--border);
+    }
+
+    .mobile-menu.open {
+      display: flex;
+    }
+
+    .mobile-menu-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 6px 0;
+    }
+
+    .mobile-menu-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text3);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      padding: 8px 0 4px;
+    }
+
+    .mobile-menu-btn {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 13px 16px;
+      background: var(--surface2);
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      width: 100%;
+      text-align: left;
+      transition: all 0.2s;
+    }
+
+    .mobile-menu-btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      background: var(--bg2);
+    }
+
+    .mobile-menu-btn.primary {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: white;
+    }
+
+    .mobile-menu-btn.primary:hover {
+      background: var(--primary-dark);
+    }
+
+    .mobile-menu-btn.danger {
+      color: #EF4444;
+    }
+
+    .mobile-menu-btn.danger:hover {
+      border-color: #EF4444;
+      background: #FEF2F2;
+      color: #DC2626;
+    }
+
     /* RESPONSIVE */
     @media (max-width: 900px) {
       .footer-top {
@@ -1493,6 +1615,12 @@
 
       .popular-grid {
         grid-template-columns: repeat(2, 1fr);
+      }
+
+      /* Fix hero huge gap on tablet — remove 100vh */
+      .hero {
+        min-height: auto;
+        padding: 60px 28px 50px;
       }
     }
 
@@ -1519,8 +1647,11 @@
       }
 
       .btn-primary {
-        padding: 6px 12px;
-        font-size: 12px;
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
       }
 
       /* HERO */
@@ -1763,7 +1894,6 @@
       }
     }
 
-    /* ── Auth Validation ───────────────────────────────────────────────── */
     .field-error {
       display: block;
       color: #ef4444;
@@ -1884,8 +2014,7 @@
           <div class="nav-dropdown" id="nav-dropdown">
             <div class="dropdown-info">
               <div class="dropdown-name" id="dropdown-name">User</div>
-              <div class="dropdown-email" id="dropdown-email"><a href="/cdn-cgi/l/email-protection" class="__cf_email__"
-                  data-cfemail="83f6f0e6f1c3e6fbe2eef3efe6ade0ecee">[email&#160;protected]</a></div>
+              <div class="dropdown-email" id="dropdown-email"></div>
             </div>
             <button class="dropdown-item" onclick="showProfile();toggleDropdown();"><svg width="13" height="13"
                 fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -1900,9 +2029,68 @@
               </svg>Sign Out</button>
           </div>
         </div>
+        <!-- Hamburger — mobile only -->
+        <button class="hamburger" id="hamburger-btn" onclick="toggleMobileMenu()" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </div>
   </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobile-menu">
+    <!-- Guest state -->
+    <div id="mobile-guest" style="display:flex;flex-direction:column;gap:10px;">
+      <div class="mobile-menu-label">Account</div>
+      <button class="mobile-menu-btn primary" onclick="openModal('signin');closeMobileMenu();">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
+          <polyline points="10 17 15 12 10 7" />
+          <line x1="15" y1="12" x2="3" y2="12" />
+        </svg>
+        Login
+      </button>
+      <button class="mobile-menu-btn" onclick="openModal('signup');closeMobileMenu();">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+          <circle cx="9" cy="7" r="4" />
+          <line x1="19" y1="8" x2="19" y2="14" />
+          <line x1="22" y1="11" x2="16" y2="11" />
+        </svg>
+        Sign Up Free
+      </button>
+    </div>
+    <!-- Logged-in state -->
+    <div id="mobile-loggedin" style="display:none;flex-direction:column;gap:10px;">
+      <div class="mobile-menu-label">My Account</div>
+      <div style="padding:12px 16px;background:var(--bg2);border-radius:12px;border:1.5px solid var(--border);">
+        <div style="font-weight:700;font-size:14px;color:var(--text);" id="mobile-user-name">User</div>
+        <div style="font-size:12px;color:var(--text3);margin-top:2px;" id="mobile-user-email"></div>
+      </div>
+      <button class="mobile-menu-btn" onclick="showProfile();closeMobileMenu();">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+          <circle cx="12" cy="7" r="4" />
+        </svg>
+        My Profile
+      </button>
+      <button class="mobile-menu-btn danger" onclick="signOut();closeMobileMenu();">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+          <polyline points="16 17 21 12 16 7" />
+          <line x1="21" y1="12" x2="9" y2="12" />
+        </svg>
+        Sign Out
+      </button>
+    </div>
+    <div class="mobile-menu-divider"></div>
+    <div class="mobile-menu-label">Browse Tools</div>
+    <button class="mobile-menu-btn" onclick="filterTools('all');closeMobileMenu();">⚡ All Tools</button>
+    <button class="mobile-menu-btn" onclick="filterTools('content');closeMobileMenu();">✍️ Content Tools</button>
+    <button class="mobile-menu-btn" onclick="filterTools('seo');closeMobileMenu();">🔍 SEO Tools</button>
+    <button class="mobile-menu-btn" onclick="filterTools('web');closeMobileMenu();">🌐 Web Tools</button>
+    <button class="mobile-menu-btn" onclick="filterTools('utility');closeMobileMenu();">⚙️ Utility Tools</button>
+  </div>
 
   <!-- SIGN IN MODAL -->
   <div class="modal-overlay" id="signin-modal">
@@ -2889,6 +3077,132 @@
         return;
       }
 
+      // ── Small Text Generator ──────────────────────────────────────────────────────
+      if (tool.id === 'small-text') {
+        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Your Text</div><textarea class="ws-textarea" id="st-input" placeholder="Type or paste your text here..."></textarea><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doSmallText()">Convert to Small Text</button><button class="ws-btn ws-btn-ghost" onclick="document.getElementById('st-input').value='';document.getElementById('st-output').textContent=''">Clear</button></div></div><div class="tool-workspace"><div class="ws-label">Small Text Result</div><div class="ws-output" id="st-output" style="font-size:16px;letter-spacing:1px;">Result will appear here...</div><div class="ws-actions"><button class="ws-btn ws-btn-ghost" onclick="copyOutput('st-output')">📋 Copy</button></div></div>`;
+        return;
+      }
+      // ── Verify Backlink ───────────────────────────────────────────────────────────
+      if (tool.id === 'verify-bl') {
+        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Your Website URL</div><input class="ws-input" id="vbl-site" placeholder="https://yoursite.com"><div class="ws-label" style="margin-top:12px;">Page to Check (where backlink should exist)</div><input class="ws-input" id="vbl-page" placeholder="https://linkingsite.com/page"><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doVerifyBacklink()">Verify Backlink</button></div></div><div class="tool-workspace"><div class="ws-label">Result</div><div class="ws-output" id="vbl-output" style="min-height:80px;">Enter both URLs and click Verify.</div></div>`;
+        return;
+      }
+      // ── SEO Friendly URL Checker ──────────────────────────────────────────────────
+      if (tool.id === 'seo-url') {
+        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">URL to Check</div><input class="ws-input" id="seourl-input" placeholder="https://example.com/My Blog Post!"><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doSeoUrl()">Check URL</button></div></div><div class="tool-workspace"><div class="ws-label">SEO URL Analysis</div><div class="ws-output" id="seourl-output" style="min-height:120px;">Enter a URL to analyze.</div></div>`;
+        return;
+      }
+      // ── Keyword / Total Words ─────────────────────────────────────────────────────
+      if (tool.id === 'kw-total') {
+        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Your Content</div><textarea class="ws-textarea" id="kwt-input" placeholder="Paste your content here..."></textarea><div class="ws-label" style="margin-top:12px;">Target Keyword</div><input class="ws-input" id="kwt-kw" placeholder="e.g. digital marketing"><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doKwTotal()">Analyze</button></div></div><div class="tool-workspace"><div class="ws-label">Keyword Analysis</div><div class="ws-output" id="kwt-output" style="min-height:120px;">Enter content and keyword to analyze.</div></div>`;
+        return;
+      }
+      // ── Reverse Image Search ──────────────────────────────────────────────────────
+      if (tool.id === 'rev-img') {
+        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Image URL</div><input class="ws-input" id="revimg-url" placeholder="https://example.com/image.jpg"><div style="font-size:12px;color:var(--text3);margin:6px 0 14px;">Or upload an image to search for it</div><input type="file" id="revimg-file" accept="image/*" style="display:block;margin:6px 0 14px;font-size:13px;color:var(--text2);"><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doRevImg('google')">🔍 Google</button><button class="ws-btn ws-btn-ghost" onclick="doRevImg('tineye')">TinEye</button><button class="ws-btn ws-btn-ghost" onclick="doRevImg('bing')">Bing</button></div></div><div class="tool-workspace"><div class="ws-label">Search Results</div><div class="ws-output" id="revimg-output" style="min-height:80px;">Enter an image URL or upload and click a search engine.</div></div>`;
+        return;
+      }
+      // ── Similar Page Checker ──────────────────────────────────────────────────────
+      if (tool.id === 'similar-page') {
+        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Page URL</div><input class="ws-input" id="simpage-input" placeholder="https://example.com/page"><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doSimilarPage()">Find Similar Pages</button></div></div><div class="tool-workspace"><div class="ws-label">Similar Pages</div><div class="ws-output" id="simpage-output" style="min-height:120px;">Enter a URL to find similar pages.</div></div>`;
+        return;
+      }
+      // ── Google Indexer ────────────────────────────────────────────────────────────
+      if (tool.id === 'google-index') {
+        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">URL to Submit for Indexing</div><input class="ws-input" id="gi-input" placeholder="https://yoursite.com/new-page"><div style="font-size:12px;color:var(--text3);margin:6px 0 14px;">Paste URLs to check if they can be submitted to Google Search Console</div><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doGoogleIndex()">Submit to Google</button></div></div><div class="tool-workspace"><div class="ws-label">Result</div><div class="ws-output" id="gi-output" style="min-height:100px;">Enter a URL and click Submit.</div></div>`;
+        return;
+      }
+      // ── ICO Converter ─────────────────────────────────────────────────────────────
+      if (tool.id === 'ico-conv') {
+        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Upload Image (PNG/JPG)</div><input type="file" id="ico-input" accept="image/*" style="display:block;margin:6px 0 8px;font-size:13px;color:var(--text2);" onchange="onIcoSelected()"><div id="ico-fileinfo" style="display:none;padding:8px 12px;background:var(--bg2);border-radius:8px;font-size:13px;margin-bottom:10px;display:flex;align-items:center;justify-content:space-between;gap:10px;"><span id="ico-filename" style="font-weight:600;"></span><button class="ws-btn ws-btn-ghost" style="padding:4px 10px;font-size:12px;" onclick="resetIco()">✕ Remove</button></div><div class="ws-label" style="margin-top:4px;">ICO Size</div><select class="ws-input" id="ico-size" style="margin-top:6px;"><option value="16">16×16</option><option value="32" selected>32×32</option><option value="48">48×48</option><option value="64">64×64</option></select><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doIcoConvert()">Convert to ICO</button></div></div><div class="tool-workspace"><div class="ws-label">Result</div><div id="ico-output" style="min-height:100px;display:flex;align-items:center;justify-content:center;color:var(--text3);">Upload an image to convert.</div></div>`;
+        return;
+      }
+      // ── Spider Simulator ──────────────────────────────────────────────────────────
+      if (tool.id === 'spider-sim') {
+        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Paste HTML to Simulate Spider View</div><textarea class="ws-textarea" id="spider-input" placeholder="Paste your page HTML here..." style="min-height:180px;font-family:monospace;font-size:13px;"></textarea><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doSpiderSim()">Simulate Spider</button></div></div><div class="tool-workspace"><div class="ws-label">Spider View (text only, no JS/CSS)</div><div class="ws-output" id="spider-output" style="min-height:150px;white-space:pre-wrap;">Paste HTML to see what spiders see.</div><div class="ws-actions"><button class="ws-btn ws-btn-ghost" onclick="copyOutput('spider-output')">📋 Copy</button></div></div>`;
+        return;
+      }
+      // ── Website Page Snooper ──────────────────────────────────────────────────────
+      if (tool.id === 'page-snoop') {
+        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Paste Page HTML Source</div><textarea class="ws-textarea" id="snoop-input" placeholder="Paste your page HTML source code here..." style="min-height:180px;font-family:monospace;font-size:13px;"></textarea><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doPageSnoop()">Analyze Page</button></div></div><div class="tool-workspace"><div class="ws-label">Page Analysis</div><div class="ws-output" id="snoop-output" style="min-height:150px;">Paste HTML to analyze.</div></div>`;
+        return;
+      }
+      // ── Domain IP Lookup ──────────────────────────────────────────────────────────
+      if (tool.id === 'ip-lookup') {
+        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Domain Name</div><input class="ws-input" id="ipl-input" placeholder="e.g. google.com"><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doDomainIpLookup()">Lookup IP</button></div></div><div class="tool-workspace"><div class="ws-label">IP Address</div><div class="ws-output" id="ipl-output" style="font-size:20px;font-weight:700;min-height:60px;">Enter a domain to lookup.</div></div>`;
+        return;
+      }
+      // ── Server Status Checker ─────────────────────────────────────────────────────
+      if (tool.id === 'server-status') {
+        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Website URL</div><input class="ws-input" id="ss-input" placeholder="https://example.com"><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doServerStatus()">Check Status</button></div></div><div class="tool-workspace"><div class="ws-label">Server Status</div><div class="ws-output" id="ss-output" style="min-height:80px;">Enter a URL to check.</div></div>`;
+        return;
+      }
+      // ── Traceroute Tool ───────────────────────────────────────────────────────────
+      if (tool.id === 'traceroute') {
+        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Domain or IP</div><input class="ws-input" id="tr-input" placeholder="e.g. google.com"><div style="font-size:12px;color:var(--text3);margin-top:6px;">Note: Browser-based traceroute uses public DNS hop simulation.</div><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doTraceroute()">Trace Route</button></div></div><div class="tool-workspace"><div class="ws-label">Route Hops</div><div class="ws-output" id="tr-output" style="font-family:monospace;font-size:13px;min-height:120px;">Enter a domain to trace.</div></div>`;
+        return;
+      }
+      // ── Ping Tool ─────────────────────────────────────────────────────────────────
+      if (tool.id === 'ping') {
+        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Domain or IP to Ping</div><input class="ws-input" id="ping-input" placeholder="e.g. google.com or 8.8.8.8"><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doPing()">Ping</button></div></div><div class="tool-workspace"><div class="ws-label">Ping Results</div><div class="ws-output" id="ping-output" style="font-family:monospace;font-size:13px;min-height:100px;">Enter a domain or IP to ping.</div></div>`;
+        return;
+      }
+      // ── Port Scanner ──────────────────────────────────────────────────────────────
+      if (tool.id === 'port-scan') {
+        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Domain or IP</div><input class="ws-input" id="ps-host" placeholder="e.g. example.com"><div class="ws-label" style="margin-top:12px;">Port Preset</div><select class="ws-input" id="ps-preset" style="margin-top:6px;"><option value="common">Common Ports (HTTP, HTTPS, FTP, SSH, SMTP)</option><option value="web">Web Ports (80, 443, 8080, 8443)</option><option value="mail">Mail Ports (25, 110, 143, 465, 587, 993)</option></select><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doPortScan()">Scan Ports</button></div></div><div class="tool-workspace"><div class="ws-label">Scan Results</div><div class="ws-output" id="ps-output" style="font-family:monospace;font-size:13px;min-height:120px;">Enter a domain to scan ports.</div></div>`;
+        return;
+      }
+      // ── Class C IP Checker ────────────────────────────────────────────────────────
+      if (tool.id === 'class-c') {
+        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">IP Address</div><input class="ws-input" id="classc-input" placeholder="e.g. 192.168.1.100"><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doClassC()">Check Class</button></div></div><div class="tool-workspace"><div class="ws-label">IP Class Information</div><div class="ws-output" id="classc-output" style="min-height:100px;">Enter an IP to check its class.</div></div>`;
+        return;
+      }
+      // ── DNS Propagation Checker ───────────────────────────────────────────────────
+      if (tool.id === 'dns-prop') {
+        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Domain Name</div><input class="ws-input" id="dnsprop-input" placeholder="e.g. example.com"><div class="ws-label" style="margin-top:12px;">Record Type</div><select class="ws-input" id="dnsprop-type" style="margin-top:6px;"><option value="A">A</option><option value="AAAA">AAAA</option><option value="MX">MX</option><option value="TXT">TXT</option><option value="NS">NS</option><option value="CNAME">CNAME</option></select><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doDnsProp()">Check Propagation</button></div></div><div class="tool-workspace"><div class="ws-label">Propagation Results</div><div class="ws-output" id="dnsprop-output" style="min-height:120px;font-family:monospace;font-size:13px;">Enter a domain to check propagation.</div></div>`;
+        return;
+      }
+      // ── DNS Report ────────────────────────────────────────────────────────────────
+      if (tool.id === 'dns-report') {
+        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Domain Name</div><input class="ws-input" id="dnsrep-input" placeholder="e.g. example.com"><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doDnsReport()">Generate Report</button></div></div><div class="tool-workspace"><div class="ws-label">Full DNS Report</div><div class="ws-output" id="dnsrep-output" style="min-height:150px;font-family:monospace;font-size:13px;">Enter a domain to generate a full DNS report.</div></div>`;
+        return;
+      }
+      // ── Reverse NS Checker ────────────────────────────────────────────────────────
+      if (tool.id === 'rev-ns') {
+        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Domain Name</div><input class="ws-input" id="revns-input" placeholder="e.g. example.com"><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doRevNs()">Lookup NS Records</button></div></div><div class="tool-workspace"><div class="ws-label">Nameserver Records</div><div class="ws-output" id="revns-output" style="min-height:100px;font-family:monospace;font-size:13px;">Enter a domain to lookup nameservers.</div></div>`;
+        return;
+      }
+      // ── Reverse Text Generator ────────────────────────────────────────────────────
+      if (tool.id === 'rev-text') {
+        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Your Text</div><textarea class="ws-textarea" id="revtxt-input" placeholder="Type or paste text to reverse..." oninput="doRevText()"></textarea></div><div class="tool-workspace"><div class="ws-label">Reversed Text</div><div class="ws-output" id="revtxt-output">Start typing to see result...</div><div class="ws-actions"><button class="ws-btn ws-btn-ghost" onclick="copyOutput('revtxt-output')">📋 Copy</button></div></div>`;
+        return;
+      }
+      // ── Upside Down Text ──────────────────────────────────────────────────────────
+      if (tool.id === 'upside-txt') {
+        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Your Text</div><textarea class="ws-textarea" id="upside-input" placeholder="Type or paste text to flip..." oninput="doUpsideText()"></textarea></div><div class="tool-workspace"><div class="ws-label">Upside Down Text</div><div class="ws-output" id="upside-output">Start typing to see result...</div><div class="ws-actions"><button class="ws-btn ws-btn-ghost" onclick="copyOutput('upside-output')">📋 Copy</button></div></div>`;
+        return;
+      }
+      // ── Online Text Editor ────────────────────────────────────────────────────────
+      if (tool.id === 'txt-editor') {
+        ws.innerHTML = `<div class="tool-workspace" style="padding:0;overflow:hidden;"><div style="display:flex;gap:6px;padding:10px 14px;background:var(--surface2);border-bottom:1.5px solid var(--border);flex-wrap:wrap;"><button class="ws-btn ws-btn-ghost" style="padding:5px 10px;font-size:12px;" onclick="txtEdFmt('bold')"><b>B</b></button><button class="ws-btn ws-btn-ghost" style="padding:5px 10px;font-size:12px;" onclick="txtEdFmt('italic')"><i>I</i></button><button class="ws-btn ws-btn-ghost" style="padding:5px 10px;font-size:12px;" onclick="txtEdFmt('underline')"><u>U</u></button><button class="ws-btn ws-btn-ghost" style="padding:5px 10px;font-size:12px;" onclick="txtEdFmt('insertUnorderedList')">• List</button><button class="ws-btn ws-btn-ghost" style="padding:5px 10px;font-size:12px;" onclick="txtEdFmt('justifyLeft')">Left</button><button class="ws-btn ws-btn-ghost" style="padding:5px 10px;font-size:12px;" onclick="txtEdFmt('justifyCenter')">Center</button><button class="ws-btn ws-btn-ghost" style="padding:5px 10px;font-size:12px;" onclick="txtEdFmt('justifyRight')">Right</button><button class="ws-btn ws-btn-ghost" style="padding:5px 10px;font-size:12px;" onclick="doTxtEdClear()">Clear</button><button class="ws-btn ws-btn-primary" style="padding:5px 10px;font-size:12px;" onclick="doTxtEdDownload()">⬇️ Download</button></div><div id="txt-editor-area" contenteditable="true" style="min-height:300px;padding:20px;font-family:Inter,sans-serif;font-size:14px;line-height:1.7;outline:none;color:var(--text);" placeholder="Start typing here..."></div></div>`;
+        return;
+      }
+      // ── JPG To Word ───────────────────────────────────────────────────────────────
+      if (tool.id === 'jpg-word') {
+        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Upload Image (JPG/PNG)</div><input type="file" id="jw-input" accept="image/*" style="display:block;margin:6px 0 8px;font-size:13px;color:var(--text2);" onchange="onJwSelected()"><div id="jw-fileinfo" style="display:none;padding:8px 12px;background:var(--bg2);border-radius:8px;font-size:13px;margin-bottom:10px;display:flex;align-items:center;justify-content:space-between;gap:10px;"><span id="jw-filename" style="font-weight:600;"></span><button class="ws-btn ws-btn-ghost" style="padding:4px 10px;font-size:12px;" onclick="resetJw()">✕ Remove</button></div><div style="font-size:12px;color:var(--text3);margin-bottom:14px;">Extracts text from image using OCR and saves as a .txt file</div><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doJpgToWord()">Extract & Download</button></div></div><div class="tool-workspace"><div class="ws-label">Extracted Text</div><textarea class="ws-textarea" id="jw-output" readonly placeholder="Extracted text will appear here..." style="min-height:180px;"></textarea><div class="ws-actions"><button class="ws-btn ws-btn-ghost" onclick="copyOutput('jw-output')">📋 Copy</button><button class="ws-btn ws-btn-ghost" onclick="downloadJwText()">⬇️ Download .txt</button></div></div>`;
+        return;
+      }
+      // ── Text to Handwriting ───────────────────────────────────────────────────────
+      if (tool.id === 'txt-handwrite') {
+        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Your Text</div><textarea class="ws-textarea" id="hw-input" placeholder="Type text to convert to handwriting style..."></textarea><div class="ws-label" style="margin-top:12px;">Style</div><select class="ws-input" id="hw-style" style="margin-top:6px;"><option value="cursive">Cursive</option><option value="print">Print</option><option value="casual">Casual</option></select><div class="ws-label" style="margin-top:12px;">Color</div><input type="color" id="hw-color" value="#1a1a2e" style="width:60px;height:36px;border:1.5px solid var(--border);border-radius:8px;margin-top:6px;cursor:pointer;"><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doHandwriting()">Generate</button></div></div><div class="tool-workspace"><div class="ws-label">Handwriting Preview</div><div id="hw-output" style="min-height:150px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--text3);">Generate to see preview.</div></div>`;
+        return;
+      }
+      // ── PDF to Word ───────────────────────────────────────────────────────────────
+      if (tool.id === 'pdf-word') {
+        ws.innerHTML = `<div class="tool-workspace"><div class="ws-label">Select PDF File</div><input type="file" id="pdfword-input" accept="application/pdf" style="display:block;margin:6px 0 8px;font-size:13px;color:var(--text2);" onchange="onPdfWordSelected()"><div id="pdfword-fileinfo" style="display:none;padding:8px 12px;background:var(--bg2);border-radius:8px;font-size:13px;margin-bottom:10px;display:flex;align-items:center;justify-content:space-between;gap:10px;"><span id="pdfword-filename" style="font-weight:600;"></span><button class="ws-btn ws-btn-ghost" style="padding:4px 10px;font-size:12px;" onclick="resetPdfWord()">✕ Remove</button></div><div style="font-size:12px;color:var(--text3);margin-bottom:14px;">Extracts text from PDF and saves as a .txt file (full .docx conversion requires server-side tools)</div><div class="ws-actions"><button class="ws-btn ws-btn-primary" onclick="doPdfToWord()">Convert & Download</button></div></div><div class="tool-workspace"><div class="ws-label">Extracted Content</div><textarea class="ws-textarea" id="pdfword-output" readonly placeholder="Content will appear here..." style="min-height:200px;"></textarea><div class="ws-actions"><button class="ws-btn ws-btn-ghost" onclick="copyOutput('pdfword-output')">📋 Copy</button><button class="ws-btn ws-btn-ghost" onclick="downloadPdfWordText()">⬇️ Download .txt</button></div></div>`;
+        return;
+      }
+
       // PDF Tools
       const pdfToolIds = ['pdf-merge', 'pdf-split', 'pdf-compress', 'pdf-rotate', 'pdf-to-jpg', 'jpg-to-pdf', 'word-to-pdf', 'pdf-watermark', 'pdf-page-num', 'pdf-crop', 'html-to-pdf', 'pdf-organize', 'scan-to-pdf', 'pdf-edit', 'pdf-sign', 'pdf-protect', 'pdf-unlock', 'pdf-redact', 'pdf-ocr', 'pdf-compare'];
       if (pdfToolIds.includes(tool.id)) { buildPdfWorkspace(tool.id, ws); return; }
@@ -3658,6 +3972,524 @@
 
 
     // ── Word Combiner ─────────────────────────────────────────────────────────────
+    // ── Small Text Generator ──────────────────────────────────────────────────────
+    function doSmallText() {
+      const map = 'ᵃᵇᶜᵈᵉᶠᵍʰⁱʲᵏˡᵐⁿᵒᵖqʳˢᵗᵘᵛʷˣʸᶻ';
+      const t = document.getElementById('st-input').value;
+      document.getElementById('st-output').textContent = t.toLowerCase().split('').map(c => { const i = c.charCodeAt(0) - 97; return i >= 0 && i < 26 ? map[i] : c; }).join('');
+    }
+
+    // ── Verify Backlink ───────────────────────────────────────────────────────────
+    function doVerifyBacklink() {
+      const site = document.getElementById('vbl-site').value.trim();
+      const page = document.getElementById('vbl-page').value.trim();
+      const out = document.getElementById('vbl-output');
+      if (!site || !page) { out.textContent = 'Please enter both URLs.'; return; }
+      const searchUrl = `https://www.google.com/search?q=site:${encodeURIComponent(page)}+link:${encodeURIComponent(site)}`;
+      out.innerHTML = `<div style="margin-bottom:10px;font-size:13px;color:var(--text2);">Due to browser CORS restrictions, direct link verification requires a server-side check. Use Google to verify:</div>
+    <a href="${searchUrl}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;padding:10px 20px;background:var(--primary);color:white;border-radius:8px;text-decoration:none;font-size:13px;font-weight:600;">🔍 Check on Google</a>
+    <div style="margin-top:12px;padding:10px 14px;background:var(--surface2);border-radius:8px;font-size:13px;">
+      <b>Checking:</b> Does <span style="color:var(--primary);">${page}</span> link to <span style="color:var(--primary);">${site}</span>?
+    </div>`;
+    }
+
+    // ── SEO Friendly URL Checker ──────────────────────────────────────────────────
+    function doSeoUrl() {
+      const url = document.getElementById('seourl-input').value.trim();
+      const out = document.getElementById('seourl-output');
+      if (!url) { out.textContent = 'Please enter a URL.'; return; }
+      const issues = []; const passes = [];
+      try {
+        const u = new URL(url.startsWith('http') ? url : 'https://' + url);
+        const path = u.pathname;
+        if (path.length > 100) issues.push('URL path is too long (>100 chars)'); else passes.push('URL length is acceptable');
+        if (/[A-Z]/.test(path)) issues.push('URL contains uppercase letters — use lowercase'); else passes.push('URL is lowercase');
+        if (/\s|%20/.test(path)) issues.push('URL contains spaces — use hyphens instead'); else passes.push('No spaces in URL');
+        if (/[_]/.test(path)) issues.push('URL uses underscores — prefer hyphens for SEO'); else passes.push('No underscores in URL');
+        if (/[^a-z0-9\/\-\.]/i.test(path)) issues.push('URL contains special characters'); else passes.push('No special characters');
+        if (path.match(/\/(index|default|home)\.(html|php|asp)/i)) issues.push('Avoid "index.html" style filenames in URL'); else passes.push('No redundant index filenames');
+        if (path.split('/').filter(Boolean).length > 4) issues.push('URL depth is >4 levels deep'); else passes.push('URL depth is acceptable');
+        const score = Math.round((passes.length / (passes.length + issues.length)) * 100);
+        const color = score >= 80 ? '#10B981' : score >= 50 ? '#F59E0B' : '#EF4444';
+        out.innerHTML = `<div style="text-align:center;margin-bottom:14px;"><div style="font-size:40px;font-weight:900;color:${color};">${score}</div><div style="font-size:12px;color:var(--text3);">SEO URL Score</div></div>
+      <div style="font-size:13px;font-weight:700;margin-bottom:6px;">Analysed: ${url}</div>
+      ${passes.map(p => `<div style="padding:6px 10px;margin-bottom:4px;background:#F0FDF4;border-radius:7px;font-size:13px;color:#16A34A;">✅ ${p}</div>`).join('')}
+      ${issues.map(i => `<div style="padding:6px 10px;margin-bottom:4px;background:#FEF2F2;border-radius:7px;font-size:13px;color:#DC2626;">❌ ${i}</div>`).join('')}`;
+      } catch (e) { out.textContent = 'Invalid URL format.'; }
+    }
+
+    // ── Keyword / Total Words ─────────────────────────────────────────────────────
+    function doKwTotal() {
+      const text = document.getElementById('kwt-input').value;
+      const kw = document.getElementById('kwt-kw').value.trim().toLowerCase();
+      const out = document.getElementById('kwt-output');
+      if (!text.trim()) { out.textContent = 'Please enter some content.'; return; }
+      const words = text.trim().split(/\s+/).filter(Boolean);
+      const total = words.length;
+      const chars = text.length;
+      const kwCount = kw ? (text.toLowerCase().match(new RegExp('\\b' + kw.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b', 'g')) || []).length : 0;
+      const density = kw && total > 0 ? ((kwCount / total) * 100).toFixed(2) : 0;
+      const color = parseFloat(density) >= 1 && parseFloat(density) <= 3 ? '#10B981' : parseFloat(density) > 3 ? '#EF4444' : '#F59E0B';
+      out.innerHTML = `<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px;">
+    <div style="text-align:center;padding:12px;background:var(--bg2);border-radius:10px;"><div style="font-size:24px;font-weight:800;color:var(--primary);">${total.toLocaleString()}</div><div style="font-size:12px;color:var(--text3);">Total Words</div></div>
+    <div style="text-align:center;padding:12px;background:var(--bg2);border-radius:10px;"><div style="font-size:24px;font-weight:800;color:var(--primary);">${chars.toLocaleString()}</div><div style="font-size:12px;color:var(--text3);">Characters</div></div>
+    ${kw ? `<div style="text-align:center;padding:12px;background:var(--bg2);border-radius:10px;"><div style="font-size:24px;font-weight:800;color:${color};">${kwCount}</div><div style="font-size:12px;color:var(--text3);">"${kw}" count</div></div>` : '<div style="text-align:center;padding:12px;background:var(--bg2);border-radius:10px;color:var(--text3);font-size:13px;">Enter a keyword to count</div>'}
+  </div>
+  ${kw ? `<div style="padding:10px 14px;background:${parseFloat(density) >= 1 && parseFloat(density) <= 3 ? '#F0FDF4' : '#FFFBEB'};border-radius:8px;font-size:13px;">
+    Keyword density: <strong style="color:${color};">${density}%</strong> — ${parseFloat(density) >= 1 && parseFloat(density) <= 3 ? '✅ Good (1–3% is ideal)' : parseFloat(density) > 3 ? '⚠️ Too high (consider reducing)' : '⚠️ Low (aim for 1–3%)'}
+  </div>`: ''}`;
+    }
+
+    // ── Reverse Image Search ──────────────────────────────────────────────────────
+    function doRevImg(engine) {
+      const urlInput = document.getElementById('revimg-url').value.trim();
+      const fileInput = document.getElementById('revimg-file').files[0];
+      const out = document.getElementById('revimg-output');
+      let imageUrl = urlInput;
+      if (!imageUrl && !fileInput) { out.textContent = 'Please enter an image URL or upload an image.'; return; }
+      if (fileInput && !imageUrl) {
+        out.innerHTML = '<div style="font-size:13px;color:var(--text2);">For uploaded images, use Google Images to upload directly:</div><br><a href="https://images.google.com" target="_blank" style="padding:8px 16px;background:var(--primary);color:white;border-radius:8px;text-decoration:none;font-size:13px;font-weight:600;">Open Google Images →</a>';
+        return;
+      }
+      const engines = {
+        google: `https://www.google.com/searchbyimage?image_url=${encodeURIComponent(imageUrl)}`,
+        tineye: `https://tineye.com/search?url=${encodeURIComponent(imageUrl)}`,
+        bing: `https://www.bing.com/images/search?view=detailv2&iss=sbi&q=imgurl:${encodeURIComponent(imageUrl)}`
+      };
+      window.open(engines[engine], '_blank');
+      out.innerHTML = `<div style="font-size:13px;color:var(--text2);">Opened ${engine.charAt(0).toUpperCase() + engine.slice(1)} reverse image search in a new tab.</div>
+    <div style="margin-top:10px;font-size:12px;color:var(--text3);">Image URL: ${imageUrl}</div>`;
+    }
+
+    // ── Similar Page Checker ──────────────────────────────────────────────────────
+    function doSimilarPage() {
+      const url = document.getElementById('simpage-input').value.trim();
+      const out = document.getElementById('simpage-output');
+      if (!url) { out.textContent = 'Please enter a URL.'; return; }
+      const clean = url.replace(/^https?:\/\//, '').split('/')[0];
+      const googleUrl = `https://www.google.com/search?q=related:${encodeURIComponent(url)}`;
+      out.innerHTML = `<div style="font-size:13px;color:var(--text2);margin-bottom:10px;">Find pages similar to <strong>${clean}</strong> using Google's "related:" operator:</div>
+    <a href="${googleUrl}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;padding:10px 20px;background:var(--primary);color:white;border-radius:8px;text-decoration:none;font-size:13px;font-weight:600;">🔍 Find Similar Pages</a>
+    <div style="margin-top:12px;font-size:12px;color:var(--text3);">Query used: related:${url}</div>`;
+    }
+
+    // ── Google Indexer ────────────────────────────────────────────────────────────
+    function doGoogleIndex() {
+      const url = document.getElementById('gi-input').value.trim();
+      const out = document.getElementById('gi-output');
+      if (!url) { out.textContent = 'Please enter a URL.'; return; }
+      const inspectUrl = `https://search.google.com/search-console/inspect?resource_id=${encodeURIComponent(url)}`;
+      out.innerHTML = `<div style="font-size:13px;color:var(--text2);margin-bottom:12px;">To request Google to index <strong>${url}</strong>, use Google Search Console:</div>
+    <a href="${inspectUrl}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;padding:10px 20px;background:var(--primary);color:white;border-radius:8px;text-decoration:none;font-size:13px;font-weight:600;margin-bottom:10px;">Open Search Console →</a>
+    <div style="padding:10px 14px;background:var(--surface2);border-radius:8px;font-size:12px;color:var(--text3);">
+      In Search Console: paste your URL → click "Request Indexing". Google will crawl it within a few days.
+    </div>`;
+    }
+
+    // ── ICO Converter ─────────────────────────────────────────────────────────────
+    function onIcoSelected() {
+      const f = document.getElementById('ico-input').files[0];
+      if (f) { document.getElementById('ico-filename').textContent = `🖼 ${f.name}`; document.getElementById('ico-fileinfo').style.display = 'flex'; }
+    }
+    function resetIco() {
+      document.getElementById('ico-input').value = '';
+      document.getElementById('ico-fileinfo').style.display = 'none';
+      document.getElementById('ico-output').innerHTML = 'Upload an image to convert.';
+    }
+    function doIcoConvert() {
+      const file = document.getElementById('ico-input').files[0];
+      const size = parseInt(document.getElementById('ico-size').value) || 32;
+      const out = document.getElementById('ico-output');
+      if (!file) { out.textContent = 'Please upload an image first.'; return; }
+      const img = new Image();
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        canvas.width = size; canvas.height = size;
+        canvas.getContext('2d').drawImage(img, 0, 0, size, size);
+        // ICO format is just a PNG in modern browsers — download as .ico
+        canvas.toBlob(blob => {
+          const url = URL.createObjectURL(blob);
+          out.innerHTML = `<img src="${url}" width="${size}" height="${size}" style="border:1px solid var(--border);border-radius:4px;image-rendering:pixelated;display:block;margin:0 auto 12px;">
+        <a href="${url}" download="favicon.ico" style="display:inline-flex;align-items:center;gap:6px;padding:8px 16px;background:var(--primary);color:white;border-radius:8px;text-decoration:none;font-size:13px;font-weight:600;">⬇️ Download .ico (${size}×${size})</a>
+        <div style="margin-top:8px;font-size:12px;color:var(--text3);">Note: Modern browsers serve PNG-based ICO files, compatible with all major browsers.</div>`;
+        }, 'image/png');
+      };
+      img.src = URL.createObjectURL(file);
+    }
+
+    // ── Spider Simulator ──────────────────────────────────────────────────────────
+    function doSpiderSim() {
+      const html = document.getElementById('spider-input').value;
+      const out = document.getElementById('spider-output');
+      if (!html.trim()) { out.textContent = 'Please paste some HTML.'; return; }
+      // Extract only text content — strip all tags, scripts, styles
+      const stripped = html
+        .replace(/<script[\s\S]*?<\/script>/gi, '')
+        .replace(/<style[\s\S]*?<\/style>/gi, '')
+        .replace(/<[^>]+>/g, ' ')
+        .replace(/\s{2,}/g, ' ')
+        .trim();
+      // Extract key SEO elements
+      const title = (html.match(/<title[^>]*>(.*?)<\/title>/i) || [, 'Not found'])[1];
+      const h1s = [...html.matchAll(/<h1[^>]*>(.*?)<\/h1>/gi)].map(m => m[1].replace(/<[^>]+>/g, ''));
+      const h2s = [...html.matchAll(/<h2[^>]*>(.*?)<\/h2>/gi)].map(m => m[1].replace(/<[^>]+>/g, ''));
+      const metaDesc = (html.match(/<meta[^>]*name=["']description["'][^>]*content=["']([^"']+)/i) || ['', 'Not found'])[1];
+      const links = [...html.matchAll(/href=["']([^"']+)["']/gi)].map(m => m[1]).filter(l => l.startsWith('http'));
+      out.textContent = `=== SPIDER VIEW ===\n\nTITLE: ${title}\nMETA DESC: ${metaDesc}\n\nH1 TAGS (${h1s.length}):\n${h1s.map(h => `  • ${h}`).join('\n') || '  None found'}\n\nH2 TAGS (${h2s.length}):\n${h2s.slice(0, 5).map(h => `  • ${h}`).join('\n') || '  None found'}\n\nLINKS (${links.length}):\n${links.slice(0, 10).map(l => `  • ${l}`).join('\n') || '  None found'}\n\n=== TEXT CONTENT ===\n${stripped.slice(0, 2000)}${stripped.length > 2000 ? '\n... (truncated)' : ''}`;
+    }
+
+    // ── Website Page Snooper ──────────────────────────────────────────────────────
+    function doPageSnoop() {
+      const html = document.getElementById('snoop-input').value;
+      const out = document.getElementById('snoop-output');
+      if (!html.trim()) { out.textContent = 'Please paste some HTML.'; return; }
+      const title = (html.match(/<title[^>]*>(.*?)<\/title>/i) || [, 'Not found'])[1];
+      const charset = (html.match(/charset=["']?([^"'\s;>]+)/i) || [, 'Not found'])[1];
+      const viewport = (html.match(/name=["']viewport["'][^>]*content=["']([^"']+)/i) || [, 'Not found'])[1];
+      const metaDesc = (html.match(/<meta[^>]*name=["']description["'][^>]*content=["']([^"']+)/i) || ['', 'Not found'])[1];
+      const ogTitle = (html.match(/<meta[^>]*property=["']og:title["'][^>]*content=["']([^"']+)/i) || ['', 'Not found'])[1];
+      const canonical = (html.match(/<link[^>]*rel=["']canonical["'][^>]*href=["']([^"']+)/i) || ['', 'Not found'])[1];
+      const robots = (html.match(/<meta[^>]*name=["']robots["'][^>]*content=["']([^"']+)/i) || ['', 'Not found'])[1];
+      const imgs = [...html.matchAll(/<img[^>]+>/gi)];
+      const imgsNoAlt = imgs.filter(m => !m[0].includes('alt=')).length;
+      const scripts = (html.match(/<script/gi) || []).length;
+      const styles = (html.match(/<link[^>]*stylesheet/gi) || []).length + (html.match(/<style/gi) || []).length;
+      const wordCount = html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().split(/\s+/).length;
+      out.innerHTML = `<div style="display:grid;gap:6px;font-size:13px;">
+    ${[['Title', title], ['Charset', charset], ['Viewport', viewport], ['Meta Description', metaDesc.slice(0, 80) || (metaDesc === 'Not found' ? 'Not found' : '')],
+        ['OG Title', ogTitle], ['Canonical', canonical], ['Robots', robots],
+        ['Images', `${imgs.length} total, ${imgsNoAlt} missing alt`],
+        ['Scripts', scripts + ' external/inline'], ['Stylesheets', styles + ' total'],
+        ['Word Count', wordCount + ' approx.']
+        ].map(([k, v]) => `<div style="display:flex;gap:10px;padding:7px 12px;background:var(--surface2);border-radius:8px;"><span style="font-weight:700;min-width:130px;color:var(--text2);">${k}</span><span style="color:${v === 'Not found' ? '#EF4444' : 'var(--text)'};">${v}</span></div>`).join('')}
+  </div>`;
+    }
+
+    // ── Domain IP Lookup ──────────────────────────────────────────────────────────
+    async function doDomainIpLookup() {
+      const domain = document.getElementById('ipl-input').value.trim().replace(/^https?:\/\//, '').split('/')[0];
+      const out = document.getElementById('ipl-output');
+      if (!domain) { out.textContent = 'Please enter a domain.'; return; }
+      out.textContent = 'Looking up...';
+      try {
+        const r = await fetch(`https://dns.google/resolve?name=${encodeURIComponent(domain)}&type=A`);
+        const d = await r.json();
+        const ips = (d.Answer || []).filter(a => a.type === 1).map(a => a.data);
+        if (ips.length) {
+          out.innerHTML = ips.map(ip => `<div style="font-size:20px;font-weight:800;color:var(--primary);margin-bottom:6px;">${ip}</div>`).join('') + `<div style="font-size:12px;color:var(--text3);margin-top:4px;">A records for ${domain}</div>`;
+        } else { out.textContent = 'No A records found for this domain.'; }
+      } catch (e) { out.textContent = 'Lookup failed. Check the domain and try again.'; }
+    }
+
+    // ── Server Status Checker ─────────────────────────────────────────────────────
+    async function doServerStatus() {
+      const url = document.getElementById('ss-input').value.trim();
+      const out = document.getElementById('ss-output');
+      if (!url) { out.textContent = 'Please enter a URL.'; return; }
+      out.textContent = 'Checking...';
+      const start = Date.now();
+      try {
+        await fetch(url, { method: 'HEAD', mode: 'no-cors', cache: 'no-store' });
+        const ms = Date.now() - start;
+        out.innerHTML = `<div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+      <span style="font-size:28px;">✅</span>
+      <div><div style="font-size:18px;font-weight:800;color:#10B981;">Online</div><div style="font-size:13px;color:var(--text3);">Server responded in ${ms}ms</div></div>
+    </div>
+    <div style="font-size:13px;color:var(--text2);padding:8px 12px;background:var(--surface2);border-radius:8px;">Note: no-cors mode confirms reachability but not HTTP status code.</div>`;
+      } catch (e) {
+        out.innerHTML = `<div style="display:flex;align-items:center;gap:10px;">
+      <span style="font-size:28px;">❌</span>
+      <div><div style="font-size:18px;font-weight:800;color:#EF4444;">Unreachable</div><div style="font-size:13px;color:var(--text3);">${e.message || 'Connection failed'}</div></div>
+    </div>`;
+      }
+    }
+
+    // ── Traceroute (simulated via DNS hops) ───────────────────────────────────────
+    async function doTraceroute() {
+      const domain = document.getElementById('tr-input').value.trim().replace(/^https?:\/\//, '').split('/')[0];
+      const out = document.getElementById('tr-output');
+      if (!domain) { out.textContent = 'Please enter a domain.'; return; }
+      out.textContent = 'Tracing route... (simulated via DNS lookup)';
+      try {
+        const r = await fetch(`https://dns.google/resolve?name=${encodeURIComponent(domain)}&type=A`);
+        const d = await r.json();
+        const ips = (d.Answer || []).filter(a => a.type === 1).map(a => a.data);
+        const nsR = await fetch(`https://dns.google/resolve?name=${encodeURIComponent(domain)}&type=NS`);
+        const nsD = await nsR.json();
+        const ns = (nsD.Answer || []).map(a => a.data);
+        out.textContent = `Traceroute to ${domain}\n${'─'.repeat(40)}\n\n`;
+        out.textContent += `Hop 1  * Your network gateway\n`;
+        out.textContent += `Hop 2  * ISP router\n`;
+        out.textContent += `Hop 3  * ${ns[0] || 'upstream DNS'}\n`;
+        if (ips.length) { out.textContent += `Hop 4  ${ips[0]} (destination)\n`; }
+        out.textContent += `\nResolved IPs: ${ips.join(', ') || 'None'}\nNameservers: ${ns.slice(0, 2).join(', ') || 'None'}\n\nNote: Full traceroute requires OS-level access. This is a DNS-based simulation.`;
+      } catch (e) { out.textContent = 'Traceroute failed: ' + e.message; }
+    }
+
+    // ── Ping (simulated via fetch timing) ────────────────────────────────────────
+    async function doPing() {
+      const host = document.getElementById('ping-input').value.trim().replace(/^https?:\/\//, '').split('/')[0];
+      const out = document.getElementById('ping-output');
+      if (!host) { out.textContent = 'Please enter a domain or IP.'; return; }
+      out.textContent = `Pinging ${host}...\n`;
+      const url = `https://${host}`;
+      let results = [];
+      for (let i = 1; i <= 4; i++) {
+        const t = Date.now();
+        try {
+          await fetch(url, { method: 'HEAD', mode: 'no-cors', cache: 'no-store' });
+          const ms = Date.now() - t;
+          results.push(ms);
+          out.textContent += `Reply from ${host}: time=${ms}ms\n`;
+        } catch (e) { out.textContent += `Request ${i} timed out\n`; }
+        await new Promise(r => setTimeout(r, 300));
+      }
+      if (results.length) {
+        const avg = Math.round(results.reduce((a, b) => a + b, 0) / results.length);
+        const min = Math.min(...results); const max = Math.max(...results);
+        out.textContent += `\nPing statistics for ${host}:\n  Sent=4, Received=${results.length}, Lost=${4 - results.length}\nApprox round trip: min=${min}ms, max=${max}ms, avg=${avg}ms`;
+      }
+    }
+
+    // ── Port Scanner (checks common ports via fetch) ──────────────────────────────
+    async function doPortScan() {
+      const host = document.getElementById('ps-host').value.trim().replace(/^https?:\/\//, '').split('/')[0];
+      const preset = document.getElementById('ps-preset').value;
+      const out = document.getElementById('ps-output');
+      if (!host) { out.textContent = 'Please enter a domain.'; return; }
+      const portSets = {
+        common: { 80: 'HTTP', 443: 'HTTPS', 21: 'FTP', 22: 'SSH', 25: 'SMTP', 3306: 'MySQL', 8080: 'HTTP-Alt' },
+        web: { 80: 'HTTP', 443: 'HTTPS', 8080: 'HTTP-Alt', 8443: 'HTTPS-Alt' },
+        mail: { 25: 'SMTP', 110: 'POP3', 143: 'IMAP', 465: 'SMTPS', 587: 'Submission', 993: 'IMAPS' }
+      };
+      const ports = portSets[preset];
+      out.textContent = `Scanning ${host}...\n${'─'.repeat(40)}\n`;
+      for (const [port, name] of Object.entries(ports)) {
+        const proto = port === '443' || port === '8443' || port === '465' || port === '993' ? 'https' : 'http';
+        const t = Date.now();
+        try {
+          await Promise.race([
+            fetch(`${proto}://${host}:${port}`, { mode: 'no-cors', cache: 'no-store' }),
+            new Promise((_, r) => setTimeout(() => r(new Error('timeout')), 1500))
+          ]);
+          out.textContent += `Port ${port.padEnd(6)} ${name.padEnd(12)} OPEN ✅ (${Date.now() - t}ms)\n`;
+        } catch (e) {
+          out.textContent += `Port ${port.padEnd(6)} ${name.padEnd(12)} ${e.message === 'timeout' ? 'TIMEOUT' : 'CLOSED/FILTERED'} ❌\n`;
+        }
+      }
+      out.textContent += `\nNote: Browser CORS limits precise port detection. Results are indicative only.`;
+    }
+
+    // ── Class C IP Checker ────────────────────────────────────────────────────────
+    function doClassC() {
+      const ip = document.getElementById('classc-input').value.trim();
+      const out = document.getElementById('classc-output');
+      if (!ip) { out.textContent = 'Please enter an IP address.'; return; }
+      const parts = ip.split('.').map(Number);
+      if (parts.length !== 4 || parts.some(p => isNaN(p) || p < 0 || p > 255)) { out.textContent = 'Invalid IP address format.'; return; }
+      const first = parts[0];
+      let cls, range, subnet, usage;
+      if (first >= 1 && first <= 126) { cls = 'A'; range = '1.0.0.0 – 126.255.255.255'; subnet = '255.0.0.0 (/8)'; usage = 'Large networks (e.g. ISPs, large corporations)'; }
+      else if (first === 127) { cls = 'Loopback'; range = '127.0.0.0 – 127.255.255.255'; subnet = '255.0.0.0'; usage = 'Loopback/localhost — internal use only'; }
+      else if (first >= 128 && first <= 191) { cls = 'B'; range = '128.0.0.0 – 191.255.255.255'; subnet = '255.255.0.0 (/16)'; usage = 'Medium-sized networks'; }
+      else if (first >= 192 && first <= 223) { cls = 'C'; range = '192.0.0.0 – 223.255.255.255'; subnet = '255.255.255.0 (/24)'; usage = 'Small networks (most common for homes/offices)'; }
+      else if (first >= 224 && first <= 239) { cls = 'D'; range = '224.0.0.0 – 239.255.255.255'; subnet = 'N/A'; usage = 'Multicast'; }
+      else { cls = 'E'; range = '240.0.0.0 – 255.255.255.255'; subnet = 'N/A'; usage = 'Reserved / Experimental'; }
+      const isPrivate = (first === 10) || (first === 172 && parts[1] >= 16 && parts[1] <= 31) || (first === 192 && parts[1] === 168);
+      out.innerHTML = `<div style="display:grid;gap:6px;font-size:13px;">
+    ${[['IP Address', ip], ['Class', `Class ${cls}`], ['Range', range], ['Default Subnet', subnet], ['Usage', usage], ['Type', isPrivate ? '🔒 Private (RFC 1918)' : '🌐 Public']].map(([k, v]) =>
+        `<div style="display:flex;gap:10px;padding:8px 12px;background:var(--surface2);border-radius:8px;"><span style="font-weight:700;min-width:130px;">${k}</span><span>${v}</span></div>`).join('')}
+  </div>`;
+    }
+
+    // ── DNS Propagation ───────────────────────────────────────────────────────────
+    async function doDnsProp() {
+      const domain = document.getElementById('dnsprop-input').value.trim().replace(/^https?:\/\//, '').split('/')[0];
+      const type = document.getElementById('dnsprop-type').value;
+      const out = document.getElementById('dnsprop-output');
+      if (!domain) { out.textContent = 'Please enter a domain.'; return; }
+      out.textContent = `Checking ${type} propagation for ${domain}...\n`;
+      // Check via multiple public DNS resolvers
+      const resolvers = [
+        { name: 'Google DNS', url: `https://dns.google/resolve?name=${encodeURIComponent(domain)}&type=${type}` },
+        { name: 'Cloudflare DNS', url: `https://cloudflare-dns.com/dns-query?name=${encodeURIComponent(domain)}&type=${type}`, headers: { 'Accept': 'application/dns-json' } },
+      ];
+      let results = [];
+      for (const resolver of resolvers) {
+        try {
+          const r = await fetch(resolver.url, { headers: resolver.headers || {} });
+          const d = await r.json();
+          const answers = (d.Answer || []).map(a => a.data);
+          results.push({ name: resolver.name, answers, status: d.Status === 0 ? '✅ OK' : '⚠️ ' + d.Status });
+          out.textContent += `\n${resolver.name}: ${answers.length ? answers.join(', ') : 'No records found'} ${d.Status === 0 ? '✅' : '❌'}`;
+        } catch (e) {
+          out.textContent += `\n${resolver.name}: Failed to query\n`;
+        }
+      }
+      out.textContent += `\n\n${'─'.repeat(40)}\nSame results across resolvers = ${results.every(r => JSON.stringify(r.answers) === JSON.stringify(results[0].answers)) ? '✅ Fully propagated' : '⚠️ Still propagating...'}`;
+    }
+
+    // ── DNS Report ────────────────────────────────────────────────────────────────
+    async function doDnsReport() {
+      const domain = document.getElementById('dnsrep-input').value.trim().replace(/^https?:\/\//, '').split('/')[0];
+      const out = document.getElementById('dnsrep-output');
+      if (!domain) { out.textContent = 'Please enter a domain.'; return; }
+      out.textContent = `Generating DNS report for ${domain}...\n`;
+      const types = ['A', 'AAAA', 'MX', 'TXT', 'NS', 'CNAME'];
+      let report = `DNS REPORT: ${domain}\n${'═'.repeat(40)}\n`;
+      for (const type of types) {
+        try {
+          const r = await fetch(`https://dns.google/resolve?name=${encodeURIComponent(domain)}&type=${type}`);
+          const d = await r.json();
+          const ans = (d.Answer || []);
+          report += `\n${type} Records (${ans.length}):\n`;
+          if (ans.length) { ans.forEach(a => { report += `  ${a.data} (TTL: ${a.TTL}s)\n`; }); }
+          else { report += `  No ${type} records found\n`; }
+        } catch (e) { report += `\n${type}: Query failed\n`; }
+      }
+      out.textContent = report;
+    }
+
+    // ── Reverse NS Checker ────────────────────────────────────────────────────────
+    async function doRevNs() {
+      const domain = document.getElementById('revns-input').value.trim().replace(/^https?:\/\//, '').split('/')[0];
+      const out = document.getElementById('revns-output');
+      if (!domain) { out.textContent = 'Please enter a domain.'; return; }
+      out.textContent = `Looking up nameservers for ${domain}...`;
+      try {
+        const r = await fetch(`https://dns.google/resolve?name=${encodeURIComponent(domain)}&type=NS`);
+        const d = await r.json();
+        const ns = (d.Answer || []).map(a => a.data);
+        if (ns.length) {
+          out.textContent = `Nameservers for ${domain}:\n${'─'.repeat(40)}\n${ns.map((n, i) => `NS${i + 1}: ${n}`).join('\n')}`;
+        } else { out.textContent = 'No NS records found for this domain.'; }
+      } catch (e) { out.textContent = 'Lookup failed: ' + e.message; }
+    }
+
+    // ── Reverse Text ──────────────────────────────────────────────────────────────
+    function doRevText() {
+      const t = document.getElementById('revtxt-input').value;
+      document.getElementById('revtxt-output').textContent = t.split('').reverse().join('');
+    }
+
+    // ── Upside Down Text ──────────────────────────────────────────────────────────
+    function doUpsideText() {
+      const map = { 'a': 'ɐ', 'b': 'q', 'c': 'ɔ', 'd': 'p', 'e': 'ǝ', 'f': 'ɟ', 'g': 'ƃ', 'h': 'ɥ', 'i': 'ᴉ', 'j': 'ɾ', 'k': 'ʞ', 'l': 'l', 'm': 'ɯ', 'n': 'u', 'o': 'o', 'p': 'd', 'q': 'b', 'r': 'ɹ', 's': 's', 't': 'ʇ', 'u': 'n', 'v': 'ʌ', 'w': 'ʍ', 'x': 'x', 'y': 'ʎ', 'z': 'z', ' ': ' ', '!': '¡', '?': '¿', ',': '\'', '\'': ',', '.': '˙' };
+      const t = document.getElementById('upside-input').value;
+      document.getElementById('upside-output').textContent = t.toLowerCase().split('').reverse().map(c => map[c] || c).join('');
+    }
+
+    // ── Text Editor ───────────────────────────────────────────────────────────────
+    function txtEdFmt(cmd) { document.execCommand(cmd, false, null); document.getElementById('txt-editor-area').focus(); }
+    function doTxtEdClear() { const el = document.getElementById('txt-editor-area'); el.innerHTML = ''; }
+    function doTxtEdDownload() {
+      const text = document.getElementById('txt-editor-area').innerText;
+      const blob = new Blob([text], { type: 'text/plain' });
+      const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'document.txt'; a.click();
+    }
+
+    // ── JPG To Word (OCR → text download) ────────────────────────────────────────
+    function onJwSelected() {
+      const f = document.getElementById('jw-input').files[0];
+      if (f) { document.getElementById('jw-filename').textContent = `🖼 ${f.name}`; document.getElementById('jw-fileinfo').style.display = 'flex'; }
+    }
+    function resetJw() {
+      document.getElementById('jw-input').value = '';
+      document.getElementById('jw-fileinfo').style.display = 'none';
+      document.getElementById('jw-output').value = '';
+    }
+    function downloadJwText() {
+      const text = document.getElementById('jw-output').value;
+      if (!text.trim()) return;
+      const blob = new Blob([text], { type: 'text/plain' });
+      const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'extracted.txt'; a.click();
+    }
+    function doJpgToWord() {
+      const file = document.getElementById('jw-input').files[0];
+      const out = document.getElementById('jw-output');
+      if (!file) { out.value = 'Please upload an image first.'; return; }
+      out.value = 'Loading OCR engine...';
+      loadScript('https://unpkg.com/tesseract.js@2.1.5/dist/tesseract.min.js', async () => {
+        try {
+          const url = URL.createObjectURL(file);
+          const worker = Tesseract.createWorker({ logger: m => { if (m.status === 'recognizing text') out.value = `Extracting: ${(m.progress * 100).toFixed(0)}%`; } });
+          await worker.load(); await worker.loadLanguage('eng'); await worker.initialize('eng');
+          const { data: { text } } = await worker.recognize(url);
+          await worker.terminate(); URL.revokeObjectURL(url);
+          out.value = cleanOcrText(text) || 'No text detected.';
+        } catch (e) { out.value = 'Error: ' + (e.message || 'Failed to process image.'); }
+      });
+    }
+
+    // ── Text to Handwriting ───────────────────────────────────────────────────────
+    function doHandwriting() {
+      const text = document.getElementById('hw-input').value;
+      const style = document.getElementById('hw-style').value;
+      const color = document.getElementById('hw-color').value;
+      const out = document.getElementById('hw-output');
+      if (!text.trim()) { out.textContent = 'Please enter some text.'; return; }
+      const fonts = { cursive: "'Dancing Script', cursive", print: "'Caveat', cursive", casual: "'Indie Flower', cursive" };
+      // Load Google Font for handwriting
+      const fontName = fonts[style];
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = `https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Caveat:wght@500&family=Indie+Flower&display=swap`;
+      if (!document.querySelector('link[href*="Dancing+Script"]')) document.head.appendChild(link);
+      const canvas = document.createElement('canvas');
+      const fontSize = 28; const padding = 30; const lineH = fontSize * 1.6;
+      const tempCtx = document.createElement('canvas').getContext('2d');
+      tempCtx.font = `${fontSize}px ${fontName}`;
+      const lines = text.split('\n');
+      const maxW = Math.max(...lines.map(l => tempCtx.measureText(l).width)) + padding * 2;
+      canvas.width = Math.max(400, maxW);
+      canvas.height = lines.length * lineH + padding * 2;
+      const ctx = canvas.getContext('2d');
+      ctx.fillStyle = '#FFFFF0'; ctx.fillRect(0, 0, canvas.width, canvas.height);
+      // Draw lined paper lines
+      ctx.strokeStyle = '#C8D8E8'; ctx.lineWidth = 1;
+      for (let y = lineH + padding; y < canvas.height; y += lineH) { ctx.beginPath(); ctx.moveTo(padding, y); ctx.lineTo(canvas.width - padding, y); ctx.stroke(); }
+      ctx.fillStyle = color; ctx.font = `${fontSize}px ${fontName}`; ctx.textBaseline = 'alphabetic';
+      lines.forEach((line, i) => { ctx.fillText(line, padding, (i + 1) * lineH + padding - 8); });
+      const url = canvas.toDataURL('image/png');
+      out.innerHTML = `<img src="${url}" style="max-width:100%;border-radius:8px;border:1px solid var(--border);display:block;margin-bottom:10px;"><a href="${url}" download="handwriting.png" style="padding:8px 16px;background:var(--primary);color:white;border-radius:8px;text-decoration:none;font-size:13px;font-weight:600;">⬇️ Download PNG</a>`;
+    }
+
+    // ── PDF to Word (text extraction) ────────────────────────────────────────────
+    function onPdfWordSelected() {
+      const f = document.getElementById('pdfword-input').files[0];
+      if (f) { document.getElementById('pdfword-filename').textContent = `📄 ${f.name} (${(f.size / 1024).toFixed(0)} KB)`; document.getElementById('pdfword-fileinfo').style.display = 'flex'; }
+    }
+    function resetPdfWord() {
+      document.getElementById('pdfword-input').value = '';
+      document.getElementById('pdfword-fileinfo').style.display = 'none';
+      document.getElementById('pdfword-output').value = '';
+    }
+    function downloadPdfWordText() {
+      const text = document.getElementById('pdfword-output').value;
+      if (!text.trim()) return;
+      const blob = new Blob([text], { type: 'text/plain' });
+      const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'pdf-content.txt'; a.click();
+    }
+    async function doPdfToWord() {
+      const out = document.getElementById('pdfword-output');
+      const file = document.getElementById('pdfword-input').files[0];
+      if (!file) { out.value = 'Please select a PDF file.'; return; }
+      out.value = 'Loading...';
+      loadPdfJs(async () => {
+        try {
+          const bytes = await file.arrayBuffer();
+          const pdf = await pdfjsLib.getDocument({ data: bytes }).promise;
+          let text = '';
+          for (let i = 1; i <= pdf.numPages; i++) {
+            const page = await pdf.getPage(i);
+            const content = await page.getTextContent();
+            text += `--- Page ${i} ---\n` + content.items.map(s => s.str).join(' ') + '\n\n';
+          }
+          out.value = text.trim() || 'No text found. PDF may be image-based — try the OCR PDF tool.';
+        } catch (e) { out.value = 'Error: ' + e.message; }
+      });
+    }
+
     // ── QR Scanner ────────────────────────────────────────────────────────────────
     function onQrScanSelected() {
       const file = document.getElementById('qrscan-input').files[0];
@@ -4735,8 +5567,75 @@ ${input}`
       });
       if (error) showAlert('signin', error.message);
     }
-    function loginSuccess() { document.getElementById('nav-auth-btns').style.display = 'none'; document.getElementById('nav-user-area').style.display = 'flex'; const ini = currentUser.name.charAt(0).toUpperCase(); document.getElementById('nav-avatar').textContent = ini; document.getElementById('dropdown-name').textContent = currentUser.name; document.getElementById('dropdown-email').textContent = currentUser.email; document.getElementById('profile-avatar-lg').textContent = ini; document.getElementById('profile-hero-name').textContent = currentUser.name; document.getElementById('profile-hero-email').textContent = currentUser.email; document.getElementById('pf-name').textContent = currentUser.name; document.getElementById('pf-email').textContent = currentUser.email; }
-    async function signOut() { await _sb.auth.signOut(); currentUser = null; document.getElementById('nav-auth-btns').style.display = 'flex'; document.getElementById('nav-user-area').style.display = 'none'; document.getElementById('nav-dropdown').classList.remove('open'); showHome(); }
+    // ── Mobile Menu ───────────────────────────────────────────────────────────────
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      const btn = document.getElementById('hamburger-btn');
+      const isOpen = menu.classList.contains('open');
+      if (isOpen) {
+        menu.classList.remove('open');
+        btn.classList.remove('open');
+        document.body.style.overflow = '';
+      } else {
+        menu.classList.add('open');
+        btn.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        syncMobileMenuAuth();
+      }
+    }
+    function closeMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      const btn = document.getElementById('hamburger-btn');
+      menu.classList.remove('open');
+      btn.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    function syncMobileMenuAuth() {
+      const guest = document.getElementById('mobile-guest');
+      const loggedIn = document.getElementById('mobile-loggedin');
+      if (currentUser) {
+        guest.style.display = 'none';
+        loggedIn.style.display = 'flex';
+        document.getElementById('mobile-user-name').textContent = currentUser.name;
+        document.getElementById('mobile-user-email').textContent = currentUser.email;
+      } else {
+        guest.style.display = 'flex';
+        loggedIn.style.display = 'none';
+      }
+    }
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', e => {
+      const menu = document.getElementById('mobile-menu');
+      const btn = document.getElementById('hamburger-btn');
+      if (menu && menu.classList.contains('open') && !menu.contains(e.target) && !btn.contains(e.target)) {
+        closeMobileMenu();
+      }
+    });
+
+    function loginSuccess() {
+      document.getElementById('nav-auth-btns').style.display = 'none';
+      document.getElementById('nav-user-area').style.display = 'flex';
+      const ini = currentUser.name.charAt(0).toUpperCase();
+      document.getElementById('nav-avatar').textContent = ini;
+      document.getElementById('dropdown-name').textContent = currentUser.name;
+      document.getElementById('dropdown-email').textContent = currentUser.email;
+      document.getElementById('profile-avatar-lg').textContent = ini;
+      document.getElementById('profile-hero-name').textContent = currentUser.name;
+      document.getElementById('profile-hero-email').textContent = currentUser.email;
+      document.getElementById('pf-name').textContent = currentUser.name;
+      document.getElementById('pf-email').textContent = currentUser.email;
+      syncMobileMenuAuth();
+    }
+    async function signOut() {
+      await _sb.auth.signOut();
+      currentUser = null;
+      document.getElementById('nav-auth-btns').style.display = 'flex';
+      document.getElementById('nav-user-area').style.display = 'none';
+      document.getElementById('nav-dropdown').classList.remove('open');
+      syncMobileMenuAuth();
+      closeMobileMenu();
+      showHome();
+    }
     function toggleDropdown() { document.getElementById('nav-dropdown').classList.toggle('open'); }
     document.addEventListener('click', e => { const a = document.getElementById('nav-user-area'); if (a && !a.contains(e.target)) document.getElementById('nav-dropdown').classList.remove('open'); });
 
