@@ -74,28 +74,26 @@ nav {
   gap: 8px;
   transition: border-color 0.25s, box-shadow 0.25s, max-width 0.3s ease, background 0.2s;
   position: relative;
+  cursor: text;
 }
 .nav-search:focus-within {
   border-color: var(--primary);
   box-shadow: 0 0 0 3px rgba(37,99,235,0.12);
   background: var(--surface);
-  max-width: 520px;
 }
-.nav-search svg { color: var(--text3); flex-shrink: 0; }
+.nav-search svg { color: var(--text3); flex-shrink: 0; min-width: 14px; }
 .nav-search input {
   flex: 1;
   min-width: 0;
-  width: 0;
   border: none;
   background: none;
   outline: none;
   font-family: 'Inter', sans-serif;
   font-size: 14px;
   color: var(--text);
-  padding: 9px 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  padding: 10px 0;
+  width: 100%;
+  -webkit-appearance: none;
 }
 .nav-search input::placeholder { color: var(--text3); }
 
@@ -439,10 +437,10 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
 @media (max-width: 768px) {
   /* NAV */
   .nav-inner { gap: 8px; padding: 0 14px; height: 56px; }
-  .nav-search { max-width: 200px; min-width: 0; padding: 0 12px; }
-  .nav-search:focus-within { max-width: 100%; }
+  .nav-search { max-width: 220px; padding: 0 12px; }
+  .nav-search.expanded { max-width: calc(100vw - 140px); }
   .nav-search input { font-size: 13px; }
-  .search-dropdown { left: -60px; right: -10px; }
+  .search-dropdown { left: -40px; right: -10px; min-width: 280px; }
   .btn-ghost { display: none; }
   .btn-primary { display: none; }
   .hamburger { display: flex; }
@@ -498,13 +496,12 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
   .footer-bottom { flex-direction: column; text-align: center; gap: 8px; }
 }
 @media (max-width: 480px) {
-  /* NAV — compact search on very small screens */
-  .nav-search { max-width: 44px; padding: 0 12px; }
-  .nav-search input { display: none; }
-  .nav-search:focus-within { max-width: calc(100vw - 120px); }
-  .nav-search:focus-within input { display: block; }
-  .nav-search input::placeholder { color: transparent; }
-  .search-dropdown { left: 0; right: 0; }
+  /* NAV — icon-only search on tiny screens, expands on tap */
+  .nav-search { max-width: 42px; padding: 0 12px; overflow: hidden; }
+  .nav-search.expanded { max-width: calc(100vw - 110px); overflow: visible; }
+  .nav-search input { font-size: 13px; min-width: 0; opacity: 0; pointer-events: none; width: 0; padding: 10px 0; }
+  .nav-search.expanded input { opacity: 1; pointer-events: auto; width: 100%; }
+  .search-dropdown { left: 0; right: 0; width: calc(100vw - 32px); }
   /* HERO */
   .hero h1 { font-size: 26px; }
   .hero-stats { gap: 10px; }
@@ -546,12 +543,16 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
 <nav>
   <div class="nav-inner">
     <a href="#" class="logo" onclick="showHome(); return false;"><div class="logo-icon">⚡</div>MyToolsPedia</a>
-    <div class="nav-search">
+    <div class="nav-search" id="nav-search-wrap" onclick="expandSearch()">
       <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
       <input type="text" id="searchInput" placeholder="Search 150+ tools..."
         oninput="handleSearch(this.value)"
-        onfocus="openSearchDrop(this.value)"
+        onfocus="onSearchFocus(this.value)"
+        onblur="onSearchBlur()"
         onkeydown="searchKeyNav(event)">
+      <button id="search-clear-btn" onclick="clearSearch(event)" style="display:none;background:none;border:none;cursor:pointer;padding:0;color:var(--text3);flex-shrink:0;line-height:1;">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
       <div class="search-dropdown" id="search-dropdown"></div>
     </div>
     <div class="nav-right">
@@ -1416,12 +1417,68 @@ function filterTools(cat) {
 
 // ── Search Dropdown ───────────────────────────────────────────────────────────
 let _searchFocusIdx = -1;
+let _searchExpanded = false;
+
+function expandSearch() {
+  const wrap = document.getElementById('nav-search-wrap');
+  const input = document.getElementById('searchInput');
+  if (!wrap || !input) return;
+  wrap.classList.add('expanded');
+  _searchExpanded = true;
+  // Small delay for animation then focus
+  setTimeout(() => { input.focus(); }, 50);
+}
+
+function collapseSearch() {
+  const wrap = document.getElementById('nav-search-wrap');
+  const input = document.getElementById('searchInput');
+  const clearBtn = document.getElementById('search-clear-btn');
+  if (!wrap) return;
+  if (!input?.value) {
+    wrap.classList.remove('expanded');
+    _searchExpanded = false;
+  }
+  if (clearBtn) clearBtn.style.display = 'none';
+  closeSearchDrop();
+}
+
+function onSearchFocus(val) {
+  const wrap = document.getElementById('nav-search-wrap');
+  if (wrap) wrap.classList.add('expanded');
+  _searchExpanded = true;
+  openSearchDrop(val);
+}
+
+function onSearchBlur() {
+  // Delay so clicks on dropdown items register first
+  setTimeout(() => {
+    const drop = document.getElementById('search-dropdown');
+    const input = document.getElementById('searchInput');
+    if (!input?.value?.trim()) {
+      collapseSearch();
+    } else {
+      closeSearchDrop();
+    }
+  }, 200);
+}
+
+function clearSearch(e) {
+  if (e) { e.stopPropagation(); e.preventDefault(); }
+  const input = document.getElementById('searchInput');
+  const clearBtn = document.getElementById('search-clear-btn');
+  if (input) { input.value = ''; input.focus(); }
+  if (clearBtn) clearBtn.style.display = 'none';
+  filterTools(activeFilter);
+  openSearchDrop('');
+}
 
 function handleSearch(q) {
-  // Update tool grid
+  const clearBtn = document.getElementById('search-clear-btn');
+  if (clearBtn) clearBtn.style.display = q ? 'block' : 'none';
+
   if (!q.trim()) {
     filterTools(activeFilter);
-    closeSearchDrop();
+    renderSearchDropEmpty();
     return;
   }
   const ql = q.toLowerCase();
@@ -1434,7 +1491,6 @@ function handleSearch(q) {
   document.getElementById('tools-heading-title').textContent = `Results for "${q}"`;
   document.getElementById('tools-count').textContent = `${results.length} found`;
   renderTools(results);
-  // Show dropdown
   renderSearchDrop(q, results);
 }
 
@@ -1442,7 +1498,6 @@ function openSearchDrop(q) {
   if (q && q.trim()) {
     renderSearchDrop(q, getSearchResults(q));
   } else {
-    // Show recent / popular suggestions when empty
     renderSearchDropEmpty();
   }
 }
@@ -1459,16 +1514,17 @@ function getSearchResults(q) {
 function renderSearchDropEmpty() {
   const drop = document.getElementById('search-dropdown');
   if (!drop) return;
-  // Show popular tools as suggestions
   const popular = ['word-count','qr-gen','pdf-merge','grammar','summarizer','pwd-gen','img2text','humanize-ai'];
   const items = popular.map(id => tools.find(t => t.id === id)).filter(Boolean);
-  const m = catMeta;
   drop.innerHTML = `
     <div class="search-drop-header">Popular Tools</div>
     ${items.map((t,i) => `
-      <div class="search-drop-item" data-idx="${i}" onclick="selectSearchTool('${t.id}')">
-        <div class="search-drop-icon" style="background:${m[t.cat].bg}">${t.icon}</div>
-        <div><div class="search-drop-name">${t.name}</div><div class="search-drop-cat">${m[t.cat].label}</div></div>
+      <div class="search-drop-item" data-idx="${i}" onmousedown="selectSearchTool('${t.id}')">
+        <div class="search-drop-icon" style="background:${catMeta[t.cat].bg}">${t.icon}</div>
+        <div>
+          <div class="search-drop-name">${t.name}</div>
+          <div class="search-drop-cat">${catMeta[t.cat].label}</div>
+        </div>
       </div>`).join('')}`;
   drop.classList.add('open');
   _searchFocusIdx = -1;
@@ -1483,19 +1539,18 @@ function renderSearchDrop(q, results) {
     _searchFocusIdx = -1;
     return;
   }
-  const ql = q.toLowerCase();
-  const m = catMeta;
+  // Escape regex special chars before using as regex
+  const escaped = q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   drop.innerHTML = `
     <div class="search-drop-header">${results.length} tool${results.length!==1?'s':''} found</div>
     ${results.map((t,i) => {
-      // Highlight matched part in name
-      const name = t.name.replace(new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')})`, 'gi'),
+      const name = t.name.replace(new RegExp(`(${escaped})`, 'gi'),
         '<span class="search-drop-mark">$1</span>');
-      return `<div class="search-drop-item" data-idx="${i}" onclick="selectSearchTool('${t.id}')">
-        <div class="search-drop-icon" style="background:${m[t.cat].bg}">${t.icon}</div>
+      return `<div class="search-drop-item" data-idx="${i}" onmousedown="selectSearchTool('${t.id}')">
+        <div class="search-drop-icon" style="background:${catMeta[t.cat].bg}">${t.icon}</div>
         <div>
           <div class="search-drop-name">${name}</div>
-          <div class="search-drop-cat">${m[t.cat].label} · ${t.desc.slice(0,48)}${t.desc.length>48?'…':''}</div>
+          <div class="search-drop-cat">${catMeta[t.cat].label} · ${t.desc.slice(0,50)}${t.desc.length>50?'…':''}</div>
         </div>
       </div>`;
     }).join('')}`;
@@ -1506,8 +1561,12 @@ function renderSearchDrop(q, results) {
 function selectSearchTool(id) {
   const tool = tools.find(t => t.id === id);
   if (!tool) return;
+  const input = document.getElementById('searchInput');
+  const clearBtn = document.getElementById('search-clear-btn');
   closeSearchDrop();
-  document.getElementById('searchInput').value = '';
+  if (input) input.value = '';
+  if (clearBtn) clearBtn.style.display = 'none';
+  collapseSearch();
   openTool(tool);
 }
 
@@ -1534,21 +1593,22 @@ function searchKeyNav(e) {
     items[_searchFocusIdx]?.scrollIntoView({block:'nearest'});
   } else if (e.key === 'Enter') {
     e.preventDefault();
-    if (_searchFocusIdx >= 0) {
-      items[_searchFocusIdx]?.click();
-    } else if (items.length === 1) {
-      items[0].click();
-    }
+    if (_searchFocusIdx >= 0) items[_searchFocusIdx]?.dispatchEvent(new MouseEvent('mousedown'));
+    else if (items.length === 1) items[0].dispatchEvent(new MouseEvent('mousedown'));
   } else if (e.key === 'Escape') {
+    e.preventDefault();
     closeSearchDrop();
-    document.getElementById('searchInput').blur();
+    document.getElementById('searchInput')?.blur();
+    collapseSearch();
   }
 }
 
-// Close dropdown when clicking outside
+// Close on click outside
 document.addEventListener('click', e => {
-  const search = document.querySelector('.nav-search');
-  if (search && !search.contains(e.target)) closeSearchDrop();
+  const wrap = document.getElementById('nav-search-wrap');
+  if (wrap && !wrap.contains(e.target)) {
+    collapseSearch();
+  }
 });
 
 renderTools(tools);
@@ -5092,6 +5152,7 @@ function _navigate(state, pushHistory=true) {
     document.getElementById('footer').style.display='block';
     document.getElementById('searchInput').value='';
     if(typeof closeSearchDrop==='function') closeSearchDrop();
+    if(typeof collapseSearch==='function') collapseSearch();
     filterTools('all');
   } else if (state.view === 'tool') {
     document.getElementById('footer').style.display='none';
